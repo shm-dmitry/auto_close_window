@@ -990,7 +990,7 @@
 <wire x1="-5.08" y1="7.62" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="5.08" y1="-5.08" x2="5.08" y2="7.62" width="0.254" layer="94"/>
-<wire x1="5.08" y1="7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="7.62" x2="0.635" y2="7.62" width="0.254" layer="94"/>
 <text x="-5.08" y="10.16" size="1.778" layer="94">&gt;NAME</text>
 <text x="-5.08" y="-7.62" size="1.778" layer="94">&gt;VALUE</text>
 <text x="-4.445" y="5.08" size="0.8128" layer="94">GND</text>
@@ -1001,6 +1001,11 @@
 <text x="1.27" y="2.54" size="0.8128" layer="94">DISCH</text>
 <text x="0.635" y="0" size="0.8128" layer="94">THRES</text>
 <text x="1.27" y="-2.54" size="0.8128" layer="94">CONT</text>
+<wire x1="0.635" y1="7.62" x2="-0.635" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-0.635" y1="7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-0.635" y1="7.62" x2="-0.635" y2="6.985" width="0.254" layer="94"/>
+<wire x1="-0.635" y1="6.985" x2="0.635" y2="6.985" width="0.254" layer="94"/>
+<wire x1="0.635" y1="7.62" x2="0.635" y2="6.985" width="0.254" layer="94"/>
 </symbol>
 <symbol name="D">
 <pin name="P$1" x="-7.62" y="0" visible="off" length="middle"/>
@@ -1011,6 +1016,37 @@
 <wire x1="0" y1="1.27" x2="0" y2="-1.27" width="0.254" layer="94"/>
 <text x="-5.715" y="1.905" size="1.778" layer="94">&gt;NAME</text>
 <text x="-5.715" y="-3.81" size="1.778" layer="94">&gt;VALUE</text>
+</symbol>
+<symbol name="LM311P">
+<wire x1="-5.08" y1="5.08" x2="-5.08" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-5.08" x2="-0.3175" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-0.3175" y1="-1.905" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="2.54" y1="0" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<pin name="IN+" x="-10.16" y="2.54" visible="off" length="middle" direction="in"/>
+<pin name="IN-" x="-10.16" y="-2.54" visible="off" length="middle" direction="in"/>
+<pin name="GND" x="-2.54" y="-10.16" visible="off" length="middle" direction="pwr" rot="R90"/>
+<pin name="VCC" x="-2.54" y="10.16" visible="off" length="middle" direction="pwr" rot="R270"/>
+<pin name="EMI_OUT" x="7.62" y="0" visible="off" length="middle" direction="out" rot="R180"/>
+<pin name="BAL_STROBE" x="7.62" y="-5.08" visible="off" length="middle" direction="in" rot="R180"/>
+<pin name="BALANCE" x="7.62" y="-7.62" visible="off" length="middle" direction="in" rot="R180"/>
+<pin name="COL_OUT" x="7.62" y="5.08" visible="off" length="middle" direction="out" rot="R180"/>
+<wire x1="-2.54" y1="-5.08" x2="-2.54" y2="-3.4925" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="3.4925" width="0.254" layer="94"/>
+<wire x1="2.54" y1="5.08" x2="2.54" y2="0" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-5.08" x2="-0.3175" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-0.3175" y1="-5.08" x2="-0.3175" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="-0.3175" y1="-5.08" x2="-0.3175" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-0.3175" y1="-7.62" x2="2.54" y2="-7.62" width="0.254" layer="94"/>
+<text x="-4.7625" y="5.715" size="0.6096" layer="94">VCC</text>
+<text x="-4.7625" y="-6.0325" size="0.6096" layer="94">GND</text>
+<text x="-4.445" y="1.905" size="1.27" layer="94">+</text>
+<text x="-4.1275" y="-3.175" size="1.27" layer="94">-</text>
+<text x="2.8575" y="0.3175" size="0.6096" layer="94">EMI_OUT</text>
+<text x="2.8575" y="4.1275" size="0.6096" layer="94">COL_OUT</text>
+<text x="1.27" y="-4.7625" size="0.6096" layer="94">BAL/STROBE</text>
+<text x="2.54" y="-7.3025" size="0.6096" layer="94">BALANCE</text>
+<text x="-15.24" y="-7.62" size="1.778" layer="94">&gt;NAME</text>
+<text x="-15.24" y="-10.16" size="1.778" layer="94">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1570,6 +1606,28 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="LM311P" prefix="U">
+<gates>
+<gate name="G$1" symbol="LM311P" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DIP8">
+<connects>
+<connect gate="G$1" pin="BALANCE" pad="PIN_5"/>
+<connect gate="G$1" pin="BAL_STROBE" pad="PIN_6"/>
+<connect gate="G$1" pin="COL_OUT" pad="PIN_7"/>
+<connect gate="G$1" pin="EMI_OUT" pad="PIN_1"/>
+<connect gate="G$1" pin="GND" pad="PIN_4"/>
+<connect gate="G$1" pin="IN+" pad="PIN_2"/>
+<connect gate="G$1" pin="IN-" pad="PIN_3"/>
+<connect gate="G$1" pin="VCC" pad="PIN_8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="supply2" urn="urn:adsk.eagle:library:372">
@@ -1934,10 +1992,7 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="R12" library="my_devices" deviceset="R" device="" value="620"/>
 <part name="D8" library="my_devices" deviceset="D_SCHOTTKY" device="" value="BAT41"/>
 <part name="L4" library="my_devices" deviceset="L" device="" value="1000 uH"/>
-<part name="C17" library="my_devices" deviceset="C-1" device=""/>
 <part name="Q16" library="my_devices" deviceset="TRANSISTOR_PNP" device="" value="2N3906BU"/>
-<part name="R21" library="my_devices" deviceset="R" device="" value="10K"/>
-<part name="R23" library="my_devices" deviceset="R" device="" value="10K"/>
 <part name="Q17" library="my_devices" deviceset="MOSFET_N" device="" value="STP14NM50N"/>
 <part name="J1" library="my_devices" deviceset="SERVO" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -1955,16 +2010,18 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="R6" library="my_devices" deviceset="R" device="" value="4K"/>
 <part name="C19" library="my_devices" deviceset="C-1" device="" value="1 nF"/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="D7" library="my_devices" deviceset="D" device=""/>
-<part name="D9" library="my_devices" deviceset="D" device=""/>
+<part name="D7" library="my_devices" deviceset="D" device="" value="1N4001"/>
+<part name="D9" library="my_devices" deviceset="D" device="" value="1N4001"/>
 <part name="R7" library="my_devices" deviceset="RD" device=""/>
 <part name="R8" library="my_devices" deviceset="R" device=""/>
-<part name="Q5" library="my_devices" deviceset="TRANSISTOR_NPN" device="" value="2N3904"/>
-<part name="GND17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R16" library="my_devices" deviceset="R" device=""/>
 <part name="C20" library="my_devices" deviceset="C-1" device=""/>
-<part name="R17" library="my_devices" deviceset="R" device=""/>
+<part name="R17" library="my_devices" deviceset="R" device="" value="10K"/>
 <part name="Q6" library="my_devices" deviceset="TRANSISTOR_PNP" device=""/>
+<part name="Q5" library="my_devices" deviceset="TRANSISTOR_NPN" device=""/>
+<part name="R16" library="my_devices" deviceset="R" device=""/>
+<part name="GND17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="U10" library="my_devices" deviceset="LM311P" device=""/>
+<part name="GND18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1982,7 +2039,7 @@ OSC OUT: 450 KHz</text>
 <text x="191.77" y="182.88" size="1.778" layer="91" grouprefs="SUPPLY_GENERATOR">~15-20V
 max 50 mA</text>
 <text x="125.095" y="214.63" size="1.778" layer="91" grouprefs="SUPPLY_GENERATOR">https://vip-cxema.org/index.php/online-raschjoty/366-raschjot-povyshayushchego-dc-dc-preobrazovatelya</text>
-<text x="-17.145" y="227.965" size="1.778" layer="91" grouprefs="SERVO">~15-20V
+<text x="-22.225" y="240.665" size="1.778" layer="91" grouprefs="SERVO">~15-20V
 max 50 mA</text>
 </plain>
 <instances>
@@ -2271,21 +2328,9 @@ max 50 mA</text>
 <attribute name="NAME" x="-60.325" y="243.205" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-57.15" y="243.205" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="C17" gate="G$1" x="-154.305" y="194.945" smashed="yes" rot="R180" grouprefs="SERVO">
-<attribute name="NAME" x="-149.86" y="191.77" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="-149.86" y="200.025" size="1.778" layer="94" rot="R180"/>
-</instance>
 <instance part="Q16" gate="G$1" x="-136.525" y="194.945" smashed="yes" grouprefs="SERVO">
 <attribute name="NAME" x="-132.715" y="196.215" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-132.715" y="192.405" size="1.778" layer="94"/>
-</instance>
-<instance part="R21" gate="G$1" x="-144.145" y="184.785" smashed="yes" rot="R90" grouprefs="SERVO">
-<attribute name="NAME" x="-146.685" y="178.435" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="-140.335" y="178.435" size="1.778" layer="94" rot="R90"/>
-</instance>
-<instance part="R23" gate="G$1" x="-169.545" y="205.105" smashed="yes" rot="R90" grouprefs="SERVO">
-<attribute name="NAME" x="-172.085" y="198.755" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="-165.735" y="198.755" size="1.778" layer="94" rot="R90"/>
 </instance>
 <instance part="Q17" gate="G$1" x="5.715" y="233.68" smashed="yes" rot="R90" grouprefs="SERVO">
 <attribute name="NAME" x="3.175" y="217.17" size="1.778" layer="94" rot="R90"/>
@@ -2298,14 +2343,14 @@ max 50 mA</text>
 <instance part="GND3" gate="1" x="-38.1" y="137.16" smashed="yes" grouprefs="SERVO_CONTROL">
 <attribute name="VALUE" x="-40.64" y="134.62" size="1.778" layer="96"/>
 </instance>
-<instance part="SW1" gate="G$1" x="-58.42" y="137.16" smashed="yes" rot="R90" grouprefs="SERVO_CONTROL">
-<attribute name="NAME" x="-63.5" y="132.08" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="-53.34" y="132.08" size="1.778" layer="94" rot="R90"/>
+<instance part="SW1" gate="G$1" x="-58.42" y="134.62" smashed="yes" rot="R90" grouprefs="SERVO_CONTROL">
+<attribute name="NAME" x="-63.5" y="129.54" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="-53.34" y="129.54" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="GND4" gate="1" x="-58.42" y="121.92" smashed="yes" grouprefs="SERVO_CONTROL">
-<attribute name="VALUE" x="-60.96" y="119.38" size="1.778" layer="96"/>
+<instance part="GND4" gate="1" x="-58.42" y="119.38" smashed="yes" grouprefs="SERVO_CONTROL">
+<attribute name="VALUE" x="-60.96" y="116.84" size="1.778" layer="96"/>
 </instance>
-<instance part="U9" gate="G$1" x="-25.4" y="147.32" smashed="yes">
+<instance part="U9" gate="G$1" x="-25.4" y="147.32" smashed="yes" grouprefs="SERVO_CONTROL">
 <attribute name="NAME" x="-30.48" y="160.02" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-30.48" y="134.62" size="1.778" layer="94"/>
 </instance>
@@ -2324,16 +2369,16 @@ max 50 mA</text>
 <instance part="GND11" gate="1" x="-91.44" y="195.58" smashed="yes" grouprefs="SERVO">
 <attribute name="VALUE" x="-93.98" y="193.04" size="1.778" layer="96"/>
 </instance>
-<instance part="Q4" gate="G$1" x="-53.34" y="226.06" smashed="yes" grouprefs="SERVO">
-<attribute name="NAME" x="-49.53" y="227.33" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-49.53" y="223.52" size="1.778" layer="94"/>
+<instance part="Q4" gate="G$1" x="-53.34" y="218.44" smashed="yes" grouprefs="SERVO">
+<attribute name="NAME" x="-49.53" y="219.71" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-49.53" y="215.9" size="1.778" layer="94"/>
 </instance>
-<instance part="R5" gate="G$1" x="-66.04" y="215.9" smashed="yes" rot="R90" grouprefs="SERVO">
-<attribute name="NAME" x="-68.58" y="209.55" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="-62.23" y="209.55" size="1.778" layer="94" rot="R90"/>
+<instance part="R5" gate="G$1" x="-71.12" y="208.28" smashed="yes" rot="R90" grouprefs="SERVO">
+<attribute name="NAME" x="-73.66" y="201.93" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="-67.31" y="201.93" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="GND15" gate="1" x="-40.64" y="203.2" smashed="yes" grouprefs="SERVO">
-<attribute name="VALUE" x="-43.18" y="200.66" size="1.778" layer="96"/>
+<instance part="GND15" gate="1" x="-40.64" y="193.04" smashed="yes" grouprefs="SERVO">
+<attribute name="VALUE" x="-43.18" y="190.5" size="1.778" layer="96"/>
 </instance>
 <instance part="C16" gate="G$1" x="-33.02" y="223.52" smashed="yes" rot="R270" grouprefs="SERVO">
 <attribute name="NAME" x="-27.94" y="228.6" size="1.778" layer="94" rot="R270"/>
@@ -2350,9 +2395,9 @@ max 50 mA</text>
 <instance part="GND16" gate="1" x="-99.06" y="246.38" smashed="yes" grouprefs="SERVO">
 <attribute name="VALUE" x="-101.6" y="243.84" size="1.778" layer="96"/>
 </instance>
-<instance part="D7" gate="G$1" x="-129.54" y="215.9" smashed="yes" rot="R270" grouprefs="SERVO">
-<attribute name="NAME" x="-127.635" y="221.615" size="1.778" layer="94" rot="R270"/>
-<attribute name="VALUE" x="-133.35" y="221.615" size="1.778" layer="94" rot="R270"/>
+<instance part="D7" gate="G$1" x="-139.7" y="215.9" smashed="yes" rot="R270" grouprefs="SERVO">
+<attribute name="NAME" x="-137.795" y="221.615" size="1.778" layer="94" rot="R270"/>
+<attribute name="VALUE" x="-143.51" y="221.615" size="1.778" layer="94" rot="R270"/>
 </instance>
 <instance part="D9" gate="G$1" x="-149.86" y="218.44" smashed="yes" rot="R90" grouprefs="SERVO">
 <attribute name="NAME" x="-151.765" y="212.725" size="1.778" layer="94" rot="R90"/>
@@ -2366,17 +2411,6 @@ max 50 mA</text>
 <attribute name="NAME" x="-146.05" y="243.84" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-146.05" y="237.49" size="1.778" layer="94"/>
 </instance>
-<instance part="Q5" gate="G$1" x="25.4" y="226.06" smashed="yes" rot="R180" grouprefs="SERVO">
-<attribute name="NAME" x="21.59" y="224.79" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="21.59" y="228.6" size="1.778" layer="94" rot="R180"/>
-</instance>
-<instance part="GND17" gate="1" x="17.78" y="236.22" smashed="yes" grouprefs="SERVO">
-<attribute name="VALUE" x="15.24" y="233.68" size="1.778" layer="96"/>
-</instance>
-<instance part="R16" gate="G$1" x="25.4" y="208.28" smashed="yes" rot="R90" grouprefs="SERVO">
-<attribute name="NAME" x="22.86" y="201.93" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="29.21" y="201.93" size="1.778" layer="94" rot="R90"/>
-</instance>
 <instance part="C20" gate="G$1" x="-91.44" y="213.36" smashed="yes" rot="R90">
 <attribute name="NAME" x="-94.615" y="208.915" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-86.36" y="208.915" size="1.778" layer="94" rot="R90"/>
@@ -2388,6 +2422,24 @@ max 50 mA</text>
 <instance part="Q6" gate="G$1" x="-81.28" y="226.06" smashed="yes" rot="MR180">
 <attribute name="NAME" x="-77.47" y="224.79" size="1.778" layer="94" rot="MR180"/>
 <attribute name="VALUE" x="-77.47" y="228.6" size="1.778" layer="94" rot="MR180"/>
+</instance>
+<instance part="Q5" gate="G$1" x="-154.94" y="185.42" smashed="yes">
+<attribute name="NAME" x="-151.13" y="186.69" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-151.13" y="182.88" size="1.778" layer="94"/>
+</instance>
+<instance part="R16" gate="G$1" x="-142.24" y="177.8" smashed="yes">
+<attribute name="NAME" x="-148.59" y="180.34" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-148.59" y="173.99" size="1.778" layer="94"/>
+</instance>
+<instance part="GND17" gate="1" x="-129.54" y="175.26" smashed="yes">
+<attribute name="VALUE" x="-132.08" y="172.72" size="1.778" layer="96"/>
+</instance>
+<instance part="U10" gate="G$1" x="-182.88" y="210.82" smashed="yes">
+<attribute name="NAME" x="-198.12" y="203.2" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-198.12" y="200.66" size="1.778" layer="94"/>
+</instance>
+<instance part="GND18" gate="1" x="-185.42" y="195.58" smashed="yes">
+<attribute name="VALUE" x="-187.96" y="193.04" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -2451,13 +2503,8 @@ max 50 mA</text>
 <segment>
 <pinref part="Q16" gate="G$1" pin="E"/>
 <wire x1="-136.525" y1="187.325" x2="-136.525" y2="182.245" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-136.525" y1="182.245" x2="-131.445" y2="182.245" width="0.1524" layer="91" grouprefs="SERVO"/>
 <label x="-104.775" y="182.245" size="1.778" layer="95" grouprefs="SERVO"/>
-<pinref part="R21" gate="G$1" pin="P$1"/>
-<wire x1="-131.445" y1="182.245" x2="-99.695" y2="182.245" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-144.145" y1="177.165" x2="-131.445" y2="177.165" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-131.445" y1="177.165" x2="-131.445" y2="182.245" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-131.445" y="182.245" grouprefs="SERVO"/>
+<wire x1="-136.525" y1="182.245" x2="-99.695" y2="182.245" width="0.1524" layer="91" grouprefs="SERVO"/>
 </segment>
 <segment>
 <pinref part="Q17" gate="G$1" pin="D"/>
@@ -2471,24 +2518,13 @@ max 50 mA</text>
 </segment>
 <segment>
 <pinref part="R11" gate="G$1" pin="P$2"/>
-<wire x1="2.54" y1="135.89" x2="2.54" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="137.16" x2="17.78" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="135.89" x2="2.54" y2="137.16" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<wire x1="2.54" y1="137.16" x2="17.78" y2="137.16" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
 <pinref part="B1" gate="G$1" pin="VCC"/>
-<wire x1="17.78" y1="137.16" x2="17.78" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="137.16" x2="33.02" y2="137.16" width="0.1524" layer="91"/>
-<junction x="17.78" y="137.16"/>
-<label x="27.94" y="134.62" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R23" gate="G$1" pin="P$2"/>
-<wire x1="-169.545" y1="213.995" x2="-182.88" y2="213.995" width="0.1524" layer="91" grouprefs="SERVO"/>
-<label x="-182.88" y="215.9" size="1.778" layer="95" grouprefs="SERVO"/>
-</segment>
-<segment>
-<pinref part="R16" gate="G$1" pin="P$1"/>
-<wire x1="25.4" y1="200.66" x2="25.4" y2="180.34" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="25.4" y1="180.34" x2="38.1" y2="180.34" width="0.1524" layer="91" grouprefs="SERVO"/>
-<label x="30.48" y="180.34" size="1.778" layer="95" grouprefs="SERVO"/>
+<wire x1="17.78" y1="137.16" x2="17.78" y2="124.46" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<wire x1="17.78" y1="137.16" x2="33.02" y2="137.16" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<junction x="17.78" y="137.16" grouprefs="SERVO_CONTROL"/>
+<label x="27.94" y="134.62" size="1.778" layer="95" grouprefs="SERVO_CONTROL"/>
 </segment>
 <segment>
 <pinref part="L4" gate="G$1" pin="P$1"/>
@@ -2504,6 +2540,12 @@ max 50 mA</text>
 <wire x1="-81.28" y1="233.68" x2="-81.28" y2="243.84" width="0.1524" layer="91"/>
 <junction x="-81.28" y="243.84"/>
 <label x="-76.2" y="251.46" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U10" gate="G$1" pin="VCC"/>
+<wire x1="-185.42" y1="220.98" x2="-185.42" y2="223.52" width="0.1524" layer="91"/>
+<wire x1="-185.42" y1="223.52" x2="-177.8" y2="223.52" width="0.1524" layer="91"/>
+<label x="-182.88" y="223.52" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -2596,7 +2638,7 @@ max 50 mA</text>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
 <pinref part="SW1" gate="G$1" pin="P$1"/>
-<wire x1="-58.42" y1="124.46" x2="-58.42" y2="127" width="0.1524" layer="91"/>
+<wire x1="-58.42" y1="121.92" x2="-58.42" y2="124.46" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
 </segment>
 <segment>
 <pinref part="C18" gate="G$1" pin="PIN_GND"/>
@@ -2616,25 +2658,24 @@ max 50 mA</text>
 </segment>
 <segment>
 <pinref part="R5" gate="G$1" pin="P$1"/>
-<wire x1="-66.04" y1="208.28" x2="-53.34" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-71.12" y1="200.66" x2="-53.34" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
 <pinref part="J1" gate="G$1" pin="GND"/>
-<wire x1="-53.34" y1="208.28" x2="-40.64" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-40.64" y1="208.28" x2="-33.02" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-33.02" y1="208.28" x2="-22.86" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-22.86" y1="208.28" x2="7.62" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="7.62" y1="208.28" x2="7.62" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-53.34" y1="200.66" x2="-40.64" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-40.64" y1="200.66" x2="-33.02" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-33.02" y1="200.66" x2="-22.86" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-22.86" y1="200.66" x2="7.62" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
 <pinref part="GND15" gate="1" pin="GND"/>
-<wire x1="-40.64" y1="208.28" x2="-40.64" y2="205.74" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-40.64" y="208.28" grouprefs="SERVO"/>
+<wire x1="-40.64" y1="200.66" x2="-40.64" y2="195.58" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-40.64" y="200.66" grouprefs="SERVO"/>
 <pinref part="Q4" gate="G$1" pin="E"/>
-<wire x1="-53.34" y1="218.44" x2="-53.34" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-53.34" y="208.28" grouprefs="SERVO"/>
+<wire x1="-53.34" y1="210.82" x2="-53.34" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-53.34" y="200.66" grouprefs="SERVO"/>
 <pinref part="C16" gate="G$1" pin="PIN_GND"/>
-<wire x1="-33.02" y1="218.44" x2="-33.02" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-33.02" y="208.28" grouprefs="SERVO"/>
+<wire x1="-33.02" y1="218.44" x2="-33.02" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-33.02" y="200.66" grouprefs="SERVO"/>
 <pinref part="R6" gate="G$1" pin="P$1"/>
-<wire x1="-22.86" y1="215.9" x2="-22.86" y2="208.28" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-22.86" y="208.28" grouprefs="SERVO"/>
+<wire x1="-22.86" y1="215.9" x2="-22.86" y2="200.66" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-22.86" y="200.66" grouprefs="SERVO"/>
 </segment>
 <segment>
 <pinref part="C19" gate="G$1" pin="P$2"/>
@@ -2643,10 +2684,14 @@ max 50 mA</text>
 <pinref part="GND16" gate="1" pin="GND"/>
 </segment>
 <segment>
+<pinref part="R16" gate="G$1" pin="P$2"/>
 <pinref part="GND17" gate="1" pin="GND"/>
-<wire x1="17.78" y1="238.76" x2="25.4" y2="238.76" width="0.1524" layer="91" grouprefs="SERVO"/>
-<pinref part="Q5" gate="G$1" pin="E"/>
-<wire x1="25.4" y1="238.76" x2="25.4" y2="233.68" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-133.35" y1="177.8" x2="-129.54" y2="177.8" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U10" gate="G$1" pin="GND"/>
+<pinref part="GND18" gate="1" pin="GND"/>
+<wire x1="-185.42" y1="198.12" x2="-185.42" y2="200.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="3V3" class="0">
@@ -3321,8 +3366,8 @@ max 50 mA</text>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="3A"/>
-<wire x1="-15.24" y1="144.78" x2="12.7" y2="144.78" width="0.1524" layer="91"/>
-<label x="-2.54" y="144.78" size="1.778" layer="95"/>
+<wire x1="-15.24" y1="144.78" x2="12.7" y2="144.78" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<label x="-2.54" y="144.78" size="1.778" layer="95" grouprefs="SERVO_CONTROL"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -3369,23 +3414,14 @@ max 50 mA</text>
 </net>
 <net name="SERVO_PWM_CONTROL" class="0">
 <segment>
-<pinref part="C17" gate="G$1" pin="P$2"/>
-<wire x1="-161.925" y1="194.945" x2="-169.545" y2="194.945" width="0.1524" layer="91" grouprefs="SERVO"/>
-<label x="-184.785" y="192.405" size="1.778" layer="95" grouprefs="SERVO"/>
-<pinref part="R23" gate="G$1" pin="P$1"/>
-<wire x1="-169.545" y1="194.945" x2="-184.785" y2="194.945" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-169.545" y1="194.945" x2="-169.545" y2="197.485" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-169.545" y="194.945" grouprefs="SERVO"/>
-</segment>
-<segment>
 <pinref part="U9" gate="G$1" pin="3Y"/>
-<wire x1="-15.24" y1="139.7" x2="12.7" y2="139.7" width="0.1524" layer="91"/>
-<label x="-10.16" y="139.7" size="1.778" layer="95"/>
+<wire x1="-15.24" y1="139.7" x2="12.7" y2="139.7" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<label x="-10.16" y="139.7" size="1.778" layer="95" grouprefs="SERVO_CONTROL"/>
 </segment>
 <segment>
-<pinref part="Q5" gate="G$1" pin="B"/>
-<wire x1="33.02" y1="226.06" x2="33.02" y2="193.04" width="0.1524" layer="91" grouprefs="SERVO"/>
-<label x="35.56" y="195.58" size="1.778" layer="95" rot="R90" grouprefs="SERVO"/>
+<pinref part="J1" gate="G$1" pin="PULSE"/>
+<wire x1="17.78" y1="200.66" x2="17.78" y2="223.52" width="0.1524" layer="91" grouprefs="SERVO"/>
+<label x="20.32" y="203.2" size="1.778" layer="95" rot="R90" grouprefs="SERVO"/>
 </segment>
 </net>
 <net name="SERVO_IS_ENABLED_INV" class="0">
@@ -3402,18 +3438,8 @@ max 50 mA</text>
 <pinref part="L4" gate="G$1" pin="P$2"/>
 <pinref part="Q4" gate="G$1" pin="C"/>
 <wire x1="-53.34" y1="236.22" x2="-52.07" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-53.34" y1="233.68" x2="-53.34" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-53.34" y1="226.06" x2="-53.34" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
 <junction x="-53.34" y="236.22" grouprefs="SERVO"/>
-</segment>
-</net>
-<net name="N$38" class="0">
-<segment>
-<pinref part="C17" gate="G$1" pin="P$1"/>
-<pinref part="Q16" gate="G$1" pin="B"/>
-<wire x1="-146.685" y1="194.945" x2="-144.145" y2="194.945" width="0.1524" layer="91" grouprefs="SERVO"/>
-<pinref part="R21" gate="G$1" pin="P$2"/>
-<wire x1="-144.145" y1="194.945" x2="-144.145" y2="193.675" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-144.145" y="194.945" grouprefs="SERVO"/>
 </segment>
 </net>
 <net name="N$40" class="0">
@@ -3426,28 +3452,21 @@ max 50 mA</text>
 <net name="N$1" class="0">
 <segment>
 <wire x1="-35.56" y1="149.86" x2="-43.18" y2="149.86" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
-<wire x1="-43.18" y1="149.86" x2="-43.18" y2="144.78" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
-<wire x1="-43.18" y1="144.78" x2="-35.56" y2="144.78" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
 <pinref part="U9" gate="G$1" pin="1Y"/>
-<pinref part="U9" gate="G$1" pin="2B"/>
+<wire x1="-43.18" y1="149.86" x2="-43.18" y2="147.32" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<pinref part="U9" gate="G$1" pin="2A"/>
+<wire x1="-43.18" y1="147.32" x2="-35.56" y2="147.32" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="U9" gate="G$1" pin="2Y"/>
-<wire x1="-35.56" y1="142.24" x2="-43.18" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="-43.18" y1="142.24" x2="-43.18" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="-43.18" y1="132.08" x2="-12.7" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="132.08" x2="-12.7" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="-35.56" y1="142.24" x2="-43.18" y2="142.24" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<wire x1="-43.18" y1="142.24" x2="-43.18" y2="132.08" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<wire x1="-43.18" y1="132.08" x2="-12.7" y2="132.08" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+<wire x1="-12.7" y1="132.08" x2="-12.7" y2="142.24" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
 <pinref part="U9" gate="G$1" pin="3B"/>
-<wire x1="-12.7" y1="142.24" x2="-15.24" y2="142.24" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$2" class="0">
-<segment>
-<pinref part="SW1" gate="G$1" pin="P$2"/>
-<pinref part="U9" gate="G$1" pin="2A"/>
-<wire x1="-58.42" y1="147.32" x2="-35.56" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="142.24" x2="-15.24" y2="142.24" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
 </segment>
 </net>
 <net name="N$43" class="0">
@@ -3463,24 +3482,16 @@ max 50 mA</text>
 <pinref part="R4" gate="G$1" pin="P$1"/>
 <wire x1="-116.84" y1="190.5" x2="-119.38" y2="190.5" width="0.1524" layer="91" grouprefs="SERVO"/>
 <wire x1="-119.38" y1="190.5" x2="-119.38" y2="203.2" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-119.38" y1="220.98" x2="-121.92" y2="220.98" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-119.38" y1="220.98" x2="-124.46" y2="220.98" width="0.1524" layer="91" grouprefs="SERVO"/>
 <junction x="-119.38" y="220.98" grouprefs="SERVO"/>
-<wire x1="-121.92" y1="220.98" x2="-121.92" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-121.92" y1="236.22" x2="-99.06" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-124.46" y1="220.98" x2="-124.46" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-124.46" y1="236.22" x2="-99.06" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
 <pinref part="U8" gate="G$1" pin="RESET"/>
 <wire x1="-99.06" y1="236.22" x2="-99.06" y2="228.6" width="0.1524" layer="91" grouprefs="SERVO"/>
 <pinref part="R8" gate="G$1" pin="P$2"/>
-<wire x1="-130.81" y1="241.3" x2="-121.92" y2="241.3" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-121.92" y1="241.3" x2="-121.92" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-121.92" y="236.22" grouprefs="SERVO"/>
-</segment>
-</net>
-<net name="N$37" class="0">
-<segment>
-<pinref part="Q4" gate="G$1" pin="B"/>
-<pinref part="R5" gate="G$1" pin="P$2"/>
-<wire x1="-66.04" y1="226.06" x2="-60.96" y2="226.06" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-66.04" y1="224.79" x2="-66.04" y2="226.06" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-130.81" y1="241.3" x2="-124.46" y2="241.3" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-124.46" y1="241.3" x2="-124.46" y2="236.22" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-124.46" y="236.22" grouprefs="SERVO"/>
 </segment>
 </net>
 <net name="N$44" class="0">
@@ -3495,15 +3506,15 @@ max 50 mA</text>
 <pinref part="U8" gate="G$1" pin="TRIG"/>
 <wire x1="-99.06" y1="223.52" x2="-96.52" y2="223.52" width="0.1524" layer="91" grouprefs="SERVO"/>
 <wire x1="-96.52" y1="223.52" x2="-96.52" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-96.52" y1="210.82" x2="-124.46" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-96.52" y1="210.82" x2="-132.08" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
 <pinref part="U8" gate="G$1" pin="THRES"/>
-<wire x1="-124.46" y1="210.82" x2="-129.54" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-129.54" y1="210.82" x2="-149.86" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-119.38" y1="226.06" x2="-124.46" y2="226.06" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-124.46" y1="226.06" x2="-124.46" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-124.46" y="210.82" grouprefs="SERVO"/>
+<wire x1="-132.08" y1="210.82" x2="-139.7" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-139.7" y1="210.82" x2="-149.86" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-119.38" y1="226.06" x2="-132.08" y2="226.06" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-132.08" y1="226.06" x2="-132.08" y2="210.82" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-132.08" y="210.82" grouprefs="SERVO"/>
 <pinref part="D7" gate="G$1" pin="P$2"/>
-<junction x="-129.54" y="210.82" grouprefs="SERVO"/>
+<junction x="-139.7" y="210.82" grouprefs="SERVO"/>
 <pinref part="D9" gate="G$1" pin="P$1"/>
 <wire x1="-96.52" y1="223.52" x2="-91.44" y2="223.52" width="0.1524" layer="91"/>
 <junction x="-96.52" y="223.52"/>
@@ -3515,11 +3526,11 @@ max 50 mA</text>
 <segment>
 <pinref part="D7" gate="G$1" pin="P$1"/>
 <pinref part="U8" gate="G$1" pin="DISCH"/>
-<wire x1="-129.54" y1="223.52" x2="-119.38" y2="223.52" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-139.7" y1="223.52" x2="-119.38" y2="223.52" width="0.1524" layer="91" grouprefs="SERVO"/>
 <pinref part="R7" gate="G$1" pin="P3"/>
-<wire x1="-129.54" y1="223.52" x2="-129.54" y2="233.68" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="-129.54" y1="233.68" x2="-142.24" y2="233.68" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="-129.54" y="223.52" grouprefs="SERVO"/>
+<wire x1="-139.7" y1="223.52" x2="-139.7" y2="233.68" width="0.1524" layer="91" grouprefs="SERVO"/>
+<wire x1="-139.7" y1="233.68" x2="-142.24" y2="233.68" width="0.1524" layer="91" grouprefs="SERVO"/>
+<junction x="-139.7" y="223.52" grouprefs="SERVO"/>
 </segment>
 </net>
 <net name="N$48" class="0">
@@ -3534,17 +3545,6 @@ max 50 mA</text>
 <pinref part="R7" gate="G$1" pin="P1"/>
 <pinref part="R8" gate="G$1" pin="P$1"/>
 <wire x1="-149.86" y1="241.3" x2="-147.32" y2="241.3" width="0.1524" layer="91" grouprefs="SERVO"/>
-</segment>
-</net>
-<net name="N$50" class="0">
-<segment>
-<pinref part="R16" gate="G$1" pin="P$2"/>
-<pinref part="Q5" gate="G$1" pin="C"/>
-<wire x1="25.4" y1="217.17" x2="25.4" y2="218.44" width="0.1524" layer="91" grouprefs="SERVO"/>
-<pinref part="J1" gate="G$1" pin="PULSE"/>
-<wire x1="17.78" y1="200.66" x2="17.78" y2="218.44" width="0.1524" layer="91" grouprefs="SERVO"/>
-<wire x1="17.78" y1="218.44" x2="25.4" y2="218.44" width="0.1524" layer="91" grouprefs="SERVO"/>
-<junction x="25.4" y="218.44" grouprefs="SERVO"/>
 </segment>
 </net>
 <net name="N$51" class="0">
@@ -3571,6 +3571,47 @@ max 50 mA</text>
 <pinref part="Q6" gate="G$1" pin="B"/>
 <wire x1="-93.98" y1="226.06" x2="-88.9" y2="226.06" width="0.1524" layer="91"/>
 <junction x="-93.98" y="226.06"/>
+</segment>
+</net>
+<net name="N$35" class="0">
+<segment>
+<pinref part="Q6" gate="G$1" pin="C"/>
+<pinref part="Q4" gate="G$1" pin="B"/>
+<wire x1="-81.28" y1="218.44" x2="-71.12" y2="218.44" width="0.1524" layer="91"/>
+<pinref part="R5" gate="G$1" pin="P$2"/>
+<wire x1="-71.12" y1="218.44" x2="-60.96" y2="218.44" width="0.1524" layer="91"/>
+<wire x1="-71.12" y1="217.17" x2="-71.12" y2="218.44" width="0.1524" layer="91"/>
+<junction x="-71.12" y="218.44"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="SW1" gate="G$1" pin="P$2"/>
+<pinref part="U9" gate="G$1" pin="2B"/>
+<wire x1="-58.42" y1="144.78" x2="-35.56" y2="144.78" width="0.1524" layer="91" grouprefs="SERVO_CONTROL"/>
+</segment>
+</net>
+<net name="N$37" class="0">
+<segment>
+<pinref part="Q5" gate="G$1" pin="C"/>
+<pinref part="Q16" gate="G$1" pin="B"/>
+<wire x1="-154.94" y1="193.04" x2="-154.94" y2="194.945" width="0.1524" layer="91"/>
+<wire x1="-154.94" y1="194.945" x2="-144.145" y2="194.945" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$38" class="0">
+<segment>
+<pinref part="Q5" gate="G$1" pin="E"/>
+<pinref part="R16" gate="G$1" pin="P$1"/>
+<wire x1="-154.94" y1="177.8" x2="-149.86" y2="177.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$50" class="0">
+<segment>
+<pinref part="U10" gate="G$1" pin="EMI_OUT"/>
+<pinref part="Q5" gate="G$1" pin="B"/>
+<wire x1="-175.26" y1="210.82" x2="-162.56" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="-162.56" y1="210.82" x2="-162.56" y2="185.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

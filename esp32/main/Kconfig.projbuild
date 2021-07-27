@@ -1,0 +1,86 @@
+menu "Auto Open-Close WindowConfiguration"
+   menu "WIFI Configuration"
+   	  config WIFI_SSID
+   	  	string "Wifi AP SSID"
+   	  	default ""
+
+   	  config WIFI_PASSWORD
+   	  	string "Wifi AP Password"
+   	  	default ""
+   	  	
+   	  config WIFI_TOPIC
+   	  	string "WiFi MQTT Topic to listen Change-SSID command"
+   	  	default ""
+   endmenu
+
+   menu "MQTT Configuration"
+      config MQTT_BROKER_URI
+         string "Broker URL"
+         default ""
+
+      config MQTT_BROKER_USERNAME
+	     string "Broker user name"
+	     default ""
+
+      config MQTT_BROKER_PASSWORD
+	     string "Broker user password"
+	     default ""
+
+      config MQTT_INIT_LOGGER_ENABLED
+	     boolean "Enable log init messages to MQTT topic"
+	     default false
+
+      config MQTT_INIT_LOGGER_TOPIC
+	     string "MQTT Init logger topic"
+	     default ""
+
+      config MQTT_LIVE_LOGGER_ENABLED
+	     boolean "Enable log live messages to MQTT topic"
+	     default false
+
+      config MQTT_LIVE_LOGGER_TOPIC
+	     string "MQTT live logger topic"
+	     default ""
+   endmenu
+
+   menu "RGB Led configuration (RGB led)"
+      config RGBLED_ENABLED
+         bool "Enable RGBLED integration"
+         default false
+
+      config RGBLED_GPIO_RED
+         int "GPIO red pin"
+         default 0
+
+      config RGBLED_GPIO_GREEN
+         int "GPIO green pin"
+         default 0
+
+      config RGBLED_GPIO_BLUE
+         int "GPIO blue pin"
+         default 0
+
+      config RGBLED_MQTT_TOPIC_COMMAND
+         string "MQTT topic for RGB Led device awaits commands"
+         default ""
+   endmenu
+   
+
+   menu "SERVO Configuration"
+      config SERVO_ENABLED
+         bool "Enable Servo integration"
+         default false
+
+      config SERVO_GPIO
+         int "GPIO PWM pin"
+         default 0
+
+      config SERVO_MQTT_TOPIC_COMMAND
+         string "MQTT topic for servo awaits commands"
+         default ""
+
+      config SERVO_MQTT_TOPIC_STATUS
+         string "MQTT topic for servo sends status"
+         default ""
+   endmenu
+ endmenu

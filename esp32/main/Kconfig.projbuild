@@ -43,44 +43,59 @@ menu "Auto Open-Close WindowConfiguration"
 	     default ""
    endmenu
 
-   menu "RGB Led configuration (RGB led)"
-      config RGBLED_ENABLED
-         bool "Enable RGBLED integration"
-         default false
-
-      config RGBLED_GPIO_RED
-         int "GPIO red pin"
+   menu "Servo Controller Configuration"
+      config CONTROLLER_SERVO_GPIO
+         int "GPIO PWM pin"
          default 0
+         
+      config CONTROLLER_COMMAND_TOPIC
+         string "MQTT topic for listen controller commands"
+         default ""
 
-      config RGBLED_GPIO_GREEN
-         int "GPIO green pin"
-         default 0
-
-      config RGBLED_GPIO_BLUE
-         int "GPIO blue pin"
-         default 0
-
-      config RGBLED_MQTT_TOPIC_COMMAND
-         string "MQTT topic for RGB Led device awaits commands"
+      config CONTROLLER_STATUS_TOPIC
+         string "MQTT topic for publish controller status"
          default ""
    endmenu
    
+   menu "LED Configuration"
+      config LED_GPIO
+         int "LED GPIO pin"
+         default 0
+   endmenu
 
-   menu "SERVO Configuration"
-      config SERVO_ENABLED
-         bool "Enable Servo integration"
-         default false
-
-      config SERVO_GPIO
-         int "GPIO PWM pin"
+   menu "Touch pad Configuration"
+      config TOUCH_PAD_OPEN_GPIO
+         int "GPIO open pin"
          default 0
 
-      config SERVO_MQTT_TOPIC_COMMAND
-         string "MQTT topic for servo awaits commands"
-         default ""
+      config TOUCH_PAD_CLOSE_GPIO
+         int "GPIO close pin"
+         default 0
 
-      config SERVO_MQTT_TOPIC_STATUS
-         string "MQTT topic for servo sends status"
+      config TOUCH_PAD_AUTO_GPIO
+         int "GPIO auto pin"
+         default 0
+   endmenu
+
+   menu "Hardware Locks Configuration"
+      config HWLOCK_GPIO_HALL
+         int "GPIO Hall sensor status"
+         default 0
+
+      config HWLOCK_GPIO_SWITCH
+         int "GPIO switch status"
+         default 0
+
+      config HWLOCK_GPIO_SOFTLOCK
+         int "GPIO soft lock"
+         default 0
+         
+      config HWLOCK_SOFTLOCK_TOPIC
+         string "MQTT topic for change soft lock status"
+         default ""
+         
+      config HWLOCK_STATUS_TOPIC
+         string "MQTT topic for hwlocks status"
          default ""
    endmenu
- endmenu
+endmenu

@@ -18,7 +18,7 @@
 #define SERVO_CONTROL_TIMER     LEDC_TIMER_2
 #define SERVO_CONTROL_SPEED     LEDC_LOW_SPEED_MODE
 
-esp_err_t servo_control_init(int gpio) {
+esp_err_t servo_control_api_init(int gpio) {
     ledc_timer_config_t ledc_timer = {
 		.duty_resolution = LEDC_TIMER_8_BIT, // resolution of PWM duty
 		.freq_hz = SERVO_FREQ,             // frequency of PWM signal
@@ -59,7 +59,7 @@ esp_err_t servo_control_init(int gpio) {
 	return ESP_OK;
 }
 
-esp_err_t servo_control_rotate(uint8_t duty) {
+esp_err_t servo_control_api_rotate(uint8_t duty) {
 	esp_err_t res = ledc_set_duty(SERVO_CONTROL_SPEED, SERVO_CONTROL_CHANNEL, duty);
 	if (res) {
 		ESP_LOGE(SERVO_CONTROL_LOG, "set duty :: ledc_set_duty() error %d", res);
@@ -78,14 +78,14 @@ esp_err_t servo_control_rotate(uint8_t duty) {
 	return res;
 }
 
-esp_err_t servo_control_off() {
-	return servo_control_rotate(0);
+esp_err_t servo_control_api_off() {
+	return servo_control_api_rotate(0);
 }
 
-esp_err_t servo_control_rotate_to(uint8_t angle) {
+esp_err_t servo_control_api_rotate_to(uint8_t angle) {
 	if (angle > 180) {
 		angle = 180;
 	}
 
-	return servo_control_rotate(SERVO_DUTY(angle));
+	return servo_control_api_rotate(SERVO_DUTY(angle));
 }

@@ -7,7 +7,9 @@
 #define WIFI_LOG "wifi_log"
 #define MQTT_LOG "mqtt_log"
 #define SNMP_LOG "snmp_log"
-#define RGBLED_LOG "rgbled_log"
+#define LED_LOG "led_log"
 #define SERVO_CONTROL_LOG "servo_control_log"
+#define TOUCH_LOG "touch_log"
+#define HWLOCK_LOG "hwlock_log"
 
 #endif /* MAIN_LOG_H_ */

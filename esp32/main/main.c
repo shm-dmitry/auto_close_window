@@ -4,7 +4,7 @@
 #include "init/mqtt.h"
 #include "init/init_logger.h"
 #include "init/mqtt_logger.h"
-#include "servo/servo.h"
+#include "controller/controller.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -23,9 +23,7 @@ void app_main(void)
 	init_wifi(CONFIG_WIFI_SSID, CONFIG_WIFI_PASSWORD, CONFIG_WIFI_TOPIC);
 	init_snmp();
 
-#if CONFIG_SERVO_ENABLED
-	servo_init(CONFIG_SERVO_GPIO, CONFIG_SERVO_MQTT_TOPIC_COMMAND, CONFIG_SERVO_MQTT_TOPIC_STATUS);
-#endif
+	controller_init();
 
 	mqtt_start();
 

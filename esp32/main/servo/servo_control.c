@@ -33,7 +33,18 @@ esp_err_t servo_control_init(int gpio) {
 
 esp_err_t servo_control_rotate(uint8_t percent) {
 	uint8_t angle = (uint8_t) ((float)servo_control_open_angle + (float) (servo_control_close_angle - servo_control_open_angle) * ((float) percent) / 100.0);
-	return servo_control_api_rotate_to(angle);
+	esp_err_t res = servo_control_api_rotate_to(angle);
+	if (res) {
+		return res;
+	}
+
+	if (percent == 0 || percent == 100) {
+		vTaskDelay(3000 / portTICK_PERIOD_MS);
+
+		return servo_control_api_off();
+	} else {
+		return ESP_OK;
+	}
 }
 
 static void servo_control_calibration_task(void* arg) {

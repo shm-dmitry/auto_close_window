@@ -18,20 +18,20 @@ Project status
 
 | Hardware | status |
 | ---- | ---- |
-| Indoor schema near-handle module | almost done (full test required, but I think it will works) |
-| Indoor schema servo module | done |
+| Indoor schema :: near-handle module | almost done (full test required, but I think it will works) |
+| Indoor schema :: servo module | done |
 | Outdoor module schema | not checked yet |
 
 | Firmware | status |
 | ---- | ---- |
-| Indoor firmware hardware sensors - hall, switch and soft lock | not tested yet |
-| Indoor firmware touchpads | not tested yet |
-| Indoor firmware servo control and calibration | not tested yet |
-| Indoor firmware led indication | not tested yet |
-| Indoor firmware controller | not tested yet |
-| Outdoor firmware BMP280 | no |
-| Outdoor firmware SGP30 | no |
-| Outdoor firmware Noise sensor | no |
-| Outdoor firmware Data transmitter | no |
+| Indoor firmware :: hardware sensors - hall, switch and soft lock | not tested yet |
+| Indoor firmware :: touchpads | not tested yet |
+| Indoor firmware :: servo control and calibration | not tested yet |
+| Indoor firmware :: led indication | not tested yet |
+| Indoor firmware :: controller | not tested yet |
+| Outdoor firmware :: BMP280 | no |
+| Outdoor firmware :: SGP30 | no |
+| Outdoor firmware :: Noise sensor | no |
+| Outdoor firmware :: Data transmitter | no |
 
 

@@ -4,7 +4,7 @@
 
 #define SERVO_CONTROL_NVS "servo_ctrl"
 
-void servo_control_nvs_read(uint8_t * open_angle, uint8_t * close_angle) {
+esp_err_t servo_control_nvs_read(uint8_t * open_angle, uint8_t * close_angle) {
 	uint8_t * buffer = NULL;
 	size_t buffer_size = 0;
 
@@ -14,14 +14,18 @@ void servo_control_nvs_read(uint8_t * open_angle, uint8_t * close_angle) {
 	esp_err_t res = nvs_read_buffer(SERVO_CONTROL_NVS, &buffer, &buffer_size);
 	if (res == ESP_OK) {
 		if (buffer) {
-			if (buffer_size == 2 && buffer[0] < buffer[1]) {
+			if (buffer_size == 2 && buffer[0] > buffer[1]) {
 				*open_angle = buffer[0];
 				*close_angle = buffer[1];
+
+				return ESP_OK;
 			}
 
 			free(buffer);
 		}
 	}
+
+	return ESP_FAIL;
 }
 
 void servo_control_nvs_write(uint8_t open_angle, uint8_t close_angle) {

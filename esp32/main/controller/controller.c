@@ -21,13 +21,15 @@ void controller_exec_calibrate_auto(uint8_t);
 void controller_exec_calibrate_manual(uint8_t, uint8_t);
 
 void controller_touchpad_callback(uint8_t touch_pad_index, uint8_t state) {
-	ESP_LOGI(CONTROLLER_LOG, "Fired event on pad %d: %d", touch_pad_index, state);
-
 	if (touch_pad_index > 3) {
 		return;
 	}
 
 	if (state != TOUCHPAD_ON_CLICK) {
+		return;
+	}
+
+	if (servo_control_calibrate_onaction()) {
 		return;
 	}
 
@@ -54,15 +56,13 @@ void controller_command(const char * topic, const char * data)  {
 
 	char * type = cJSON_GetStringValue(cJSON_GetObjectItem(root, "type"));
 	if (strcmp(type, "open") == 0) {
-		ESP_LOGI(CONTROLLER_LOG, "Read number from json...");
-		uint8_t v = get_number8_from_json(cJSON_GetObjectItem(root, "percent"), 100);
-		controller_exec_open_close(v, false);
+		controller_exec_open_close(get_number8_from_json(cJSON_GetObjectItem(root, "percent"), 100), false);
 	} else if (strcmp(type, "close") == 0) {
 		controller_exec_open_close(0, false);
 	} else if (strcmp(type, "calibrate_auto") == 0) {
 		controller_exec_calibrate_auto(get_number8_from_json(cJSON_GetObjectItem(root, "init_angle"), 90));
 	} else if (strcmp(type, "calibrate_manual") == 0) {
-		controller_exec_calibrate_manual(get_number8_from_json(cJSON_GetObjectItem(root, "open_angle"), 0), get_number8_from_json(cJSON_GetObjectItem(root, "close_angle"), 180));
+		controller_exec_calibrate_manual(get_number8_from_json(cJSON_GetObjectItem(root, "open_angle"), 180), get_number8_from_json(cJSON_GetObjectItem(root, "close_angle"), 0));
 	}
 
 	cJSON_Delete(root);

@@ -5,6 +5,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+#include "../log.h"
 
 typedef struct servo_calibrate_data_t {
 	servo_control_calibrate_t success_callback;
@@ -26,7 +27,9 @@ esp_err_t servo_control_init(int gpio) {
 		return res;
 	}
 
-	servo_control_nvs_read(&servo_control_open_angle, &servo_control_close_angle);
+	if (servo_control_nvs_read(&servo_control_open_angle, &servo_control_close_angle) == ESP_OK) {
+		ESP_LOGI(SERVO_CONTROL_LOG, "Calibration applied. OPEN = %d, CLOSE = %d", servo_control_open_angle, servo_control_close_angle);
+	}
 
 	return ESP_OK;
 }
@@ -70,7 +73,7 @@ static void servo_control_calibration_task(void* arg) {
 		servo_calibrate_data->open_angle = 180;
 	}
 
-	for (uint8_t angle = servo_calibrate_data->initial_angle; angle < servo_calibrate_data->initial_angle; angle -= 5) {
+	for (uint8_t angle = servo_calibrate_data->initial_angle; angle <= servo_calibrate_data->initial_angle; angle -= 5) {
 		servo_control_api_rotate_to(angle);
 
 		for (uint8_t x = 0; x < 20; x++) {
@@ -125,14 +128,24 @@ esp_err_t servo_control_calibrate_auto(uint8_t initial_angle, servo_control_cali
 }
 
 void servo_control_calibrate_manual(uint8_t open_angle, uint8_t close_angle) {
+	if (open_angle > 180 || close_angle > 180 || close_angle >= open_angle) {
+		ESP_LOGE(SERVO_CONTROL_LOG, "Cant apply calibration. OPEN = %d, CLOSE = %d", open_angle, close_angle);
+		return;
+	}
+
 	servo_control_nvs_write(open_angle, close_angle);
 
 	servo_control_open_angle = open_angle;
 	servo_control_close_angle = close_angle;
+
+	ESP_LOGI(SERVO_CONTROL_LOG, "Calibration applied. OPEN = %d, CLOSE = %d", open_angle, close_angle);
 }
 
-void servo_control_calibrate_onaction() {
+bool servo_control_calibrate_onaction() {
 	if (servo_calibrate_data) {
 		servo_calibrate_data->onevent = 1;
+		return true;
+	} else {
+		return false;
 	}
 }

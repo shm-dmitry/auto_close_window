@@ -2,8 +2,9 @@
 #define MAIN_SERVO_SERVO_CONTROL_NVS_H_
 
 #include "stdint.h"
+#include "esp_err.h"
 
-void servo_control_nvs_read(uint8_t * open_angle, uint8_t * close_angle);
+esp_err_t servo_control_nvs_read(uint8_t * open_angle, uint8_t * close_angle);
 
 void servo_control_nvs_write(uint8_t open_angle, uint8_t close_angle);
 

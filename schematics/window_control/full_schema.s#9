@@ -1921,6 +1921,7 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <schematic_group name="SERVO"/>
 <schematic_group name="SERVO_CONTROL"/>
 <schematic_group name="HALL_SENSOR"/>
+<schematic_group name="LED_CONTROL_GROUP"/>
 </groups>
 <parts>
 <part name="ACDC1" library="my_devices" deviceset="ACDC" device=""/>
@@ -2433,22 +2434,22 @@ Mosfet needs &gt;8V</text>
 <attribute name="NAME" x="-38.1" y="252.73" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-31.75" y="252.73" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="D1" gate="G$1" x="-195.58" y="63.5" smashed="yes" rot="R270">
+<instance part="D1" gate="G$1" x="-195.58" y="63.5" smashed="yes" rot="R270" grouprefs="LED_CONTROL_GROUP">
 <attribute name="NAME" x="-200.66" y="71.12" size="1.778" layer="94" rot="R270"/>
 <attribute name="VALUE" x="-203.2" y="71.12" size="1.778" layer="94" rot="R270"/>
 </instance>
-<instance part="Q1" gate="G$1" x="-195.58" y="48.26" smashed="yes">
+<instance part="Q1" gate="G$1" x="-195.58" y="48.26" smashed="yes" grouprefs="LED_CONTROL_GROUP">
 <attribute name="NAME" x="-191.77" y="49.53" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-191.77" y="45.72" size="1.778" layer="94"/>
 </instance>
-<instance part="R1" gate="G$1" x="-187.96" y="73.66" smashed="yes">
-<attribute name="NAME" x="-194.31" y="76.2" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-194.31" y="69.85" size="1.778" layer="94"/>
+<instance part="R1" gate="G$1" x="-203.2" y="76.2" smashed="yes" rot="R180" grouprefs="LED_CONTROL_GROUP">
+<attribute name="NAME" x="-196.85" y="73.66" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="-196.85" y="80.01" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="GND7" gate="1" x="-195.58" y="35.56" smashed="yes">
+<instance part="GND7" gate="1" x="-195.58" y="35.56" smashed="yes" grouprefs="LED_CONTROL_GROUP">
 <attribute name="VALUE" x="-198.12" y="33.02" size="1.778" layer="96"/>
 </instance>
-<instance part="R2" gate="G$1" x="-215.9" y="48.26" smashed="yes">
+<instance part="R2" gate="G$1" x="-215.9" y="48.26" smashed="yes" grouprefs="LED_CONTROL_GROUP">
 <attribute name="NAME" x="-222.25" y="50.8" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-222.25" y="44.45" size="1.778" layer="94"/>
 </instance>
@@ -2533,8 +2534,8 @@ Mosfet needs &gt;8V</text>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="P$2"/>
-<wire x1="-179.07" y1="73.66" x2="-157.48" y2="73.66" width="0.1524" layer="91"/>
-<label x="-162.56" y="73.66" size="1.778" layer="95"/>
+<wire x1="-212.09" y1="76.2" x2="-236.22" y2="76.2" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<label x="-236.22" y="78.74" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -2679,7 +2680,7 @@ Mosfet needs &gt;8V</text>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
 <pinref part="Q1" gate="G$1" pin="E"/>
-<wire x1="-195.58" y1="38.1" x2="-195.58" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-195.58" y1="38.1" x2="-195.58" y2="40.64" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_OPEN" class="0">
@@ -3569,28 +3570,28 @@ Mosfet needs &gt;8V</text>
 <segment>
 <pinref part="R2" gate="G$1" pin="P$2"/>
 <pinref part="Q1" gate="G$1" pin="B"/>
-<wire x1="-207.01" y1="48.26" x2="-203.2" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="-207.01" y1="48.26" x2="-203.2" y2="48.26" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="N$7" class="0">
 <segment>
 <pinref part="Q1" gate="G$1" pin="C"/>
 <pinref part="D1" gate="G$1" pin="PIN_ANODE"/>
-<wire x1="-195.58" y1="55.88" x2="-195.58" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="-195.58" y1="55.88" x2="-195.58" y2="58.42" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="PIN_CATHODE"/>
 <pinref part="R1" gate="G$1" pin="P$1"/>
-<wire x1="-195.58" y1="71.12" x2="-195.58" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-195.58" y1="71.12" x2="-195.58" y2="76.2" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="LED_CONTROL" class="0">
 <segment>
 <pinref part="R2" gate="G$1" pin="P$1"/>
-<wire x1="-223.52" y1="48.26" x2="-238.76" y2="48.26" width="0.1524" layer="91"/>
-<label x="-241.3" y="48.26" size="1.778" layer="95"/>
+<wire x1="-223.52" y1="48.26" x2="-238.76" y2="48.26" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<label x="-241.3" y="48.26" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 </nets>

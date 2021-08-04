@@ -2,7 +2,7 @@
 
 #include "../init/nvs_rw.h"
 
-#define SERVO_CONTROL_NVS "servocontrol_nvs"
+#define SERVO_CONTROL_NVS "servo_ctrl"
 
 void servo_control_nvs_read(uint8_t * open_angle, uint8_t * close_angle) {
 	uint8_t * buffer = NULL;

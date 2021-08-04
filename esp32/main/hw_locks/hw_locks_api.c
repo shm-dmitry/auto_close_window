@@ -25,9 +25,9 @@ void hwlocks_send_mqtt_status_message() {
 	uint8_t status = hwlocks_read();
 
 	cJSON *root = cJSON_CreateObject();
-	cJSON_AddBoolToObject(root, "hall", status & HWLOCK_STATE_HALL);
-	cJSON_AddBoolToObject(root, "switch", status & HWLOCK_STATE_SWITCH);
-	cJSON_AddBoolToObject(root, "soft", status & HWLOCK_STATE_SOFTLOCK);
+	cJSON_AddBoolToObject(root, "hall", !(status & HWLOCK_STATE_HALL));
+	cJSON_AddBoolToObject(root, "switch", !(status & HWLOCK_STATE_SWITCH));
+	cJSON_AddBoolToObject(root, "soft", !(status & HWLOCK_STATE_SOFTLOCK));
 
 	char * json = cJSON_Print(root);
 	mqtt_publish(hwlocks_status_topic, json);
@@ -47,13 +47,21 @@ static void hwlocks_isr_task(void* arg) {
     }
 }
 
+void hwlocks_publish_init_state(void * arg) {
+	vTaskDelay(5000 / portTICK_PERIOD_MS);
+
+	hwlocks_send_mqtt_status_message();
+
+	vTaskDelete(NULL);
+}
+
 void hwlocks_mqtt_softlock_command(const char * topic, const char * data) {
 	cJSON *root = cJSON_Parse(data);
 	if (root == NULL) {
 		return;
 	}
 
-	uint8_t res = get_boolean_from_json(cJSON_GetObjectItem(root, "value"), 0x00, 0x01, 0x02);
+	uint8_t res = get_boolean_from_json(cJSON_GetObjectItem(root, "value"), 0x01, 0x00, 0x02);
 	if (res == 0x00 || res == 0x01) {
 		hwlocks_softlock_set(res ? true : false);
 	}
@@ -72,7 +80,7 @@ esp_err_t hwlocks_init(int gpio_hall, int gpio_switch, int gpio_softlock, const 
 	gpio_config_t config = {
 		.intr_type = GPIO_INTR_ANYEDGE,
 	    .mode = GPIO_MODE_INPUT,
-		.pin_bit_mask = (1ULL << gpio_hall) & (1ULL << gpio_switch),
+		.pin_bit_mask = (1ULL << gpio_hall) | (1ULL << gpio_switch),
 		.pull_down_en = GPIO_PULLDOWN_DISABLE,
 		.pull_up_en = GPIO_PULLUP_DISABLE,
 	};
@@ -116,6 +124,8 @@ esp_err_t hwlocks_init(int gpio_hall, int gpio_switch, int gpio_softlock, const 
 
 	mqtt_subscribe(softlock_topic, hwlocks_mqtt_softlock_command);
 
+	xTaskCreate(hwlocks_publish_init_state, "publish_init_state", 2048, NULL, 10, NULL);
+
 	return ESP_OK;
 }
 
@@ -135,27 +145,30 @@ esp_err_t hwlocks_softlock_raw_set(bool on) {
 		ESP_LOGI(HWLOCK_LOG, "level %d on pin %d activated.", level, hwlocks_softlock);
 	}
 
+	hwlocks_send_mqtt_status_message();
+
 	return res;
 }
 
 bool hwlocks_read_inverted(int gpio) {
-	bool val = gpio_get_level(gpio);
+	int val = gpio_get_level(gpio);
+
 	return val ? false : true;
 }
 
 uint8_t hwlocks_read() {
 	uint8_t result = HWLOCK_STATE_OK;
 
-	if (hwlocks_read_inverted(hwlocks_softlock)) {
-		result = result & HWLOCK_STATE_SOFTLOCK;
+	if (!hwlocks_read_inverted(hwlocks_softlock)) {
+		result = result | HWLOCK_STATE_SOFTLOCK;
 	}
 
-	if (hwlocks_read_inverted(hwlocks_hall)) {
-		result = result & HWLOCK_STATE_HALL;
+	if (!hwlocks_read_inverted(hwlocks_hall)) {
+		result = result | HWLOCK_STATE_HALL;
 	}
 
-	if (hwlocks_read_inverted(hwlocks_switch)) {
-		result = result & HWLOCK_STATE_SWITCH;
+	if (!hwlocks_read_inverted(hwlocks_switch)) {
+		result = result | HWLOCK_STATE_SWITCH;
 	}
 
 	return result;

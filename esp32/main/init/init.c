@@ -5,7 +5,6 @@
 #include "esp_event.h"
 #include "wifi.h"
 #include "esp_sntp.h"
-#include "nvs_rw.h"
 
 #include "../log.h"
 

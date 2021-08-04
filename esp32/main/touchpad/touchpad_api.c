@@ -15,7 +15,7 @@
 
 #define TOUCHPAD_THRESH_NO_USE   (0)
 #define TOUCHPAD_FILTER_TOUCH_PERIOD (10)
-#define TOUCHPAD_THRESHOLD_CALC(value) (uint16_t) (((value) * 9.5) / 10.0)
+#define TOUCHPAD_THRESHOLD_CALC(value) (uint16_t) (((value) * 5) / 10.0)
 #define TOUCHPAD_LOG_VALUES false
 #define TOUCHPAD_FIRE_EVENT(touch_pad_index, last_state_variable, new_state) \
 	last_state_variable[touch_pad_index] = new_state; \
@@ -55,6 +55,9 @@ static uint8_t touchpad_read_value(uint8_t touchpad_index) {
 	uint16_t value = 0;
 	esp_err_t res = touch_pad_read_filtered(touchpad_pads[touchpad_index], &value);
 	if (res) {
+#if TOUCHPAD_LOG_VALUES
+		ESP_LOGE(TOUCH_LOG, "touchpad_read_value::touch_pad_read_filtered for#%d %d error: %d", touchpad_index, touchpad_pads[touchpad_index], res);
+#endif
 		return TOUCHPAD_ERROR;
 	}
 
@@ -126,9 +129,11 @@ static void touchpad_listener(void* arg) {
 	}
 }
 
-esp_err_t touchpad_setup(touch_pad_t * pad, uint8_t touchpad_count, touchpad_callback_t callback) {
-	touchpad_pads = malloc(touchpad_count * sizeof(uint8_t));
-	memcpy(touchpad_pads, pad, touchpad_count);
+esp_err_t touchpad_setup(touch_pad_t * pad, uint8_t pads_count, touchpad_callback_t callback) {
+	touchpad_count = pads_count;
+
+	touchpad_pads = malloc(touchpad_count * sizeof(touch_pad_t));
+	memcpy(touchpad_pads, pad, touchpad_count * sizeof(touch_pad_t));
 
 	touchpad_threshold = malloc(touchpad_count * sizeof(uint16_t));
 	memset(touchpad_threshold, 0, touchpad_count * sizeof(uint16_t));

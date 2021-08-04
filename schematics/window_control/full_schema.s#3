@@ -3609,6 +3609,11 @@ Mosfet needs &gt;8V</text>
 <wire x1="-35.56" y1="-40.64" x2="-71.12" y2="-40.64" width="0.1524" layer="91" grouprefs="OPEN-CLOSE"/>
 <label x="-71.12" y="-40.64" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="IO15"/>
+<wire x1="-195.58" y1="111.76" x2="-154.94" y2="111.76" width="0.1524" layer="91"/>
+<label x="-182.88" y="111.76" size="1.778" layer="95"/>
+</segment>
 </net>
 </nets>
 </sheet>

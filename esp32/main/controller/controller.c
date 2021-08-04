@@ -7,6 +7,7 @@
 #include "../init/mqtt.h"
 #include "../cjson/cjson_helper.h"
 #include "string.h"
+#include "../log.h"
 
 #include "sdkconfig.h"
 
@@ -20,6 +21,8 @@ void controller_exec_calibrate_auto(uint8_t);
 void controller_exec_calibrate_manual(uint8_t, uint8_t);
 
 void controller_touchpad_callback(uint8_t touch_pad_index, uint8_t state) {
+	ESP_LOGI(CONTROLLER_LOG, "Fired event on pad %d: %d", touch_pad_index, state);
+
 	if (touch_pad_index > 3) {
 		return;
 	}
@@ -51,7 +54,9 @@ void controller_command(const char * topic, const char * data)  {
 
 	char * type = cJSON_GetStringValue(cJSON_GetObjectItem(root, "type"));
 	if (strcmp(type, "open") == 0) {
-		controller_exec_open_close(get_number8_from_json(cJSON_GetObjectItem(root, "percent"), 100), false);
+		ESP_LOGI(CONTROLLER_LOG, "Read number from json...");
+		uint8_t v = get_number8_from_json(cJSON_GetObjectItem(root, "percent"), 100);
+		controller_exec_open_close(v, false);
 	} else if (strcmp(type, "close") == 0) {
 		controller_exec_open_close(0, false);
 	} else if (strcmp(type, "calibrate_auto") == 0) {
@@ -66,25 +71,31 @@ void controller_command(const char * topic, const char * data)  {
 void controller_init() {
 	// init led driver
 	if (led_control_init(CONFIG_LED_GPIO)) {
+		ESP_LOGE(CONTROLLER_LOG, "Cant init LED driver");
 		return;
 	}
 
 	// init touch pad
-	touch_pad_t pads[3] = {CONFIG_TOUCH_PAD_OPEN_GPIO, CONFIG_TOUCH_PAD_CLOSE_GPIO, CONFIG_TOUCH_PAD_AUTO_GPIO};
+	touch_pad_t pads[3] = {CONFIG_TOUCH_PAD_OPEN, CONFIG_TOUCH_PAD_CLOSE, CONFIG_TOUCH_PAD_AUTO};
 	if (touchpad_setup(pads, 3, controller_touchpad_callback)) {
+		ESP_LOGE(CONTROLLER_LOG, "Cant init touchpad driver");
 		return;
 	}
 
 	// init servo
 	if (servo_control_init(CONFIG_CONTROLLER_SERVO_GPIO)) {
+		ESP_LOGE(CONTROLLER_LOG, "Cant init servo driver");
 		return;
 	}
 
 	if (hwlocks_init(CONFIG_HWLOCK_GPIO_HALL, CONFIG_HWLOCK_GPIO_SWITCH, CONFIG_HWLOCK_GPIO_SOFTLOCK, CONFIG_HWLOCK_SOFTLOCK_TOPIC, CONFIG_HWLOCK_STATUS_TOPIC)) {
+		ESP_LOGE(CONTROLLER_LOG, "Cant init hwlocks driver");
 		return;
 	}
 
 	mqtt_subscribe(CONFIG_CONTROLLER_COMMAND_TOPIC, controller_command);
+
+	ESP_LOGI(CONTROLLER_LOG, "Controller initialized");
 }
 
 bool controller_check_locks() {

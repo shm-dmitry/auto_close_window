@@ -2694,9 +2694,9 @@ Mosfet needs &gt;8V</text>
 <label x="-71.12" y="5.08" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO0"/>
-<wire x1="-195.58" y1="116.84" x2="-154.94" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-182.88" y="116.84" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="U1" gate="G$1" pin="IO14"/>
+<wire x1="-236.22" y1="121.92" x2="-261.62" y2="121.92" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-274.32" y="121.92" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_CLOSE" class="0">
@@ -2706,9 +2706,9 @@ Mosfet needs &gt;8V</text>
 <label x="-71.12" y="-15.24" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO2"/>
-<wire x1="-195.58" y1="114.3" x2="-154.94" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-182.88" y="114.3" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="U1" gate="G$1" pin="IO27"/>
+<wire x1="-236.22" y1="124.46" x2="-261.62" y2="124.46" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-274.32" y="124.46" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="OUTDOOR_+5V" class="0">
@@ -3610,9 +3610,9 @@ Mosfet needs &gt;8V</text>
 <label x="-71.12" y="-35.56" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO15"/>
-<wire x1="-195.58" y1="111.76" x2="-154.94" y2="111.76" width="0.1524" layer="91"/>
-<label x="-182.88" y="111.76" size="1.778" layer="95"/>
+<pinref part="U1" gate="G$1" pin="IO12"/>
+<wire x1="-236.22" y1="119.38" x2="-261.62" y2="119.38" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-274.32" y="119.38" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 </nets>

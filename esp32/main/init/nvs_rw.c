@@ -6,7 +6,7 @@
 
 #include "../log.h"
 
-#define STORAGE_NAMESPACE "autoclose_window"
+#define STORAGE_NAMESPACE "acw"
 
 esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_size) {
 	nvs_handle_t handle;

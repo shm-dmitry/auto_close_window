@@ -64,16 +64,16 @@ menu "Auto Open-Close WindowConfiguration"
    endmenu
 
    menu "Touch pad Configuration"
-      config TOUCH_PAD_OPEN_GPIO
-         int "GPIO open pin"
+      config TOUCH_PAD_OPEN
+         int "OPEN touchpad pin number"
          default 0
 
-      config TOUCH_PAD_CLOSE_GPIO
-         int "GPIO close pin"
+      config TOUCH_PAD_CLOSE
+         int "CLOSE touchpad pin number"
          default 0
 
-      config TOUCH_PAD_AUTO_GPIO
-         int "GPIO auto pin"
+      config TOUCH_PAD_AUTO
+         int "AUTO touchpad pin number"
          default 0
    endmenu
 

@@ -11,5 +11,6 @@
 #define SERVO_CONTROL_LOG "servo_control_log"
 #define TOUCH_LOG "touch_log"
 #define HWLOCK_LOG "hwlock_log"
+#define CONTROLLER_LOG "controller_log"
 
 #endif /* MAIN_LOG_H_ */

@@ -2,14 +2,14 @@
 
 #include "../init/nvs_rw.h"
 
-#define HWLOCKS_CONFIG_NAME "hwlocks_softlock"
+#define HWLOCKS_CONFIG_NAME "hwl_sl"
 
 bool hwlocks_nvs_read_soft_lock_state() {
 	uint8_t * buffer = NULL;
 	size_t buffer_size = 0;
 
 	if (nvs_read_buffer(HWLOCKS_CONFIG_NAME, &buffer, &buffer_size)) {
-		return true;
+		return false;
 	}
 
 	if (buffer) {
@@ -22,7 +22,7 @@ bool hwlocks_nvs_read_soft_lock_state() {
 
 		return state;
 	} else {
-		return true;
+		return false;
 	}
 }
 

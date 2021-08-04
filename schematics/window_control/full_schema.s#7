@@ -3593,6 +3593,11 @@ Mosfet needs &gt;8V</text>
 <wire x1="-223.52" y1="48.26" x2="-238.76" y2="48.26" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 <label x="-241.3" y="48.26" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="IO33"/>
+<wire x1="-236.22" y1="132.08" x2="-261.62" y2="132.08" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-261.62" y="132.08" size="1.778" layer="95" grouprefs="ESP"/>
+</segment>
 </net>
 </nets>
 </sheet>

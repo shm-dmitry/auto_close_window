@@ -1,7 +1,6 @@
 #include "mqtt.h"
 
 #include "mqtt_client.h"
-#include "nvs_rw.h"
 
 #include "../log.h"
 

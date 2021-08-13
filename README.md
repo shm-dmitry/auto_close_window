@@ -20,7 +20,7 @@ Project status
 | ---- | ---- |
 | Indoor schema :: near-handle module | OK |
 | Indoor schema :: servo module | OK |
-| Outdoor module schema | not checked yet |
+| Outdoor module schema | In progress |
 
 | Firmware | status |
 | ---- | ---- |
@@ -29,9 +29,10 @@ Project status
 | Indoor firmware :: servo control and calibration | OK |
 | Indoor firmware :: led indication | OK |
 | Indoor firmware :: controller | OK |
-| Outdoor firmware :: BMP280 | no |
-| Outdoor firmware :: SGP30 | no |
+| Outdoor firmware :: BMP280 | Not tested yet. I received broken modules from ALI. I awaiting for a new 5V module. |
+| Outdoor firmware :: SGP30 | OK |
 | Outdoor firmware :: Noise sensor | no |
 | Outdoor firmware :: Data transmitter | no |
+| Outdoor firmware :: Sensor value filters and controller | no |
 
 

@@ -2031,6 +2031,7 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="R1" library="my_devices" deviceset="R" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R2" library="my_devices" deviceset="R" device=""/>
+<part name="TS3" library="my_devices" deviceset="TOUCH_SENSOR" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2072,11 +2073,11 @@ Mosfet needs &gt;8V</text>
 <instance part="GND2" gate="1" x="-152.4" y="144.78" smashed="yes" grouprefs="ESP">
 <attribute name="VALUE" x="-154.94" y="142.24" size="1.778" layer="96"/>
 </instance>
-<instance part="TS1" gate="G$1" x="7.62" y="-27.94" smashed="yes" grouprefs="OPEN-CLOSE">
-<attribute name="NAME" x="2.54" y="-22.86" size="1.778" layer="94"/>
+<instance part="TS1" gate="G$1" x="-27.94" y="5.08" smashed="yes" grouprefs="OPEN-CLOSE">
+<attribute name="NAME" x="-33.02" y="10.16" size="1.778" layer="94"/>
 </instance>
-<instance part="TS2" gate="G$1" x="7.62" y="-53.34" smashed="yes" grouprefs="OPEN-CLOSE">
-<attribute name="NAME" x="2.54" y="-48.26" size="1.778" layer="94"/>
+<instance part="TS2" gate="G$1" x="-27.94" y="-15.24" smashed="yes" grouprefs="OPEN-CLOSE">
+<attribute name="NAME" x="-33.02" y="-10.16" size="1.778" layer="94"/>
 </instance>
 <instance part="D2" gate="G$1" x="390.2075" y="116.5225" smashed="yes" grouprefs="OUTDOOR_SUPPLY">
 <attribute name="NAME" x="386.3975" y="125.4125" size="1.778" layer="94"/>
@@ -2453,6 +2454,9 @@ Mosfet needs &gt;8V</text>
 <attribute name="NAME" x="-222.25" y="50.8" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-222.25" y="44.45" size="1.778" layer="94"/>
 </instance>
+<instance part="TS3" gate="G$1" x="-27.94" y="-35.56" smashed="yes" grouprefs="OPEN-CLOSE">
+<attribute name="NAME" x="-33.02" y="-30.48" size="1.778" layer="94"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -2686,25 +2690,25 @@ Mosfet needs &gt;8V</text>
 <net name="GPIO_TS_WINDOW_OPEN" class="0">
 <segment>
 <pinref part="TS1" gate="G$1" pin="P$1"/>
-<wire x1="0" y1="-27.94" x2="-35.56" y2="-27.94" width="0.1524" layer="91" grouprefs="OPEN-CLOSE"/>
-<label x="-35.56" y="-27.94" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
+<wire x1="-35.56" y1="5.08" x2="-71.12" y2="5.08" width="0.1524" layer="91" grouprefs="OPEN-CLOSE"/>
+<label x="-71.12" y="5.08" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO0"/>
-<wire x1="-195.58" y1="116.84" x2="-154.94" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-182.88" y="116.84" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="U1" gate="G$1" pin="IO14"/>
+<wire x1="-236.22" y1="121.92" x2="-261.62" y2="121.92" width="0.1524" layer="91"/>
+<label x="-274.32" y="121.92" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_CLOSE" class="0">
 <segment>
 <pinref part="TS2" gate="G$1" pin="P$1"/>
-<wire x1="0" y1="-53.34" x2="-35.56" y2="-53.34" width="0.1524" layer="91" grouprefs="OPEN-CLOSE"/>
-<label x="-35.56" y="-53.34" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
+<wire x1="-35.56" y1="-15.24" x2="-71.12" y2="-15.24" width="0.1524" layer="91" grouprefs="OPEN-CLOSE"/>
+<label x="-71.12" y="-15.24" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO2"/>
-<wire x1="-195.58" y1="114.3" x2="-154.94" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-182.88" y="114.3" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="U1" gate="G$1" pin="IO27"/>
+<wire x1="-236.22" y1="124.46" x2="-261.62" y2="124.46" width="0.1524" layer="91"/>
+<label x="-274.32" y="124.46" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="OUTDOOR_+5V" class="0">
@@ -3597,6 +3601,18 @@ Mosfet needs &gt;8V</text>
 <pinref part="U1" gate="G$1" pin="IO33"/>
 <wire x1="-236.22" y1="132.08" x2="-261.62" y2="132.08" width="0.1524" layer="91" grouprefs="ESP"/>
 <label x="-261.62" y="132.08" size="1.778" layer="95" grouprefs="ESP"/>
+</segment>
+</net>
+<net name="GPIO_TS_WINDOW_AUTO" class="0">
+<segment>
+<pinref part="TS3" gate="G$1" pin="P$1"/>
+<wire x1="-35.56" y1="-35.56" x2="-71.12" y2="-35.56" width="0.1524" layer="91" grouprefs="OPEN-CLOSE"/>
+<label x="-71.12" y="-35.56" size="1.778" layer="95" grouprefs="OPEN-CLOSE"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="IO12"/>
+<wire x1="-236.22" y1="119.38" x2="-261.62" y2="119.38" width="0.1524" layer="91"/>
+<label x="-274.32" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

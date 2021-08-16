@@ -31,7 +31,7 @@ Project status
 | Indoor firmware :: controller | OK |
 | Outdoor firmware :: BMP280 | Not tested yet. I received broken modules from ALI. I awaiting for a new 5V module. |
 | Outdoor firmware :: SGP30 | OK |
-| Outdoor firmware :: Noise sensor | no |
+| Outdoor firmware :: Noise sensor | In progress. I awaiting for new MSGEQ7 chip |
 | Outdoor firmware :: Data transmitter | no |
 | Outdoor firmware :: Sensor value filters and controller | no |
 

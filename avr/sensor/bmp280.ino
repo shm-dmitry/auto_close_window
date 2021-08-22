@@ -4,7 +4,7 @@
 Adafruit_BMP280 bmp280;
 
 void bmp280_initialize() {
-  if (!bmp280.begin()) {
+  if (!bmp280.begin(BMP280_ADDRESS_ALT, BMP280_CHIPID)) {
     gpio_logger_send_message("BMP280 INIT ERROR");
   } else {
     bmp280.setSampling(Adafruit_BMP280::MODE_NORMAL,

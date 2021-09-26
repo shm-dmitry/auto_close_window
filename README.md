@@ -31,7 +31,7 @@ Project status
 | Indoor firmware :: controller | OK |
 | Outdoor firmware :: BMP280 | OK |
 | Outdoor firmware :: SGP30 | OK |
-| Outdoor firmware :: Noise sensor | In progress. I awaiting for new MSGEQ7 chip |
+| Outdoor firmware :: Noise sensor | In progress. |
 | Outdoor firmware :: Data transmitter | no |
 | Outdoor firmware :: Sensor value filters and controller | no |
 

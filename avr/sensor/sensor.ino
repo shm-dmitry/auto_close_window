@@ -1,14 +1,20 @@
+struct noise_data_t {
+   uint16_t * freq;
+   uint16_t * volume;
+   uint8_t count;
+} ;
+
 void setup() {
   gpio_logger_init();
-//  noise_init();
-  bmp280_initialize();
+  noise_init();
+//  bmp280_initialize();
 //  sgp30_initialize();
 }
 
 void loop() {
-  //test_noise_level();
-  test_bmp280();
-  delay(1000);
+  test_noise_level();
+ // test_bmp280();
+  delay(2000);
 }
 
 void test_bmp280() {
@@ -21,11 +27,19 @@ void test_sgp30() {
 }
 
 void test_noise_level() {
-    uint16_t freq[7] = { 63, 160, 400, 1000, 2500, 6250, 16000 };
-    uint16_t noise_level[7] = {0xFFFF,0xFFFF,0xFFFF,0xFFFF,0xFFFF,0xFFFF,0xFFFF};
-    noise_read_level(noise_level);
-    for (int i = 0; i<7; i++) {
-      gpio_logger_send_message("F %i = %u", freq[i], noise_level[i]);
+    gpio_logger_send_message("Start measurement");
+    noise_data_t * data = noise_read_level();
+    if (data == NULL) {
+      return;
     }
-    gpio_logger_send_message("------");
+
+    gpio_logger_send_message("----- count == %d ------", data->count);
+
+    for (int i = 0; i<data->count; i++) {
+      gpio_logger_send_message("Major freq[%d] = %d", data->freq[i], data->volume[i]);
+    }
+
+    free(data->freq);
+    free(data->volume);
+    free(data);
 }

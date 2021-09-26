@@ -1,6 +1,7 @@
 #include "string.h"
 
-#define GPIO_LOGGER_SEND_DATA_PIN             PIN_PD0
+//#define GPIO_LOGGER_SEND_DATA_PIN             PIN_PD0
+#define GPIO_LOGGER_SEND_DATA_PIN             PIN_A0
 #define GPIO_LOGGER_BYTE2BYTE_DELAY           delay(30)
 #define GPIO_LOGGER_INTRABYTE_DELAY           delayMicroseconds(300)
 
@@ -9,9 +10,13 @@ void gpio_logger_init() {
   digitalWrite(GPIO_LOGGER_SEND_DATA_PIN,  LOW);
 
   GPIO_LOGGER_BYTE2BYTE_DELAY;
+
+  Serial.begin(9600);
 }
 
 void gpio_logger_do_send_message(const char * message, int len) {
+  Serial.println(message);
+return;
   for (int i = 0; i < len; i++) {
     uint8_t data_char = ((uint8_t) message[i]);
     for (uint8_t j = 0; j < data_char; j++) {

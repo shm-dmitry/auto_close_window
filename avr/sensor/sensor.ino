@@ -7,14 +7,42 @@ struct noise_data_t {
 void setup() {
   gpio_logger_init();
   noise_init();
-//  bmp280_initialize();
-//  sgp30_initialize();
+  bmp280_initialize();
+  sgp30_initialize();
 }
 
 void loop() {
-  test_noise_level();
+  test_filter();
+ // test_noise_level();
  // test_bmp280();
   delay(2000);
+}
+
+void test_filter() {
+  noise_data_t * noise = noise_read_level();
+  int8_t temperature = bmp280_read_temperature();
+  uint16_t tvoc = sgp30_read_tvoc();
+
+  if (is_need_send_sensor_data(temperature, tvoc, noise)) {
+    gpio_logger_send_message("Send data: ");
+    gpio_logger_send_message("T = %i", temperature);
+    gpio_logger_send_message("TVOC = %u", tvoc);
+    if (noise != NULL) {
+      gpio_logger_send_message("Noise: ");
+  
+      for (int i = 0; i<noise->count; i++) {
+        gpio_logger_send_message("Major freq[%u] = %u", noise->freq[i], noise->volume[i]);
+      }
+    } else {
+      gpio_logger_send_message("No noise");
+    }
+  }
+
+  if (noise != NULL) {
+    free(noise->freq);
+    free(noise->volume);
+    free(noise);
+  }
 }
 
 void test_bmp280() {

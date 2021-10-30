@@ -1818,7 +1818,8 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="J8" library="my_devices" deviceset="J2" device=""/>
 <part name="J9" library="my_devices" deviceset="J2" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R17" library="my_devices" deviceset="R" device="" value="620"/>
+<part name="R17" library="my_devices" deviceset="RD" device="" value="5K"/>
+<part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1830,6 +1831,8 @@ In my case ~12..14V
 Mosfet required &gt;8V</text>
 <text x="-111.76" y="337.82" size="5.08" layer="91">Indoor modules</text>
 <text x="256.54" y="342.9" size="5.08" layer="91">Outdoor module</text>
+<text x="-162.56" y="114.3" size="1.778" layer="91" grouprefs="ESP">5V</text>
+<text x="-185.42" y="111.76" size="1.778" layer="91" grouprefs="ESP">3V3</text>
 </plain>
 <instances>
 <instance part="ACDC1" gate="G$1" x="-153.67" y="-44.45" smashed="yes">
@@ -2156,9 +2159,12 @@ Mosfet required &gt;8V</text>
 <instance part="GND6" gate="1" x="60.96" y="111.76" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
 <attribute name="VALUE" x="58.42" y="109.22" size="1.778" layer="96"/>
 </instance>
-<instance part="R17" gate="G$1" x="-177.8" y="114.3" smashed="yes" grouprefs="ESP">
-<attribute name="NAME" x="-184.15" y="116.84" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-184.15" y="110.49" size="1.778" layer="94"/>
+<instance part="R17" gate="G$1" x="-172.72" y="109.22" smashed="yes" rot="R90" grouprefs="ESP">
+<attribute name="NAME" x="-168.91" y="104.775" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="-166.37" y="104.14" size="1.778" layer="94" rot="R90"/>
+</instance>
+<instance part="GND8" gate="1" x="-172.72" y="96.52" smashed="yes" grouprefs="ESP">
+<attribute name="VALUE" x="-175.26" y="93.98" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -2329,6 +2335,11 @@ Mosfet required &gt;8V</text>
 <pinref part="GND6" gate="1" pin="GND"/>
 <pinref part="J9" gate="G$1" pin="PIN_1"/>
 <wire x1="60.96" y1="114.3" x2="66.04" y2="114.3" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+<segment>
+<pinref part="R17" gate="G$1" pin="P1"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="-172.72" y1="101.6" x2="-172.72" y2="99.06" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_OPEN" class="0">
@@ -3090,16 +3101,19 @@ Mosfet required &gt;8V</text>
 <label x="43.18" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 <segment>
-<pinref part="R17" gate="G$1" pin="P$2"/>
-<wire x1="-168.91" y1="114.3" x2="-137.16" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-157.48" y="114.3" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-168.91" y1="116.84" x2="-167.64" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-157.48" y="116.84" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="R17" gate="G$1" pin="P2"/>
+<wire x1="-167.64" y1="116.84" x2="-137.16" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-168.91" y1="116.84" x2="-172.72" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="IO2"/>
-<pinref part="R17" gate="G$1" pin="P$1"/>
-<wire x1="-195.58" y1="114.3" x2="-185.42" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="114.3" x2="-180.34" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
+<pinref part="R17" gate="G$1" pin="P3"/>
+<wire x1="-180.34" y1="114.3" x2="-180.34" y2="109.22" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 </nets>

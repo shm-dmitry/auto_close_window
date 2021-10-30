@@ -98,4 +98,18 @@ menu "Auto Open-Close WindowConfiguration"
          string "MQTT topic for hwlocks status"
          default ""
    endmenu
+   
+   menu "Outdoor module integration"
+   	  config OUTDOOR_MODULE_ENABLED
+         boolean "Enable outdoor module integration"
+         default true
+
+   	  config OUTDOOR_MODULE_GPIO
+         int "GPIO connected to outdoor module"
+         default 0
+   	  
+   	  config OUTDOOR_MODULE_STATUS_TOPIC
+         string "MQTT topic for outdoor module status"
+         default ""
+   endmenu
 endmenu

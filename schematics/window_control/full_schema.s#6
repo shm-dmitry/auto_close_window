@@ -1813,6 +1813,12 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="L2" library="my_devices" deviceset="L" device=""/>
 <part name="C9" library="my_devices" deviceset="C" device=""/>
 <part name="R16" library="my_devices" deviceset="R" device="" value="200K"/>
+<part name="J6" library="my_devices" deviceset="J2" device=""/>
+<part name="J7" library="my_devices" deviceset="J2" device=""/>
+<part name="J8" library="my_devices" deviceset="J2" device=""/>
+<part name="J9" library="my_devices" deviceset="J2" device=""/>
+<part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="R17" library="my_devices" deviceset="R" device="" value="620"/>
 </parts>
 <sheets>
 <sheet>
@@ -2068,28 +2074,28 @@ Mosfet required &gt;8V</text>
 <instance part="TS3" gate="G$1" x="-27.94" y="-35.56" smashed="yes" grouprefs="OPEN-CLOSE">
 <attribute name="NAME" x="-33.02" y="-30.48" size="1.778" layer="94"/>
 </instance>
-<instance part="J2" gate="G$1" x="86.36" y="154.94" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
-<attribute name="NAME" x="88.9" y="153.035" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="88.9" y="162.56" size="1.778" layer="94" rot="R180"/>
+<instance part="J2" gate="G$1" x="73.66" y="142.24" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="76.2" y="140.335" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="76.2" y="149.86" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="J3" gate="G$1" x="91.44" y="157.48" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
-<attribute name="NAME" x="88.9" y="159.385" size="1.778" layer="94"/>
-<attribute name="VALUE" x="88.9" y="149.86" size="1.778" layer="94"/>
+<instance part="J3" gate="G$1" x="78.74" y="144.78" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="76.2" y="146.685" size="1.778" layer="94"/>
+<attribute name="VALUE" x="76.2" y="137.16" size="1.778" layer="94"/>
 </instance>
-<instance part="J4" gate="G$1" x="142.24" y="154.94" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
-<attribute name="NAME" x="144.78" y="153.035" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="144.78" y="162.56" size="1.778" layer="94" rot="R180"/>
+<instance part="J4" gate="G$1" x="129.54" y="142.24" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="132.08" y="140.335" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="132.08" y="149.86" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="J5" gate="G$1" x="149.86" y="157.48" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
-<attribute name="NAME" x="147.32" y="159.385" size="1.778" layer="94"/>
-<attribute name="VALUE" x="147.32" y="149.86" size="1.778" layer="94"/>
+<instance part="J5" gate="G$1" x="137.16" y="144.78" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="134.62" y="146.685" size="1.778" layer="94"/>
+<attribute name="VALUE" x="134.62" y="137.16" size="1.778" layer="94"/>
 </instance>
-<instance part="GND5" gate="1" x="73.66" y="152.4" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
-<attribute name="VALUE" x="71.12" y="149.86" size="1.778" layer="96"/>
+<instance part="GND5" gate="1" x="60.96" y="139.7" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="VALUE" x="58.42" y="137.16" size="1.778" layer="96"/>
 </instance>
-<instance part="C6" gate="G$1" x="175.26" y="154.94" smashed="yes" rot="R270" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
-<attribute name="NAME" x="180.34" y="160.02" size="1.778" layer="94" rot="R270"/>
-<attribute name="VALUE" x="167.64" y="160.02" size="1.778" layer="94" rot="R270"/>
+<instance part="C6" gate="G$1" x="162.56" y="142.24" smashed="yes" rot="R270" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="167.64" y="147.32" size="1.778" layer="94" rot="R270"/>
+<attribute name="VALUE" x="154.94" y="147.32" size="1.778" layer="94" rot="R270"/>
 </instance>
 <instance part="U9" gate="G$1" x="259.08" y="-30.48" smashed="yes" grouprefs="NOISE">
 <attribute name="NAME" x="255.27" y="-24.765" size="1.4224" layer="94"/>
@@ -2130,6 +2136,29 @@ Mosfet required &gt;8V</text>
 <instance part="R16" gate="G$1" x="241.3" y="-45.72" smashed="yes" rot="R90" grouprefs="NOISE">
 <attribute name="NAME" x="238.76" y="-52.07" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="245.11" y="-52.07" size="1.778" layer="94" rot="R90"/>
+</instance>
+<instance part="J6" gate="G$1" x="137.16" y="116.84" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="134.62" y="118.745" size="1.778" layer="94"/>
+<attribute name="VALUE" x="134.62" y="109.22" size="1.778" layer="94"/>
+</instance>
+<instance part="J7" gate="G$1" x="129.54" y="114.3" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="132.08" y="112.395" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="132.08" y="121.92" size="1.778" layer="94" rot="R180"/>
+</instance>
+<instance part="J8" gate="G$1" x="78.74" y="116.84" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="76.2" y="118.745" size="1.778" layer="94"/>
+<attribute name="VALUE" x="76.2" y="109.22" size="1.778" layer="94"/>
+</instance>
+<instance part="J9" gate="G$1" x="73.66" y="114.3" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="NAME" x="76.2" y="112.395" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="76.2" y="121.92" size="1.778" layer="94" rot="R180"/>
+</instance>
+<instance part="GND6" gate="1" x="60.96" y="111.76" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
+<attribute name="VALUE" x="58.42" y="109.22" size="1.778" layer="96"/>
+</instance>
+<instance part="R17" gate="G$1" x="-177.8" y="114.3" smashed="yes">
+<attribute name="NAME" x="-184.15" y="116.84" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-184.15" y="110.49" size="1.778" layer="94"/>
 </instance>
 </instances>
 <busses>
@@ -2202,8 +2231,8 @@ Mosfet required &gt;8V</text>
 </segment>
 <segment>
 <pinref part="J2" gate="G$1" pin="PIN_2"/>
-<wire x1="78.74" y1="157.48" x2="66.04" y2="157.48" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<label x="66.04" y="157.48" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="66.04" y1="144.78" x2="53.34" y2="144.78" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<label x="53.34" y="144.78" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -2294,7 +2323,12 @@ Mosfet required &gt;8V</text>
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
 <pinref part="J2" gate="G$1" pin="PIN_1"/>
-<wire x1="73.66" y1="154.94" x2="78.74" y2="154.94" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="60.96" y1="142.24" x2="66.04" y2="142.24" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+<segment>
+<pinref part="GND6" gate="1" pin="GND"/>
+<pinref part="J9" gate="G$1" pin="PIN_1"/>
+<wire x1="60.96" y1="114.3" x2="66.04" y2="114.3" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_OPEN" class="0">
@@ -2354,11 +2388,11 @@ Mosfet required &gt;8V</text>
 <segment>
 <pinref part="J5" gate="G$1" pin="PIN_1"/>
 <pinref part="C6" gate="G$1" pin="PIN_PLUS"/>
-<wire x1="157.48" y1="157.48" x2="157.48" y2="162.56" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<wire x1="157.48" y1="162.56" x2="175.26" y2="162.56" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<wire x1="175.26" y1="162.56" x2="185.42" y2="162.56" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<junction x="175.26" y="162.56" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<label x="170.18" y="165.1" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="144.78" y1="144.78" x2="144.78" y2="149.86" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="144.78" y1="149.86" x2="162.56" y2="149.86" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="162.56" y1="149.86" x2="172.72" y2="149.86" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<junction x="162.56" y="149.86" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<label x="157.48" y="152.4" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 <segment>
 <pinref part="R22" gate="G$1" pin="P$1"/>
@@ -2419,11 +2453,11 @@ Mosfet required &gt;8V</text>
 <segment>
 <pinref part="J5" gate="G$1" pin="PIN_2"/>
 <pinref part="C6" gate="G$1" pin="PIN_GND"/>
-<wire x1="157.48" y1="154.94" x2="157.48" y2="149.86" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<wire x1="157.48" y1="149.86" x2="175.26" y2="149.86" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<wire x1="175.26" y1="149.86" x2="185.42" y2="149.86" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<junction x="175.26" y="149.86" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
-<label x="170.18" y="147.32" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="144.78" y1="142.24" x2="144.78" y2="137.16" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="144.78" y1="137.16" x2="162.56" y2="137.16" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="162.56" y1="137.16" x2="172.72" y2="137.16" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<junction x="162.56" y="137.16" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<label x="157.48" y="134.62" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 <segment>
 <pinref part="BM2" gate="G$1" pin="P$1"/>
@@ -2445,6 +2479,11 @@ Mosfet required &gt;8V</text>
 <wire x1="208.28" y1="22.86" x2="190.5" y2="22.86" width="0.1524" layer="91" grouprefs="NOISE"/>
 <junction x="208.28" y="22.86" grouprefs="NOISE"/>
 <label x="190.5" y="20.32" size="1.778" layer="95" grouprefs="NOISE"/>
+</segment>
+<segment>
+<pinref part="J6" gate="G$1" pin="PIN_2"/>
+<wire x1="144.78" y1="114.3" x2="175.26" y2="114.3" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<label x="157.48" y="111.76" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -2920,14 +2959,14 @@ Mosfet required &gt;8V</text>
 <segment>
 <pinref part="J3" gate="G$1" pin="PIN_1"/>
 <pinref part="J4" gate="G$1" pin="PIN_2"/>
-<wire x1="99.06" y1="157.48" x2="134.62" y2="157.48" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="86.36" y1="144.78" x2="121.92" y2="144.78" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
 <pinref part="J3" gate="G$1" pin="PIN_2"/>
 <pinref part="J4" gate="G$1" pin="PIN_1"/>
-<wire x1="99.06" y1="154.94" x2="134.62" y2="154.94" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<wire x1="86.36" y1="142.24" x2="121.92" y2="142.24" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -3018,11 +3057,49 @@ Mosfet required &gt;8V</text>
 <label x="243.84" y="-55.88" size="1.778" layer="95" grouprefs="NOISE"/>
 </segment>
 </net>
-<net name="OUTDOOR_SIGNAL" class="0">
+<net name="OUTDOOR_DATA_OUT" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="(INT1)PD3"/>
 <wire x1="289.56" y1="81.28" x2="309.88" y2="81.28" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <label x="294.64" y="81.28" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="J6" gate="G$1" pin="PIN_1"/>
+<wire x1="144.78" y1="116.84" x2="172.72" y2="116.84" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<label x="152.4" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="J8" gate="G$1" pin="PIN_1"/>
+<pinref part="J7" gate="G$1" pin="PIN_2"/>
+<wire x1="86.36" y1="116.84" x2="121.92" y2="116.84" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="J8" gate="G$1" pin="PIN_2"/>
+<pinref part="J7" gate="G$1" pin="PIN_1"/>
+<wire x1="86.36" y1="114.3" x2="121.92" y2="114.3" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+</net>
+<net name="OUTDOOR_SIGNAL" class="0">
+<segment>
+<pinref part="J9" gate="G$1" pin="PIN_2"/>
+<wire x1="66.04" y1="116.84" x2="45.72" y2="116.84" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+<label x="43.18" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+<segment>
+<pinref part="R17" gate="G$1" pin="P$2"/>
+<wire x1="-168.91" y1="114.3" x2="-137.16" y2="114.3" width="0.1524" layer="91"/>
+<label x="-157.48" y="114.3" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="IO2"/>
+<pinref part="R17" gate="G$1" pin="P$1"/>
+<wire x1="-195.58" y1="114.3" x2="-185.42" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

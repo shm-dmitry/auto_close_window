@@ -18,7 +18,7 @@
 
 void noise_init() {
   pinMode(NOISE_OUT_PIN,  INPUT);
-  gpio_logger_send_message("Noise sensor OK");
+  Serial.println("Noise sensor OK");
 }
 
 uint8_t noise_do_read_level(uint16_t sampling_freq, uint16_t out_from_freq, uint16_t * out_major_freq, uint16_t * out_major_volume, uint8_t major_array_size) {

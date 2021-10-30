@@ -5,6 +5,7 @@
 #include "init/init_logger.h"
 #include "init/mqtt_logger.h"
 #include "controller/controller.h"
+#include "outdoor_module/outdoor_module.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -24,6 +25,10 @@ void app_main(void)
 	init_snmp();
 
 	controller_init();
+
+#if CONFIG_OUTDOOR_MODULE_ENABLED
+	outdoor_module_init(CONFIG_OUTDOOR_MODULE_GPIO, CONFIG_OUTDOOR_MODULE_STATUS_TOPIC);
+#endif
 
 	mqtt_start();
 

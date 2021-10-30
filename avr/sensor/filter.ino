@@ -4,13 +4,14 @@
 #define FILTER_ALARM_VALUE_MIN_VOLUME          300
 #define FILTER_ALARM_VALUE_MIN_HORN_FREQ_MIN   600
 #define FILTER_ALARM_VALUE_MIN_HORN_FREQ_MAX   1200
+#define FILTER_TVOC_UNKNOWN                    0xFFFF
 
 unsigned long filter_last_send_request = 0;
 uint8_t filter_alarm_counter = 0;
 bool filter_in_alarm_mode = false;
 
 bool filter_check_alarm(uint16_t tvoc, const noise_data_t * noise) {
-  if (tvoc > FILTER_ALARM_VALUE_TVOC) {
+  if (tvoc > FILTER_ALARM_VALUE_TVOC && tvoc != FILTER_TVOC_UNKNOWN) {
     return true;
   }
 

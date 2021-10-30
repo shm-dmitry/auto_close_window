@@ -11,7 +11,7 @@ Also this module connected to WIFI and allows to to control your window from any
 Out-door module:
 ==============
 
-1. Listen for a noise and check air quality. Sends information to your smart house via 443MHZ channel. 
+1. Listen for a noise and check air quality. 
 
 Project status
 ==============
@@ -20,6 +20,7 @@ Project status
 | ---- | ---- |
 | Indoor schema :: near-handle module | OK |
 | Indoor schema :: servo module | OK |
+| Indoor schema :: digital channel to outdoor schema | In progress |
 | Outdoor module schema | In progress |
 
 | Firmware | status |
@@ -33,6 +34,4 @@ Project status
 | Outdoor firmware :: SGP30 | OK |
 | Outdoor firmware :: Noise sensor | OK |
 | Outdoor firmware :: Sensor value filters and controller | In progress |
-| Outdoor firmware :: Data transmitter | no |
-
-
+| Outdoor firmware :: Data transmitter | In progress |

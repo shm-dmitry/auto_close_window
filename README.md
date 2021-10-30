@@ -20,8 +20,8 @@ Project status
 | ---- | ---- |
 | Indoor schema :: near-handle module | OK |
 | Indoor schema :: servo module | OK |
-| Indoor schema :: digital channel to outdoor schema | In progress |
-| Outdoor module schema | In progress |
+| Indoor schema :: digital channel to outdoor schema | OK |
+| Outdoor module schema | Almost done |
 
 | Firmware | status |
 | ---- | ---- |
@@ -33,5 +33,5 @@ Project status
 | Outdoor firmware :: BMP280 | OK |
 | Outdoor firmware :: SGP30 | OK |
 | Outdoor firmware :: Noise sensor | OK |
-| Outdoor firmware :: Sensor value filters and controller | In progress |
-| Outdoor firmware :: Data transmitter | In progress |
+| Outdoor firmware :: Sensor value filters and controller | OK |
+| Outdoor firmware :: Data transmitter | OK |

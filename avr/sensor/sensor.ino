@@ -9,6 +9,7 @@ void setup() {
   noise_init();
   bmp280_initialize();
   sgp30_initialize();
+  data_transfer_init();
 }
 
 void loop() {
@@ -36,6 +37,8 @@ void test_filter() {
     } else {
       gpio_logger_send_message("No noise");
     }
+
+    data_transfer_send(temperature, tvoc, noise);
   }
 
   if (noise != NULL) {

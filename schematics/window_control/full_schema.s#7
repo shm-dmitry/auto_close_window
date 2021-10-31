@@ -1809,26 +1809,36 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="C15" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
 <part name="R23" library="my_devices" deviceset="RD" device="" value="200K"/>
 <part name="R26" library="my_devices" deviceset="RD" device="" value="200K"/>
-<part name="U7" library="my_devices" deviceset="VOLTAGE_REGULATOR" device=""/>
-<part name="L2" library="my_devices" deviceset="L" device=""/>
-<part name="C9" library="my_devices" deviceset="C" device=""/>
+<part name="U7" library="my_devices" deviceset="VOLTAGE_REGULATOR" device="" value="LM317L"/>
+<part name="L2" library="my_devices" deviceset="L" device="" value="560 uH"/>
+<part name="C9" library="my_devices" deviceset="C" device="" value="10 uF"/>
 <part name="R16" library="my_devices" deviceset="R" device="" value="200K"/>
 <part name="J6" library="my_devices" deviceset="J2" device=""/>
 <part name="J7" library="my_devices" deviceset="J2" device=""/>
 <part name="J8" library="my_devices" deviceset="J2" device=""/>
 <part name="J9" library="my_devices" deviceset="J2" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="R17" library="my_devices" deviceset="RD" device="" value="5K"/>
+<part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="R18" library="my_devices" deviceset="RD" device="" value="10K"/>
+<part name="C12" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
+<part name="R19" library="my_devices" deviceset="R" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="-86.36" y="35.56" size="1.778" layer="91">Indoor window control unit</text>
-<text x="233.68" y="281.94" size="1.778" layer="91" grouprefs="BME_280_TEMP_HUM1">5V Module required!</text>
+<text x="190.5" y="220.98" size="1.778" layer="91" grouprefs="BME_280_TEMP_HUM1">5V Module required!</text>
 <text x="-4.445" y="271.145" size="1.778" layer="91" grouprefs="SERVO">~10-15-20V
 In my case ~12..14V
 Mosfet required &gt;8V</text>
 <text x="-111.76" y="337.82" size="5.08" layer="91">Indoor modules</text>
 <text x="256.54" y="342.9" size="5.08" layer="91">Outdoor module</text>
+<text x="-162.56" y="114.3" size="1.778" layer="91" grouprefs="ESP">5V</text>
+<text x="-185.42" y="111.76" size="1.778" layer="91" grouprefs="ESP">3V3</text>
+<text x="243.84" y="38.1" size="1.778" layer="91" grouprefs="NOISE">Initial power in OUTDOOR_MIDDLEPOINT is 2.5V
+You needs to ajust it using osciloscope by measuring NOISE_LEVEL signal.
+In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </plain>
 <instances>
 <instance part="ACDC1" gate="G$1" x="-153.67" y="-44.45" smashed="yes">
@@ -1872,11 +1882,11 @@ Mosfet required &gt;8V</text>
 <attribute name="NAME" x="238.76" y="154.94" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="238.76" y="167.64" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="U5" gate="G$1" x="233.68" y="289.56" smashed="yes" grouprefs="BME_280_TEMP_HUM1">
-<attribute name="NAME" x="238.76" y="299.72" size="1.778" layer="94"/>
+<instance part="U5" gate="G$1" x="190.5" y="228.6" smashed="yes" grouprefs="BME_280_TEMP_HUM1">
+<attribute name="NAME" x="195.58" y="238.76" size="1.778" layer="94"/>
 </instance>
-<instance part="U8" gate="G$1" x="358.14" y="289.56" smashed="yes" grouprefs="GY-SGP30">
-<attribute name="NAME" x="355.6" y="299.72" size="1.778" layer="94"/>
+<instance part="U8" gate="G$1" x="292.1" y="231.14" smashed="yes" grouprefs="GY-SGP30">
+<attribute name="NAME" x="289.56" y="241.3" size="1.778" layer="94"/>
 </instance>
 <instance part="X1" gate="G$1" x="231.14" y="146.05" smashed="yes" rot="R90" grouprefs="ATMEGA32">
 <attribute name="NAME" x="228.6" y="140.97" size="1.778" layer="94" rot="R90"/>
@@ -2112,13 +2122,13 @@ Mosfet required &gt;8V</text>
 <attribute name="NAME" x="229.235" y="-29.845" size="1.778" layer="94"/>
 <attribute name="VALUE" x="229.235" y="-38.1" size="1.778" layer="94"/>
 </instance>
-<instance part="R23" gate="G$1" x="248.92" y="-12.7" smashed="yes" rot="R90" grouprefs="NOISE">
-<attribute name="NAME" x="252.73" y="-17.145" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="255.27" y="-17.78" size="1.778" layer="94" rot="R90"/>
+<instance part="R23" gate="G$1" x="248.92" y="-2.54" smashed="yes" rot="R90" grouprefs="NOISE">
+<attribute name="NAME" x="252.73" y="-6.985" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="255.27" y="-7.62" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="R26" gate="G$1" x="284.48" y="-30.48" smashed="yes" rot="R180" grouprefs="NOISE">
-<attribute name="NAME" x="288.925" y="-26.67" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="289.56" y="-24.13" size="1.778" layer="94" rot="R180"/>
+<instance part="R26" gate="G$1" x="284.48" y="-33.02" smashed="yes" rot="R90" grouprefs="NOISE">
+<attribute name="NAME" x="288.29" y="-37.465" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="290.83" y="-38.1" size="1.778" layer="94" rot="R90"/>
 </instance>
 <instance part="U7" gate="G$1" x="208.28" y="33.02" smashed="yes" grouprefs="NOISE">
 <attribute name="NAME" x="205.74" y="43.18" size="1.778" layer="94"/>
@@ -2154,6 +2164,25 @@ Mosfet required &gt;8V</text>
 </instance>
 <instance part="GND6" gate="1" x="60.96" y="111.76" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
 <attribute name="VALUE" x="58.42" y="109.22" size="1.778" layer="96"/>
+</instance>
+<instance part="R17" gate="G$1" x="-172.72" y="109.22" smashed="yes" rot="R90" grouprefs="ESP">
+<attribute name="NAME" x="-168.91" y="104.775" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="-166.37" y="104.14" size="1.778" layer="94" rot="R90"/>
+</instance>
+<instance part="GND8" gate="1" x="-172.72" y="96.52" smashed="yes" grouprefs="ESP">
+<attribute name="VALUE" x="-175.26" y="93.98" size="1.778" layer="96"/>
+</instance>
+<instance part="R18" gate="G$1" x="220.98" y="25.4" smashed="yes" rot="R90" grouprefs="NOISE">
+<attribute name="NAME" x="224.79" y="20.955" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="227.33" y="20.32" size="1.778" layer="94" rot="R90"/>
+</instance>
+<instance part="C12" gate="G$1" x="261.62" y="-12.7" smashed="yes" grouprefs="NOISE">
+<attribute name="NAME" x="257.175" y="-9.525" size="1.778" layer="94"/>
+<attribute name="VALUE" x="257.175" y="-17.78" size="1.778" layer="94"/>
+</instance>
+<instance part="R19" gate="G$1" x="274.32" y="-5.08" smashed="yes" rot="R90" grouprefs="NOISE">
+<attribute name="NAME" x="271.78" y="-11.43" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="278.13" y="-11.43" size="1.778" layer="94" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -2325,6 +2354,11 @@ Mosfet required &gt;8V</text>
 <pinref part="J9" gate="G$1" pin="PIN_1"/>
 <wire x1="60.96" y1="114.3" x2="66.04" y2="114.3" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
+<segment>
+<pinref part="R17" gate="G$1" pin="P1"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="-172.72" y1="101.6" x2="-172.72" y2="99.06" width="0.1524" layer="91" grouprefs="ESP"/>
+</segment>
 </net>
 <net name="GPIO_TS_WINDOW_OPEN" class="0">
 <segment>
@@ -2370,14 +2404,14 @@ Mosfet required &gt;8V</text>
 <label x="203.2" y="182.88" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
-<wire x1="350.52" y1="292.1" x2="330.2" y2="292.1" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<label x="330.2" y="292.1" size="1.778" layer="95" grouprefs="GY-SGP30"/>
+<wire x1="284.48" y1="233.68" x2="264.16" y2="233.68" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<label x="264.16" y="233.68" size="1.778" layer="95" grouprefs="GY-SGP30"/>
 <pinref part="U8" gate="G$1" pin="VIN"/>
 </segment>
 <segment>
-<wire x1="223.52" y1="294.64" x2="208.28" y2="294.64" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
-<wire x1="208.28" y1="294.64" x2="208.28" y2="304.8" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
-<label x="205.74" y="304.8" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="180.34" y1="233.68" x2="165.1" y2="233.68" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="165.1" y1="233.68" x2="165.1" y2="243.84" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<label x="162.56" y="243.84" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
 <pinref part="U5" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
@@ -2436,14 +2470,14 @@ Mosfet required &gt;8V</text>
 <junction x="205.74" y="160.02" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
-<wire x1="182.88" y1="292.1" x2="223.52" y2="292.1" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="139.7" y1="231.14" x2="180.34" y2="231.14" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
 <pinref part="U5" gate="G$1" pin="GND"/>
-<label x="182.88" y="292.1" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
+<label x="139.7" y="231.14" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
 </segment>
 <segment>
-<wire x1="350.52" y1="289.56" x2="330.2" y2="289.56" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<wire x1="284.48" y1="231.14" x2="264.16" y2="231.14" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
 <pinref part="U8" gate="G$1" pin="GND"/>
-<label x="330.2" y="289.56" size="1.778" layer="95" grouprefs="GY-SGP30"/>
+<label x="264.16" y="231.14" size="1.778" layer="95" grouprefs="GY-SGP30"/>
 </segment>
 <segment>
 <pinref part="J5" gate="G$1" pin="PIN_2"/>
@@ -2467,13 +2501,13 @@ Mosfet required &gt;8V</text>
 <label x="251.46" y="-45.72" size="1.778" layer="95" grouprefs="NOISE"/>
 </segment>
 <segment>
-<pinref part="C9" gate="G$1" pin="PIN_GND"/>
-<pinref part="U7" gate="G$1" pin="GND"/>
-<wire x1="254" y1="22.86" x2="208.28" y2="22.86" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="208.28" y1="22.86" x2="208.28" y2="25.4" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="208.28" y1="22.86" x2="190.5" y2="22.86" width="0.1524" layer="91" grouprefs="NOISE"/>
-<junction x="208.28" y="22.86" grouprefs="NOISE"/>
+<wire x1="220.98" y1="17.78" x2="190.5" y2="17.78" width="0.1524" layer="91" grouprefs="NOISE"/>
 <label x="190.5" y="20.32" size="1.778" layer="95" grouprefs="NOISE"/>
+<pinref part="R18" gate="G$1" pin="P1"/>
+<pinref part="C9" gate="G$1" pin="PIN_GND"/>
+<wire x1="220.98" y1="17.78" x2="254" y2="17.78" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="254" y1="17.78" x2="254" y2="22.86" width="0.1524" layer="91" grouprefs="NOISE"/>
+<junction x="220.98" y="17.78" grouprefs="NOISE"/>
 </segment>
 <segment>
 <pinref part="J6" gate="G$1" pin="PIN_2"/>
@@ -2499,16 +2533,16 @@ Mosfet required &gt;8V</text>
 <label x="297.18" y="99.06" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
-<wire x1="210.82" y1="269.24" x2="210.82" y2="287.02" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
-<wire x1="210.82" y1="287.02" x2="223.52" y2="287.02" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
-<label x="210.82" y="269.24" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="167.64" y1="208.28" x2="167.64" y2="226.06" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="167.64" y1="226.06" x2="180.34" y2="226.06" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<label x="167.64" y="208.28" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
 <pinref part="U5" gate="G$1" pin="SDA"/>
 </segment>
 <segment>
-<wire x1="350.52" y1="284.48" x2="340.36" y2="284.48" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<wire x1="340.36" y1="284.48" x2="340.36" y2="271.78" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<wire x1="340.36" y1="271.78" x2="325.12" y2="271.78" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<label x="325.12" y="271.78" size="1.778" layer="95" grouprefs="GY-SGP30"/>
+<wire x1="284.48" y1="226.06" x2="274.32" y2="226.06" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<wire x1="274.32" y1="226.06" x2="274.32" y2="213.36" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<wire x1="274.32" y1="213.36" x2="259.08" y2="213.36" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<label x="259.08" y="213.36" size="1.778" layer="95" grouprefs="GY-SGP30"/>
 <pinref part="U8" gate="G$1" pin="SDA"/>
 </segment>
 </net>
@@ -2519,16 +2553,16 @@ Mosfet required &gt;8V</text>
 <label x="297.18" y="96.52" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
-<wire x1="198.12" y1="271.78" x2="198.12" y2="289.56" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
-<wire x1="198.12" y1="289.56" x2="223.52" y2="289.56" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
-<label x="187.96" y="271.78" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="154.94" y1="210.82" x2="154.94" y2="228.6" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<wire x1="154.94" y1="228.6" x2="180.34" y2="228.6" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
+<label x="144.78" y="210.82" size="1.778" layer="95" grouprefs="BME_280_TEMP_HUM1"/>
 <pinref part="U5" gate="G$1" pin="SCL"/>
 </segment>
 <segment>
-<wire x1="350.52" y1="287.02" x2="335.28" y2="287.02" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<wire x1="335.28" y1="287.02" x2="335.28" y2="279.4" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<wire x1="335.28" y1="279.4" x2="325.12" y2="279.4" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
-<label x="325.12" y="276.86" size="1.778" layer="95" grouprefs="GY-SGP30"/>
+<wire x1="284.48" y1="228.6" x2="269.24" y2="228.6" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<wire x1="269.24" y1="228.6" x2="269.24" y2="220.98" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<wire x1="269.24" y1="220.98" x2="259.08" y2="220.98" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
+<label x="259.08" y="218.44" size="1.778" layer="95" grouprefs="GY-SGP30"/>
 <pinref part="U8" gate="G$1" pin="SCL"/>
 </segment>
 </net>
@@ -2540,12 +2574,13 @@ Mosfet required &gt;8V</text>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="B_OUT"/>
+<wire x1="269.24" y1="-30.48" x2="279.4" y2="-30.48" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="279.4" y1="-30.48" x2="279.4" y2="-25.4" width="0.1524" layer="91" grouprefs="NOISE"/>
 <pinref part="R26" gate="G$1" pin="P2"/>
-<wire x1="269.24" y1="-30.48" x2="276.86" y2="-30.48" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="276.86" y1="-30.48" x2="276.86" y2="-15.24" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="276.86" y1="-15.24" x2="292.1" y2="-15.24" width="0.1524" layer="91" grouprefs="NOISE"/>
-<junction x="276.86" y="-30.48" grouprefs="NOISE"/>
-<label x="276.86" y="-15.24" size="1.778" layer="95" grouprefs="NOISE"/>
+<wire x1="279.4" y1="-25.4" x2="284.48" y2="-25.4" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="284.48" y1="-25.4" x2="304.8" y2="-25.4" width="0.1524" layer="91" grouprefs="NOISE"/>
+<junction x="284.48" y="-25.4" grouprefs="NOISE"/>
+<label x="289.56" y="-22.86" size="1.778" layer="95" grouprefs="NOISE"/>
 </segment>
 </net>
 <net name="N$24" class="0">
@@ -2992,14 +3027,13 @@ Mosfet required &gt;8V</text>
 </net>
 <net name="N$20" class="0">
 <segment>
-<pinref part="R23" gate="G$1" pin="P1"/>
-<pinref part="U9" gate="G$1" pin="A_OUT"/>
-<wire x1="248.92" y1="-20.32" x2="248.92" y2="-27.94" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="248.92" y1="-20.32" x2="274.32" y2="-20.32" width="0.1524" layer="91" grouprefs="NOISE"/>
-<junction x="248.92" y="-20.32" grouprefs="NOISE"/>
 <pinref part="U9" gate="G$1" pin="B+"/>
-<wire x1="274.32" y1="-20.32" x2="274.32" y2="-35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="274.32" y1="-12.7" x2="274.32" y2="-35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
 <wire x1="274.32" y1="-35.56" x2="269.24" y2="-35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<pinref part="C12" gate="G$1" pin="P$2"/>
+<wire x1="269.24" y1="-12.7" x2="274.32" y2="-12.7" width="0.1524" layer="91" grouprefs="NOISE"/>
+<pinref part="R19" gate="G$1" pin="P$1"/>
+<junction x="274.32" y="-12.7" grouprefs="NOISE"/>
 </segment>
 </net>
 <net name="N$21" class="0">
@@ -3007,49 +3041,18 @@ Mosfet required &gt;8V</text>
 <pinref part="U9" gate="G$1" pin="A-"/>
 <pinref part="R23" gate="G$1" pin="P3"/>
 <wire x1="248.92" y1="-30.48" x2="241.3" y2="-30.48" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="241.3" y1="-30.48" x2="241.3" y2="-12.7" width="0.1524" layer="91" grouprefs="NOISE"/>
-</segment>
-</net>
-<net name="N$25" class="0">
-<segment>
-<pinref part="U9" gate="G$1" pin="B-"/>
-<wire x1="269.24" y1="-33.02" x2="276.86" y2="-33.02" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="276.86" y1="-33.02" x2="276.86" y2="-38.1" width="0.1524" layer="91" grouprefs="NOISE"/>
-<pinref part="R26" gate="G$1" pin="P3"/>
-<wire x1="276.86" y1="-38.1" x2="284.48" y2="-38.1" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="241.3" y1="-30.48" x2="241.3" y2="-2.54" width="0.1524" layer="91" grouprefs="NOISE"/>
 </segment>
 </net>
 <net name="OUT" class="0">
 <segment>
 <pinref part="U7" gate="G$1" pin="OUT"/>
 <pinref part="L2" gate="G$1" pin="P$1"/>
-<wire x1="218.44" y1="35.56" x2="233.68" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
-</segment>
-</net>
-<net name="OUTDOOR_+2.5V" class="0">
-<segment>
-<pinref part="L2" gate="G$1" pin="P$2"/>
-<pinref part="C9" gate="G$1" pin="PIN_PLUS"/>
-<wire x1="238.76" y1="35.56" x2="254" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="254" y1="35.56" x2="279.4" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
-<junction x="254" y="35.56" grouprefs="NOISE"/>
-<label x="264.16" y="33.02" size="1.778" layer="95" grouprefs="NOISE"/>
-</segment>
-<segment>
-<pinref part="R23" gate="G$1" pin="P2"/>
-<wire x1="248.92" y1="-5.08" x2="248.92" y2="0" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="248.92" y1="-5.08" x2="294.64" y2="-5.08" width="0.1524" layer="91" grouprefs="NOISE"/>
-<junction x="248.92" y="-5.08" grouprefs="NOISE"/>
-<pinref part="R26" gate="G$1" pin="P1"/>
-<wire x1="294.64" y1="-5.08" x2="294.64" y2="-30.48" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="294.64" y1="-30.48" x2="292.1" y2="-30.48" width="0.1524" layer="91" grouprefs="NOISE"/>
-<wire x1="248.92" y1="0" x2="284.48" y2="0" width="0.1524" layer="91" grouprefs="NOISE"/>
-<label x="266.7" y="-2.54" size="1.778" layer="95" grouprefs="NOISE"/>
-</segment>
-<segment>
-<pinref part="R16" gate="G$1" pin="P$1"/>
-<wire x1="241.3" y1="-53.34" x2="259.08" y2="-53.34" width="0.1524" layer="91" grouprefs="NOISE"/>
-<label x="243.84" y="-55.88" size="1.778" layer="95" grouprefs="NOISE"/>
+<wire x1="218.44" y1="35.56" x2="220.98" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<pinref part="R18" gate="G$1" pin="P2"/>
+<wire x1="220.98" y1="35.56" x2="233.68" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="220.98" y1="33.02" x2="220.98" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<junction x="220.98" y="35.56" grouprefs="NOISE"/>
 </segment>
 </net>
 <net name="OUTDOOR_DATA_OUT" class="0">
@@ -3083,6 +3086,76 @@ Mosfet required &gt;8V</text>
 <pinref part="J9" gate="G$1" pin="PIN_2"/>
 <wire x1="66.04" y1="116.84" x2="45.72" y2="116.84" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 <label x="43.18" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+<segment>
+<wire x1="-168.91" y1="116.84" x2="-167.64" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-157.48" y="116.84" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="R17" gate="G$1" pin="P2"/>
+<wire x1="-167.64" y1="116.84" x2="-137.16" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-168.91" y1="116.84" x2="-172.72" y2="116.84" width="0.1524" layer="91" grouprefs="ESP"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="U1" gate="G$1" pin="IO2"/>
+<wire x1="-195.58" y1="114.3" x2="-180.34" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
+<pinref part="R17" gate="G$1" pin="P3"/>
+<wire x1="-180.34" y1="114.3" x2="-180.34" y2="109.22" width="0.1524" layer="91" grouprefs="ESP"/>
+</segment>
+</net>
+<net name="N$17" class="0">
+<segment>
+<pinref part="U7" gate="G$1" pin="GND"/>
+<pinref part="R18" gate="G$1" pin="P3"/>
+<wire x1="208.28" y1="25.4" x2="213.36" y2="25.4" width="0.1524" layer="91" grouprefs="NOISE"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="U9" gate="G$1" pin="A_OUT"/>
+<pinref part="R23" gate="G$1" pin="P1"/>
+<wire x1="248.92" y1="-10.16" x2="248.92" y2="-12.7" width="0.1524" layer="91" grouprefs="NOISE"/>
+<pinref part="C12" gate="G$1" pin="P$1"/>
+<wire x1="248.92" y1="-12.7" x2="248.92" y2="-27.94" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="254" y1="-12.7" x2="248.92" y2="-12.7" width="0.1524" layer="91" grouprefs="NOISE"/>
+<junction x="248.92" y="-12.7" grouprefs="NOISE"/>
+</segment>
+</net>
+<net name="OUTDOOR_MIDDLEPOINT" class="0">
+<segment>
+<pinref part="L2" gate="G$1" pin="P$2"/>
+<pinref part="C9" gate="G$1" pin="PIN_PLUS"/>
+<wire x1="238.76" y1="35.56" x2="254" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="254" y1="35.56" x2="279.4" y2="35.56" width="0.1524" layer="91" grouprefs="NOISE"/>
+<junction x="254" y="35.56" grouprefs="NOISE"/>
+<label x="264.16" y="33.02" size="1.778" layer="95" grouprefs="NOISE"/>
+</segment>
+<segment>
+<pinref part="R23" gate="G$1" pin="P2"/>
+<wire x1="248.92" y1="5.08" x2="274.32" y2="5.08" width="0.1524" layer="91" grouprefs="NOISE"/>
+<pinref part="R19" gate="G$1" pin="P$2"/>
+<wire x1="274.32" y1="5.08" x2="274.32" y2="3.81" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="248.92" y1="5.08" x2="218.44" y2="5.08" width="0.1524" layer="91" grouprefs="NOISE"/>
+<junction x="248.92" y="5.08" grouprefs="NOISE"/>
+<label x="213.36" y="5.08" size="1.778" layer="95" grouprefs="NOISE"/>
+</segment>
+<segment>
+<pinref part="R16" gate="G$1" pin="P$1"/>
+<wire x1="241.3" y1="-53.34" x2="259.08" y2="-53.34" width="0.1524" layer="91" grouprefs="NOISE"/>
+<label x="243.84" y="-55.88" size="1.778" layer="95" grouprefs="NOISE"/>
+</segment>
+<segment>
+<pinref part="R26" gate="G$1" pin="P1"/>
+<wire x1="284.48" y1="-40.64" x2="284.48" y2="-43.18" width="0.1524" layer="91" grouprefs="NOISE"/>
+<wire x1="284.48" y1="-43.18" x2="302.26" y2="-43.18" width="0.1524" layer="91" grouprefs="NOISE"/>
+<label x="279.4" y="-45.72" size="1.778" layer="95" grouprefs="NOISE"/>
+</segment>
+</net>
+<net name="N$19" class="0">
+<segment>
+<pinref part="U9" gate="G$1" pin="B-"/>
+<pinref part="R26" gate="G$1" pin="P3"/>
+<wire x1="269.24" y1="-33.02" x2="276.86" y2="-33.02" width="0.1524" layer="91" grouprefs="NOISE"/>
 </segment>
 </net>
 </nets>

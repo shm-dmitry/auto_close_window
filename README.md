@@ -21,12 +21,12 @@ Project status
 | Indoor schema :: near-handle module | OK |
 | Indoor schema :: servo module | OK |
 | Indoor schema :: digital channel to outdoor schema | OK |
-| Outdoor module schema :: microcontroller and its periphery | In progress |
+| Outdoor module schema :: microcontroller and its periphery | OK |
 | Outdoor module schema :: sensors | OK |
 
 | Board | status |
 | ---- | ---- |
-| Indoor board :: near-handle module | no |
+| Indoor board :: near-handle module | In Progress |
 | Indoor board :: servo module | no |
 | Outdoor module board | no |
 

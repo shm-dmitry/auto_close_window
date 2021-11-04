@@ -1,7 +1,6 @@
 #include "arduinoFFT.h"
 
-//#define NOISE_OUT_PIN PIN_PA5
-#define NOISE_OUT_PIN PIN_A1
+#define NOISE_OUT_PIN A1
 
 #define NOISE_SAMPLES 64 //This value MUST ALWAYS be a power of 2
 #define NOISE_SAMPLING_PERIOD(freq) (round(1000000*(1.0/freq)))

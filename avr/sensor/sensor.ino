@@ -15,15 +15,15 @@ void setup() {
 
 void loop() {
   test_filter();
-  delay(2000);
+//  delay(2000);
 }
 
 void test_filter() {
   noise_data_t * noise = noise_read_level();
-  int8_t temperature = bmp280_read_temperature();
-  uint16_t tvoc = sgp30_read_tvoc();
+  int8_t temperature = 0;//bmp280_read_temperature();
+  uint16_t tvoc = 0;//sgp30_read_tvoc();
 
-  if (is_need_send_sensor_data(temperature, tvoc, noise)) {
+  if (is_need_send_sensor_data(temperature, tvoc, noise) || true) {
     Serial.println("Send datva: ");
     Serial.print("T = ");
     Serial.println(temperature);

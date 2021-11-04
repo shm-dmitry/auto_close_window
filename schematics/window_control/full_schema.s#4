@@ -490,8 +490,8 @@
 <pad name="MISO" x="-1.27" y="-5.08" drill="0.6" shape="square"/>
 <pad name="GND1" x="1.27" y="-5.08" drill="0.6" shape="square"/>
 <pad name="GND" x="1.27" y="-2.54" drill="0.6" shape="square"/>
-<pad name="NC3" x="1.27" y="0" drill="0.6" shape="square"/>
-<pad name="NC2" x="1.27" y="2.54" drill="0.6" shape="square"/>
+<pad name="RXD" x="1.27" y="0" drill="0.6" shape="square"/>
+<pad name="TXD" x="1.27" y="2.54" drill="0.6" shape="square"/>
 <pad name="VCC" x="1.27" y="5.08" drill="0.6" shape="square"/>
 <wire x1="-2.54" y1="6.35" x2="-2.54" y2="1.27" width="0.127" layer="21"/>
 <wire x1="-2.54" y1="1.27" x2="-2.54" y2="-1.27" width="0.127" layer="21"/>
@@ -1066,8 +1066,8 @@
 <pin name="SCK" x="-10.16" y="-2.54" visible="off" length="middle"/>
 <pin name="MISO" x="-10.16" y="-5.08" visible="off" length="middle"/>
 <pin name="VCC" x="10.16" y="5.08" visible="off" length="middle" direction="pwr" rot="R180"/>
-<pin name="NC2" x="10.16" y="2.54" visible="off" length="middle" direction="nc" rot="R180"/>
-<pin name="NC3" x="10.16" y="0" visible="off" length="middle" direction="nc" rot="R180"/>
+<pin name="TXD" x="10.16" y="2.54" visible="off" length="middle" rot="R180"/>
+<pin name="RXD" x="10.16" y="0" visible="off" length="middle" rot="R180"/>
 <pin name="GND" x="10.16" y="-2.54" visible="off" length="middle" direction="pwr" rot="R180"/>
 <pin name="GND1" x="10.16" y="-5.08" visible="off" length="middle" direction="pwr" rot="R180"/>
 <wire x1="-5.08" y1="7.62" x2="-5.08" y2="1.27" width="0.254" layer="94"/>
@@ -1088,6 +1088,8 @@
 <text x="1.905" y="-5.08" size="0.8128" layer="94">GND</text>
 <text x="-1.905" y="8.255" size="0.8128" layer="94">&gt;NAME</text>
 <text x="-1.905" y="-9.525" size="0.8128" layer="94">&gt;VALUE</text>
+<text x="1.905" y="0" size="0.8128" layer="94">RXD</text>
+<text x="1.905" y="2.54" size="0.8128" layer="94">TXD</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1657,10 +1659,10 @@
 <connect gate="G$1" pin="MISO" pad="MISO"/>
 <connect gate="G$1" pin="MOSI" pad="MOSI"/>
 <connect gate="G$1" pin="NC1" pad="NC1"/>
-<connect gate="G$1" pin="NC2" pad="NC2"/>
-<connect gate="G$1" pin="NC3" pad="NC3"/>
 <connect gate="G$1" pin="RESET" pad="RST"/>
+<connect gate="G$1" pin="RXD" pad="RXD"/>
 <connect gate="G$1" pin="SCK" pad="SCK"/>
+<connect gate="G$1" pin="TXD" pad="TXD"/>
 <connect gate="G$1" pin="VCC" pad="VCC"/>
 </connects>
 <technologies>
@@ -1898,9 +1900,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <instance part="TS2" gate="G$1" x="-27.94" y="-15.24" smashed="yes" grouprefs="OPEN-CLOSE">
 <attribute name="NAME" x="-33.02" y="-10.16" size="1.778" layer="94"/>
 </instance>
-<instance part="R20" gate="G$1" x="254" y="152.4" smashed="yes" rot="R90" grouprefs="ATMEGA32">
-<attribute name="NAME" x="251.46" y="146.05" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="257.81" y="146.05" size="1.778" layer="94" rot="R90"/>
+<instance part="R20" gate="G$1" x="259.08" y="170.18" smashed="yes" rot="R90" grouprefs="ATMEGA32">
+<attribute name="NAME" x="256.54" y="163.83" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="262.89" y="163.83" size="1.778" layer="94" rot="R90"/>
 </instance>
 <instance part="U5" gate="G$1" x="190.5" y="228.6" smashed="yes" grouprefs="BME_280_TEMP_HUM1">
 <attribute name="NAME" x="195.58" y="238.76" size="1.778" layer="94"/>
@@ -2216,9 +2218,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="274.32" y="152.4" size="1.778" layer="94"/>
 <attribute name="VALUE" x="274.32" y="101.6" size="1.778" layer="94"/>
 </instance>
-<instance part="C10" gate="G$1" x="241.3" y="144.78" smashed="yes" grouprefs="ATMEGA32">
-<attribute name="NAME" x="236.855" y="147.955" size="1.778" layer="94"/>
-<attribute name="VALUE" x="236.855" y="139.7" size="1.778" layer="94"/>
+<instance part="C10" gate="G$1" x="246.38" y="162.56" smashed="yes" grouprefs="ATMEGA32">
+<attribute name="NAME" x="241.935" y="165.735" size="1.778" layer="94"/>
+<attribute name="VALUE" x="241.935" y="157.48" size="1.778" layer="94"/>
 </instance>
 <instance part="J10" gate="G$1" x="332.74" y="104.14" smashed="yes" grouprefs="ATMEGA32">
 <attribute name="NAME" x="330.835" y="112.395" size="0.8128" layer="94"/>
@@ -2455,8 +2457,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="299.72" y1="127" x2="317.5" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <label x="304.8" y="127" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 <pinref part="U6" gate="G$1" pin="AVCC"/>
-<wire x1="299.72" y1="124.46" x2="299.72" y2="127" width="0.1524" layer="91"/>
-<junction x="299.72" y="127"/>
+<wire x1="299.72" y1="124.46" x2="299.72" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="299.72" y="127" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="VCC"/>
@@ -2465,8 +2467,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="R20" gate="G$1" pin="P$2"/>
-<wire x1="254" y1="161.29" x2="218.44" y2="161.29" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="220.98" y="162.56" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="259.08" y1="179.07" x2="223.52" y2="179.07" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="226.06" y="180.34" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
 <pinref part="J10" gate="G$1" pin="VCC"/>
@@ -2536,8 +2538,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <label x="233.68" y="127" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
-<wire x1="233.68" y1="144.78" x2="213.36" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="213.36" y="144.78" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="238.76" y1="162.56" x2="218.44" y2="162.56" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="218.44" y="162.56" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 <pinref part="C10" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
@@ -3067,14 +3069,14 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="OUTDOOR_DATA_OUT" class="0">
 <segment>
-<wire x1="299.72" y1="132.08" x2="317.5" y2="132.08" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="304.8" y="132.08" size="1.778" layer="95" grouprefs="ATMEGA32"/>
-<pinref part="U6" gate="G$1" pin="PC0"/>
-</segment>
-<segment>
 <pinref part="J6" gate="G$1" pin="PIN_1"/>
 <wire x1="144.78" y1="116.84" x2="172.72" y2="116.84" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 <label x="152.4" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="PC3"/>
+<wire x1="299.72" y1="139.7" x2="345.44" y2="139.7" width="0.1524" layer="91"/>
+<label x="317.5" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -3251,15 +3253,40 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <label x="307.34" y="104.14" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
-<pinref part="U6" gate="G$1" pin="PC6"/>
-<wire x1="248.92" y1="144.78" x2="254" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="254" y1="162.56" x2="259.08" y2="162.56" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <pinref part="R20" gate="G$1" pin="P$1"/>
-<wire x1="254" y1="144.78" x2="259.08" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="254" y="144.78" grouprefs="ATMEGA32"/>
+<junction x="259.08" y="162.56" grouprefs="ATMEGA32"/>
 <pinref part="C10" gate="G$1" pin="P$2"/>
-<wire x1="213.36" y1="137.16" x2="254" y2="137.16" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="254" y1="137.16" x2="254" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="213.36" y="137.16" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="218.44" y1="154.94" x2="259.08" y2="154.94" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="259.08" y1="154.94" x2="259.08" y2="162.56" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="218.44" y="154.94" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PC6"/>
+<wire x1="259.08" y1="144.78" x2="259.08" y2="154.94" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="259.08" y="154.94" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="ATMEGA_TXD" class="0">
+<segment>
+<pinref part="J10" gate="G$1" pin="TXD"/>
+<wire x1="342.9" y1="106.68" x2="363.22" y2="106.68" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="347.98" y="106.68" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="PD0"/>
+<wire x1="259.08" y1="142.24" x2="220.98" y2="142.24" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="220.98" y="142.24" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="ATMEGA_RXD" class="0">
+<segment>
+<pinref part="J10" gate="G$1" pin="RXD"/>
+<wire x1="342.9" y1="104.14" x2="363.22" y2="104.14" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="347.98" y="104.14" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="PD1"/>
+<wire x1="259.08" y1="139.7" x2="220.98" y2="139.7" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="220.98" y="139.7" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 </net>
 </nets>
@@ -3268,40 +3295,36 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <errors>
 <approved hash="102,1,-128.27,-39.37,OUT_GND,GND,,,,"/>
 <approved hash="102,1,-236.22,104.14,5V,+5V,,,,"/>
-<approved hash="102,1,400.368,111.443,GND,OUTDOOR_GND,,,,"/>
-<approved hash="102,1,456.248,124.143,OUT,OUTDOOR_+5V,,,,"/>
-<approved hash="102,1,322.58,30.48,GND,OUTDOOR_GND,,,,"/>
-<approved hash="102,1,322.58,33.02,VCC,OUTDOOR_+5V,,,,"/>
-<approved hash="102,1,434.34,35.56,GND,OUTDOOR_GND,,,,"/>
+<approved hash="102,1,180.34,231.14,GND,OUTDOOR_GND,,,,"/>
+<approved hash="102,1,180.34,233.68,VCC,OUTDOOR_+5V,,,,"/>
+<approved hash="102,1,284.48,231.14,GND,OUTDOOR_GND,,,,"/>
 <approved hash="102,1,-53.34,73.66,VCC,+5V,,,,"/>
-<approved hash="201,1,434.34,35.56,GND,GND\, OUTDOOR_GND,,,,"/>
-<approved hash="201,1,322.58,30.48,GND,GND\, OUTDOOR_GND,,,,"/>
-<approved hash="201,1,400.368,111.443,GND,GND\, OUTDOOR_GND,,,,"/>
+<approved hash="201,1,284.48,231.14,GND,GND\, OUTDOOR_GND,,,,"/>
+<approved hash="201,1,180.34,231.14,GND,GND\, OUTDOOR_GND,,,,"/>
 <approved hash="201,1,-53.34,73.66,VCC,VCC\, OUTDOOR_+5V\, +5V,,,,"/>
-<approved hash="201,1,322.58,33.02,VCC,VCC\, OUTDOOR_+5V\, +5V,,,,"/>
+<approved hash="201,1,180.34,233.68,VCC,VCC\, OUTDOOR_+5V\, +5V,,,,"/>
 <approved hash="104,1,-179.07,-39.37,ACDC1,220V_L,VCC,,,"/>
 <approved hash="104,1,-179.07,-49.53,ACDC1,220V_N,VCC,,,"/>
 <approved hash="104,1,-128.27,-49.53,ACDC1,OUT_5V,+5V,,,"/>
-<approved hash="104,1,380.048,121.603,D2,AC1,N$14,,,"/>
-<approved hash="104,1,380.048,111.443,D2,AC2,N$15,,,"/>
-<approved hash="104,1,129.54,17.78,IC1,GND,OUTDOOR_GND,,,"/>
-<approved hash="104,1,129.54,20.32,IC1,AVCC,OUTDOOR_+5V,,,"/>
-<approved hash="104,1,129.54,12.7,IC1,VCC,OUTDOOR_+5V,,,"/>
-<approved hash="104,1,129.54,10.16,IC1,GND,OUTDOOR_GND,,,"/>
-<approved hash="104,1,435.928,124.143,U5,IN,VCC,,,"/>
-<approved hash="104,1,446.088,113.983,U5,GND,OUTDOOR_GND,,,"/>
-<approved hash="104,1,434.34,38.1,U6,VIN,OUTDOOR_+5V,,,"/>
-<approved hash="104,1,353.06,-43.815,U4,VCC,OUTDOOR_+5V,,,"/>
-<approved hash="104,1,353.06,-38.735,U4,GND,OUTDOOR_GND,,,"/>
-<approved hash="104,1,468.63,-30.48,U7,VCC,OUTDOOR_+5V,,,"/>
-<approved hash="104,1,468.63,-35.56,U7,GND,TRANSMITTER,,,"/>
-<approved hash="104,1,142.24,142.24,U2,VCC,+5V_GEN,,,"/>
+<approved hash="104,1,284.48,233.68,U8,VIN,OUTDOOR_+5V,,,"/>
 <approved hash="104,1,30.48,233.68,J1,VCC,N$40,,,"/>
-<approved hash="104,1,-25.4,147.32,U9,VCC,+5V,,,"/>
-<approved hash="104,1,-101.6,254,U8,VCC,+5V_IF_EN,,,"/>
-<approved hash="104,1,-185.42,220.98,U10,VCC,+5V,,,"/>
-<approved hash="202,1,-175.26,205.74,U10,BAL_STROBE,,,,"/>
-<approved hash="202,1,-175.26,203.2,U10,BALANCE,,,,"/>
+<approved hash="104,1,-25.4,147.32,U4,VCC,+5V,,,"/>
+<approved hash="104,1,-101.6,254,U3,VCC,+5V_IF_EN,,,"/>
+<approved hash="104,1,-185.42,220.98,U2,VCC,+5V,,,"/>
+<approved hash="202,1,-175.26,205.74,U2,BAL_STROBE,,,,"/>
+<approved hash="202,1,-175.26,203.2,U2,BALANCE,,,,"/>
+<approved hash="104,1,251.46,-93.98,U9,VEE,OUTDOOR_GND,,,"/>
+<approved hash="104,1,271.78,-86.36,U9,VCC,OUTDOOR_+5V_F,,,"/>
+<approved hash="104,1,200.66,-22.86,U7,IN,OUTDOOR_+5V_F,,,"/>
+<approved hash="104,1,210.82,-33.02,U7,GND,N$17,,,"/>
+<approved hash="104,1,259.08,127,U6,GND,OUTDOOR_GND,,,"/>
+<approved hash="104,1,259.08,129.54,U6,VCC,OUTDOOR_+5V,,,"/>
+<approved hash="104,1,299.72,129.54,U6,GND1,OUTDOOR_GND,,,"/>
+<approved hash="104,1,299.72,124.46,U6,AVCC,OUTDOOR_+5V,,,"/>
+<approved hash="104,1,342.9,109.22,J10,VCC,OUTDOOR_+5V,,,"/>
+<approved hash="104,1,342.9,101.6,J10,GND,OUTDOOR_GND,,,"/>
+<approved hash="104,1,342.9,99.06,J10,GND1,OUTDOOR_GND,,,"/>
+<approved hash="105,1,116.84,125.73,N$4,,,,,"/>
 <approved hash="105,1,52.07,-86.995,N$36,,,,,"/>
 </errors>
 </schematic>

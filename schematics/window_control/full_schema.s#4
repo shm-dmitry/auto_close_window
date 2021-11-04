@@ -2563,7 +2563,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <net name="I2C_SDA" class="0">
 <segment>
 <wire x1="299.72" y1="142.24" x2="314.96" y2="142.24" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="304.8" y="139.7" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<label x="304.8" y="142.24" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 <pinref part="U6" gate="G$1" pin="PC4"/>
 </segment>
 <segment>
@@ -3075,8 +3075,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="PC3"/>
-<wire x1="299.72" y1="139.7" x2="345.44" y2="139.7" width="0.1524" layer="91"/>
-<label x="317.5" y="139.7" size="1.778" layer="95"/>
+<wire x1="299.72" y1="139.7" x2="325.12" y2="139.7" width="0.1524" layer="91"/>
+<label x="299.72" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$11" class="0">

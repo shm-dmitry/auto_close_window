@@ -3069,14 +3069,14 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="OUTDOOR_DATA_OUT" class="0">
 <segment>
-<wire x1="299.72" y1="132.08" x2="317.5" y2="132.08" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="304.8" y="132.08" size="1.778" layer="95" grouprefs="ATMEGA32"/>
-<pinref part="U6" gate="G$1" pin="PC0"/>
-</segment>
-<segment>
 <pinref part="J6" gate="G$1" pin="PIN_1"/>
 <wire x1="144.78" y1="116.84" x2="172.72" y2="116.84" width="0.1524" layer="91" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 <label x="152.4" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="PC3"/>
+<wire x1="299.72" y1="139.7" x2="345.44" y2="139.7" width="0.1524" layer="91"/>
+<label x="317.5" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -3261,32 +3261,32 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="259.08" y1="154.94" x2="259.08" y2="162.56" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <label x="218.44" y="154.94" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 <pinref part="U6" gate="G$1" pin="PC6"/>
-<wire x1="259.08" y1="144.78" x2="259.08" y2="154.94" width="0.1524" layer="91"/>
-<junction x="259.08" y="154.94"/>
+<wire x1="259.08" y1="144.78" x2="259.08" y2="154.94" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="259.08" y="154.94" grouprefs="ATMEGA32"/>
 </segment>
 </net>
 <net name="ATMEGA_TXD" class="0">
 <segment>
 <pinref part="J10" gate="G$1" pin="TXD"/>
-<wire x1="342.9" y1="106.68" x2="363.22" y2="106.68" width="0.1524" layer="91"/>
-<label x="347.98" y="106.68" size="1.778" layer="95"/>
+<wire x1="342.9" y1="106.68" x2="363.22" y2="106.68" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="347.98" y="106.68" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="PD0"/>
-<wire x1="259.08" y1="142.24" x2="220.98" y2="142.24" width="0.1524" layer="91"/>
-<label x="220.98" y="142.24" size="1.778" layer="95"/>
+<wire x1="259.08" y1="142.24" x2="220.98" y2="142.24" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="220.98" y="142.24" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 </net>
 <net name="ATMEGA_RXD" class="0">
 <segment>
 <pinref part="J10" gate="G$1" pin="RXD"/>
-<wire x1="342.9" y1="104.14" x2="363.22" y2="104.14" width="0.1524" layer="91"/>
-<label x="347.98" y="104.14" size="1.778" layer="95"/>
+<wire x1="342.9" y1="104.14" x2="363.22" y2="104.14" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="347.98" y="104.14" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="PD1"/>
-<wire x1="259.08" y1="139.7" x2="220.98" y2="139.7" width="0.1524" layer="91"/>
-<label x="220.98" y="139.7" size="1.778" layer="95"/>
+<wire x1="259.08" y1="139.7" x2="220.98" y2="139.7" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="220.98" y="139.7" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 </net>
 </nets>

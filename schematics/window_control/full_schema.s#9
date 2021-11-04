@@ -490,8 +490,8 @@
 <pad name="MISO" x="-1.27" y="-5.08" drill="0.6" shape="square"/>
 <pad name="GND1" x="1.27" y="-5.08" drill="0.6" shape="square"/>
 <pad name="GND" x="1.27" y="-2.54" drill="0.6" shape="square"/>
-<pad name="NC3" x="1.27" y="0" drill="0.6" shape="square"/>
-<pad name="NC2" x="1.27" y="2.54" drill="0.6" shape="square"/>
+<pad name="RXD" x="1.27" y="0" drill="0.6" shape="square"/>
+<pad name="TXD" x="1.27" y="2.54" drill="0.6" shape="square"/>
 <pad name="VCC" x="1.27" y="5.08" drill="0.6" shape="square"/>
 <wire x1="-2.54" y1="6.35" x2="-2.54" y2="1.27" width="0.127" layer="21"/>
 <wire x1="-2.54" y1="1.27" x2="-2.54" y2="-1.27" width="0.127" layer="21"/>
@@ -1066,8 +1066,8 @@
 <pin name="SCK" x="-10.16" y="-2.54" visible="off" length="middle"/>
 <pin name="MISO" x="-10.16" y="-5.08" visible="off" length="middle"/>
 <pin name="VCC" x="10.16" y="5.08" visible="off" length="middle" direction="pwr" rot="R180"/>
-<pin name="NC2" x="10.16" y="2.54" visible="off" length="middle" direction="nc" rot="R180"/>
-<pin name="NC3" x="10.16" y="0" visible="off" length="middle" direction="nc" rot="R180"/>
+<pin name="TXD" x="10.16" y="2.54" visible="off" length="middle" rot="R180"/>
+<pin name="RXD" x="10.16" y="0" visible="off" length="middle" rot="R180"/>
 <pin name="GND" x="10.16" y="-2.54" visible="off" length="middle" direction="pwr" rot="R180"/>
 <pin name="GND1" x="10.16" y="-5.08" visible="off" length="middle" direction="pwr" rot="R180"/>
 <wire x1="-5.08" y1="7.62" x2="-5.08" y2="1.27" width="0.254" layer="94"/>
@@ -1088,6 +1088,8 @@
 <text x="1.905" y="-5.08" size="0.8128" layer="94">GND</text>
 <text x="-1.905" y="8.255" size="0.8128" layer="94">&gt;NAME</text>
 <text x="-1.905" y="-9.525" size="0.8128" layer="94">&gt;VALUE</text>
+<text x="1.905" y="0" size="0.8128" layer="94">RXD</text>
+<text x="1.905" y="2.54" size="0.8128" layer="94">TXD</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1657,10 +1659,10 @@
 <connect gate="G$1" pin="MISO" pad="MISO"/>
 <connect gate="G$1" pin="MOSI" pad="MOSI"/>
 <connect gate="G$1" pin="NC1" pad="NC1"/>
-<connect gate="G$1" pin="NC2" pad="NC2"/>
-<connect gate="G$1" pin="NC3" pad="NC3"/>
 <connect gate="G$1" pin="RESET" pad="RST"/>
+<connect gate="G$1" pin="RXD" pad="RXD"/>
 <connect gate="G$1" pin="SCK" pad="SCK"/>
+<connect gate="G$1" pin="TXD" pad="TXD"/>
 <connect gate="G$1" pin="VCC" pad="VCC"/>
 </connects>
 <technologies>
@@ -2455,8 +2457,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="299.72" y1="127" x2="317.5" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <label x="304.8" y="127" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 <pinref part="U6" gate="G$1" pin="AVCC"/>
-<wire x1="299.72" y1="124.46" x2="299.72" y2="127" width="0.1524" layer="91"/>
-<junction x="299.72" y="127"/>
+<wire x1="299.72" y1="124.46" x2="299.72" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="299.72" y="127" grouprefs="ATMEGA32"/>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="VCC"/>
@@ -3260,6 +3262,20 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="213.36" y1="137.16" x2="254" y2="137.16" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <wire x1="254" y1="137.16" x2="254" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
 <label x="213.36" y="137.16" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="ATMEGA_TXD" class="0">
+<segment>
+<pinref part="J10" gate="G$1" pin="TXD"/>
+<wire x1="342.9" y1="106.68" x2="363.22" y2="106.68" width="0.1524" layer="91"/>
+<label x="347.98" y="106.68" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="ATMEGA_RXD" class="0">
+<segment>
+<pinref part="J10" gate="G$1" pin="RXD"/>
+<wire x1="342.9" y1="104.14" x2="363.22" y2="104.14" width="0.1524" layer="91"/>
+<label x="347.98" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

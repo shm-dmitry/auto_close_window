@@ -443,6 +443,66 @@
 <text x="-1.27" y="1.27" size="0.6096" layer="21">gnd</text>
 <text x="2.54" y="1.27" size="0.6096" layer="21">out</text>
 </package>
+<package name="ATMEGA328P">
+<pad name="VCC" x="-3.81" y="0" drill="0.6" shape="square"/>
+<pad name="GND" x="-3.81" y="-2.54" drill="0.6" shape="square"/>
+<pad name="PD4" x="-3.81" y="2.54" drill="0.6" shape="square"/>
+<pad name="PB6" x="-3.81" y="-5.08" drill="0.6" shape="square"/>
+<pad name="PD3" x="-3.81" y="5.08" drill="0.6" shape="square"/>
+<pad name="PB7" x="-3.81" y="-7.62" drill="0.6" shape="square"/>
+<pad name="PD2" x="-3.81" y="7.62" drill="0.6" shape="square"/>
+<pad name="PD5" x="-3.81" y="-10.16" drill="0.6" shape="square"/>
+<pad name="PD1" x="-3.81" y="10.16" drill="0.6" shape="square"/>
+<pad name="PD6" x="-3.81" y="-12.7" drill="0.6" shape="square"/>
+<pad name="PD0" x="-3.81" y="12.7" drill="0.6" shape="square"/>
+<pad name="PD7" x="-3.81" y="-15.24" drill="0.6" shape="square"/>
+<pad name="PC6" x="-3.81" y="15.24" drill="0.6" shape="square"/>
+<pad name="PB0" x="-3.81" y="-17.78" drill="0.6" shape="square"/>
+<pad name="PB1" x="3.81" y="-17.78" drill="0.6" shape="square"/>
+<pad name="PB2" x="3.81" y="-15.24" drill="0.6" shape="square"/>
+<pad name="PB3" x="3.81" y="-12.7" drill="0.6" shape="square"/>
+<pad name="PB4" x="3.81" y="-10.16" drill="0.6" shape="square"/>
+<pad name="PB5" x="3.81" y="-7.62" drill="0.6" shape="square"/>
+<pad name="AVCC" x="3.81" y="-5.08" drill="0.6" shape="square"/>
+<pad name="AREF" x="3.81" y="-2.54" drill="0.6" shape="square"/>
+<pad name="GND1" x="3.81" y="0" drill="0.6" shape="square"/>
+<pad name="PC0" x="3.81" y="2.54" drill="0.6" shape="square"/>
+<pad name="PC1" x="3.81" y="5.08" drill="0.6" shape="square"/>
+<pad name="PC2" x="3.81" y="7.62" drill="0.6" shape="square"/>
+<pad name="PC3" x="3.81" y="10.16" drill="0.6" shape="square"/>
+<pad name="PC4" x="3.81" y="12.7" drill="0.6" shape="square"/>
+<pad name="PC5" x="3.81" y="15.24" drill="0.6" shape="square"/>
+<wire x1="-5.08" y1="16.51" x2="-5.08" y2="-19.05" width="0.127" layer="21"/>
+<wire x1="-5.08" y1="-19.05" x2="5.08" y2="-19.05" width="0.127" layer="21"/>
+<wire x1="5.08" y1="-19.05" x2="5.08" y2="16.51" width="0.127" layer="21"/>
+<wire x1="5.08" y1="16.51" x2="1.27" y2="16.51" width="0.127" layer="21"/>
+<wire x1="1.27" y1="16.51" x2="-1.27" y2="16.51" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="16.51" x2="-5.08" y2="16.51" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="16.51" x2="-1.27" y2="15.24" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="15.24" x2="1.27" y2="15.24" width="0.127" layer="21"/>
+<wire x1="1.27" y1="15.24" x2="1.27" y2="16.51" width="0.127" layer="21"/>
+</package>
+<package name="USBASP_PIN">
+<pad name="RST" x="-1.27" y="0" drill="0.6" shape="square"/>
+<pad name="NC1" x="-1.27" y="2.54" drill="0.6" shape="square"/>
+<pad name="MOSI" x="-1.27" y="5.08" drill="0.6" shape="square"/>
+<pad name="SCK" x="-1.27" y="-2.54" drill="0.6" shape="square"/>
+<pad name="MISO" x="-1.27" y="-5.08" drill="0.6" shape="square"/>
+<pad name="GND1" x="1.27" y="-5.08" drill="0.6" shape="square"/>
+<pad name="GND" x="1.27" y="-2.54" drill="0.6" shape="square"/>
+<pad name="NC3" x="1.27" y="0" drill="0.6" shape="square"/>
+<pad name="NC2" x="1.27" y="2.54" drill="0.6" shape="square"/>
+<pad name="VCC" x="1.27" y="5.08" drill="0.6" shape="square"/>
+<wire x1="-2.54" y1="6.35" x2="-2.54" y2="1.27" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.27" x2="-2.54" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-1.27" x2="-2.54" y2="-6.35" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-6.35" x2="2.54" y2="-6.35" width="0.127" layer="21"/>
+<wire x1="2.54" y1="-6.35" x2="2.54" y2="6.35" width="0.127" layer="21"/>
+<wire x1="2.54" y1="6.35" x2="-2.54" y2="6.35" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.27" x2="-3.81" y2="1.27" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="1.27" x2="-3.81" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="-1.27" x2="-2.54" y2="-1.27" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="ACDC">
@@ -929,6 +989,105 @@
 <text x="-3.81" y="2.54" size="1.778" layer="94">in</text>
 <text x="-2.54" y="-1.27" size="1.778" layer="94">GND</text>
 <text x="1.27" y="2.54" size="1.778" layer="94">out</text>
+</symbol>
+<symbol name="ATMEGA328P">
+<pin name="GND" x="-20.32" y="0" visible="off" length="middle" direction="pwr"/>
+<pin name="VCC" x="-20.32" y="2.54" visible="off" length="middle" direction="pwr"/>
+<pin name="PB6" x="-20.32" y="-2.54" visible="off" length="middle"/>
+<pin name="PD4" x="-20.32" y="5.08" visible="off" length="middle"/>
+<pin name="PB7" x="-20.32" y="-5.08" visible="off" length="middle"/>
+<pin name="PD3" x="-20.32" y="7.62" visible="off" length="middle"/>
+<pin name="PD5" x="-20.32" y="-7.62" visible="off" length="middle"/>
+<pin name="PD2" x="-20.32" y="10.16" visible="off" length="middle"/>
+<pin name="PD6" x="-20.32" y="-10.16" visible="off" length="middle"/>
+<pin name="PD1" x="-20.32" y="12.7" visible="off" length="middle"/>
+<pin name="PD7" x="-20.32" y="-12.7" visible="off" length="middle"/>
+<pin name="PD0" x="-20.32" y="15.24" visible="off" length="middle"/>
+<pin name="PB0" x="-20.32" y="-15.24" visible="off" length="middle"/>
+<pin name="PC6" x="-20.32" y="17.78" visible="off" length="middle"/>
+<pin name="PC5" x="20.32" y="17.78" visible="off" length="middle" rot="R180"/>
+<pin name="PC4" x="20.32" y="15.24" visible="off" length="middle" rot="R180"/>
+<pin name="PC3" x="20.32" y="12.7" visible="off" length="middle" rot="R180"/>
+<pin name="PC2" x="20.32" y="10.16" visible="off" length="middle" rot="R180"/>
+<pin name="PC1" x="20.32" y="7.62" visible="off" length="middle" rot="R180"/>
+<pin name="PC0" x="20.32" y="5.08" visible="off" length="middle" rot="R180"/>
+<pin name="GND1" x="20.32" y="2.54" visible="off" length="middle" direction="pwr" rot="R180"/>
+<pin name="AREF" x="20.32" y="0" visible="off" length="middle" rot="R180"/>
+<pin name="AVCC" x="20.32" y="-2.54" visible="off" length="middle" direction="pwr" rot="R180"/>
+<pin name="PB5" x="20.32" y="-5.08" visible="off" length="middle" rot="R180"/>
+<pin name="PB4" x="20.32" y="-7.62" visible="off" length="middle" rot="R180"/>
+<pin name="PB3" x="20.32" y="-10.16" visible="off" length="middle" rot="R180"/>
+<pin name="PB2" x="20.32" y="-12.7" visible="off" length="middle" rot="R180"/>
+<pin name="PB1" x="20.32" y="-15.24" visible="off" length="middle" rot="R180"/>
+<text x="-15.24" y="17.78" size="0.8128" layer="94">(PCINT14/RESET) PC6</text>
+<text x="-15.24" y="15.24" size="0.8128" layer="94">(PCINT16/RXD) PD0</text>
+<text x="-15.24" y="12.7" size="0.8128" layer="94">(PCINT17/TXD) PD1</text>
+<text x="-15.24" y="10.16" size="0.8128" layer="94">(PCINT18/INT0) PD2</text>
+<text x="-15.24" y="7.62" size="0.8128" layer="94">(PCINT19/OC2B/INT1) PD3</text>
+<text x="-15.24" y="5.08" size="0.8128" layer="94">(PCINT20/XCK/T0) PD4</text>
+<text x="-12.7" y="2.54" size="0.8128" layer="94">VCC</text>
+<text x="-12.7" y="0" size="0.8128" layer="94">GND</text>
+<text x="-15.24" y="-2.54" size="0.8128" layer="94">(PCINT6/XTAL1/TOSC1) PB6</text>
+<text x="-15.24" y="-5.08" size="0.8128" layer="94">(PCINT7/XTAL2/TOSC2) PB7</text>
+<text x="-15.24" y="-7.62" size="0.8128" layer="94">(PCINT21/OC0B/T1) PD5</text>
+<text x="-15.24" y="-10.16" size="0.8128" layer="94">(PCINT22/OC0A/AIN0) PD6</text>
+<text x="-15.24" y="-12.7" size="0.8128" layer="94">(PCINT23/AIN1) PD7</text>
+<text x="-15.24" y="-15.24" size="0.8128" layer="94">(PCINT0/CLKO/ICP1) PB0</text>
+<text x="0" y="17.78" size="0.8128" layer="94">PC5 (ADC5/SCL/PCINT13)</text>
+<text x="0" y="15.24" size="0.8128" layer="94">PC4 (ADC4/SDA/PCINT12)</text>
+<text x="2.54" y="12.7" size="0.8128" layer="94">PC3 (ADC3/PCINT11)</text>
+<text x="2.54" y="10.16" size="0.8128" layer="94">PC2 (ADC2/PCINT10)</text>
+<text x="2.54" y="7.62" size="0.8128" layer="94">PC1 (ADC1/PCINT9)</text>
+<text x="2.54" y="5.08" size="0.8128" layer="94">PC0 (ADC0/PCINT8)</text>
+<text x="7.62" y="2.54" size="0.8128" layer="94">GND</text>
+<text x="7.62" y="0" size="0.8128" layer="94">AREF</text>
+<text x="7.62" y="-2.54" size="0.8128" layer="94">AVCC</text>
+<text x="2.54" y="-5.08" size="0.8128" layer="94">PB5 (SCK/PCINT5)</text>
+<text x="2.54" y="-7.62" size="0.8128" layer="94">PB4 (MISO/PCINT4)</text>
+<text x="0" y="-10.16" size="0.8128" layer="94">PB3 (MOSI/OC2A/PCINT3)</text>
+<text x="0" y="-12.7" size="0.8128" layer="94">PB2 (SS/OC1B/PCINT2)</text>
+<text x="2.54" y="-15.24" size="0.8128" layer="94">PB1 (OC1A/PCINT1)</text>
+<wire x1="-15.24" y1="22.86" x2="-15.24" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-20.32" x2="15.24" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-20.32" x2="15.24" y2="22.86" width="0.254" layer="94"/>
+<wire x1="15.24" y1="22.86" x2="2.54" y2="22.86" width="0.254" layer="94"/>
+<wire x1="2.54" y1="22.86" x2="-2.54" y2="22.86" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="22.86" x2="-15.24" y2="22.86" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="22.86" x2="-2.54" y2="20.32" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="20.32" x2="2.54" y2="20.32" width="0.254" layer="94"/>
+<wire x1="2.54" y1="20.32" x2="2.54" y2="22.86" width="0.254" layer="94"/>
+<text x="-5.08" y="25.4" size="1.778" layer="94">&gt;NAME</text>
+<text x="-5.08" y="-25.4" size="1.778" layer="94">&gt;VALUE</text>
+</symbol>
+<symbol name="USBASP_PIN">
+<pin name="MOSI" x="-10.16" y="5.08" visible="off" length="middle"/>
+<pin name="NC1" x="-10.16" y="2.54" visible="off" length="middle" direction="nc"/>
+<pin name="RESET" x="-10.16" y="0" visible="off" length="middle"/>
+<pin name="SCK" x="-10.16" y="-2.54" visible="off" length="middle"/>
+<pin name="MISO" x="-10.16" y="-5.08" visible="off" length="middle"/>
+<pin name="VCC" x="10.16" y="5.08" visible="off" length="middle" direction="pwr" rot="R180"/>
+<pin name="NC2" x="10.16" y="2.54" visible="off" length="middle" direction="nc" rot="R180"/>
+<pin name="NC3" x="10.16" y="0" visible="off" length="middle" direction="nc" rot="R180"/>
+<pin name="GND" x="10.16" y="-2.54" visible="off" length="middle" direction="pwr" rot="R180"/>
+<pin name="GND1" x="10.16" y="-5.08" visible="off" length="middle" direction="pwr" rot="R180"/>
+<wire x1="-5.08" y1="7.62" x2="-5.08" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="1.27" x2="-5.08" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="1.27" x2="-3.81" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="1.27" x2="-3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-1.27" x2="-5.08" y2="-1.27" width="0.254" layer="94"/>
+<text x="-3.81" y="5.08" size="0.8128" layer="94">MOSI</text>
+<text x="-3.175" y="0" size="0.8128" layer="94">RST</text>
+<text x="-3.81" y="-2.54" size="0.8128" layer="94">SCK</text>
+<text x="-3.81" y="-5.08" size="0.8128" layer="94">MISO</text>
+<text x="1.905" y="5.08" size="0.8128" layer="94">VCC</text>
+<text x="1.905" y="-2.54" size="0.8128" layer="94">GND</text>
+<text x="1.905" y="-5.08" size="0.8128" layer="94">GND</text>
+<text x="-1.905" y="8.255" size="0.8128" layer="94">&gt;NAME</text>
+<text x="-1.905" y="-9.525" size="0.8128" layer="94">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1444,6 +1603,72 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="ATMEGA328P" prefix="U">
+<gates>
+<gate name="G$1" symbol="ATMEGA328P" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="ATMEGA328P">
+<connects>
+<connect gate="G$1" pin="AREF" pad="AREF"/>
+<connect gate="G$1" pin="AVCC" pad="AVCC"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GND1" pad="GND1"/>
+<connect gate="G$1" pin="PB0" pad="PB0"/>
+<connect gate="G$1" pin="PB1" pad="PB1"/>
+<connect gate="G$1" pin="PB2" pad="PB2"/>
+<connect gate="G$1" pin="PB3" pad="PB3"/>
+<connect gate="G$1" pin="PB4" pad="PB4"/>
+<connect gate="G$1" pin="PB5" pad="PB5"/>
+<connect gate="G$1" pin="PB6" pad="PB6"/>
+<connect gate="G$1" pin="PB7" pad="PB7"/>
+<connect gate="G$1" pin="PC0" pad="PC0"/>
+<connect gate="G$1" pin="PC1" pad="PC1"/>
+<connect gate="G$1" pin="PC2" pad="PC2"/>
+<connect gate="G$1" pin="PC3" pad="PC3"/>
+<connect gate="G$1" pin="PC4" pad="PC4"/>
+<connect gate="G$1" pin="PC5" pad="PC5"/>
+<connect gate="G$1" pin="PC6" pad="PC6"/>
+<connect gate="G$1" pin="PD0" pad="PD0"/>
+<connect gate="G$1" pin="PD1" pad="PD1"/>
+<connect gate="G$1" pin="PD2" pad="PD2"/>
+<connect gate="G$1" pin="PD3" pad="PD3"/>
+<connect gate="G$1" pin="PD4" pad="PD4"/>
+<connect gate="G$1" pin="PD5" pad="PD5"/>
+<connect gate="G$1" pin="PD6" pad="PD6"/>
+<connect gate="G$1" pin="PD7" pad="PD7"/>
+<connect gate="G$1" pin="VCC" pad="VCC"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="USBASP_PIN" prefix="J">
+<gates>
+<gate name="G$1" symbol="USBASP_PIN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="USBASP_PIN">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GND1" pad="GND1"/>
+<connect gate="G$1" pin="MISO" pad="MISO"/>
+<connect gate="G$1" pin="MOSI" pad="MOSI"/>
+<connect gate="G$1" pin="NC1" pad="NC1"/>
+<connect gate="G$1" pin="NC2" pad="NC2"/>
+<connect gate="G$1" pin="NC3" pad="NC3"/>
+<connect gate="G$1" pin="RESET" pad="RST"/>
+<connect gate="G$1" pin="SCK" pad="SCK"/>
+<connect gate="G$1" pin="VCC" pad="VCC"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="supply2" urn="urn:adsk.eagle:library:372">
@@ -1512,201 +1737,6 @@ In this library the device names are the same as the pin names of the symbols, t
 </deviceset>
 </devicesets>
 </library>
-<library name="atmel" urn="urn:adsk.eagle:library:105">
-<description>&lt;b&gt;AVR Devices&lt;/b&gt;&lt;p&gt;
-Configurable logic, microcontrollers, nonvolatile memories&lt;p&gt;
-Based on the following sources:&lt;p&gt;
-&lt;ul&gt;
-&lt;li&gt;www.atmel.com
-&lt;li&gt;CD-ROM : Configurable Logic Microcontroller Nonvolatile Memory
-&lt;li&gt;CadSoft download site, www.cadsoft.de or www.cadsoftusa.com , file at90smcu_v400.zip
-&lt;li&gt;avr.lbr
-&lt;/ul&gt;
-&lt;author&gt;Revised by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="DIL40" urn="urn:adsk.eagle:footprint:4151/1" library_version="5">
-<description>&lt;B&gt;Dual In Line&lt;/B&gt;</description>
-<wire x1="-26.416" y1="-1.27" x2="-26.416" y2="-6.604" width="0.1524" layer="21"/>
-<wire x1="-26.416" y1="1.27" x2="-26.416" y2="-1.27" width="0.1524" layer="21" curve="-180"/>
-<wire x1="26.416" y1="-6.604" x2="26.416" y2="6.604" width="0.1524" layer="21"/>
-<wire x1="-26.416" y1="6.604" x2="-26.416" y2="1.27" width="0.1524" layer="21"/>
-<wire x1="-26.416" y1="6.604" x2="26.416" y2="6.604" width="0.1524" layer="21"/>
-<wire x1="-26.416" y1="-6.604" x2="26.416" y2="-6.604" width="0.1524" layer="21"/>
-<pad name="1" x="-24.13" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="2" x="-21.59" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="3" x="-19.05" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="4" x="-16.51" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="5" x="-13.97" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="6" x="-11.43" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="7" x="-8.89" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="8" x="-6.35" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="9" x="-3.81" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="10" x="-1.27" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="11" x="1.27" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="12" x="3.81" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="13" x="6.35" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="14" x="8.89" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="15" x="11.43" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="16" x="13.97" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="17" x="16.51" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="18" x="19.05" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="19" x="21.59" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="20" x="24.13" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="21" x="24.13" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="22" x="21.59" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="23" x="19.05" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="24" x="16.51" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="25" x="13.97" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="26" x="11.43" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="27" x="8.89" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="28" x="6.35" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="29" x="3.81" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="30" x="1.27" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="31" x="-1.27" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="32" x="-3.81" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="33" x="-6.35" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="34" x="-8.89" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="35" x="-11.43" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="36" x="-13.97" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="37" x="-16.51" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="38" x="-19.05" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="39" x="-21.59" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<pad name="40" x="-24.13" y="7.62" drill="0.8128" shape="long" rot="R90"/>
-<text x="-26.67" y="-6.35" size="1.778" layer="25" ratio="10" rot="R90">&gt;NAME</text>
-<text x="-21.59" y="-2.2352" size="1.778" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-</packages>
-<packages3d>
-<package3d name="DIL40" urn="urn:adsk.eagle:package:4314/1" type="box" library_version="5">
-<description>Dual In Line</description>
-<packageinstances>
-<packageinstance name="DIL40"/>
-</packageinstances>
-</package3d>
-</packages3d>
-<symbols>
-<symbol name="32-I/O-M32-P" urn="urn:adsk.eagle:symbol:4247/1" library_version="5">
-<wire x1="-15.24" y1="45.72" x2="15.24" y2="45.72" width="0.254" layer="94"/>
-<wire x1="15.24" y1="45.72" x2="15.24" y2="-45.72" width="0.254" layer="94"/>
-<wire x1="15.24" y1="-45.72" x2="-15.24" y2="-45.72" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-45.72" x2="-15.24" y2="45.72" width="0.254" layer="94"/>
-<text x="-15.24" y="46.482" size="1.778" layer="95">&gt;NAME</text>
-<text x="-15.24" y="-48.26" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="(ADC7)PA7" x="20.32" y="43.18" length="middle" rot="R180"/>
-<pin name="(ADC6)PA6" x="20.32" y="40.64" length="middle" rot="R180"/>
-<pin name="(ADC5)PA5" x="20.32" y="38.1" length="middle" rot="R180"/>
-<pin name="(ADC4)PA4" x="20.32" y="35.56" length="middle" rot="R180"/>
-<pin name="(ADC3)PA3" x="20.32" y="33.02" length="middle" rot="R180"/>
-<pin name="(ADC2)PA2" x="20.32" y="30.48" length="middle" rot="R180"/>
-<pin name="(ADC1)PA1" x="20.32" y="27.94" length="middle" rot="R180"/>
-<pin name="(ADC0)PA0" x="20.32" y="25.4" length="middle" rot="R180"/>
-<pin name="(SCK)PB7" x="20.32" y="20.32" length="middle" rot="R180"/>
-<pin name="(MISO)PB6" x="20.32" y="17.78" length="middle" rot="R180"/>
-<pin name="(MOSI)PB5" x="20.32" y="15.24" length="middle" rot="R180"/>
-<pin name="(SS)PB4" x="20.32" y="12.7" length="middle" rot="R180"/>
-<pin name="(AIN1/OC0)PB3" x="20.32" y="10.16" length="middle" rot="R180"/>
-<pin name="(AIN0/INT2)PB2" x="20.32" y="7.62" length="middle" rot="R180"/>
-<pin name="(T1)PB1" x="20.32" y="5.08" length="middle" rot="R180"/>
-<pin name="(T0/XCK)PB0" x="20.32" y="2.54" length="middle" rot="R180"/>
-<pin name="(TOSC2)PC7" x="20.32" y="-2.54" length="middle" rot="R180"/>
-<pin name="(TOSC1)PC6" x="20.32" y="-5.08" length="middle" rot="R180"/>
-<pin name="(TDI)PC5" x="20.32" y="-7.62" length="middle" rot="R180"/>
-<pin name="(TDO)PC4" x="20.32" y="-10.16" length="middle" rot="R180"/>
-<pin name="(TMS)PC3" x="20.32" y="-12.7" length="middle" rot="R180"/>
-<pin name="(TCK)PC2" x="20.32" y="-15.24" length="middle" rot="R180"/>
-<pin name="(SDA)PC1" x="20.32" y="-17.78" length="middle" rot="R180"/>
-<pin name="(SCL)PC0" x="20.32" y="-20.32" length="middle" rot="R180"/>
-<pin name="GND@1" x="-20.32" y="20.32" length="middle" direction="pwr"/>
-<pin name="AVCC" x="-20.32" y="22.86" length="middle" direction="pwr"/>
-<pin name="AREF" x="-20.32" y="25.4" length="middle" direction="pas"/>
-<pin name="XTAL1" x="-20.32" y="30.48" length="middle"/>
-<pin name="XTAL2" x="-20.32" y="35.56" length="middle"/>
-<pin name="VCC" x="-20.32" y="15.24" length="middle" direction="pwr"/>
-<pin name="GND" x="-20.32" y="12.7" length="middle" direction="pwr"/>
-<pin name="RESET" x="-20.32" y="43.18" length="middle" direction="in" function="dot"/>
-<pin name="(RXD)PD0" x="20.32" y="-43.18" length="middle" rot="R180"/>
-<pin name="(TXD)PD1" x="20.32" y="-40.64" length="middle" rot="R180"/>
-<pin name="(INT0)PD2" x="20.32" y="-38.1" length="middle" rot="R180"/>
-<pin name="(INT1)PD3" x="20.32" y="-35.56" length="middle" rot="R180"/>
-<pin name="(OC1B)PD4" x="20.32" y="-33.02" length="middle" rot="R180"/>
-<pin name="(OC1A)PD5" x="20.32" y="-30.48" length="middle" rot="R180"/>
-<pin name="(ICP)PD6" x="20.32" y="-27.94" length="middle" rot="R180"/>
-<pin name="(OC2)PD7" x="20.32" y="-25.4" length="middle" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="MEGA32-P" urn="urn:adsk.eagle:component:4372/2" prefix="IC" library_version="5">
-<description>&lt;b&gt;MICROCONTROLLER&lt;/b&gt;&lt;p&gt;
-32 Kbytes FLASH&lt;br&gt;
-2 Kbytes SRAM&lt;br&gt;
-1 Kbytes EEPROM&lt;br&gt;
-USART&lt;br&gt;
-8-channel 10 bit ADC&lt;br&gt;
-Source: www.atmel.com .. doc2503.pdf</description>
-<gates>
-<gate name="G$1" symbol="32-I/O-M32-P" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="DIL40">
-<connects>
-<connect gate="G$1" pin="(ADC0)PA0" pad="40"/>
-<connect gate="G$1" pin="(ADC1)PA1" pad="39"/>
-<connect gate="G$1" pin="(ADC2)PA2" pad="38"/>
-<connect gate="G$1" pin="(ADC3)PA3" pad="37"/>
-<connect gate="G$1" pin="(ADC4)PA4" pad="36"/>
-<connect gate="G$1" pin="(ADC5)PA5" pad="35"/>
-<connect gate="G$1" pin="(ADC6)PA6" pad="34"/>
-<connect gate="G$1" pin="(ADC7)PA7" pad="33"/>
-<connect gate="G$1" pin="(AIN0/INT2)PB2" pad="3"/>
-<connect gate="G$1" pin="(AIN1/OC0)PB3" pad="4"/>
-<connect gate="G$1" pin="(ICP)PD6" pad="20"/>
-<connect gate="G$1" pin="(INT0)PD2" pad="16"/>
-<connect gate="G$1" pin="(INT1)PD3" pad="17"/>
-<connect gate="G$1" pin="(MISO)PB6" pad="7"/>
-<connect gate="G$1" pin="(MOSI)PB5" pad="6"/>
-<connect gate="G$1" pin="(OC1A)PD5" pad="19"/>
-<connect gate="G$1" pin="(OC1B)PD4" pad="18"/>
-<connect gate="G$1" pin="(OC2)PD7" pad="21"/>
-<connect gate="G$1" pin="(RXD)PD0" pad="14"/>
-<connect gate="G$1" pin="(SCK)PB7" pad="8"/>
-<connect gate="G$1" pin="(SCL)PC0" pad="22"/>
-<connect gate="G$1" pin="(SDA)PC1" pad="23"/>
-<connect gate="G$1" pin="(SS)PB4" pad="5"/>
-<connect gate="G$1" pin="(T0/XCK)PB0" pad="1"/>
-<connect gate="G$1" pin="(T1)PB1" pad="2"/>
-<connect gate="G$1" pin="(TCK)PC2" pad="24"/>
-<connect gate="G$1" pin="(TDI)PC5" pad="27"/>
-<connect gate="G$1" pin="(TDO)PC4" pad="26"/>
-<connect gate="G$1" pin="(TMS)PC3" pad="25"/>
-<connect gate="G$1" pin="(TOSC1)PC6" pad="28"/>
-<connect gate="G$1" pin="(TOSC2)PC7" pad="29"/>
-<connect gate="G$1" pin="(TXD)PD1" pad="15"/>
-<connect gate="G$1" pin="AREF" pad="32"/>
-<connect gate="G$1" pin="AVCC" pad="30"/>
-<connect gate="G$1" pin="GND" pad="11"/>
-<connect gate="G$1" pin="GND@1" pad="31"/>
-<connect gate="G$1" pin="RESET" pad="9"/>
-<connect gate="G$1" pin="VCC" pad="10"/>
-<connect gate="G$1" pin="XTAL1" pad="13"/>
-<connect gate="G$1" pin="XTAL2" pad="12"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:4314/1"/>
-</package3dinstances>
-<technologies>
-<technology name="">
-<attribute name="MF" value="" constant="no"/>
-<attribute name="MPN" value="ATMEGA32-16PU" constant="no"/>
-<attribute name="OC_FARNELL" value="1661729" constant="no"/>
-<attribute name="OC_NEWARK" value="51P1794" constant="no"/>
-<attribute name="POPULARITY" value="1" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1739,10 +1769,7 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="TS1" library="my_devices" deviceset="TOUCH_SENSOR" device=""/>
 <part name="TS2" library="my_devices" deviceset="TOUCH_SENSOR" device=""/>
-<part name="IC1" library="atmel" library_urn="urn:adsk.eagle:library:105" deviceset="MEGA32-P" device="" package3d_urn="urn:adsk.eagle:package:4314/1"/>
-<part name="C11" library="my_devices" deviceset="C" device="" value="0.22 uF"/>
 <part name="R20" library="my_devices" deviceset="R" device="" value="10K"/>
-<part name="C10" library="my_devices" deviceset="C" device="" value="10 uF"/>
 <part name="U5" library="my_devices" deviceset="BME280" device="" value="BMP280 / 5V"/>
 <part name="U8" library="my_devices" deviceset="GY-SGP30" device=""/>
 <part name="X1" library="my_devices" deviceset="X" device="" value="HC-49S (16MHZ)"/>
@@ -1825,6 +1852,9 @@ Source: www.atmel.com .. doc2503.pdf</description>
 <part name="R19" library="my_devices" deviceset="R" device="" value="200K"/>
 <part name="L3" library="my_devices" deviceset="L" device="" value="560 uH"/>
 <part name="C13" library="my_devices" deviceset="C" device="" value="10 uF"/>
+<part name="U6" library="my_devices" deviceset="ATMEGA328P" device=""/>
+<part name="C10" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
+<part name="J10" library="my_devices" deviceset="USBASP_PIN" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1838,7 +1868,7 @@ Mosfet required &gt;8V</text>
 <text x="256.54" y="342.9" size="5.08" layer="91">Outdoor module</text>
 <text x="-162.56" y="114.3" size="1.778" layer="91" grouprefs="ESP">5V</text>
 <text x="-185.42" y="111.76" size="1.778" layer="91" grouprefs="ESP">3V3</text>
-<text x="246.38" y="-20.32" size="1.778" layer="91" grouprefs="NOISE">Initial power in OUTDOOR_MIDDLEPOINT is 2.5V
+<text x="246.38" y="-20.32" size="1.778" layer="91" grouprefs="NOISE">Initial voltage in OUTDOOR_MIDDLEPOINT is 2.5V
 You needs to ajust it using osciloscope by measuring NOISE_LEVEL signal.
 In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </plain>
@@ -1868,21 +1898,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <instance part="TS2" gate="G$1" x="-27.94" y="-15.24" smashed="yes" grouprefs="OPEN-CLOSE">
 <attribute name="NAME" x="-33.02" y="-10.16" size="1.778" layer="94"/>
 </instance>
-<instance part="IC1" gate="G$1" x="269.24" y="116.84" smashed="yes" grouprefs="ATMEGA32">
-<attribute name="NAME" x="254" y="163.322" size="1.778" layer="95"/>
-<attribute name="VALUE" x="254" y="68.58" size="1.778" layer="96"/>
-</instance>
-<instance part="C11" gate="G$1" x="241.3" y="124.46" smashed="yes" rot="R270" grouprefs="ATMEGA32">
-<attribute name="NAME" x="246.38" y="129.54" size="1.778" layer="94" rot="R270"/>
-<attribute name="VALUE" x="233.68" y="129.54" size="1.778" layer="94" rot="R270"/>
-</instance>
-<instance part="R20" gate="G$1" x="243.84" y="172.72" smashed="yes" rot="R90" grouprefs="ATMEGA32">
-<attribute name="NAME" x="241.3" y="166.37" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="247.65" y="166.37" size="1.778" layer="94" rot="R90"/>
-</instance>
-<instance part="C10" gate="G$1" x="233.68" y="160.02" smashed="yes" rot="R180" grouprefs="ATMEGA32">
-<attribute name="NAME" x="238.76" y="154.94" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="238.76" y="167.64" size="1.778" layer="94" rot="R180"/>
+<instance part="R20" gate="G$1" x="254" y="152.4" smashed="yes" rot="R90" grouprefs="ATMEGA32">
+<attribute name="NAME" x="251.46" y="146.05" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="257.81" y="146.05" size="1.778" layer="94" rot="R90"/>
 </instance>
 <instance part="U5" gate="G$1" x="190.5" y="228.6" smashed="yes" grouprefs="BME_280_TEMP_HUM1">
 <attribute name="NAME" x="195.58" y="238.76" size="1.778" layer="94"/>
@@ -1890,17 +1908,17 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <instance part="U8" gate="G$1" x="292.1" y="231.14" smashed="yes" grouprefs="GY-SGP30">
 <attribute name="NAME" x="289.56" y="241.3" size="1.778" layer="94"/>
 </instance>
-<instance part="X1" gate="G$1" x="231.14" y="146.05" smashed="yes" rot="R90" grouprefs="ATMEGA32">
-<attribute name="NAME" x="228.6" y="140.97" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="235.585" y="140.97" size="1.778" layer="94" rot="R90"/>
+<instance part="X1" gate="G$1" x="231.14" y="110.49" smashed="yes" rot="R90" grouprefs="ATMEGA32">
+<attribute name="NAME" x="228.6" y="105.41" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="235.585" y="105.41" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="C7" gate="G$1" x="213.36" y="152.4" smashed="yes" grouprefs="ATMEGA32">
-<attribute name="NAME" x="208.915" y="155.575" size="1.778" layer="94"/>
-<attribute name="VALUE" x="208.915" y="147.32" size="1.778" layer="94"/>
+<instance part="C7" gate="G$1" x="220.98" y="116.84" smashed="yes" grouprefs="ATMEGA32">
+<attribute name="NAME" x="216.535" y="120.015" size="1.778" layer="94"/>
+<attribute name="VALUE" x="216.535" y="111.76" size="1.778" layer="94"/>
 </instance>
-<instance part="C8" gate="G$1" x="213.36" y="139.7" smashed="yes" grouprefs="ATMEGA32">
-<attribute name="NAME" x="208.915" y="142.875" size="1.778" layer="94"/>
-<attribute name="VALUE" x="208.915" y="134.62" size="1.778" layer="94"/>
+<instance part="C8" gate="G$1" x="220.98" y="104.14" smashed="yes" grouprefs="ATMEGA32">
+<attribute name="NAME" x="216.535" y="107.315" size="1.778" layer="94"/>
+<attribute name="VALUE" x="216.535" y="99.06" size="1.778" layer="94"/>
 </instance>
 <instance part="B1" gate="G$1" x="-53.34" y="66.04" smashed="yes" grouprefs="HALL_SENSOR">
 <attribute name="NAME" x="-45.72" y="66.04" size="1.778" layer="94"/>
@@ -2194,6 +2212,18 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="228.6" y="17.78" size="1.778" layer="94" rot="R270"/>
 <attribute name="VALUE" x="215.9" y="17.78" size="1.778" layer="94" rot="R270"/>
 </instance>
+<instance part="U6" gate="G$1" x="279.4" y="127" smashed="yes" grouprefs="ATMEGA32">
+<attribute name="NAME" x="274.32" y="152.4" size="1.778" layer="94"/>
+<attribute name="VALUE" x="274.32" y="101.6" size="1.778" layer="94"/>
+</instance>
+<instance part="C10" gate="G$1" x="241.3" y="144.78" smashed="yes" grouprefs="ATMEGA32">
+<attribute name="NAME" x="236.855" y="147.955" size="1.778" layer="94"/>
+<attribute name="VALUE" x="236.855" y="139.7" size="1.778" layer="94"/>
+</instance>
+<instance part="J10" gate="G$1" x="332.74" y="104.14" smashed="yes" grouprefs="ATMEGA32">
+<attribute name="NAME" x="330.835" y="112.395" size="0.8128" layer="94"/>
+<attribute name="VALUE" x="330.835" y="94.615" size="0.8128" layer="94"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -2396,24 +2426,6 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="OUTDOOR_+5V" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="VCC"/>
-<wire x1="248.92" y1="132.08" x2="243.84" y2="132.08" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="200.66" y="132.08" size="1.778" layer="95" grouprefs="ATMEGA32"/>
-<pinref part="C11" gate="G$1" pin="PIN_PLUS"/>
-<wire x1="243.84" y1="132.08" x2="241.3" y2="132.08" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="241.3" y1="132.08" x2="200.66" y2="132.08" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="241.3" y="132.08" grouprefs="ATMEGA32"/>
-<wire x1="243.84" y1="132.08" x2="243.84" y2="139.7" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="243.84" y="132.08" grouprefs="ATMEGA32"/>
-<pinref part="IC1" gate="G$1" pin="AVCC"/>
-<wire x1="243.84" y1="139.7" x2="248.92" y2="139.7" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-</segment>
-<segment>
-<pinref part="R20" gate="G$1" pin="P$2"/>
-<wire x1="243.84" y1="181.61" x2="203.2" y2="181.61" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="203.2" y="182.88" size="1.778" layer="95" grouprefs="ATMEGA32"/>
-</segment>
-<segment>
 <wire x1="284.48" y1="233.68" x2="264.16" y2="233.68" width="0.1524" layer="91" grouprefs="GY-SGP30"/>
 <label x="264.16" y="233.68" size="1.778" layer="95" grouprefs="GY-SGP30"/>
 <pinref part="U8" gate="G$1" pin="VIN"/>
@@ -2438,35 +2450,31 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="185.42" y1="20.32" x2="210.82" y2="20.32" width="0.1524" layer="91" grouprefs="NOISE"/>
 <label x="182.88" y="20.32" size="1.778" layer="95" grouprefs="NOISE"/>
 </segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="AREF"/>
+<wire x1="299.72" y1="127" x2="317.5" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="304.8" y="127" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="AVCC"/>
+<wire x1="299.72" y1="124.46" x2="299.72" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="299.72" y="127" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="VCC"/>
+<wire x1="259.08" y1="129.54" x2="236.22" y2="129.54" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="233.68" y="129.54" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="R20" gate="G$1" pin="P$2"/>
+<wire x1="254" y1="161.29" x2="218.44" y2="161.29" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="220.98" y="162.56" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="J10" gate="G$1" pin="VCC"/>
+<wire x1="342.9" y1="109.22" x2="363.22" y2="109.22" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="345.44" y="109.22" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
 </net>
 <net name="OUTDOOR_GND" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="GND"/>
-<wire x1="248.92" y1="129.54" x2="248.92" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="248.92" y1="127" x2="248.92" y2="119.38" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="248.92" y1="119.38" x2="241.3" y2="119.38" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<pinref part="IC1" gate="G$1" pin="GND@1"/>
-<wire x1="248.92" y1="137.16" x2="246.38" y2="137.16" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="246.38" y1="137.16" x2="246.38" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="246.38" y1="127" x2="248.92" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="248.92" y="127" grouprefs="ATMEGA32"/>
-<pinref part="C11" gate="G$1" pin="PIN_GND"/>
-<junction x="241.3" y="119.38" grouprefs="ATMEGA32"/>
-<wire x1="241.3" y1="119.38" x2="223.52" y2="119.38" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<pinref part="C10" gate="G$1" pin="PIN_GND"/>
-<wire x1="228.6" y1="160.02" x2="223.52" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="200.66" y="160.02" size="1.778" layer="95" grouprefs="ATMEGA32"/>
-<wire x1="223.52" y1="160.02" x2="205.74" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="205.74" y1="160.02" x2="200.66" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="223.52" y1="119.38" x2="223.52" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="223.52" y="160.02" grouprefs="ATMEGA32"/>
-<pinref part="C8" gate="G$1" pin="P$1"/>
-<pinref part="C7" gate="G$1" pin="P$1"/>
-<wire x1="205.74" y1="139.7" x2="205.74" y2="152.4" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="205.74" y1="152.4" x2="205.74" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="205.74" y="152.4" grouprefs="ATMEGA32"/>
-<junction x="205.74" y="160.02" grouprefs="ATMEGA32"/>
-</segment>
 <segment>
 <wire x1="139.7" y1="231.14" x2="180.34" y2="231.14" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
 <pinref part="U5" gate="G$1" pin="GND"/>
@@ -2517,23 +2525,44 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="185.42" y1="7.62" x2="223.52" y2="7.62" width="0.1524" layer="91" grouprefs="NOISE"/>
 <label x="182.88" y="7.62" size="1.778" layer="95" grouprefs="NOISE"/>
 </segment>
-</net>
-<net name="N$16" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="RESET"/>
-<wire x1="241.3" y1="160.02" x2="243.84" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<pinref part="C10" gate="G$1" pin="PIN_PLUS"/>
-<pinref part="R20" gate="G$1" pin="P$1"/>
-<wire x1="243.84" y1="160.02" x2="248.92" y2="160.02" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="243.84" y1="160.02" x2="243.84" y2="165.1" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="243.84" y="160.02" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="GND1"/>
+<wire x1="299.72" y1="129.54" x2="317.5" y2="129.54" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="304.8" y="129.54" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="GND"/>
+<wire x1="259.08" y1="127" x2="236.22" y2="127" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="233.68" y="127" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<wire x1="233.68" y1="144.78" x2="213.36" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="213.36" y="144.78" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="C10" gate="G$1" pin="P$1"/>
+</segment>
+<segment>
+<pinref part="C7" gate="G$1" pin="P$1"/>
+<pinref part="C8" gate="G$1" pin="P$1"/>
+<wire x1="213.36" y1="116.84" x2="213.36" y2="104.14" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="213.36" y1="96.52" x2="231.14" y2="96.52" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="213.36" y1="104.14" x2="213.36" y2="96.52" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="213.36" y="104.14" grouprefs="ATMEGA32"/>
+<label x="215.9" y="93.98" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="J10" gate="G$1" pin="GND"/>
+<pinref part="J10" gate="G$1" pin="GND1"/>
+<wire x1="342.9" y1="101.6" x2="342.9" y2="99.06" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="342.9" y1="99.06" x2="363.22" y2="99.06" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="342.9" y="99.06" grouprefs="ATMEGA32"/>
+<label x="345.44" y="99.06" size="1.778" layer="95" grouprefs="ATMEGA32"/>
 </segment>
 </net>
 <net name="I2C_SDA" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="(SDA)PC1"/>
-<wire x1="289.56" y1="99.06" x2="307.34" y2="99.06" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="297.18" y="99.06" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="299.72" y1="142.24" x2="314.96" y2="142.24" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="304.8" y="139.7" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PC4"/>
 </segment>
 <segment>
 <wire x1="167.64" y1="208.28" x2="167.64" y2="226.06" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
@@ -2551,9 +2580,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="I2C_SCL" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="(SCL)PC0"/>
-<wire x1="307.34" y1="96.52" x2="289.56" y2="96.52" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="297.18" y="96.52" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="314.96" y1="144.78" x2="299.72" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="304.8" y="144.78" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PC5"/>
 </segment>
 <segment>
 <wire x1="154.94" y1="210.82" x2="154.94" y2="228.6" width="0.1524" layer="91" grouprefs="BME_280_TEMP_HUM1"/>
@@ -2571,9 +2600,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="NOISE_LEVEL" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="(ADC5)PA5"/>
-<wire x1="289.56" y1="154.94" x2="317.5" y2="154.94" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="299.72" y="154.94" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="299.72" y1="134.62" x2="325.12" y2="134.62" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="309.88" y="134.62" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PC1"/>
 </segment>
 <segment>
 <pinref part="U9" gate="G$1" pin="B_OUT"/>
@@ -2584,28 +2613,6 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="287.02" y1="-83.82" x2="307.34" y2="-83.82" width="0.1524" layer="91" grouprefs="NOISE"/>
 <junction x="287.02" y="-83.82" grouprefs="NOISE"/>
 <label x="292.1" y="-81.28" size="1.778" layer="95" grouprefs="NOISE"/>
-</segment>
-</net>
-<net name="N$24" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="XTAL2"/>
-<wire x1="248.92" y1="152.4" x2="231.14" y2="152.4" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<pinref part="X1" gate="G$1" pin="P$2"/>
-<pinref part="C7" gate="G$1" pin="P$2"/>
-<wire x1="220.98" y1="152.4" x2="231.14" y2="152.4" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="231.14" y="152.4" grouprefs="ATMEGA32"/>
-</segment>
-</net>
-<net name="N$26" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="XTAL1"/>
-<wire x1="248.92" y1="147.32" x2="241.3" y2="147.32" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<pinref part="X1" gate="G$1" pin="P$1"/>
-<wire x1="231.14" y1="139.7" x2="241.3" y2="139.7" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<wire x1="241.3" y1="139.7" x2="241.3" y2="147.32" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<pinref part="C8" gate="G$1" pin="P$2"/>
-<wire x1="220.98" y1="139.7" x2="231.14" y2="139.7" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<junction x="231.14" y="139.7" grouprefs="ATMEGA32"/>
 </segment>
 </net>
 <net name="N$36" class="0">
@@ -3060,9 +3067,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="OUTDOOR_DATA_OUT" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="(INT1)PD3"/>
-<wire x1="289.56" y1="81.28" x2="309.88" y2="81.28" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
-<label x="294.64" y="81.28" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<wire x1="299.72" y1="132.08" x2="317.5" y2="132.08" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="304.8" y="132.08" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PC0"/>
 </segment>
 <segment>
 <pinref part="J6" gate="G$1" pin="PIN_1"/>
@@ -3188,6 +3195,73 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <label x="254" y="-81.28" size="1.778" layer="95" grouprefs="NOISE"/>
 </segment>
 </net>
+<net name="N$22" class="0">
+<segment>
+<pinref part="C7" gate="G$1" pin="P$2"/>
+<pinref part="X1" gate="G$1" pin="P$2"/>
+<wire x1="228.6" y1="116.84" x2="231.14" y2="116.84" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PB6"/>
+<wire x1="231.14" y1="116.84" x2="231.14" y2="124.46" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="231.14" y1="124.46" x2="259.08" y2="124.46" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="231.14" y="116.84" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="C8" gate="G$1" pin="P$2"/>
+<pinref part="X1" gate="G$1" pin="P$1"/>
+<wire x1="228.6" y1="104.14" x2="231.14" y2="104.14" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="231.14" y1="104.14" x2="238.76" y2="104.14" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="231.14" y="104.14" grouprefs="ATMEGA32"/>
+<wire x1="238.76" y1="104.14" x2="238.76" y2="121.92" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<pinref part="U6" gate="G$1" pin="PB7"/>
+<wire x1="238.76" y1="121.92" x2="259.08" y2="121.92" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="N$24" class="0">
+<segment>
+<pinref part="U6" gate="G$1" pin="PB3"/>
+<pinref part="J10" gate="G$1" pin="MOSI"/>
+<wire x1="299.72" y1="116.84" x2="322.58" y2="116.84" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="322.58" y1="116.84" x2="322.58" y2="109.22" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="N$25" class="0">
+<segment>
+<pinref part="U6" gate="G$1" pin="PB4"/>
+<wire x1="299.72" y1="119.38" x2="302.26" y2="119.38" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="302.26" y1="119.38" x2="302.26" y2="99.06" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<pinref part="J10" gate="G$1" pin="MISO"/>
+<wire x1="302.26" y1="99.06" x2="322.58" y2="99.06" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="N$26" class="0">
+<segment>
+<pinref part="U6" gate="G$1" pin="PB5"/>
+<wire x1="299.72" y1="121.92" x2="304.8" y2="121.92" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="304.8" y1="121.92" x2="304.8" y2="101.6" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<pinref part="J10" gate="G$1" pin="SCK"/>
+<wire x1="304.8" y1="101.6" x2="322.58" y2="101.6" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+</segment>
+</net>
+<net name="ATMEGA_RESET" class="0">
+<segment>
+<pinref part="J10" gate="G$1" pin="RESET"/>
+<wire x1="322.58" y1="104.14" x2="307.34" y2="104.14" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="307.34" y="104.14" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+<segment>
+<pinref part="U6" gate="G$1" pin="PC6"/>
+<wire x1="248.92" y1="144.78" x2="254" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<pinref part="R20" gate="G$1" pin="P$1"/>
+<wire x1="254" y1="144.78" x2="259.08" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<junction x="254" y="144.78" grouprefs="ATMEGA32"/>
+<pinref part="C10" gate="G$1" pin="P$2"/>
+<wire x1="213.36" y1="137.16" x2="254" y2="137.16" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<wire x1="254" y1="137.16" x2="254" y2="144.78" width="0.1524" layer="91" grouprefs="ATMEGA32"/>
+<label x="213.36" y="137.16" size="1.778" layer="95" grouprefs="ATMEGA32"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -3246,11 +3320,6 @@ with this version.
 Since Version 8.3, EAGLE supports URNs for individual library
 assets (packages, symbols, and devices). The URNs of those assets
 will not be understood (or retained) with this version.
-</note>
-<note version="8.3" severity="warning">
-Since Version 8.3, EAGLE supports the association of 3D packages
-with devices in libraries, schematics, and board files. Those 3D
-packages will not be understood (or retained) with this version.
 </note>
 <note version="9.5" severity="warning">
 Since Version 9.5, EAGLE supports persistent groups with

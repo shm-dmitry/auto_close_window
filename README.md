@@ -18,7 +18,7 @@ Project status
 
 | Hardware | status |
 | ---- | ---- |
-| Indoor schema :: near-handle module | OK |
+| Indoor schema :: near-handle module | In progress - Touch sensor driver will be replaced by button driver |
 | Indoor schema :: servo module | OK |
 | Indoor schema :: digital channel to outdoor schema | OK |
 | Outdoor module schema :: microcontroller and its periphery | OK |

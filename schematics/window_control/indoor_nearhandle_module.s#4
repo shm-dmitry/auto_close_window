@@ -1021,11 +1021,6 @@
 <pinref part="SB1" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO14"/>
-<wire x1="-167.64" y1="203.2" x2="-193.04" y2="203.2" width="0.1524" layer="91" grouprefs="ESP1"/>
-<label x="-205.74" y="203.2" size="1.778" layer="95" grouprefs="ESP1"/>
-</segment>
-<segment>
 <pinref part="U1" gate="G$1" pin="IO4"/>
 <wire x1="-127" y1="200.66" x2="-124.46" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="-124.46" y1="200.66" x2="-124.46" y2="198.12" width="0.1524" layer="91"/>

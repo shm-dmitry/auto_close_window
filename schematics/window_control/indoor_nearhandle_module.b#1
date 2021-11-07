@@ -102,9 +102,9 @@
 <text x="44.45" y="6.35" size="1.778" layer="25">SW1</text>
 <text x="39.37" y="-2.54" size="1.778" layer="25">B1</text>
 <text x="29.21" y="66.04" size="1.778" layer="26" rot="MR0">GND</text>
-<text x="33.02" y="71.12" size="1.778" layer="26" rot="MR0">+5V</text>
+<text x="33.02" y="72.39" size="1.778" layer="26" rot="MR0">+5V</text>
 <text x="43.18" y="66.04" size="1.778" layer="26" rot="MR0">OUT_SGN</text>
-<text x="48.26" y="71.12" size="1.778" layer="26" rot="MR0">SRV_PWM</text>
+<text x="48.26" y="72.39" size="1.778" layer="26" rot="MR0">SRV_PWM</text>
 </plain>
 <libraries>
 <library name="my_devices">

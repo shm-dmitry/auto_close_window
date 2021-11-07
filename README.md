@@ -26,8 +26,8 @@ Project status
 
 | Board | status |
 | ---- | ---- |
-| Indoor board :: near-handle module | In Progress |
-| Indoor board :: servo module | no |
+| Indoor board :: near-handle module | OK |
+| Indoor board :: servo module | In progress |
 | Outdoor module board | no |
 
 | Firmware | status |

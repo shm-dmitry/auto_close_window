@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -80,6 +80,10 @@
 <wire x1="134.6" y1="-24.13" x2="134.6" y2="30.15" width="0" layer="20"/>
 <wire x1="134.6" y1="30.15" x2="72.39" y2="30.15" width="0" layer="20"/>
 <wire x1="72.39" y1="30.15" x2="72.39" y2="-24.13" width="0" layer="20"/>
+<hole x="76.2" y="-20.32" drill="0.35"/>
+<hole x="76.2" y="26.67" drill="0.35"/>
+<hole x="130.81" y="26.67" drill="0.35"/>
+<hole x="130.81" y="0" drill="0.35"/>
 </plain>
 <libraries>
 <library name="my_devices">
@@ -869,13 +873,11 @@ design rules under a new name.</description>
 <contactref element="J10" pad="TXD"/>
 <contactref element="U8" pad="PD0"/>
 <wire x1="87.63" y1="-10.16" x2="89.3572625" y2="-10.16" width="0.508" layer="16"/>
-<wire x1="92.71" y1="-8.89" x2="92.6004" y2="-8.9996" width="0.508" layer="16"/>
 <wire x1="89.3572625" y1="-10.16" x2="90.5176625" y2="-8.9996" width="0.508" layer="16"/>
 <wire x1="90.5176625" y1="-8.9996" x2="92.6004" y2="-8.9996" width="0.508" layer="16"/>
-<wire x1="92.71" y1="-8.89" x2="95.25" y2="-6.35" width="0.508" layer="16"/>
-<wire x1="95.25" y1="-6.35" x2="95.25" y2="11.43" width="0.508" layer="16"/>
-<wire x1="95.25" y1="11.43" x2="93.98" y2="12.7" width="0.508" layer="16"/>
-<wire x1="93.98" y1="12.7" x2="91.44" y2="12.7" width="0.508" layer="16"/>
+<wire x1="92.6004" y1="-8.9996" x2="93.98" y2="-7.62" width="0.508" layer="16"/>
+<wire x1="93.98" y1="-7.62" x2="93.98" y2="10.16" width="0.508" layer="16"/>
+<wire x1="93.98" y1="10.16" x2="91.44" y2="12.7" width="0.508" layer="16"/>
 </signal>
 <signal name="ATMEGA_RXD">
 <contactref element="J10" pad="RXD"/>
@@ -890,6 +892,14 @@ design rules under a new name.</description>
 <wire x1="92.71" y1="-6.35" x2="92.71" y2="8.89" width="0.508" layer="16"/>
 <wire x1="92.71" y1="8.89" x2="91.44" y2="10.16" width="0.508" layer="16"/>
 <wire x1="86.36" y1="-11.43" x2="86.36" y2="-9.4472625" width="0.508" layer="16"/>
+</signal>
+<signal name="GND">
+<polygon width="0.508" layer="16">
+<vertex x="73.66" y="29.21"/>
+<vertex x="133.35" y="29.21"/>
+<vertex x="133.35" y="-22.86"/>
+<vertex x="73.66" y="-22.86"/>
+</polygon>
 </signal>
 </signals>
 <mfgpreviewcolors>

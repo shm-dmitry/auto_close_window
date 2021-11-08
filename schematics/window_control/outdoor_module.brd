@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -117,9 +117,6 @@
 <wire x1="0.254" y1="0.508" x2="0.254" y2="0" width="0.127" layer="21"/>
 <wire x1="0.254" y1="0" x2="0.254" y2="-0.508" width="0.127" layer="21"/>
 <wire x1="0.254" y1="0" x2="1.778" y2="0" width="0.127" layer="21"/>
-</package>
-<package name="J_SMD">
-<smd name="PIN" x="0" y="0" dx="5.08" dy="2.54" layer="1"/>
 </package>
 <package name="USBASP_PIN">
 <pad name="RST" x="-1.27" y="0" drill="0.9" shape="square"/>
@@ -313,6 +310,16 @@
 <wire x1="7.62" y1="5.08" x2="-1.27" y2="5.08" width="0.127" layer="21"/>
 <wire x1="7.62" y1="5.08" x2="7.62" y2="-5.08" width="0.127" layer="21"/>
 <text x="5.08" y="-2.54" size="0.8128" layer="21" rot="R90">GY-SGP30</text>
+</package>
+<package name="JST-XH254-3P">
+<pad name="PIN2" x="0" y="0" drill="0.8" shape="square"/>
+<pad name="PIN1" x="-2.54" y="0" drill="0.8" shape="square"/>
+<pad name="PIN3" x="2.54" y="0" drill="0.8" shape="square"/>
+<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.127" layer="21"/>
+<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.127" layer="21"/>
+<text x="-2.54" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
 </package>
 </packages>
 </library>
@@ -516,10 +523,7 @@ design rules under a new name.</description>
 <element name="C7" library="my_devices" package="C" value="10 uF" x="116.84" y="13.97" smashed="yes" rot="R90"/>
 <element name="C8" library="my_devices" package="C-1" value="0.1 uF" x="124.46" y="-20.32" smashed="yes"/>
 <element name="C9" library="my_devices" package="C-1" value="0.1 uF" x="87.63" y="12.7" smashed="yes" rot="R90"/>
-<element name="J1" library="my_devices" package="J_SMD" value="J_SMD" x="78.74" y="1.27" smashed="yes"/>
 <element name="J10" library="my_devices" package="USBASP_PIN" value="USBASP_PIN" x="86.36" y="-12.7" smashed="yes"/>
-<element name="J2" library="my_devices" package="J_SMD" value="J_SMD" x="78.74" y="5.08" smashed="yes" rot="R180"/>
-<element name="J3" library="my_devices" package="J_SMD" value="J_SMD" x="78.74" y="-2.54" smashed="yes"/>
 <element name="L2" library="my_devices" package="L-EC24" value="EC24-561K, 560 uH" x="124.46" y="20.32" smashed="yes" rot="R270"/>
 <element name="L3" library="my_devices" package="L-EC24" value="EC24-561K, 560 uH" x="110.49" y="1.27" smashed="yes"/>
 <element name="R17" library="my_devices" package="RD-3362H" value="10K" x="105.41" y="13.97" smashed="yes"/>
@@ -542,23 +546,22 @@ design rules under a new name.</description>
 <element name="U7" library="my_devices" package="DIP8" value="LM358" x="119.38" y="-8.89" smashed="yes" rot="R180"/>
 <element name="U8" library="my_devices" package="ATMEGA328P" value="ATMEGA328P" x="95.25" y="0" smashed="yes"/>
 <element name="U9" library="my_devices" package="GY-SGP30" value="GY-SGP30" x="106.68" y="20.32" smashed="yes" rot="R90"/>
+<element name="J4" library="my_devices" package="JST-XH254-3P" value="JST-XH2.54-3P" x="78.74" y="0" smashed="yes" rot="R270">
+<attribute name="NAME" x="74.93" y="2.54" size="1.27" layer="21" rot="R270"/>
+</element>
 </elements>
 <signals>
 <signal name="OUTDOOR_+5V">
 <contactref element="U9" pad="VIN"/>
 <contactref element="U5" pad="VCC"/>
 <contactref element="C6" pad="PIN_PLUS"/>
-<contactref element="J1" pad="PIN"/>
 <contactref element="L2" pad="P$1"/>
 <contactref element="U8" pad="AREF"/>
 <contactref element="U8" pad="AVCC"/>
 <contactref element="U8" pad="VCC"/>
 <contactref element="R21" pad="P$2"/>
 <contactref element="J10" pad="VCC"/>
-<wire x1="78.6384" y1="1.3716" x2="78.1812" y2="1.3716" width="0.1524" layer="1"/>
-<wire x1="78.6384" y1="1.3716" x2="78.74" y2="1.27" width="0.1524" layer="1"/>
 <wire x1="102.87" y1="20.4216" x2="102.87" y2="20.32" width="0.1524" layer="1"/>
-<wire x1="78.1812" y1="1.3716" x2="78.74" y2="1.27" width="0.1524" layer="1"/>
 <wire x1="124.46" y1="27.94" x2="120.65" y2="24.13" width="1.016" layer="1"/>
 <wire x1="120.65" y1="24.13" x2="105.41" y2="24.13" width="1.016" layer="1"/>
 <wire x1="105.41" y1="24.13" x2="102.87" y2="21.59" width="1.016" layer="1"/>
@@ -567,9 +570,7 @@ design rules under a new name.</description>
 <wire x1="90.17" y1="24.13" x2="86.36" y2="20.32" width="1.016" layer="1"/>
 <wire x1="80.01" y1="15.24" x2="85.09" y2="20.32" width="1.016" layer="1"/>
 <wire x1="85.09" y1="20.32" x2="86.36" y2="20.32" width="1.016" layer="1"/>
-<wire x1="78.74" y1="1.27" x2="75.184" y2="1.27" width="1.016" layer="1"/>
-<wire x1="75.184" y1="1.27" x2="73.914" y2="2.54" width="1.016" layer="1"/>
-<wire x1="73.914" y1="2.54" x2="73.914" y2="9.144" width="1.016" layer="1"/>
+<wire x1="73.914" y1="9.144" x2="73.914" y2="2.54" width="1.016" layer="1"/>
 <wire x1="73.914" y1="9.144" x2="80.01" y2="15.24" width="1.016" layer="1"/>
 <wire x1="80.01" y1="15.24" x2="83.82" y2="11.43" width="1.016" layer="1"/>
 <wire x1="83.82" y1="11.43" x2="83.82" y2="-1.27" width="1.016" layer="1"/>
@@ -582,12 +583,14 @@ design rules under a new name.</description>
 <wire x1="95.25" y1="-2.54" x2="99.06" y2="-2.54" width="1.016" layer="1"/>
 <wire x1="99.06" y1="-2.54" x2="99.06" y2="-5.08" width="1.016" layer="1"/>
 <wire x1="87.63" y1="-7.62" x2="87.63" y2="-5.08" width="1.016" layer="1"/>
+<contactref element="J4" pad="PIN2"/>
+<wire x1="76.454" y1="0" x2="78.74" y2="0" width="1.016" layer="1"/>
+<wire x1="73.914" y1="2.54" x2="76.454" y2="0" width="1.016" layer="1"/>
 </signal>
 <signal name="OUTDOOR_GND">
 <contactref element="U5" pad="GND"/>
 <contactref element="U9" pad="GND"/>
 <contactref element="C6" pad="PIN_GND"/>
-<contactref element="J2" pad="PIN"/>
 <contactref element="BM1" pad="P$1"/>
 <contactref element="U7" pad="PIN_4"/>
 <contactref element="R17" pad="P1"/>
@@ -598,7 +601,6 @@ design rules under a new name.</description>
 <contactref element="C9" pad="P$1"/>
 <contactref element="J10" pad="GND"/>
 <contactref element="J10" pad="GND1"/>
-<wire x1="78.7908" y1="5.1816" x2="78.74" y2="5.08" width="0.1524" layer="1"/>
 <wire x1="105.3084" y1="20.2692" x2="105.41" y2="20.32" width="0.1524" layer="16"/>
 <wire x1="123.19" y1="-5.08" x2="121.92" y2="-3.81" width="1.016" layer="16"/>
 <wire x1="121.92" y1="-3.81" x2="121.92" y2="5.08" width="1.016" layer="16"/>
@@ -606,8 +608,6 @@ design rules under a new name.</description>
 <wire x1="124.46" y1="7.62" x2="120.65" y2="11.43" width="1.016" layer="16"/>
 <wire x1="120.65" y1="11.43" x2="120.65" y2="12.7" width="1.016" layer="16"/>
 <wire x1="120.65" y1="12.7" x2="116.84" y2="16.51" width="1.016" layer="16"/>
-<wire x1="78.74" y1="5.08" x2="78.74" y2="8.89" width="1.016" layer="1"/>
-<wire x1="78.74" y1="8.89" x2="80.01" y2="10.16" width="1.016" layer="1"/>
 <wire x1="80.01" y1="10.16" x2="87.63" y2="10.16" width="1.016" layer="16"/>
 <wire x1="80.01" y1="10.16" x2="80.01" y2="11.43" width="1.016" layer="16"/>
 <wire x1="80.01" y1="11.43" x2="86.36" y2="17.78" width="1.016" layer="16"/>
@@ -652,6 +652,9 @@ design rules under a new name.</description>
 <vertex x="133.35" y="-22.86"/>
 <vertex x="73.66" y="-22.86"/>
 </polygon>
+<contactref element="J4" pad="PIN1"/>
+<wire x1="80.01" y1="10.16" x2="78.74" y2="8.89" width="1.016" layer="16"/>
+<wire x1="78.74" y1="8.89" x2="78.74" y2="2.54" width="1.016" layer="16"/>
 </signal>
 <signal name="I2C_SDA">
 <contactref element="U8" pad="PC4"/>
@@ -741,23 +744,21 @@ design rules under a new name.</description>
 <wire x1="105.41" y1="3.81" x2="102.87" y2="1.27" width="1.016" layer="1"/>
 </signal>
 <signal name="OUTDOOR_DATA_OUT">
-<contactref element="J3" pad="PIN"/>
 <contactref element="U8" pad="PC3"/>
-<wire x1="78.7908" y1="-2.4384" x2="78.74" y2="-2.54" width="0.1524" layer="1"/>
-<wire x1="78.74" y1="-2.54" x2="74.93" y2="-2.54" width="0.508" layer="1"/>
-<via x="74.93" y="-2.54" extent="1-16" drill="0.35"/>
-<wire x1="74.93" y1="-2.54" x2="73.66" y2="-1.27" width="0.508" layer="16"/>
 <wire x1="73.66" y1="17.78" x2="81.28" y2="25.4" width="0.508" layer="16"/>
 <wire x1="81.28" y1="25.4" x2="87.63" y2="25.4" width="0.508" layer="16"/>
 <wire x1="87.63" y1="25.4" x2="90.17" y2="22.86" width="0.508" layer="16"/>
 <wire x1="92.71" y1="17.78" x2="95.25" y2="15.24" width="0.508" layer="16"/>
 <wire x1="95.25" y1="15.24" x2="95.25" y2="12.7" width="0.508" layer="16"/>
-<wire x1="73.66" y1="-1.27" x2="73.66" y2="17.78" width="0.508" layer="16"/>
+<wire x1="73.66" y1="17.78" x2="73.66" y2="-1.27" width="0.508" layer="16"/>
 <wire x1="95.25" y1="12.7" x2="97.79" y2="10.16" width="0.508" layer="16"/>
 <wire x1="97.79" y1="10.16" x2="99.06" y2="10.16" width="0.508" layer="16"/>
 <wire x1="90.17" y1="22.86" x2="90.17" y2="19.05" width="0.508" layer="16"/>
 <wire x1="90.17" y1="19.05" x2="91.44" y2="17.78" width="0.508" layer="16"/>
 <wire x1="91.44" y1="17.78" x2="92.71" y2="17.78" width="0.508" layer="16"/>
+<contactref element="J4" pad="PIN3"/>
+<wire x1="73.66" y1="-1.27" x2="74.93" y2="-2.54" width="0.508" layer="16"/>
+<wire x1="74.93" y1="-2.54" x2="78.74" y2="-2.54" width="0.508" layer="16"/>
 </signal>
 <signal name="N$17">
 <contactref element="U6" pad="GND"/>

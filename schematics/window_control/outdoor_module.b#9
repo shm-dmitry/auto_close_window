@@ -816,9 +816,18 @@ design rules under a new name.</description>
 <signal name="N$24">
 <contactref element="U8" pad="PB3"/>
 <contactref element="J10" pad="MOSI"/>
-<wire x1="85.09" y1="-7.62" x2="86.36" y2="-8.89" width="0.508" layer="16"/>
-<wire x1="86.36" y1="-8.89" x2="95.25" y2="-8.89" width="0.508" layer="16"/>
-<wire x1="95.25" y1="-8.89" x2="99.06" y2="-12.7" width="0.508" layer="16"/>
+<wire x1="85.09" y1="-7.62" x2="86.36" y2="-8.89" width="0.508" layer="1"/>
+<wire x1="100.2204" y1="-6.6976625" x2="100.2204" y2="-8.5423375" width="0.508" layer="1"/>
+<wire x1="98.1376625" y1="-8.9996" x2="97.8996" y2="-9.2376625" width="0.508" layer="1"/>
+<wire x1="97.8996" y1="-9.2376625" x2="97.8996" y2="-11.0823375" width="0.508" layer="1"/>
+<wire x1="99.06" y1="-12.2427375" x2="99.06" y2="-12.7" width="0.508" layer="1"/>
+<wire x1="97.8996" y1="-11.0823375" x2="99.06" y2="-12.2427375" width="0.508" layer="1"/>
+<wire x1="99.8727375" y1="-6.35" x2="100.2204" y2="-6.6976625" width="0.508" layer="1"/>
+<wire x1="100.2204" y1="-8.5423375" x2="99.7631375" y2="-8.9996" width="0.508" layer="1"/>
+<wire x1="99.7631375" y1="-8.9996" x2="98.1376625" y2="-8.9996" width="0.508" layer="1"/>
+<wire x1="86.36" y1="-8.89" x2="93.98" y2="-8.89" width="0.508" layer="1"/>
+<wire x1="93.98" y1="-8.89" x2="96.52" y2="-6.35" width="0.508" layer="1"/>
+<wire x1="96.52" y1="-6.35" x2="99.8727375" y2="-6.35" width="0.508" layer="1"/>
 </signal>
 <signal name="N$25">
 <contactref element="U8" pad="PB4"/>
@@ -859,12 +868,28 @@ design rules under a new name.</description>
 <signal name="ATMEGA_TXD">
 <contactref element="J10" pad="TXD"/>
 <contactref element="U8" pad="PD0"/>
-<wire x1="87.63" y1="-10.16" x2="91.44" y2="12.7" width="0" layer="19" extent="1-1"/>
+<wire x1="87.63" y1="-10.16" x2="89.3572625" y2="-10.16" width="0.508" layer="16"/>
+<wire x1="92.71" y1="-8.89" x2="92.6004" y2="-8.9996" width="0.508" layer="16"/>
+<wire x1="89.3572625" y1="-10.16" x2="90.5176625" y2="-8.9996" width="0.508" layer="16"/>
+<wire x1="90.5176625" y1="-8.9996" x2="92.6004" y2="-8.9996" width="0.508" layer="16"/>
+<wire x1="92.71" y1="-8.89" x2="95.25" y2="-6.35" width="0.508" layer="16"/>
+<wire x1="95.25" y1="-6.35" x2="95.25" y2="11.43" width="0.508" layer="16"/>
+<wire x1="95.25" y1="11.43" x2="93.98" y2="12.7" width="0.508" layer="16"/>
+<wire x1="93.98" y1="12.7" x2="91.44" y2="12.7" width="0.508" layer="16"/>
 </signal>
 <signal name="ATMEGA_RXD">
 <contactref element="J10" pad="RXD"/>
 <contactref element="U8" pad="PD1"/>
-<wire x1="87.63" y1="-12.7" x2="91.44" y2="10.16" width="0" layer="19" extent="1-1"/>
+<wire x1="87.63" y1="-12.7" x2="86.36" y2="-11.43" width="0.508" layer="16"/>
+<wire x1="88.5023375" y1="-8.7304" x2="88.7404" y2="-8.4923375" width="0.508" layer="16"/>
+<wire x1="88.7404" y1="-8.4923375" x2="88.7404" y2="-8.2368625" width="0.508" layer="16"/>
+<wire x1="88.7404" y1="-8.2368625" x2="90.6272625" y2="-6.35" width="0.508" layer="16"/>
+<wire x1="90.6272625" y1="-6.35" x2="92.71" y2="-6.35" width="0.508" layer="16"/>
+<wire x1="86.36" y1="-9.4472625" x2="87.0768625" y2="-8.7304" width="0.508" layer="16"/>
+<wire x1="87.0768625" y1="-8.7304" x2="88.5023375" y2="-8.7304" width="0.508" layer="16"/>
+<wire x1="92.71" y1="-6.35" x2="92.71" y2="8.89" width="0.508" layer="16"/>
+<wire x1="92.71" y1="8.89" x2="91.44" y2="10.16" width="0.508" layer="16"/>
+<wire x1="86.36" y1="-11.43" x2="86.36" y2="-9.4472625" width="0.508" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

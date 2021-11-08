@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -80,6 +80,10 @@
 <wire x1="134.6" y1="-24.13" x2="134.6" y2="30.15" width="0" layer="20"/>
 <wire x1="134.6" y1="30.15" x2="72.39" y2="30.15" width="0" layer="20"/>
 <wire x1="72.39" y1="30.15" x2="72.39" y2="-24.13" width="0" layer="20"/>
+<hole x="76.2" y="-20.32" drill="0.35"/>
+<hole x="76.2" y="26.67" drill="0.35"/>
+<hole x="130.81" y="26.67" drill="0.35"/>
+<hole x="130.81" y="0" drill="0.35"/>
 </plain>
 <libraries>
 <library name="my_devices">

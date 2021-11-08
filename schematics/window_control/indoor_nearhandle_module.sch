@@ -174,26 +174,6 @@
 <text x="-1.778" y="-2.032" size="0.8128" layer="21">FRONT</text>
 <text x="-3.81" y="5.08" size="1.27" layer="21">&gt;NAME</text>
 </package>
-<package name="J2">
-<pad name="PIN_1" x="0" y="2.54" drill="1.4" shape="square"/>
-<pad name="PIN_2" x="0.04" y="-2.5" drill="1.4" shape="square" rot="R90"/>
-<wire x1="3.5" y1="5" x2="3.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="5" x2="2.5" y2="5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="5" x2="3.5" y2="5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-5" x2="3.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="5" x2="2.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="5" x2="-4" y2="4" width="0.127" layer="21"/>
-<wire x1="-4" y1="4" x2="-4" y2="1" width="0.127" layer="21"/>
-<wire x1="-4" y1="1" x2="-4" y2="-1" width="0.127" layer="21"/>
-<wire x1="-4" y1="-1" x2="-4" y2="-4" width="0.127" layer="21"/>
-<wire x1="-4" y1="-4" x2="-4" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="-5" x2="2.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="4" x2="-1.5" y2="4" width="0.127" layer="21"/>
-<wire x1="-4" y1="1" x2="-1.5" y2="1" width="0.127" layer="21"/>
-<wire x1="-4" y1="-1" x2="-1.5" y2="-1" width="0.127" layer="21"/>
-<wire x1="-4" y1="-4" x2="-1.5" y2="-4" width="0.127" layer="21"/>
-<text x="3.81" y="1.27" size="1.27" layer="21">&gt;NAME</text>
-</package>
 <package name="ESP32">
 <pad name="IO26" x="-12.7" y="0" drill="0.8" shape="square"/>
 <pad name="IO5" x="12.7" y="0" drill="0.8" shape="square"/>
@@ -311,6 +291,17 @@
 <wire x1="6.35" y1="3.81" x2="6.35" y2="2.54" width="0.127" layer="21"/>
 <wire x1="6.35" y1="2.54" x2="5.08" y2="2.54" width="0.127" layer="21"/>
 <text x="-2.54" y="5.08" size="1.27" layer="21">&gt;NAME</text>
+</package>
+<package name="JST-XH254-4P">
+<pad name="PIN2" x="-1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN3" x="1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN1" x="-3.81" y="0" drill="0.8" shape="square"/>
+<pad name="PIN4" x="3.81" y="0" drill="0.8" shape="square"/>
+<wire x1="-6.35" y1="2.54" x2="-6.35" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-2.54" x2="6.35" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="6.35" y1="-2.54" x2="6.35" y2="2.54" width="0.127" layer="21"/>
+<wire x1="6.35" y1="2.54" x2="-6.35" y2="2.54" width="0.127" layer="21"/>
+<text x="-2.54" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -438,18 +429,6 @@
 <text x="-5.08" y="-2.54" size="1.778" layer="94">&gt;NAME</text>
 <text x="-5.08" y="-5.08" size="1.778" layer="94">&gt;VALUE</text>
 </symbol>
-<symbol name="J2">
-<pin name="PIN_1" x="7.62" y="0" visible="off" length="middle" rot="R180"/>
-<pin name="PIN_2" x="7.62" y="-2.54" visible="off" length="middle" rot="R180"/>
-<text x="-2.54" y="1.905" size="1.778" layer="94">&gt;NAME</text>
-<text x="-2.54" y="-7.62" size="1.778" layer="94">&gt;VALUE</text>
-<circle x="2.54" y="0" radius="0.898025" width="0.254" layer="94"/>
-<circle x="2.54" y="-2.54" radius="0.898025" width="0.254" layer="94"/>
-<wire x1="0.635" y1="1.27" x2="0.635" y2="-3.81" width="0.254" layer="94"/>
-<wire x1="0.635" y1="-3.81" x2="3.81" y2="-3.81" width="0.254" layer="94"/>
-<wire x1="3.81" y1="1.27" x2="3.81" y2="-3.81" width="0.254" layer="94"/>
-<wire x1="3.81" y1="1.27" x2="0.635" y2="1.27" width="0.254" layer="94"/>
-</symbol>
 <symbol name="ESP32">
 <pin name="IO26" x="-20.32" y="0" length="middle"/>
 <pin name="IO27" x="-20.32" y="-2.54" length="middle"/>
@@ -523,6 +502,19 @@
 </polygon>
 <text x="-4.445" y="-3.81" size="1.778" layer="94">&gt;NAME</text>
 <text x="-5.08" y="-6.35" size="1.778" layer="94">&gt;VALUE</text>
+</symbol>
+<symbol name="JST-XH254-4P">
+<pin name="PIN2" x="-5.08" y="2.54" length="middle"/>
+<pin name="PIN3" x="-5.08" y="-2.54" length="middle"/>
+<pin name="PIN1" x="-5.08" y="7.62" length="middle"/>
+<pin name="PIN4" x="-5.08" y="-7.62" length="middle"/>
+<wire x1="0" y1="10.16" x2="0" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="0" y1="-10.16" x2="10.16" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-10.16" x2="10.16" y2="10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="10.16" x2="0" y2="10.16" width="0.254" layer="94"/>
+<text x="12.7" y="2.54" size="1.778" layer="94">&gt;NAME</text>
+<text x="12.7" y="2.54" size="1.778" layer="94">&gt;NAME</text>
+<text x="12.7" y="-2.54" size="1.778" layer="94">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -654,22 +646,6 @@
 </device>
 </devices>
 </deviceset>
-<deviceset name="J2" prefix="J">
-<gates>
-<gate name="G$1" symbol="J2" x="-2.54" y="0"/>
-</gates>
-<devices>
-<device name="" package="J2">
-<connects>
-<connect gate="G$1" pin="PIN_1" pad="PIN_1"/>
-<connect gate="G$1" pin="PIN_2" pad="PIN_2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="ESP32" prefix="U">
 <gates>
 <gate name="G$1" symbol="ESP32" x="0" y="0"/>
@@ -749,6 +725,24 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="JST-XH254-4P" prefix="J">
+<gates>
+<gate name="G$1" symbol="JST-XH254-4P" x="-5.08" y="0"/>
+</gates>
+<devices>
+<device name="" package="JST-XH254-4P">
+<connects>
+<connect gate="G$1" pin="PIN1" pad="PIN1"/>
+<connect gate="G$1" pin="PIN2" pad="PIN2"/>
+<connect gate="G$1" pin="PIN3" pad="PIN3"/>
+<connect gate="G$1" pin="PIN4" pad="PIN4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="supply1" urn="urn:adsk.eagle:library:371">
@@ -819,9 +813,6 @@
 <part name="SB1" library="my_devices" deviceset="SB-NO" device="" value="FSMRA6JH"/>
 <part name="SB2" library="my_devices" deviceset="SB-NO" device="" value="FSMRA6JH"/>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="J1" library="my_devices" deviceset="J2" device=""/>
-<part name="J2" library="my_devices" deviceset="J2" device=""/>
-<part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U1" library="my_devices" deviceset="ESP32" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R4" library="my_devices" deviceset="R" device="" value="620"/>
@@ -830,6 +821,8 @@
 <part name="R8" library="my_devices" deviceset="R" device="" value="620"/>
 <part name="R6" library="my_devices" deviceset="RD" device="" value="5K"/>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="J1" library="my_devices" deviceset="JST-XH254-4P" device="" value="JST-XH2.54-4P"/>
+<part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -901,17 +894,6 @@
 <instance part="GND9" gate="1" x="68.58" y="58.42" smashed="yes" grouprefs="OPEN-CLOSE1">
 <attribute name="VALUE" x="66.04" y="55.88" size="1.778" layer="96"/>
 </instance>
-<instance part="J1" gate="G$1" x="-147.32" y="66.04" smashed="yes" grouprefs="INPUT_CONNECTORS">
-<attribute name="NAME" x="-149.86" y="67.945" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-149.86" y="58.42" size="1.778" layer="94"/>
-</instance>
-<instance part="J2" gate="G$1" x="-147.32" y="45.72" smashed="yes" grouprefs="INPUT_CONNECTORS">
-<attribute name="NAME" x="-149.86" y="47.625" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-149.86" y="38.1" size="1.778" layer="94"/>
-</instance>
-<instance part="GND1" gate="1" x="-134.62" y="40.64" smashed="yes" grouprefs="INPUT_CONNECTORS">
-<attribute name="VALUE" x="-137.16" y="38.1" size="1.778" layer="96"/>
-</instance>
 <instance part="U1" gate="G$1" x="-147.32" y="208.28" smashed="yes" grouprefs="ESP1">
 <attribute name="NAME" x="-152.4" y="236.22" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-152.4" y="180.34" size="1.778" layer="94"/>
@@ -942,6 +924,14 @@
 <instance part="GND8" gate="1" x="-104.14" y="177.8" smashed="yes" grouprefs="ESP1">
 <attribute name="VALUE" x="-106.68" y="175.26" size="1.778" layer="96"/>
 </instance>
+<instance part="J1" gate="G$1" x="-83.82" y="58.42" smashed="yes" rot="R180" grouprefs="INPUT_CONNECTORS">
+<attribute name="NAME" x="-96.52" y="55.88" size="1.778" layer="94" rot="R180"/>
+<attribute name="NAME" x="-96.52" y="55.88" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="-96.52" y="60.96" size="1.778" layer="94" rot="R180"/>
+</instance>
+<instance part="GND5" gate="1" x="-55.88" y="48.26" smashed="yes" grouprefs="INPUT_CONNECTORS">
+<attribute name="VALUE" x="-58.42" y="45.72" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -964,14 +954,14 @@
 <label x="-165.1" y="137.16" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP1"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="PIN_1"/>
-<wire x1="-139.7" y1="45.72" x2="-124.46" y2="45.72" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
-<label x="-129.54" y="45.72" size="1.778" layer="95" grouprefs="INPUT_CONNECTORS"/>
-</segment>
-<segment>
 <pinref part="U1" gate="G$1" pin="5V"/>
 <wire x1="-167.64" y1="185.42" x2="-193.04" y2="185.42" width="0.1524" layer="91" grouprefs="ESP1"/>
 <label x="-193.04" y="185.42" size="1.778" layer="95" grouprefs="ESP1"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="PIN2"/>
+<wire x1="-78.74" y1="55.88" x2="-55.88" y2="55.88" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
+<label x="-60.96" y="55.88" size="1.778" layer="95" grouprefs="INPUT_CONNECTORS"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -1009,11 +999,6 @@
 <wire x1="60.96" y1="60.96" x2="68.58" y2="60.96" width="0.1524" layer="91" grouprefs="OPEN-CLOSE1"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="PIN_2"/>
-<pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="-139.7" y1="43.18" x2="-134.62" y2="43.18" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
-</segment>
-<segment>
 <pinref part="U1" gate="G$1" pin="GND"/>
 <wire x1="-127" y1="231.14" x2="-83.82" y2="231.14" width="0.1524" layer="91" grouprefs="ESP1"/>
 <wire x1="-83.82" y1="231.14" x2="-83.82" y2="228.6" width="0.1524" layer="91" grouprefs="ESP1"/>
@@ -1022,6 +1007,11 @@
 <segment>
 <pinref part="R6" gate="G$1" pin="P1"/>
 <pinref part="GND8" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="PIN1"/>
+<wire x1="-78.74" y1="50.8" x2="-55.88" y2="50.8" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
+<pinref part="GND5" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_OPEN" class="0">
@@ -1104,9 +1094,9 @@
 <label x="55.88" y="208.28" size="1.778" layer="95" grouprefs="SERVO_CONTROL1"/>
 </segment>
 <segment>
-<pinref part="J1" gate="G$1" pin="PIN_1"/>
-<wire x1="-139.7" y1="66.04" x2="-114.3" y2="66.04" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
-<label x="-137.16" y="66.04" size="1.778" layer="95" grouprefs="INPUT_CONNECTORS"/>
+<pinref part="J1" gate="G$1" pin="PIN3"/>
+<wire x1="-78.74" y1="60.96" x2="-55.88" y2="60.96" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
+<label x="-76.2" y="60.96" size="1.778" layer="95" grouprefs="INPUT_CONNECTORS"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -1209,14 +1199,14 @@
 </net>
 <net name="OUTDOOR_SIGNAL" class="0">
 <segment>
-<pinref part="J1" gate="G$1" pin="PIN_2"/>
-<wire x1="-139.7" y1="63.5" x2="-114.3" y2="63.5" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
-<label x="-137.16" y="63.5" size="1.778" layer="95" grouprefs="INPUT_CONNECTORS"/>
-</segment>
-<segment>
 <label x="-101.6" y="193.04" size="1.778" layer="95" grouprefs="ESP1"/>
 <pinref part="R6" gate="G$1" pin="P2"/>
 <wire x1="-104.14" y1="195.58" x2="-73.66" y2="195.58" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="PIN4"/>
+<wire x1="-78.74" y1="66.04" x2="-55.88" y2="66.04" width="0.1524" layer="91" grouprefs="INPUT_CONNECTORS"/>
+<label x="-76.2" y="66.04" size="1.778" layer="95" grouprefs="INPUT_CONNECTORS"/>
 </segment>
 </net>
 <net name="N$6" class="0">

@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -86,8 +86,6 @@
 <hole x="50.8" y="-1.27" drill="3"/>
 <text x="16.51" y="73.66" size="0.8128" layer="25">SB2</text>
 <text x="50.8" y="73.66" size="0.8128" layer="25">SB1</text>
-<text x="24.13" y="63.5" size="1.778" layer="25">J2</text>
-<text x="43.18" y="63.5" size="1.778" layer="25">J1</text>
 <text x="38.1" y="59.69" size="1.778" layer="25">R8</text>
 <text x="27.94" y="58.42" size="1.778" layer="25">R5</text>
 <text x="38.1" y="54.61" size="1.778" layer="25">R7</text>
@@ -101,10 +99,7 @@
 <text x="27.94" y="6.35" size="1.778" layer="25">D1</text>
 <text x="44.45" y="6.35" size="1.778" layer="25">SW1</text>
 <text x="39.37" y="-2.54" size="1.778" layer="25">B1</text>
-<text x="29.21" y="66.04" size="1.778" layer="26" rot="MR0">GND</text>
-<text x="33.02" y="72.39" size="1.778" layer="26" rot="MR0">+5V</text>
-<text x="43.18" y="66.04" size="1.778" layer="26" rot="MR0">OUT_SGN</text>
-<text x="48.26" y="72.39" size="1.778" layer="26" rot="MR0">SRV_PWM</text>
+<text x="29.21" y="67.31" size="1.778" layer="26" rot="MR0">GND</text>
 </plain>
 <libraries>
 <library name="my_devices">
@@ -137,26 +132,6 @@
 <wire x1="0.635" y1="-1.905" x2="1.27" y2="-1.905" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="-1.905" x2="-0.635" y2="-1.905" width="0.127" layer="21"/>
 <text x="-2.54" y="3.81" size="1.27" layer="21">&gt;NAME</text>
-</package>
-<package name="J2">
-<pad name="PIN_1" x="0" y="2.54" drill="1.4" shape="square"/>
-<pad name="PIN_2" x="0.04" y="-2.5" drill="1.4" shape="square" rot="R90"/>
-<wire x1="3.5" y1="5" x2="3.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="5" x2="2.5" y2="5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="5" x2="3.5" y2="5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-5" x2="3.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="5" x2="2.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="5" x2="-4" y2="4" width="0.127" layer="21"/>
-<wire x1="-4" y1="4" x2="-4" y2="1" width="0.127" layer="21"/>
-<wire x1="-4" y1="1" x2="-4" y2="-1" width="0.127" layer="21"/>
-<wire x1="-4" y1="-1" x2="-4" y2="-4" width="0.127" layer="21"/>
-<wire x1="-4" y1="-4" x2="-4" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="-5" x2="2.5" y2="-5" width="0.127" layer="21"/>
-<wire x1="-4" y1="4" x2="-1.5" y2="4" width="0.127" layer="21"/>
-<wire x1="-4" y1="1" x2="-1.5" y2="1" width="0.127" layer="21"/>
-<wire x1="-4" y1="-1" x2="-1.5" y2="-1" width="0.127" layer="21"/>
-<wire x1="-4" y1="-4" x2="-1.5" y2="-4" width="0.127" layer="21"/>
-<text x="3.81" y="1.27" size="1.27" layer="21">&gt;NAME</text>
 </package>
 <package name="TRANSISTOR">
 <pad name="B" x="1.27" y="1.27" drill="0.8" shape="square"/>
@@ -328,6 +303,17 @@
 <wire x1="4.826" y1="-8.636" x2="4.826" y2="9.144" width="0.127" layer="21"/>
 <wire x1="4.826" y1="9.144" x2="-5.08" y2="9.144" width="0.127" layer="21"/>
 <text x="-3.81" y="10.16" size="1.27" layer="21">&gt;NAME</text>
+</package>
+<package name="JST-XH254-4P">
+<pad name="PIN2" x="-1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN3" x="1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN1" x="-3.81" y="0" drill="0.8" shape="square"/>
+<pad name="PIN4" x="3.81" y="0" drill="0.8" shape="square"/>
+<wire x1="-6.35" y1="2.54" x2="-6.35" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-2.54" x2="6.35" y2="-2.54" width="0.127" layer="21"/>
+<wire x1="6.35" y1="-2.54" x2="6.35" y2="2.54" width="0.127" layer="21"/>
+<wire x1="6.35" y1="2.54" x2="-6.35" y2="2.54" width="0.127" layer="21"/>
+<text x="-2.54" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
 </package>
 </packages>
 </library>
@@ -526,8 +512,6 @@ design rules under a new name.</description>
 <elements>
 <element name="B1" library="my_devices" package="HALL_SENSOR" value="A3144" x="34.29" y="-2.54" smashed="yes" rot="R90"/>
 <element name="D1" library="my_devices" package="LD" value="GNL-3014ED" x="34.29" y="3.81" smashed="yes" rot="R180"/>
-<element name="J1" library="my_devices" package="J2" value="J2" x="39.37" y="69.85" smashed="yes" rot="R270"/>
-<element name="J2" library="my_devices" package="J2" value="J2" x="29.21" y="69.85" smashed="yes" rot="R270"/>
 <element name="Q1" library="my_devices" package="TRANSISTOR" value="2N3904" x="24.13" y="5.08" smashed="yes" rot="R270"/>
 <element name="R1" library="my_devices" package="R" value="620" x="27.94" y="33.02" smashed="yes" rot="R270">
 <attribute name="R" value="" x="-43.18" y="-7.62" size="1.778" layer="27" rot="R270" display="off"/>
@@ -561,28 +545,29 @@ design rules under a new name.</description>
 <attribute name="NAME" x="30.48" y="29.21" size="1.27" layer="21"/>
 </element>
 <element name="U4" library="my_devices" package="DIP14" value="SN74LS32N" x="38.1" y="30.48" smashed="yes"/>
+<element name="J1" library="my_devices" package="JST-XH254-4P" value="JST-XH254-4P" x="34.29" y="68.58" smashed="yes">
+<attribute name="NAME" x="41.91" y="68.58" size="1.27" layer="21"/>
+</element>
 </elements>
 <signals>
 <signal name="+5V">
 <contactref element="U4" pad="PIN_14"/>
 <contactref element="B1" pad="VCC"/>
 <contactref element="R2" pad="P$2"/>
-<contactref element="J2" pad="PIN_1"/>
 <contactref element="U1" pad="+5V"/>
 <wire x1="19.05" y1="13.97" x2="19.05" y2="58.42" width="1.016" layer="16"/>
 <wire x1="19.05" y1="13.97" x2="21.59" y2="11.43" width="1.016" layer="16"/>
 <wire x1="21.59" y1="11.43" x2="27.94" y2="11.43" width="1.016" layer="16"/>
 <wire x1="41.91" y1="38.1" x2="30.48" y2="49.53" width="1.016" layer="16"/>
 <wire x1="30.48" y1="49.53" x2="30.48" y2="59.69" width="1.016" layer="16"/>
-<wire x1="30.48" y1="59.69" x2="30.48" y2="62.23" width="1.016" layer="16"/>
-<wire x1="30.48" y1="62.23" x2="30.48" y2="63.5" width="1.016" layer="16"/>
 <wire x1="31.75" y1="-2.54" x2="26.67" y2="-2.54" width="1.016" layer="16"/>
 <wire x1="26.67" y1="-2.54" x2="19.05" y2="5.08" width="1.016" layer="16"/>
 <wire x1="19.05" y1="5.08" x2="19.05" y2="13.97" width="1.016" layer="16"/>
 <wire x1="19.05" y1="58.42" x2="20.32" y2="59.69" width="1.016" layer="16"/>
 <wire x1="20.32" y1="59.69" x2="30.48" y2="59.69" width="1.016" layer="16"/>
-<wire x1="30.48" y1="63.5" x2="30.48" y2="68.58" width="1.016" layer="16"/>
-<wire x1="30.48" y1="68.58" x2="31.75" y2="69.85" width="1.016" layer="16"/>
+<contactref element="J1" pad="PIN2"/>
+<wire x1="30.48" y1="59.69" x2="33.02" y2="62.23" width="1.016" layer="16"/>
+<wire x1="33.02" y1="62.23" x2="33.02" y2="68.58" width="1.016" layer="16"/>
 </signal>
 <signal name="GND">
 <contactref element="B1" pad="GND"/>
@@ -592,7 +577,6 @@ design rules under a new name.</description>
 <contactref element="Q1" pad="E"/>
 <contactref element="SB2" pad="B"/>
 <contactref element="SB1" pad="B"/>
-<contactref element="J2" pad="PIN_2"/>
 <contactref element="U1" pad="GND"/>
 <contactref element="R6" pad="P1"/>
 <wire x1="35.56" y1="15.24" x2="34.036" y2="16.764" width="1.016" layer="16"/>
@@ -622,14 +606,15 @@ design rules under a new name.</description>
 <wire x1="50.8" y1="69.596" x2="53.066" y2="67.33" width="1.016" layer="16"/>
 <wire x1="53.066" y1="59.416" x2="50.8" y2="57.15" width="1.016" layer="16"/>
 <wire x1="53.066" y1="67.33" x2="53.066" y2="59.416" width="1.016" layer="16"/>
-<wire x1="24.13" y1="70.104" x2="24.424" y2="69.81" width="1.016" layer="16"/>
-<wire x1="24.424" y1="69.81" x2="26.71" y2="69.81" width="1.016" layer="16"/>
-<polygon width="0.1524" layer="16">
+<polygon width="0.1524" layer="16" isolate="0.4064">
 <vertex x="16.51" y="77.47"/>
 <vertex x="53.34" y="77.47"/>
 <vertex x="53.34" y="-3.81"/>
 <vertex x="16.51" y="-3.81"/>
 </polygon>
+<contactref element="J1" pad="PIN1"/>
+<wire x1="24.13" y1="70.104" x2="28.956" y2="70.104" width="1.016" layer="16"/>
+<wire x1="28.956" y1="70.104" x2="30.48" y2="68.58" width="1.016" layer="16"/>
 </signal>
 <signal name="GPIO_TS_WINDOW_OPEN">
 <contactref element="SB1" pad="A"/>
@@ -687,16 +672,13 @@ design rules under a new name.</description>
 </signal>
 <signal name="SERVO_PWM_CONTROL">
 <contactref element="U4" pad="PIN_8"/>
-<contactref element="J1" pad="PIN_1"/>
 <wire x1="41.91" y1="22.86" x2="43.18" y2="24.13" width="0.508" layer="1"/>
 <wire x1="43.18" y1="49.53" x2="41.91" y2="50.8" width="0.508" layer="1"/>
 <wire x1="41.91" y1="50.8" x2="40.64" y2="50.8" width="0.508" layer="1"/>
 <wire x1="43.18" y1="24.13" x2="43.18" y2="49.53" width="0.508" layer="1"/>
-<wire x1="34.29" y1="71.12" x2="35.56" y2="72.39" width="0.508" layer="1"/>
-<wire x1="35.56" y1="72.39" x2="39.37" y2="72.39" width="0.508" layer="1"/>
-<wire x1="39.37" y1="72.39" x2="41.91" y2="69.85" width="0.508" layer="1"/>
-<wire x1="40.64" y1="50.8" x2="34.29" y2="57.15" width="0.508" layer="1"/>
-<wire x1="34.29" y1="57.15" x2="34.29" y2="71.12" width="0.508" layer="1"/>
+<contactref element="J1" pad="PIN3"/>
+<wire x1="40.64" y1="50.8" x2="35.56" y2="55.88" width="0.508" layer="1"/>
+<wire x1="35.56" y1="55.88" x2="35.56" y2="68.58" width="0.508" layer="1"/>
 </signal>
 <signal name="N$3">
 <contactref element="U4" pad="PIN_6"/>
@@ -764,15 +746,17 @@ design rules under a new name.</description>
 <wire x1="21.59" y1="39.37" x2="27.94" y2="39.37" width="0.508" layer="1"/>
 </signal>
 <signal name="OUTDOOR_SIGNAL">
-<contactref element="J1" pad="PIN_2"/>
 <contactref element="R6" pad="P2"/>
-<wire x1="44.45" y1="51.4572625" x2="38.42863125" y2="57.47863125" width="0.508" layer="1"/>
-<wire x1="38.42863125" y1="57.47863125" x2="38.1" y2="57.8072625" width="0.508" layer="1"/>
 <wire x1="40.64" y1="15.24" x2="40.64" y2="19.05" width="0.508" layer="1"/>
-<wire x1="44.45" y1="22.86" x2="44.45" y2="51.4572625" width="0.508" layer="1"/>
+<wire x1="44.45" y1="22.86" x2="44.45" y2="50.8" width="0.508" layer="1"/>
+<wire x1="44.45" y1="50.8" x2="44.45" y2="51.4572625" width="0.508" layer="1"/>
 <wire x1="40.64" y1="19.05" x2="44.45" y2="22.86" width="0.508" layer="1"/>
-<wire x1="38.42863125" y1="57.47863125" x2="38.42863125" y2="68.25136875" width="0.508" layer="1"/>
-<wire x1="38.42863125" y1="68.25136875" x2="36.87" y2="69.81" width="0.508" layer="1"/>
+<contactref element="J1" pad="PIN4"/>
+<wire x1="44.45" y1="51.4572625" x2="44.45" y2="53.34" width="0.508" layer="1"/>
+<wire x1="44.45" y1="53.34" x2="43.18" y2="54.61" width="0.508" layer="1"/>
+<wire x1="43.18" y1="54.61" x2="39.37" y2="54.61" width="0.508" layer="1"/>
+<wire x1="39.37" y1="54.61" x2="38.1" y2="55.88" width="0.508" layer="1"/>
+<wire x1="38.1" y1="55.88" x2="38.1" y2="68.58" width="0.508" layer="1"/>
 </signal>
 <signal name="N$6">
 <contactref element="U1" pad="IO19"/>

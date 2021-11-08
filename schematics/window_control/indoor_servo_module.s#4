@@ -1128,7 +1128,7 @@ Mosfet required &gt;8V</text>
 <instance part="GND1" gate="1" x="2.54" y="-86.36" smashed="yes" grouprefs="NEAR_HANDLE_MODULE_CONNECTOR">
 <attribute name="VALUE" x="0" y="-88.9" size="1.778" layer="96"/>
 </instance>
-<instance part="J3" gate="G$1" x="50.8" y="-43.18" smashed="yes" rot="R180">
+<instance part="J3" gate="G$1" x="50.8" y="-43.18" smashed="yes" rot="R180" grouprefs="SUPPLY_CONNECTOR">
 <attribute name="NAME" x="38.1" y="-45.72" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="38.1" y="-40.64" size="1.778" layer="94" rot="R180"/>
 </instance>

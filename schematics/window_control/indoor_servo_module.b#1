@@ -83,6 +83,15 @@
 <hole x="39.37" y="48.26" drill="3"/>
 <hole x="82.55" y="48.26" drill="3"/>
 <hole x="63.5" y="6.35" drill="3"/>
+<text x="54.61" y="-7.62" size="1.778" layer="26" rot="MR0">GND</text>
+<text x="62.23" y="-7.62" size="1.778" layer="26" rot="MR0">GND</text>
+<text x="68.58" y="-7.62" size="1.778" layer="26" rot="MR0">+5V</text>
+<text x="83.82" y="-7.62" size="1.778" layer="26" rot="MR0">GND</text>
+<text x="77.47" y="-7.62" size="1.778" layer="26" rot="MR0">+5V</text>
+<text x="73.66" y="-3.81" size="1.778" layer="26" rot="MR0">SGN</text>
+<text x="50.8" y="-3.81" size="1.778" layer="26" rot="MR0">+5V</text>
+<text x="46.99" y="-7.62" size="1.778" layer="26" rot="MR0">PWM</text>
+<text x="43.18" y="-3.81" size="1.778" layer="26" rot="MR0">SGN</text>
 </plain>
 <libraries>
 <library name="my_devices">
@@ -605,13 +614,15 @@ design rules under a new name.</description>
 <wire x1="46.99" y1="36.83" x2="46.99" y2="39.43115625" width="1.524" layer="1"/>
 <wire x1="50.73884375" y1="43.18" x2="53.34" y2="43.18" width="1.524" layer="1"/>
 <wire x1="41.91" y1="13.97" x2="43.18" y2="13.97" width="1.524" layer="1"/>
-<wire x1="46.355" y1="10.795" x2="50.8" y2="10.795" width="1.524" layer="1"/>
+<wire x1="46.355" y1="10.795" x2="52.705" y2="10.795" width="1.524" layer="1"/>
 <wire x1="43.18" y1="13.97" x2="46.355" y2="10.795" width="1.524" layer="1"/>
-<wire x1="50.8" y1="10.795" x2="55.88" y2="10.795" width="1.524" layer="1"/>
-<wire x1="55.88" y1="10.795" x2="59.055" y2="10.795" width="1.524" layer="1"/>
+<wire x1="52.705" y1="10.795" x2="57.15" y2="10.795" width="1.524" layer="1"/>
+<wire x1="57.15" y1="10.795" x2="59.055" y2="10.795" width="1.524" layer="1"/>
 <wire x1="59.055" y1="10.795" x2="62.122" y2="13.862" width="1.524" layer="1"/>
-<wire x1="50.8" y1="13.97" x2="50.8" y2="10.795" width="1.524" layer="1"/>
-<wire x1="55.88" y1="10.795" x2="55.88" y2="6.35" width="1.524" layer="1"/>
+<wire x1="50.8" y1="13.97" x2="50.8" y2="12.7" width="1.524" layer="1"/>
+<wire x1="50.8" y1="12.7" x2="52.705" y2="10.795" width="1.524" layer="1"/>
+<wire x1="55.88" y1="9.525" x2="57.15" y2="10.795" width="1.524" layer="1"/>
+<wire x1="55.88" y1="6.35" x2="55.88" y2="9.525" width="1.524" layer="1"/>
 </signal>
 <signal name="GND">
 <contactref element="C4" pad="P$1"/>
@@ -672,9 +683,9 @@ design rules under a new name.</description>
 <wire x1="40.64" y1="2.54" x2="38.1" y2="5.08" width="0.508" layer="1"/>
 <wire x1="38.1" y1="5.08" x2="38.1" y2="31.75" width="0.508" layer="1"/>
 <wire x1="38.1" y1="31.75" x2="40.64" y2="34.29" width="0.508" layer="1"/>
-<contactref element="J2" pad="PIN4"/>
-<wire x1="40.64" y1="2.54" x2="43.18" y2="0" width="0.508" layer="1"/>
-<wire x1="43.18" y1="0" x2="43.18" y2="-5.08" width="0.508" layer="1"/>
+<contactref element="J2" pad="PIN3"/>
+<wire x1="45.72" y1="-2.54" x2="45.72" y2="-5.08" width="0.508" layer="1"/>
+<wire x1="40.64" y1="2.54" x2="45.72" y2="-2.54" width="0.508" layer="1"/>
 </signal>
 <signal name="N$39">
 <contactref element="D4" pad="ANODE"/>
@@ -833,10 +844,10 @@ design rules under a new name.</description>
 </signal>
 <signal name="OUTDOOR_SIGNAL">
 <contactref element="J4" pad="PIN3"/>
-<contactref element="J2" pad="PIN3"/>
-<wire x1="45.72" y1="-5.08" x2="48.26" y2="-7.62" width="0.508" layer="1"/>
-<wire x1="71.12" y1="-7.62" x2="73.66" y2="-5.08" width="0.508" layer="1"/>
-<wire x1="48.26" y1="-7.62" x2="71.12" y2="-7.62" width="0.508" layer="1"/>
+<wire x1="73.66" y1="-5.08" x2="71.12" y2="-7.62" width="0.508" layer="1"/>
+<contactref element="J2" pad="PIN4"/>
+<wire x1="45.72" y1="-7.62" x2="43.18" y2="-5.08" width="0.508" layer="1"/>
+<wire x1="71.12" y1="-7.62" x2="45.72" y2="-7.62" width="0.508" layer="1"/>
 </signal>
 <signal name="N$3">
 <contactref element="SW1" pad="P$1"/>

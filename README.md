@@ -28,7 +28,7 @@ Project status
 | ---- | ---- |
 | Indoor board :: near-handle module | OK |
 | Indoor board :: servo module | OK |
-| Outdoor module board | Almost done - maybe I will reduce board size |
+| Outdoor module board | OK |
 
 | Firmware | status |
 | ---- | ---- |

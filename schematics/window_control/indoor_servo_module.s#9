@@ -1302,6 +1302,11 @@ Mosfet required &gt;8V</text>
 <wire x1="-5.08" y1="-48.26" x2="15.24" y2="-48.26" width="0.1524" layer="91" grouprefs="NEAR_HANDLE_MODULE_CONNECTOR"/>
 <label x="-2.54" y="-48.26" size="1.778" layer="95" grouprefs="NEAR_HANDLE_MODULE_CONNECTOR"/>
 </segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="PIN4"/>
+<wire x1="-5.08" y1="-68.58" x2="17.78" y2="-68.58" width="0.1524" layer="91"/>
+<label x="-2.54" y="-68.58" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="N$39" class="0">
 <segment>
@@ -1486,6 +1491,11 @@ Mosfet required &gt;8V</text>
 <pinref part="J8" gate="G$1" pin="PIN3"/>
 <wire x1="-99.06" y1="-66.04" x2="-66.04" y2="-66.04" width="0.1524" layer="91" grouprefs="OUTDOOR_MODULE_CONNECTOR"/>
 <label x="-83.82" y="-66.04" size="1.778" layer="95" grouprefs="OUTDOOR_MODULE_CONNECTOR"/>
+</segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="PIN3"/>
+<wire x1="-5.08" y1="-73.66" x2="17.78" y2="-73.66" width="0.1524" layer="91"/>
+<label x="-2.54" y="-73.66" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$3" class="0">

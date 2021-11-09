@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="50" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -857,8 +857,8 @@
 <smd name="PIN" x="0" y="0" dx="5.08" dy="2.54" layer="1"/>
 </package>
 <package name="JST-XH254-2P">
-<pad name="PIN1" x="-1.27" y="0" drill="0.6" shape="square"/>
-<pad name="PIN2" x="1.27" y="0" drill="0.6" shape="square"/>
+<pad name="PIN1" x="-1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN2" x="1.27" y="0" drill="0.8" shape="square"/>
 <wire x1="-3.81" y1="2.54" x2="-3.81" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="-3.81" y1="-2.54" x2="3.81" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="3.81" y1="-2.54" x2="3.81" y2="2.54" width="0.127" layer="21"/>
@@ -866,9 +866,9 @@
 <text x="-3.81" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
 </package>
 <package name="JST-XH254-3P">
-<pad name="P$1" x="0" y="0" drill="0.6" shape="square"/>
-<pad name="P$2" x="-2.54" y="0" drill="0.6" shape="square"/>
-<pad name="P$3" x="2.54" y="0" drill="0.6" shape="square"/>
+<pad name="PIN2" x="0" y="0" drill="0.8" shape="square"/>
+<pad name="PIN1" x="-2.54" y="0" drill="0.8" shape="square"/>
+<pad name="PIN3" x="2.54" y="0" drill="0.8" shape="square"/>
 <wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.127" layer="21"/>
@@ -2884,6 +2884,23 @@
 <connects>
 <connect gate="G$1" pin="PIN1" pad="PIN1"/>
 <connect gate="G$1" pin="PIN2" pad="PIN2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="JST-XH254-3P" prefix="J">
+<gates>
+<gate name="G$1" symbol="JST-XH254-3P" x="-5.08" y="0"/>
+</gates>
+<devices>
+<device name="" package="JST-XH254-3P">
+<connects>
+<connect gate="G$1" pin="PIN1" pad="PIN1"/>
+<connect gate="G$1" pin="PIN2" pad="PIN2"/>
+<connect gate="G$1" pin="PIN3" pad="PIN3"/>
 </connects>
 <technologies>
 <technology name=""/>

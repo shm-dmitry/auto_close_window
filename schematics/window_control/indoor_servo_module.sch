@@ -161,23 +161,23 @@
 <text x="-3.81" y="5.08" size="1.27" layer="21">&gt;NAME</text>
 </package>
 <package name="D_SCHOTTKY">
-<pad name="ANODE" x="-2.54" y="0" drill="0.7" shape="square"/>
-<pad name="CATHODE" x="2.54" y="0" drill="0.7" shape="square"/>
-<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.127" layer="21"/>
-<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.127" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.127" layer="21"/>
+<pad name="ANODE" x="-3.81" y="0" drill="0.7" shape="square"/>
+<pad name="CATHODE" x="3.81" y="0" drill="0.7" shape="square"/>
+<wire x1="-5.08" y1="1.905" x2="-5.08" y2="-1.905" width="0.127" layer="21"/>
+<wire x1="-5.08" y1="-1.905" x2="5.08" y2="-1.905" width="0.127" layer="21"/>
+<wire x1="5.08" y1="-1.905" x2="5.08" y2="1.905" width="0.127" layer="21"/>
+<wire x1="5.08" y1="1.905" x2="-5.08" y2="1.905" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="0" x2="-1.27" y2="1.27" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="1.27" x2="1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="0" x2="-1.27" y2="-1.27" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="-1.27" x2="-1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.127" layer="21"/>
 <wire x1="0.635" y1="-1.27" x2="0.635" y2="-0.635" width="0.127" layer="21"/>
-<text x="-2.54" y="3.81" size="1.27" layer="21">&gt;NAME</text>
+<text x="-2.54" y="2.54" size="1.27" layer="21">&gt;NAME</text>
+<wire x1="-3.81" y1="0" x2="-1.27" y2="0" width="0.127" layer="21"/>
+<wire x1="1.27" y1="0" x2="3.81" y2="0" width="0.127" layer="21"/>
 </package>
 <package name="L-RLB0914">
 <pad name="P$1" x="2.54" y="0" drill="0.8" shape="square"/>

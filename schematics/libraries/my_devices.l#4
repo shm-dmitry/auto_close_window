@@ -876,15 +876,29 @@
 <text x="-2.54" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
 </package>
 <package name="JST-XH254-4P">
-<pad name="P$1" x="-1.27" y="0" drill="0.6" shape="square"/>
-<pad name="P$2" x="1.27" y="0" drill="0.6" shape="square"/>
-<pad name="P$3" x="-3.81" y="0" drill="0.6" shape="square"/>
-<pad name="P$4" x="3.81" y="0" drill="0.6" shape="square"/>
+<pad name="PIN2" x="-1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN3" x="1.27" y="0" drill="0.8" shape="square"/>
+<pad name="PIN1" x="-3.81" y="0" drill="0.8" shape="square"/>
+<pad name="PIN4" x="3.81" y="0" drill="0.8" shape="square"/>
 <wire x1="-6.35" y1="2.54" x2="-6.35" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="-6.35" y1="-2.54" x2="6.35" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="6.35" y1="-2.54" x2="6.35" y2="2.54" width="0.127" layer="21"/>
 <wire x1="6.35" y1="2.54" x2="-6.35" y2="2.54" width="0.127" layer="21"/>
 <text x="-2.54" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
+</package>
+<package name="BME280-CONNECTOR-ONLY">
+<pad name="GND" x="-5.08" y="1.27" drill="0.8" shape="square"/>
+<pad name="SCL" x="-5.08" y="-1.27" drill="0.8" shape="square"/>
+<pad name="VCC" x="-5.08" y="3.81" drill="0.8" shape="square"/>
+<pad name="SDA" x="-5.08" y="-3.81" drill="0.8" shape="square"/>
+<text x="-3.81" y="3.81" size="0.8128" layer="21">VCC</text>
+<text x="-3.81" y="1.27" size="0.8128" layer="21">GND</text>
+<text x="-3.81" y="-1.27" size="0.8128" layer="21">SCL</text>
+<text x="-3.81" y="-3.81" size="0.8128" layer="21">SDA</text>
+<wire x1="-6.35" y1="5.08" x2="0" y2="5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-5.08" x2="0" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="0" y1="-5.08" x2="0" y2="5.08" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -2925,6 +2939,24 @@
 <connect gate="G$1" pin="PIN1" pad="PIN1"/>
 <connect gate="G$1" pin="PIN2" pad="PIN2"/>
 <connect gate="G$1" pin="PIN3" pad="PIN3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="JST-XH254-4P" prefix="J">
+<gates>
+<gate name="G$1" symbol="JST-XH254-4P" x="-5.08" y="0"/>
+</gates>
+<devices>
+<device name="" package="JST-XH254-4P">
+<connects>
+<connect gate="G$1" pin="PIN1" pad="PIN1"/>
+<connect gate="G$1" pin="PIN2" pad="PIN2"/>
+<connect gate="G$1" pin="PIN3" pad="PIN3"/>
+<connect gate="G$1" pin="PIN4" pad="PIN4"/>
 </connects>
 <technologies>
 <technology name=""/>

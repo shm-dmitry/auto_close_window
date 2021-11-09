@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -631,23 +631,23 @@
 <text x="-3.81" y="5.08" size="1.27" layer="21">&gt;NAME</text>
 </package>
 <package name="D_SCHOTTKY">
-<pad name="ANODE" x="-2.54" y="0" drill="0.7" shape="square"/>
-<pad name="CATHODE" x="2.54" y="0" drill="0.7" shape="square"/>
+<pad name="ANODE" x="-3.81" y="0" drill="0.7" shape="square"/>
+<pad name="CATHODE" x="3.81" y="0" drill="0.7" shape="square"/>
 <wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.127" layer="21"/>
 <wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.127" layer="21"/>
-<wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="0" x2="-1.27" y2="1.27" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="1.27" x2="1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="0" x2="-1.27" y2="-1.27" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="-1.27" x2="-1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.127" layer="21"/>
 <wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.127" layer="21"/>
 <wire x1="0.635" y1="-1.27" x2="0.635" y2="-0.635" width="0.127" layer="21"/>
 <text x="-2.54" y="3.81" size="1.27" layer="21">&gt;NAME</text>
+<wire x1="-3.81" y1="0" x2="-1.27" y2="0" width="0.127" layer="21"/>
+<wire x1="1.27" y1="0" x2="3.81" y2="0" width="0.127" layer="21"/>
 </package>
 <package name="D">
 <pad name="P$1" x="-1.27" y="0" drill="0.6" shape="square"/>
@@ -885,6 +885,20 @@
 <wire x1="6.35" y1="-2.54" x2="6.35" y2="2.54" width="0.127" layer="21"/>
 <wire x1="6.35" y1="2.54" x2="-6.35" y2="2.54" width="0.127" layer="21"/>
 <text x="-2.54" y="-3.81" size="1.27" layer="21">&gt;NAME</text>
+</package>
+<package name="BME280-CONNECTOR-ONLY">
+<pad name="GND" x="-5.08" y="1.27" drill="0.8" shape="square"/>
+<pad name="SCL" x="-5.08" y="-1.27" drill="0.8" shape="square"/>
+<pad name="VCC" x="-5.08" y="3.81" drill="0.8" shape="square"/>
+<pad name="SDA" x="-5.08" y="-3.81" drill="0.8" shape="square"/>
+<text x="-3.81" y="3.81" size="0.8128" layer="21">VCC</text>
+<text x="-3.81" y="1.27" size="0.8128" layer="21">GND</text>
+<text x="-3.81" y="-1.27" size="0.8128" layer="21">SCL</text>
+<text x="-3.81" y="-3.81" size="0.8128" layer="21">SDA</text>
+<wire x1="-6.35" y1="5.08" x2="0" y2="5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="-5.08" x2="0" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="0" y1="-5.08" x2="0" y2="5.08" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -2160,6 +2174,17 @@
 </gates>
 <devices>
 <device name="" package="BME280">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="SCL" pad="SCL"/>
+<connect gate="G$1" pin="SDA" pad="SDA"/>
+<connect gate="G$1" pin="VCC" pad="VCC"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="BME280-CONNECTOR-ONLY" package="BME280-CONNECTOR-ONLY">
 <connects>
 <connect gate="G$1" pin="GND" pad="GND"/>
 <connect gate="G$1" pin="SCL" pad="SCL"/>

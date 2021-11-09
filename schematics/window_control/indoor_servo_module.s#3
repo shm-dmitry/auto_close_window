@@ -968,7 +968,7 @@
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="D1" library="my_devices" deviceset="D_SCHOTTKY" device="" value="BAT41"/>
 <part name="D2" library="my_devices" deviceset="D_SCHOTTKY" device="" value="BAT41"/>
-<part name="J8" library="my_devices" deviceset="JST-XH254-3P" device=""/>
+<part name="J4" library="my_devices" deviceset="JST-XH254-3P" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="J2" library="my_devices" deviceset="JST-XH254-4P" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -1113,7 +1113,7 @@ Mosfet required &gt;8V</text>
 <attribute name="NAME" x="-25.4" y="66.675" size="1.778" layer="94" rot="R270"/>
 <attribute name="VALUE" x="-31.75" y="66.675" size="1.778" layer="94" rot="R270"/>
 </instance>
-<instance part="J8" gate="G$1" x="-104.14" y="-71.12" smashed="yes" rot="R180" grouprefs="OUTDOOR_MODULE_CONNECTOR">
+<instance part="J4" gate="G$1" x="-104.14" y="-71.12" smashed="yes" rot="R180" grouprefs="OUTDOOR_MODULE_CONNECTOR">
 <attribute name="NAME" x="-116.84" y="-73.66" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="-116.84" y="-68.58" size="1.778" layer="94" rot="R180"/>
 </instance>
@@ -1239,7 +1239,7 @@ Mosfet required &gt;8V</text>
 <pinref part="GND4" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="J8" gate="G$1" pin="PIN1"/>
+<pinref part="J4" gate="G$1" pin="PIN1"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 <wire x1="-99.06" y1="-76.2" x2="-93.98" y2="-76.2" width="0.1524" layer="91" grouprefs="OUTDOOR_MODULE_CONNECTOR"/>
 </segment>
@@ -1441,7 +1441,7 @@ Mosfet required &gt;8V</text>
 </net>
 <net name="OUTDOOR_SIGNAL" class="0">
 <segment>
-<pinref part="J8" gate="G$1" pin="PIN3"/>
+<pinref part="J4" gate="G$1" pin="PIN3"/>
 <wire x1="-99.06" y1="-66.04" x2="-66.04" y2="-66.04" width="0.1524" layer="91" grouprefs="OUTDOOR_MODULE_CONNECTOR"/>
 <label x="-83.82" y="-66.04" size="1.778" layer="95" grouprefs="OUTDOOR_MODULE_CONNECTOR"/>
 </segment>
@@ -1460,7 +1460,7 @@ Mosfet required &gt;8V</text>
 </net>
 <net name="N$4" class="0">
 <segment>
-<pinref part="J8" gate="G$1" pin="PIN2"/>
+<pinref part="J4" gate="G$1" pin="PIN2"/>
 <pinref part="SB1" gate="G$1" pin="P$1"/>
 <wire x1="-99.06" y1="-71.12" x2="-93.98" y2="-71.12" width="0.1524" layer="91" grouprefs="OUTDOOR_MODULE_CONNECTOR"/>
 </segment>

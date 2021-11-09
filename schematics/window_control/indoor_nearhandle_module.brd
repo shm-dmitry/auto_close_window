@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -83,7 +83,7 @@
 <hole x="44.45" y="66.04" drill="3"/>
 <hole x="25.4" y="66.04" drill="3"/>
 <hole x="17.78" y="-1.27" drill="3"/>
-<hole x="50.8" y="-1.27" drill="3"/>
+<hole x="52.07" y="-1.27" drill="3"/>
 <text x="16.51" y="73.66" size="0.8128" layer="25">SB2</text>
 <text x="50.8" y="73.66" size="0.8128" layer="25">SB1</text>
 <text x="38.1" y="59.69" size="1.778" layer="25">R8</text>

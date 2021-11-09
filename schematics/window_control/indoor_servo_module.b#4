@@ -674,9 +674,9 @@ design rules under a new name.</description>
 <wire x1="40.64" y1="2.54" x2="38.1" y2="5.08" width="0.508" layer="1"/>
 <wire x1="38.1" y1="5.08" x2="38.1" y2="31.75" width="0.508" layer="1"/>
 <wire x1="38.1" y1="31.75" x2="40.64" y2="34.29" width="0.508" layer="1"/>
-<contactref element="J2" pad="PIN4"/>
-<wire x1="40.64" y1="2.54" x2="43.18" y2="0" width="0.508" layer="1"/>
-<wire x1="43.18" y1="0" x2="43.18" y2="-5.08" width="0.508" layer="1"/>
+<contactref element="J2" pad="PIN3"/>
+<wire x1="45.72" y1="-2.54" x2="45.72" y2="-5.08" width="0.508" layer="1"/>
+<wire x1="40.64" y1="2.54" x2="45.72" y2="-2.54" width="0.508" layer="1"/>
 </signal>
 <signal name="N$39">
 <contactref element="D4" pad="ANODE"/>
@@ -835,10 +835,10 @@ design rules under a new name.</description>
 </signal>
 <signal name="OUTDOOR_SIGNAL">
 <contactref element="J4" pad="PIN3"/>
-<contactref element="J2" pad="PIN3"/>
-<wire x1="45.72" y1="-5.08" x2="48.26" y2="-7.62" width="0.508" layer="1"/>
-<wire x1="71.12" y1="-7.62" x2="73.66" y2="-5.08" width="0.508" layer="1"/>
-<wire x1="48.26" y1="-7.62" x2="71.12" y2="-7.62" width="0.508" layer="1"/>
+<wire x1="73.66" y1="-5.08" x2="71.12" y2="-7.62" width="0.508" layer="1"/>
+<contactref element="J2" pad="PIN4"/>
+<wire x1="45.72" y1="-7.62" x2="43.18" y2="-5.08" width="0.508" layer="1"/>
+<wire x1="71.12" y1="-7.62" x2="45.72" y2="-7.62" width="0.508" layer="1"/>
 </signal>
 <signal name="N$3">
 <contactref element="SW1" pad="P$1"/>

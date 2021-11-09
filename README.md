@@ -30,7 +30,7 @@ Project status
 | Indoor board :: servo module | OK |
 | Outdoor module board | OK |
 
-Boards status: Initially all done. At now I will recheck everething, for example - elements size. After it I will make order for this boards. 
+Boards status: I ordered boards on jlcpcb. At now I await for a production and delivery. 
 
 | Firmware | status |
 | ---- | ---- |

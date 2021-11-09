@@ -82,8 +82,8 @@
 <wire x1="15.24" y1="75.87" x2="15.24" y2="-5.08" width="0" layer="20"/>
 <hole x="44.45" y="66.04" drill="3"/>
 <hole x="25.4" y="66.04" drill="3"/>
-<hole x="17.78" y="-1.27" drill="3"/>
-<hole x="52.07" y="-1.27" drill="3"/>
+<hole x="19.05" y="-1.27" drill="3"/>
+<hole x="50.8" y="-1.27" drill="3"/>
 <text x="16.51" y="73.66" size="0.8128" layer="25">SB2</text>
 <text x="50.8" y="73.66" size="0.8128" layer="25">SB1</text>
 <text x="38.1" y="59.69" size="1.778" layer="25">R8</text>

@@ -99,7 +99,10 @@
 <text x="27.94" y="6.35" size="1.778" layer="25">D1</text>
 <text x="44.45" y="6.35" size="1.778" layer="25">SW1</text>
 <text x="39.37" y="-2.54" size="1.778" layer="25">B1</text>
-<text x="29.21" y="68.58" size="1.778" layer="26" rot="MR0">GND</text>
+<text x="30.48" y="69.85" size="1.778" layer="26" rot="MR0">GND</text>
+<text x="34.29" y="66.04" size="1.778" layer="26" rot="MR0">+5V</text>
+<text x="38.1" y="69.85" size="1.778" layer="26" rot="MR0">PWM</text>
+<text x="41.91" y="66.04" size="1.778" layer="26" rot="MR0">SGN</text>
 </plain>
 <libraries>
 <library name="my_devices">

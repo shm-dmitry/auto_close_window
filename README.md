@@ -18,7 +18,7 @@ Project status
 
 | Hardware | status |
 | ---- | ---- |
-| Indoor schema :: near-handle module | In progress - Touch sensor driver will be replaced by button driver |
+| Indoor schema :: near-handle module | OK |
 | Indoor schema :: servo module | OK |
 | Indoor schema :: digital channel to outdoor schema | OK |
 | Outdoor module schema :: microcontroller and its periphery | OK |
@@ -35,7 +35,7 @@ Boards status: I ordered boards on jlcpcb. At now I await for a production and d
 | Firmware | status |
 | ---- | ---- |
 | Indoor firmware :: hardware sensors - hall, switch and soft lock | OK |
-| Indoor firmware :: touchpads | OK |
+| Indoor firmware :: touchpads | In progress - Touch sensor driver will be replaced by button driver |
 | Indoor firmware :: servo control and calibration | OK |
 | Indoor firmware :: led indication | OK |
 | Indoor firmware :: controller | OK |

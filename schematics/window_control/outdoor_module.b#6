@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -82,7 +82,7 @@
 <wire x1="87.63" y1="30.15" x2="87.63" y2="-26.67" width="0" layer="20"/>
 <hole x="90.17" y="27.94" drill="3"/>
 <hole x="132.08" y="-24.13" drill="3"/>
-<hole x="107.95" y="-24.13" drill="3"/>
+<hole x="109.22" y="-22.86" drill="3"/>
 <text x="119.38" y="15.24" size="1.27" layer="21">C6</text>
 <text x="115.57" y="16.51" size="1.27" layer="21">C9</text>
 <text x="111.76" y="27.94" size="1.27" layer="21">R21</text>
@@ -104,6 +104,9 @@
 <text x="110.49" y="-21.59" size="1.27" layer="21">R20</text>
 <text x="104.14" y="-21.59" size="1.27" layer="21">R23</text>
 <text x="102.87" y="-24.13" size="1.27" layer="21">J10</text>
+<text x="129.54" y="17.78" size="1.778" layer="26" rot="MR0">GND</text>
+<text x="129.54" y="20.32" size="1.778" layer="26" rot="MR0">+5V</text>
+<text x="129.54" y="22.86" size="1.778" layer="26" rot="MR0">SGN</text>
 </plain>
 <libraries>
 <library name="my_devices">

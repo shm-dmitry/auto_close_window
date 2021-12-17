@@ -8,34 +8,34 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="no"/>
-<layer number="3" name="Route3" color="17" fill="1" visible="yes" active="no"/>
-<layer number="4" name="Route4" color="18" fill="1" visible="yes" active="no"/>
-<layer number="5" name="Route5" color="19" fill="1" visible="yes" active="no"/>
-<layer number="6" name="Route6" color="25" fill="1" visible="yes" active="no"/>
-<layer number="7" name="Route7" color="26" fill="1" visible="yes" active="no"/>
-<layer number="8" name="Route8" color="27" fill="1" visible="yes" active="no"/>
-<layer number="9" name="Route9" color="28" fill="1" visible="yes" active="no"/>
-<layer number="10" name="Route10" color="29" fill="1" visible="yes" active="no"/>
-<layer number="11" name="Route11" color="30" fill="1" visible="yes" active="no"/>
-<layer number="12" name="Route12" color="20" fill="1" visible="yes" active="no"/>
-<layer number="13" name="Route13" color="21" fill="1" visible="yes" active="no"/>
-<layer number="14" name="Route14" color="22" fill="1" visible="yes" active="no"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
+<layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
+<layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
+<layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
+<layer number="6" name="Route6" color="25" fill="1" visible="no" active="no"/>
+<layer number="7" name="Route7" color="26" fill="1" visible="no" active="no"/>
+<layer number="8" name="Route8" color="27" fill="1" visible="no" active="no"/>
+<layer number="9" name="Route9" color="28" fill="1" visible="no" active="no"/>
+<layer number="10" name="Route10" color="29" fill="1" visible="no" active="no"/>
+<layer number="11" name="Route11" color="30" fill="1" visible="no" active="no"/>
+<layer number="12" name="Route12" color="20" fill="1" visible="no" active="no"/>
+<layer number="13" name="Route13" color="21" fill="1" visible="no" active="no"/>
+<layer number="14" name="Route14" color="22" fill="1" visible="no" active="no"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="no" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -44,8 +44,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -53,12 +53,12 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -209,19 +209,6 @@
 <wire x1="5.08" y1="-5.08" x2="5.08" y2="5.08" width="0.127" layer="21"/>
 <text x="-2.54" y="6.35" size="1.27" layer="21">&gt;NAME</text>
 </package>
-<package name="VOLTAGE_REGULATOR">
-<pad name="IN" x="-2.54" y="0" drill="0.6" shape="square"/>
-<pad name="GND" x="0" y="0" drill="0.6" shape="square"/>
-<pad name="OUT" x="2.54" y="0" drill="0.6" shape="square"/>
-<wire x1="-5.08" y1="2.54" x2="-5.08" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.127" layer="21"/>
-<wire x1="5.08" y1="-2.54" x2="5.08" y2="2.54" width="0.127" layer="21"/>
-<wire x1="5.08" y1="2.54" x2="-5.08" y2="2.54" width="0.127" layer="21"/>
-<text x="-3.81" y="1.27" size="0.6096" layer="21">in</text>
-<text x="-1.27" y="1.27" size="0.6096" layer="21">gnd</text>
-<text x="2.54" y="1.27" size="0.6096" layer="21">out</text>
-<text x="-3.81" y="3.81" size="1.27" layer="21">&gt;NAME</text>
-</package>
 <package name="ATMEGA328P">
 <pad name="VCC" x="-3.81" y="0" drill="1" shape="square"/>
 <pad name="GND" x="-3.81" y="-2.54" drill="1" shape="square"/>
@@ -341,6 +328,14 @@
 <pad name="P$2" x="-2.54" y="0" drill="0.8" shape="square"/>
 <circle x="0" y="0" radius="5.08" width="0.127" layer="21"/>
 <text x="-2.54" y="2.54" size="1.27" layer="21">&gt;NAME</text>
+</package>
+<package name="TO-92">
+<pad name="P1" x="-2.54" y="0" drill="0.6" shape="square"/>
+<pad name="P2" x="0" y="0" drill="0.6" shape="square"/>
+<pad name="P3" x="2.54" y="0" drill="0.6" shape="square"/>
+<wire x1="3.81" y1="2.54" x2="-3.81" y2="2.54" width="0.127" layer="21" curve="-233.130102"/>
+<wire x1="-3.81" y1="2.54" x2="3.81" y2="2.54" width="0.127" layer="21"/>
+<text x="-2.54" y="3.81" size="1.27" layer="21">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -465,20 +460,6 @@
 <text x="-3.81" y="5.715" size="1.4224" layer="94">&gt;NAME</text>
 <text x="-3.81" y="-9.525" size="1.4224" layer="94">&gt;VALUE</text>
 </symbol>
-<symbol name="VOLTAGE_REGULATOR">
-<pin name="IN" x="-10.16" y="2.54" visible="off" length="middle" direction="pwr"/>
-<pin name="GND" x="0" y="-7.62" visible="off" length="middle" direction="pwr" rot="R90"/>
-<pin name="OUT" x="10.16" y="2.54" visible="off" length="middle" direction="sup" rot="R180"/>
-<wire x1="-5.08" y1="5.08" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-2.54" x2="5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
-<text x="-2.54" y="10.16" size="1.778" layer="94">&gt;NAME</text>
-<text x="-2.54" y="7.62" size="1.778" layer="94">&gt;VALUE</text>
-<text x="-3.81" y="2.54" size="1.778" layer="94">in</text>
-<text x="-2.54" y="-1.27" size="1.778" layer="94">GND</text>
-<text x="1.27" y="2.54" size="1.778" layer="94">out</text>
-</symbol>
 <symbol name="ATMEGA328P">
 <pin name="GND" x="-20.32" y="0" visible="off" length="middle" direction="pwr"/>
 <pin name="VCC" x="-20.32" y="2.54" visible="off" length="middle" direction="pwr"/>
@@ -590,6 +571,20 @@
 <wire x1="10.16" y1="7.62" x2="0" y2="7.62" width="0.254" layer="94"/>
 <text x="12.7" y="2.54" size="1.778" layer="94">&gt;NAME</text>
 <text x="12.7" y="-2.54" size="1.778" layer="94">&gt;VALUE</text>
+</symbol>
+<symbol name="VOLTAGE_REGULATOR">
+<pin name="IN" x="-10.16" y="2.54" visible="off" length="middle" direction="pwr"/>
+<pin name="GND" x="0" y="-7.62" visible="off" length="middle" direction="pwr" rot="R90"/>
+<pin name="OUT" x="10.16" y="2.54" visible="off" length="middle" direction="sup" rot="R180"/>
+<wire x1="-5.08" y1="5.08" x2="-5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="5.08" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<text x="-2.54" y="10.16" size="1.778" layer="94">&gt;NAME</text>
+<text x="-2.54" y="7.62" size="1.778" layer="94">&gt;VALUE</text>
+<text x="-3.81" y="2.54" size="1.778" layer="94">in</text>
+<text x="-2.54" y="-1.27" size="1.27" layer="94">OFFSET</text>
+<text x="1.27" y="2.54" size="1.778" layer="94">out</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -780,23 +775,6 @@
 </device>
 </devices>
 </deviceset>
-<deviceset name="VOLTAGE_REGULATOR" prefix="U">
-<gates>
-<gate name="G$1" symbol="VOLTAGE_REGULATOR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="VOLTAGE_REGULATOR">
-<connects>
-<connect gate="G$1" pin="GND" pad="GND"/>
-<connect gate="G$1" pin="IN" pad="IN"/>
-<connect gate="G$1" pin="OUT" pad="OUT"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="ATMEGA328P" prefix="U">
 <gates>
 <gate name="G$1" symbol="ATMEGA328P" x="0" y="0"/>
@@ -880,6 +858,23 @@
 </device>
 </devices>
 </deviceset>
+<deviceset name="LM317L" prefix="U">
+<gates>
+<gate name="G$1" symbol="VOLTAGE_REGULATOR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TO-92">
+<connects>
+<connect gate="G$1" pin="GND" pad="P3"/>
+<connect gate="G$1" pin="IN" pad="P1"/>
+<connect gate="G$1" pin="OUT" pad="P2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -909,11 +904,10 @@
 <part name="C8" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
 <part name="R20" library="my_devices" deviceset="RD" device="3296-Z" value="200K"/>
 <part name="R23" library="my_devices" deviceset="RD" device="3296-Z" value="200K"/>
-<part name="U6" library="my_devices" deviceset="VOLTAGE_REGULATOR" device="" value="LM317L"/>
 <part name="L3" library="my_devices" deviceset="L" device="L-EC24" value="EC24-561K, 560 uH"/>
 <part name="C10" library="my_devices" deviceset="C" device="" value="10 uF"/>
 <part name="R19" library="my_devices" deviceset="R" device="" value="200K"/>
-<part name="R17" library="my_devices" deviceset="RD" device="" value="10K"/>
+<part name="R17" library="my_devices" deviceset="RD" device="" value="2K"/>
 <part name="C11" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
 <part name="R22" library="my_devices" deviceset="R" device="" value="200K"/>
 <part name="L2" library="my_devices" deviceset="L" device="L-EC24" value="EC24-561K, 560 uH"/>
@@ -922,6 +916,7 @@
 <part name="C9" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
 <part name="J10" library="my_devices" deviceset="USBASP_PIN" device=""/>
 <part name="J4" library="my_devices" deviceset="JST-XH254-3P" device="" value="JST-XH2.54-3P"/>
+<part name="U1" library="my_devices" deviceset="LM317L" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -970,10 +965,6 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="-143.51" y="18.415" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-140.97" y="17.78" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="U6" gate="G$1" x="-223.52" y="88.9" smashed="yes" grouprefs="NOISE1">
-<attribute name="NAME" x="-226.06" y="99.06" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-226.06" y="96.52" size="1.778" layer="94"/>
-</instance>
 <instance part="L3" gate="G$1" x="-195.58" y="96.52" smashed="yes" rot="R90" grouprefs="NOISE1">
 <attribute name="NAME" x="-196.215" y="98.425" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-193.04" y="98.425" size="1.778" layer="94" rot="R90"/>
@@ -1021,6 +1012,10 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <instance part="J4" gate="G$1" x="-294.64" y="264.16" smashed="yes" rot="R180" grouprefs="INPUT_CONNECTOR">
 <attribute name="NAME" x="-307.34" y="261.62" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="-307.34" y="266.7" size="1.778" layer="94" rot="R180"/>
+</instance>
+<instance part="U1" gate="G$1" x="-223.52" y="88.9" smashed="yes" grouprefs="NOISE1">
+<attribute name="NAME" x="-226.06" y="99.06" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-226.06" y="96.52" size="1.778" layer="94"/>
 </instance>
 </instances>
 <busses>
@@ -1242,17 +1237,6 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="-190.5" y1="25.4" x2="-190.5" y2="53.34" width="0.1524" layer="91" grouprefs="NOISE1"/>
 </segment>
 </net>
-<net name="OUT" class="0">
-<segment>
-<pinref part="U6" gate="G$1" pin="OUT"/>
-<pinref part="L3" gate="G$1" pin="P$1"/>
-<wire x1="-213.36" y1="91.44" x2="-210.82" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
-<pinref part="R17" gate="G$1" pin="P2"/>
-<wire x1="-210.82" y1="91.44" x2="-198.12" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
-<wire x1="-210.82" y1="88.9" x2="-210.82" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
-<junction x="-210.82" y="91.44" grouprefs="NOISE1"/>
-</segment>
-</net>
 <net name="OUTDOOR_DATA_OUT" class="0">
 <segment>
 <wire x1="-289.56" y1="269.24" x2="-259.08" y2="269.24" width="0.1524" layer="91" grouprefs="INPUT_CONNECTOR"/>
@@ -1267,9 +1251,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </net>
 <net name="N$17" class="0">
 <segment>
-<pinref part="U6" gate="G$1" pin="GND"/>
 <pinref part="R17" gate="G$1" pin="P3"/>
 <wire x1="-223.52" y1="81.28" x2="-218.44" y2="81.28" width="0.1524" layer="91" grouprefs="NOISE1"/>
+<pinref part="U1" gate="G$1" pin="GND"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -1330,9 +1314,9 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <label x="-208.28" y="134.62" size="1.778" layer="95" grouprefs="NOISE1"/>
 </segment>
 <segment>
-<pinref part="U6" gate="G$1" pin="IN"/>
 <wire x1="-233.68" y1="91.44" x2="-241.3" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
 <label x="-251.46" y="91.44" size="1.778" layer="95" grouprefs="NOISE1"/>
+<pinref part="U1" gate="G$1" pin="IN"/>
 </segment>
 <segment>
 <pinref part="R18" gate="G$1" pin="P$1"/>
@@ -1414,6 +1398,17 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <pinref part="U8" gate="G$1" pin="PD1"/>
 <wire x1="-175.26" y1="254" x2="-213.36" y2="254" width="0.1524" layer="91" grouprefs="ATMEGA1"/>
 <label x="-213.36" y="254" size="1.778" layer="95" grouprefs="ATMEGA1"/>
+</segment>
+</net>
+<net name="OUT" class="0">
+<segment>
+<pinref part="L3" gate="G$1" pin="P$1"/>
+<wire x1="-213.36" y1="91.44" x2="-210.82" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
+<pinref part="R17" gate="G$1" pin="P2"/>
+<wire x1="-210.82" y1="91.44" x2="-198.12" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
+<wire x1="-210.82" y1="88.9" x2="-210.82" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
+<junction x="-210.82" y="91.44" grouprefs="NOISE1"/>
+<pinref part="U1" gate="G$1" pin="OUT"/>
 </segment>
 </net>
 </nets>

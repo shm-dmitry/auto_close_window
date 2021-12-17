@@ -981,7 +981,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="-103.505" y="226.695" size="0.8128" layer="94"/>
 <attribute name="VALUE" x="-103.505" y="208.915" size="0.8128" layer="94"/>
 </instance>
-<instance part="J4" gate="G$1" x="-294.64" y="264.16" smashed="yes" rot="R180" grouprefs="INPUT_CONNECTOR">
+<instance part="J4" gate="G$1" x="-294.64" y="264.16" smashed="yes" rot="R180">
 <attribute name="NAME" x="-307.34" y="261.62" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="-307.34" y="266.7" size="1.778" layer="94" rot="R180"/>
 </instance>
@@ -1056,7 +1056,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <junction x="-271.78" y="251.46" grouprefs="INPUT_CONNECTOR"/>
 <label x="-276.86" y="248.92" size="1.778" layer="95" grouprefs="INPUT_CONNECTOR"/>
 <pinref part="J4" gate="G$1" pin="PIN1"/>
-<wire x1="-289.56" y1="259.08" x2="-289.56" y2="251.46" width="0.1524" layer="91" grouprefs="INPUT_CONNECTOR"/>
+<wire x1="-289.56" y1="259.08" x2="-289.56" y2="251.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="BM1" gate="G$1" pin="P$1"/>

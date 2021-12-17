@@ -13,5 +13,6 @@
 #define HWLOCK_LOG "hwlock_log"
 #define CONTROLLER_LOG "controller_log"
 #define OUTDOOR_MODULE_LOG "outdoor_module_log"
+#define BUTTONS_LOG "buttons_log"
 
 #endif /* MAIN_LOG_H_ */

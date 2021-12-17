@@ -63,17 +63,13 @@ menu "Auto Open-Close WindowConfiguration"
          default 0
    endmenu
 
-   menu "Touch pad Configuration"
-      config TOUCH_PAD_OPEN
-         int "OPEN touchpad pin number"
+   menu "Buttons Configuration"
+      config BUTTON_OPEN
+         int "OPEN button pin number"
          default 0
 
-      config TOUCH_PAD_CLOSE
-         int "CLOSE touchpad pin number"
-         default 0
-
-      config TOUCH_PAD_AUTO
-         int "AUTO touchpad pin number"
+      config BUTTON_CLOSE
+         int "CLOSE button pin number"
          default 0
    endmenu
 

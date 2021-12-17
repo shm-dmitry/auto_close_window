@@ -1,7 +1,7 @@
 #include "controller.h"
 
 #include "../led/led_control.h"
-#include "../touchpad/touchpad_api.h"
+#include "../buttons/button_api.h"
 #include "../servo/servo_control.h"
 #include "../hw_locks/hw_locks_api.h"
 #include "../init/mqtt.h"
@@ -20,31 +20,19 @@ void controller_exec_auto();
 void controller_exec_calibrate_auto(uint8_t);
 void controller_exec_calibrate_manual(uint8_t, uint8_t);
 
-void controller_touchpad_callback(uint8_t touch_pad_index, uint8_t state) {
-	if (touch_pad_index > 3) {
-		return;
+void controller_button_callback(uint8_t button1_state, uint8_t button2_state) {
+	if (button1_state == BUTTON_ON_KEY_DOWN || button2_state == BUTTON_ON_KEY_DOWN) {
+		if (servo_control_calibrate_onaction()) {
+			return;
+		}
 	}
 
-	if (state != TOUCHPAD_ON_CLICK) {
-		return;
-	}
-
-	if (servo_control_calibrate_onaction()) {
-		return;
-	}
-
-	switch (touch_pad_index) {
-	case TOCHPAD_INDEX_OPEN:
-		controller_exec_open_close(100, true);
-		break;
-	case TOCHPAD_INDEX_CLOSE:
-		controller_exec_open_close(0, true);
-		break;
-	case TOCHPAD_INDEX_AUTO:
+	if (button1_state == BUTTON_ON_CLICK && button2_state == BUTTON_ON_CLICK) {
 		controller_exec_auto();
-		break;
-	default:
-		break;
+	} else if (button1_state == BUTTON_ON_CLICK) {
+		controller_exec_open_close(100, true);
+	} else if (button2_state == BUTTON_ON_CLICK) {
+		controller_exec_open_close(0, true);
 	}
 }
 
@@ -75,10 +63,9 @@ void controller_init() {
 		return;
 	}
 
-	// init touch pad
-	touch_pad_t pads[3] = {CONFIG_TOUCH_PAD_OPEN, CONFIG_TOUCH_PAD_CLOSE, CONFIG_TOUCH_PAD_AUTO};
-	if (touchpad_setup(pads, 3, controller_touchpad_callback)) {
-		ESP_LOGE(CONTROLLER_LOG, "Cant init touchpad driver");
+	// init buttons
+	if (button_setup(CONFIG_BUTTON_OPEN, CONFIG_BUTTON_CLOSE, controller_button_callback)) {
+		ESP_LOGE(CONTROLLER_LOG, "Cant init buttons driver");
 		return;
 	}
 

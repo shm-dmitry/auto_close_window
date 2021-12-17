@@ -11,10 +11,6 @@
 
 #include "sdkconfig.h"
 
-#define TOCHPAD_INDEX_OPEN 0
-#define TOCHPAD_INDEX_CLOSE 1
-#define TOCHPAD_INDEX_AUTO 2
-
 void controller_exec_open_close(uint8_t, bool);
 void controller_exec_auto();
 void controller_exec_calibrate_auto(uint8_t);

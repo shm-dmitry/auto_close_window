@@ -10,7 +10,7 @@ menu "Auto Open-Close WindowConfiguration"
    	  	
    	  config WIFI_TOPIC
    	  	string "WiFi MQTT Topic to listen Change-SSID command"
-   	  	default ""
+   	  	default "/acw/system/0/wifi"
    endmenu
 
    menu "MQTT Configuration"
@@ -32,7 +32,7 @@ menu "Auto Open-Close WindowConfiguration"
 
       config MQTT_INIT_LOGGER_TOPIC
 	     string "MQTT Init logger topic"
-	     default ""
+	     default "/acw/system/0/initlogger"
 
       config MQTT_LIVE_LOGGER_ENABLED
 	     boolean "Enable log live messages to MQTT topic"
@@ -40,59 +40,59 @@ menu "Auto Open-Close WindowConfiguration"
 
       config MQTT_LIVE_LOGGER_TOPIC
 	     string "MQTT live logger topic"
-	     default ""
+	     default "/acw/system/0/livelogger"
    endmenu
 
    menu "Servo Controller Configuration"
       config CONTROLLER_SERVO_GPIO
          int "GPIO PWM pin"
-         default 0
+         default 19
          
       config CONTROLLER_COMMAND_TOPIC
          string "MQTT topic for listen controller commands"
-         default ""
+         default "/acw/controller/0/command"
 
       config CONTROLLER_STATUS_TOPIC
          string "MQTT topic for publish controller status"
-         default ""
+         default "/acw/controller/0/status"
    endmenu
    
    menu "LED Configuration"
       config LED_GPIO
          int "LED GPIO pin"
-         default 0
+         default 33
    endmenu
 
    menu "Buttons Configuration"
       config BUTTON_OPEN
          int "OPEN button pin number"
-         default 0
+         default 4
 
       config BUTTON_CLOSE
          int "CLOSE button pin number"
-         default 0
+         default 15
    endmenu
 
    menu "Hardware Locks Configuration"
       config HWLOCK_GPIO_HALL
          int "GPIO Hall sensor status"
-         default 0
+         default 18
 
       config HWLOCK_GPIO_SWITCH
          int "GPIO switch status"
-         default 0
+         default 16
 
       config HWLOCK_GPIO_SOFTLOCK
          int "GPIO soft lock"
-         default 0
+         default 21
          
       config HWLOCK_SOFTLOCK_TOPIC
          string "MQTT topic for change soft lock status"
-         default ""
+         default "/acw/hwlock/0/command"
          
       config HWLOCK_STATUS_TOPIC
          string "MQTT topic for hwlocks status"
-         default ""
+         default "/acw/hwlock/0/status"
    endmenu
    
    menu "Outdoor module integration"
@@ -102,10 +102,10 @@ menu "Auto Open-Close WindowConfiguration"
 
    	  config OUTDOOR_MODULE_GPIO
          int "GPIO connected to outdoor module"
-         default 0
+         default 2
    	  
    	  config OUTDOOR_MODULE_STATUS_TOPIC
          string "MQTT topic for outdoor module status"
-         default ""
+         default "/acw/outdoor/0/status"
    endmenu
 endmenu

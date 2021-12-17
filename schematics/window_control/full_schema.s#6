@@ -296,8 +296,8 @@
 </package>
 <package name="RD-3362H">
 <pad name="P1" x="-2.54" y="-1.27" drill="0.6" shape="square"/>
-<pad name="P2" x="0" y="1.27" drill="0.6" shape="square"/>
-<pad name="P3" x="2.54" y="-1.27" drill="0.6" shape="square"/>
+<pad name="P3" x="0" y="1.27" drill="0.6" shape="square"/>
+<pad name="P2" x="2.54" y="-1.27" drill="0.6" shape="square"/>
 <wire x1="-3.81" y1="3.81" x2="-3.81" y2="-3.81" width="0.127" layer="21"/>
 <wire x1="3.81" y1="-3.81" x2="3.81" y2="3.81" width="0.127" layer="21"/>
 <wire x1="-3.81" y1="-3.81" x2="3.81" y2="-3.81" width="0.127" layer="21"/>
@@ -2519,6 +2519,11 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <pinref part="U1" gate="G$1" pin="IO14"/>
 <wire x1="-236.22" y1="121.92" x2="-261.62" y2="121.92" width="0.1524" layer="91" grouprefs="ESP"/>
 <label x="-274.32" y="121.92" size="1.778" layer="95" grouprefs="ESP"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="IO4"/>
+<wire x1="-195.58" y1="119.38" x2="-137.16" y2="119.38" width="0.1524" layer="91"/>
+<label x="-167.64" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_CLOSE" class="0">

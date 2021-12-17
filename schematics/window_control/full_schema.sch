@@ -1973,11 +1973,12 @@ In my case ~12..14V
 Mosfet required &gt;8V</text>
 <text x="-111.76" y="337.82" size="5.08" layer="91">Indoor modules</text>
 <text x="256.54" y="342.9" size="5.08" layer="91">Outdoor module</text>
-<text x="-144.78" y="111.76" size="1.778" layer="91" grouprefs="ESP">5V</text>
-<text x="-185.42" y="111.76" size="1.778" layer="91" grouprefs="ESP">3V3</text>
+<text x="-144.78" y="104.14" size="1.778" layer="91" grouprefs="ESP">5V</text>
+<text x="-185.42" y="104.14" size="1.778" layer="91" grouprefs="ESP">3V3</text>
 <text x="246.38" y="-20.32" size="1.778" layer="91" grouprefs="NOISE">Initial voltage in OUTDOOR_MIDDLEPOINT is 2.5V
 You needs to ajust it using osciloscope by measuring NOISE_LEVEL signal.
 In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
+<text x="-233.68" y="152.4" size="1.778" layer="91" grouprefs="ESP">https://mikrokontroler.pl/wp-content/uploads/2020/07/esp32-devkit-pinout.png</text>
 </plain>
 <instances>
 <instance part="ACDC1" gate="G$1" x="-153.67" y="-44.45" smashed="yes">
@@ -1992,12 +1993,12 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <instance part="GND1" gate="1" x="-105.41" y="-41.91" smashed="yes">
 <attribute name="VALUE" x="-107.95" y="-44.45" size="1.778" layer="96"/>
 </instance>
-<instance part="U1" gate="G$1" x="-215.9" y="127" smashed="yes" grouprefs="ESP">
-<attribute name="NAME" x="-220.98" y="154.94" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-220.98" y="99.06" size="1.778" layer="94"/>
+<instance part="U1" gate="G$1" x="-215.9" y="119.38" smashed="yes" grouprefs="ESP">
+<attribute name="NAME" x="-220.98" y="147.32" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-220.98" y="91.44" size="1.778" layer="94"/>
 </instance>
-<instance part="GND2" gate="1" x="-152.4" y="144.78" smashed="yes" grouprefs="ESP">
-<attribute name="VALUE" x="-154.94" y="142.24" size="1.778" layer="96"/>
+<instance part="GND2" gate="1" x="-152.4" y="137.16" smashed="yes" grouprefs="ESP">
+<attribute name="VALUE" x="-154.94" y="134.62" size="1.778" layer="96"/>
 </instance>
 <instance part="R21" gate="G$1" x="259.08" y="170.18" smashed="yes" rot="R90" grouprefs="ATMEGA32">
 <attribute name="NAME" x="256.54" y="163.83" size="1.778" layer="94" rot="R90"/>
@@ -2020,21 +2021,21 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="-71.12" y="69.85" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-64.77" y="69.85" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="R4" gate="G$1" x="-184.15" y="121.92" smashed="yes" grouprefs="ESP">
-<attribute name="NAME" x="-190.5" y="124.46" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-190.5" y="118.11" size="1.778" layer="94"/>
+<instance part="R4" gate="G$1" x="-184.15" y="114.3" smashed="yes" grouprefs="ESP">
+<attribute name="NAME" x="-190.5" y="116.84" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-190.5" y="110.49" size="1.778" layer="94"/>
 </instance>
-<instance part="R5" gate="G$1" x="-177.8" y="132.08" smashed="yes" grouprefs="ESP">
-<attribute name="NAME" x="-184.15" y="134.62" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-184.15" y="128.27" size="1.778" layer="94"/>
+<instance part="R5" gate="G$1" x="-177.8" y="124.46" smashed="yes" grouprefs="ESP">
+<attribute name="NAME" x="-184.15" y="127" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-184.15" y="120.65" size="1.778" layer="94"/>
 </instance>
-<instance part="R7" gate="G$1" x="-165.1" y="137.16" smashed="yes" grouprefs="ESP">
-<attribute name="NAME" x="-171.45" y="139.7" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-171.45" y="133.35" size="1.778" layer="94"/>
+<instance part="R7" gate="G$1" x="-165.1" y="129.54" smashed="yes" grouprefs="ESP">
+<attribute name="NAME" x="-171.45" y="132.08" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-171.45" y="125.73" size="1.778" layer="94"/>
 </instance>
-<instance part="R8" gate="G$1" x="-165.1" y="127" smashed="yes" grouprefs="ESP">
-<attribute name="NAME" x="-171.45" y="129.54" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-171.45" y="123.19" size="1.778" layer="94"/>
+<instance part="R8" gate="G$1" x="-165.1" y="119.38" smashed="yes" grouprefs="ESP">
+<attribute name="NAME" x="-171.45" y="121.92" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-171.45" y="115.57" size="1.778" layer="94"/>
 </instance>
 <instance part="D4" gate="G$1" x="-26.67" y="269.24" smashed="yes" grouprefs="SERVO">
 <attribute name="NAME" x="-32.385" y="271.78" size="1.778" layer="94"/>
@@ -2271,12 +2272,12 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <instance part="GND6" gate="1" x="71.12" y="111.76" smashed="yes" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
 <attribute name="VALUE" x="68.58" y="109.22" size="1.778" layer="96"/>
 </instance>
-<instance part="R6" gate="G$1" x="-172.72" y="106.68" smashed="yes" rot="R90" grouprefs="ESP">
-<attribute name="NAME" x="-168.91" y="102.235" size="1.778" layer="94" rot="R90"/>
-<attribute name="VALUE" x="-166.37" y="101.6" size="1.778" layer="94" rot="R90"/>
+<instance part="R6" gate="G$1" x="-172.72" y="99.06" smashed="yes" rot="R90" grouprefs="ESP">
+<attribute name="NAME" x="-168.91" y="94.615" size="1.778" layer="94" rot="R90"/>
+<attribute name="VALUE" x="-166.37" y="93.98" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="GND8" gate="1" x="-172.72" y="96.52" smashed="yes" grouprefs="ESP">
-<attribute name="VALUE" x="-175.26" y="93.98" size="1.778" layer="96"/>
+<instance part="GND8" gate="1" x="-172.72" y="88.9" smashed="yes" grouprefs="ESP">
+<attribute name="VALUE" x="-175.26" y="86.36" size="1.778" layer="96"/>
 </instance>
 <instance part="R17" gate="G$1" x="223.52" y="-33.02" smashed="yes" rot="R90" grouprefs="NOISE">
 <attribute name="NAME" x="227.33" y="-37.465" size="1.778" layer="94" rot="R90"/>
@@ -2351,8 +2352,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="5V"/>
-<wire x1="-236.22" y1="104.14" x2="-261.62" y2="104.14" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-261.62" y="104.14" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-236.22" y1="96.52" x2="-261.62" y2="96.52" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-261.62" y="96.52" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 <segment>
 <pinref part="Q3" gate="G$1" pin="E"/>
@@ -2408,8 +2409,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="GND"/>
-<wire x1="-195.58" y1="149.86" x2="-152.4" y2="149.86" width="0.1524" layer="91" grouprefs="ESP"/>
-<wire x1="-152.4" y1="149.86" x2="-152.4" y2="147.32" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="142.24" x2="-152.4" y2="142.24" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-152.4" y1="142.24" x2="-152.4" y2="139.7" width="0.1524" layer="91" grouprefs="ESP"/>
 <pinref part="GND2" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -2516,10 +2517,10 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="IO4"/>
-<wire x1="-195.58" y1="119.38" x2="-193.04" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="-193.04" y1="119.38" x2="-193.04" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="-193.04" y1="116.84" x2="-147.32" y2="116.84" width="0.1524" layer="91"/>
-<label x="-180.34" y="116.84" size="1.778" layer="95"/>
+<wire x1="-195.58" y1="111.76" x2="-193.04" y2="111.76" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-193.04" y1="111.76" x2="-193.04" y2="109.22" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-193.04" y1="109.22" x2="-147.32" y2="109.22" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-180.34" y="109.22" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="GPIO_TS_WINDOW_CLOSE" class="0">
@@ -2530,10 +2531,10 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="IO15"/>
-<wire x1="-195.58" y1="111.76" x2="-187.96" y2="111.76" width="0.1524" layer="91" grouprefs="ESP"/>
-<wire x1="-187.96" y1="111.76" x2="-187.96" y2="86.36" width="0.1524" layer="91" grouprefs="ESP"/>
-<wire x1="-187.96" y1="86.36" x2="-137.16" y2="86.36" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-167.64" y="88.9" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-195.58" y1="104.14" x2="-187.96" y2="104.14" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-187.96" y1="104.14" x2="-187.96" y2="78.74" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-187.96" y1="78.74" x2="-137.16" y2="78.74" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-167.64" y="81.28" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="OUTDOOR_+5V" class="0">
@@ -2740,15 +2741,15 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="R8" gate="G$1" pin="P$2"/>
-<wire x1="-156.21" y1="127" x2="-139.7" y2="127" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-154.94" y="127" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-156.21" y1="119.38" x2="-139.7" y2="119.38" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-154.94" y="119.38" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="SERVO_PWM" class="0">
 <segment>
 <pinref part="R5" gate="G$1" pin="P$2"/>
-<wire x1="-168.91" y1="132.08" x2="-147.32" y2="132.08" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-160.02" y="132.08" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-168.91" y1="124.46" x2="-147.32" y2="124.46" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-160.02" y="124.46" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 <segment>
 <pinref part="U4" gate="G$1" pin="3B"/>
@@ -2760,37 +2761,37 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <segment>
 <pinref part="U1" gate="G$1" pin="IO19"/>
 <pinref part="R5" gate="G$1" pin="P$1"/>
-<wire x1="-195.58" y1="132.08" x2="-185.42" y2="132.08" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="124.46" x2="-185.42" y2="124.46" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$28" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="IO21"/>
 <pinref part="R7" gate="G$1" pin="P$1"/>
-<wire x1="-195.58" y1="137.16" x2="-172.72" y2="137.16" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="129.54" x2="-172.72" y2="129.54" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$32" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="IO16"/>
 <pinref part="R4" gate="G$1" pin="P$1"/>
-<wire x1="-195.58" y1="121.92" x2="-191.77" y2="121.92" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="114.3" x2="-191.77" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$29" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="IO18"/>
-<wire x1="-195.58" y1="129.54" x2="-185.42" y2="129.54" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="121.92" x2="-185.42" y2="121.92" width="0.1524" layer="91" grouprefs="ESP"/>
 <pinref part="R8" gate="G$1" pin="P$1"/>
-<wire x1="-185.42" y1="129.54" x2="-185.42" y2="127" width="0.1524" layer="91" grouprefs="ESP"/>
-<wire x1="-185.42" y1="127" x2="-172.72" y2="127" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-185.42" y1="121.92" x2="-185.42" y2="119.38" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-185.42" y1="119.38" x2="-172.72" y2="119.38" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="SERVO_ENABLE_INV" class="0">
 <segment>
 <pinref part="R7" gate="G$1" pin="P$2"/>
-<wire x1="-156.21" y1="137.16" x2="-147.32" y2="137.16" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-160.02" y="137.16" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-156.21" y1="129.54" x2="-147.32" y2="129.54" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-160.02" y="129.54" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 <segment>
 <pinref part="U4" gate="G$1" pin="4A"/>
@@ -2927,8 +2928,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="P$2"/>
-<wire x1="-175.26" y1="121.92" x2="-139.7" y2="121.92" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-152.4" y="121.92" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-175.26" y1="114.3" x2="-139.7" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-152.4" y="114.3" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$37" class="0">
@@ -3015,8 +3016,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <net name="3V3" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="3V3"/>
-<wire x1="-236.22" y1="149.86" x2="-261.62" y2="149.86" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-261.62" y="149.86" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-236.22" y1="142.24" x2="-261.62" y2="142.24" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-261.62" y="142.24" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 <segment>
 <pinref part="R13" gate="G$1" pin="P$2"/>
@@ -3082,8 +3083,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="IO33"/>
-<wire x1="-236.22" y1="132.08" x2="-261.62" y2="132.08" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-261.62" y="132.08" size="1.778" layer="95" grouprefs="ESP"/>
+<wire x1="-236.22" y1="124.46" x2="-261.62" y2="124.46" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-261.62" y="124.46" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -3189,17 +3190,17 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <label x="43.18" y="116.84" size="1.778" layer="95" grouprefs="INDOOR_TO_OUTDOOR_CABEL"/>
 </segment>
 <segment>
-<label x="-170.18" y="111.76" size="1.778" layer="95" grouprefs="ESP"/>
+<label x="-170.18" y="104.14" size="1.778" layer="95" grouprefs="ESP"/>
 <pinref part="R6" gate="G$1" pin="P2"/>
-<wire x1="-172.72" y1="114.3" x2="-142.24" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="-172.72" y1="106.68" x2="-142.24" y2="106.68" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="IO2"/>
-<wire x1="-195.58" y1="114.3" x2="-180.34" y2="114.3" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-195.58" y1="106.68" x2="-180.34" y2="106.68" width="0.1524" layer="91" grouprefs="ESP"/>
 <pinref part="R6" gate="G$1" pin="P3"/>
-<wire x1="-180.34" y1="114.3" x2="-180.34" y2="106.68" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-180.34" y1="106.68" x2="-180.34" y2="99.06" width="0.1524" layer="91" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="N$17" class="0">

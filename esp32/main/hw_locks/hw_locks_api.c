@@ -92,7 +92,7 @@ esp_err_t hwlocks_init(int gpio_hall, int gpio_switch, int gpio_softlock, const 
 	}
 
 	res = gpio_install_isr_service(0);
-	if (res) {
+	if (res && res != ESP_ERR_INVALID_STATE) {
 		ESP_LOGI(HWLOCK_LOG, "Cant install isr service. error %d", res);
 		return res;
 	}

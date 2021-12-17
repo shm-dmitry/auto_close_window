@@ -51,7 +51,10 @@ static void button_isr_task(void* arg) {
     }
 }
 
-esp_err_t button_setup(int gpio_button1, int gpio_button2, button_callback_t callback) {
+esp_err_t button_setup(int gpio1, int gpio2, button_callback_t callback) {
+	gpio_button1 = gpio1;
+	gpio_button2 = gpio2;
+
 	button_isr_queue = xQueueCreate(10, sizeof(uint32_t));
 	buttons_callback = callback;
 
@@ -70,7 +73,7 @@ esp_err_t button_setup(int gpio_button1, int gpio_button2, button_callback_t cal
 	}
 
 	res = gpio_install_isr_service(0);
-	if (res) {
+	if (res && res != ESP_ERR_INVALID_STATE) {
 		ESP_LOGE(HWLOCK_LOG, "Cant install isr service. error %d", res);
 		return res;
 	}

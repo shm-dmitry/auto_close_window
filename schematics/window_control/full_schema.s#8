@@ -2170,24 +2170,24 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="-38.1" y="252.73" size="1.778" layer="94" rot="R90"/>
 <attribute name="VALUE" x="-31.75" y="252.73" size="1.778" layer="94" rot="R90"/>
 </instance>
-<instance part="D1" gate="G$1" x="-195.58" y="63.5" smashed="yes" rot="R270" grouprefs="LED_CONTROL_GROUP">
-<attribute name="NAME" x="-200.66" y="71.12" size="1.778" layer="94" rot="R270"/>
-<attribute name="VALUE" x="-203.2" y="71.12" size="1.778" layer="94" rot="R270"/>
+<instance part="D1" gate="G$1" x="-200.66" y="45.72" smashed="yes" rot="R270" grouprefs="LED_CONTROL_GROUP">
+<attribute name="NAME" x="-205.74" y="53.34" size="1.778" layer="94" rot="R270"/>
+<attribute name="VALUE" x="-208.28" y="53.34" size="1.778" layer="94" rot="R270"/>
 </instance>
-<instance part="Q1" gate="G$1" x="-195.58" y="48.26" smashed="yes" grouprefs="LED_CONTROL_GROUP">
-<attribute name="NAME" x="-191.77" y="49.53" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-191.77" y="45.72" size="1.778" layer="94"/>
+<instance part="Q1" gate="G$1" x="-200.66" y="30.48" smashed="yes" grouprefs="LED_CONTROL_GROUP">
+<attribute name="NAME" x="-196.85" y="31.75" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-196.85" y="27.94" size="1.778" layer="94"/>
 </instance>
-<instance part="R2" gate="G$1" x="-203.2" y="76.2" smashed="yes" rot="R180" grouprefs="LED_CONTROL_GROUP">
-<attribute name="NAME" x="-196.85" y="73.66" size="1.778" layer="94" rot="R180"/>
-<attribute name="VALUE" x="-196.85" y="80.01" size="1.778" layer="94" rot="R180"/>
+<instance part="R2" gate="G$1" x="-208.28" y="58.42" smashed="yes" rot="R180" grouprefs="LED_CONTROL_GROUP">
+<attribute name="NAME" x="-201.93" y="55.88" size="1.778" layer="94" rot="R180"/>
+<attribute name="VALUE" x="-201.93" y="62.23" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="GND7" gate="1" x="-195.58" y="35.56" smashed="yes" grouprefs="LED_CONTROL_GROUP">
-<attribute name="VALUE" x="-198.12" y="33.02" size="1.778" layer="96"/>
+<instance part="GND7" gate="1" x="-200.66" y="17.78" smashed="yes" grouprefs="LED_CONTROL_GROUP">
+<attribute name="VALUE" x="-203.2" y="15.24" size="1.778" layer="96"/>
 </instance>
-<instance part="R1" gate="G$1" x="-215.9" y="48.26" smashed="yes" grouprefs="LED_CONTROL_GROUP">
-<attribute name="NAME" x="-222.25" y="50.8" size="1.778" layer="94"/>
-<attribute name="VALUE" x="-222.25" y="44.45" size="1.778" layer="94"/>
+<instance part="R1" gate="G$1" x="-220.98" y="30.48" smashed="yes" grouprefs="LED_CONTROL_GROUP">
+<attribute name="NAME" x="-227.33" y="33.02" size="1.778" layer="94"/>
+<attribute name="VALUE" x="-227.33" y="26.67" size="1.778" layer="94"/>
 </instance>
 <instance part="J2" gate="G$1" x="81.28" y="142.24" smashed="yes" rot="R180" grouprefs="INDOOR_TO_OUTDOOR_CABEL">
 <attribute name="NAME" x="83.82" y="140.335" size="1.778" layer="94" rot="R180"/>
@@ -2391,8 +2391,8 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 </segment>
 <segment>
 <pinref part="R2" gate="G$1" pin="P$2"/>
-<wire x1="-212.09" y1="76.2" x2="-236.22" y2="76.2" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
-<label x="-236.22" y="78.74" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
+<wire x1="-217.17" y1="58.42" x2="-241.3" y2="58.42" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<label x="-241.3" y="60.96" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 <segment>
 <pinref part="SB3" gate="G$1" pin="P$1"/>
@@ -2483,7 +2483,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
 <pinref part="Q1" gate="G$1" pin="E"/>
-<wire x1="-195.58" y1="38.1" x2="-195.58" y2="40.64" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<wire x1="-200.66" y1="20.32" x2="-200.66" y2="22.86" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
@@ -2528,9 +2528,11 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <pinref part="SB2" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO27"/>
-<wire x1="-236.22" y1="124.46" x2="-261.62" y2="124.46" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-274.32" y="124.46" size="1.778" layer="95" grouprefs="ESP"/>
+<pinref part="U1" gate="G$1" pin="IO15"/>
+<wire x1="-195.58" y1="111.76" x2="-187.96" y2="111.76" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-187.96" y1="111.76" x2="-187.96" y2="86.36" width="0.1524" layer="91" grouprefs="ESP"/>
+<wire x1="-187.96" y1="86.36" x2="-137.16" y2="86.36" width="0.1524" layer="91" grouprefs="ESP"/>
+<label x="-167.64" y="88.9" size="1.778" layer="95" grouprefs="ESP"/>
 </segment>
 </net>
 <net name="OUTDOOR_+5V" class="0">
@@ -3054,28 +3056,28 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <segment>
 <pinref part="R1" gate="G$1" pin="P$2"/>
 <pinref part="Q1" gate="G$1" pin="B"/>
-<wire x1="-207.01" y1="48.26" x2="-203.2" y2="48.26" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<wire x1="-212.09" y1="30.48" x2="-208.28" y2="30.48" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="N$7" class="0">
 <segment>
 <pinref part="Q1" gate="G$1" pin="C"/>
 <pinref part="D1" gate="G$1" pin="PIN_ANODE"/>
-<wire x1="-195.58" y1="55.88" x2="-195.58" y2="58.42" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<wire x1="-200.66" y1="38.1" x2="-200.66" y2="40.64" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="D1" gate="G$1" pin="PIN_CATHODE"/>
 <pinref part="R2" gate="G$1" pin="P$1"/>
-<wire x1="-195.58" y1="71.12" x2="-195.58" y2="76.2" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<wire x1="-200.66" y1="53.34" x2="-200.66" y2="58.42" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 </net>
 <net name="LED_CONTROL" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="P$1"/>
-<wire x1="-223.52" y1="48.26" x2="-238.76" y2="48.26" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
-<label x="-241.3" y="48.26" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
+<wire x1="-228.6" y1="30.48" x2="-243.84" y2="30.48" width="0.1524" layer="91" grouprefs="LED_CONTROL_GROUP"/>
+<label x="-246.38" y="30.48" size="1.778" layer="95" grouprefs="LED_CONTROL_GROUP"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="IO33"/>

@@ -2515,15 +2515,10 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <pinref part="SB1" gate="G$1" pin="P$1"/>
 </segment>
 <segment>
-<pinref part="U1" gate="G$1" pin="IO14"/>
-<wire x1="-236.22" y1="121.92" x2="-261.62" y2="121.92" width="0.1524" layer="91" grouprefs="ESP"/>
-<label x="-274.32" y="121.92" size="1.778" layer="95" grouprefs="ESP"/>
-</segment>
-<segment>
 <pinref part="U1" gate="G$1" pin="IO4"/>
 <wire x1="-195.58" y1="119.38" x2="-193.04" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="-193.04" y1="119.38" x2="-193.04" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="-193.04" y1="116.84" x2="-160.02" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="-193.04" y1="116.84" x2="-147.32" y2="116.84" width="0.1524" layer="91"/>
 <label x="-180.34" y="116.84" size="1.778" layer="95"/>
 </segment>
 </net>

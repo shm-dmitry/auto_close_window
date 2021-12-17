@@ -1013,7 +1013,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="-307.34" y="261.62" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="-307.34" y="266.7" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="U1" gate="G$1" x="-223.52" y="88.9" smashed="yes">
+<instance part="U1" gate="G$1" x="-223.52" y="88.9" smashed="yes" grouprefs="NOISE1">
 <attribute name="NAME" x="-226.06" y="99.06" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-226.06" y="96.52" size="1.778" layer="94"/>
 </instance>

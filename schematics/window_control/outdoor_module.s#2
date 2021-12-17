@@ -858,7 +858,7 @@
 </device>
 </devices>
 </deviceset>
-<deviceset name="LM317L" prefix="Q">
+<deviceset name="LM317L" prefix="U">
 <gates>
 <gate name="G$1" symbol="VOLTAGE_REGULATOR" x="0" y="0"/>
 </gates>
@@ -916,7 +916,7 @@
 <part name="C9" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
 <part name="J10" library="my_devices" deviceset="USBASP_PIN" device=""/>
 <part name="J4" library="my_devices" deviceset="JST-XH254-3P" device="" value="JST-XH2.54-3P"/>
-<part name="Q1" library="my_devices" deviceset="LM317L" device=""/>
+<part name="U1" library="my_devices" deviceset="LM317L" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1013,7 +1013,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <attribute name="NAME" x="-307.34" y="261.62" size="1.778" layer="94" rot="R180"/>
 <attribute name="VALUE" x="-307.34" y="266.7" size="1.778" layer="94" rot="R180"/>
 </instance>
-<instance part="Q1" gate="G$1" x="-223.52" y="88.9" smashed="yes">
+<instance part="U1" gate="G$1" x="-223.52" y="88.9" smashed="yes">
 <attribute name="NAME" x="-226.06" y="99.06" size="1.778" layer="94"/>
 <attribute name="VALUE" x="-226.06" y="96.52" size="1.778" layer="94"/>
 </instance>
@@ -1253,7 +1253,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <segment>
 <pinref part="R17" gate="G$1" pin="P3"/>
 <wire x1="-223.52" y1="81.28" x2="-218.44" y2="81.28" width="0.1524" layer="91" grouprefs="NOISE1"/>
-<pinref part="Q1" gate="G$1" pin="GND"/>
+<pinref part="U1" gate="G$1" pin="GND"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -1316,7 +1316,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <segment>
 <wire x1="-233.68" y1="91.44" x2="-241.3" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
 <label x="-251.46" y="91.44" size="1.778" layer="95" grouprefs="NOISE1"/>
-<pinref part="Q1" gate="G$1" pin="IN"/>
+<pinref part="U1" gate="G$1" pin="IN"/>
 </segment>
 <segment>
 <pinref part="R18" gate="G$1" pin="P$1"/>
@@ -1408,7 +1408,7 @@ In my case I setup ~1.8V in OUTDOOR_MIDDLEPOINT</text>
 <wire x1="-210.82" y1="91.44" x2="-198.12" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
 <wire x1="-210.82" y1="88.9" x2="-210.82" y2="91.44" width="0.1524" layer="91" grouprefs="NOISE1"/>
 <junction x="-210.82" y="91.44" grouprefs="NOISE1"/>
-<pinref part="Q1" gate="G$1" pin="OUT"/>
+<pinref part="U1" gate="G$1" pin="OUT"/>
 </segment>
 </net>
 </nets>

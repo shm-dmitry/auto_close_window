@@ -559,7 +559,7 @@ design rules under a new name.</description>
 <element name="J10" library="my_devices" package="USBASP_PIN" value="USBASP_PIN" x="96.52" y="-22.86" smashed="yes" rot="R90"/>
 <element name="L2" library="my_devices" package="L-EC24" value="EC24-561K, 560 uH" x="121.92" y="3.81" smashed="yes" rot="R180"/>
 <element name="L3" library="my_devices" package="L-EC24" value="EC24-561K, 560 uH" x="121.92" y="0" smashed="yes"/>
-<element name="R17" library="my_devices" package="RD-3362H" value="10K" x="105.41" y="10.16" smashed="yes"/>
+<element name="R17" library="my_devices" package="RD-3362H" value="2K" x="105.41" y="10.16" smashed="yes"/>
 <element name="R18" library="my_devices" package="R" value="3K" x="121.92" y="-16.51" smashed="yes">
 <attribute name="R" value="" x="161.29" y="-76.2" size="1.778" layer="27" display="off"/>
 </element>

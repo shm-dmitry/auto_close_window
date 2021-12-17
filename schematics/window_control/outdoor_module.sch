@@ -916,7 +916,7 @@
 <part name="C9" library="my_devices" deviceset="C-1" device="" value="0.1 uF"/>
 <part name="J10" library="my_devices" deviceset="USBASP_PIN" device=""/>
 <part name="J4" library="my_devices" deviceset="JST-XH254-3P" device="" value="JST-XH2.54-3P"/>
-<part name="U1" library="my_devices" deviceset="LM317L" device=""/>
+<part name="U1" library="my_devices" deviceset="LM317L" device="" value="LM317LZ-TR"/>
 </parts>
 <sheets>
 <sheet>

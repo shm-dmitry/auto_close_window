@@ -576,7 +576,7 @@ design rules under a new name.</description>
 <element name="J4" library="my_devices" package="JST-XH254-3P" value="JST-XH2.54-3P" x="130.81" y="21.59" smashed="yes" rot="R90">
 <attribute name="NAME" x="133.35" y="15.24" size="1.27" layer="21" rot="R180"/>
 </element>
-<element name="U1" library="my_devices" package="TO-92" value="LM317L" x="106.68" y="2.54" smashed="yes">
+<element name="U1" library="my_devices" package="TO-92" value="LM317LZ-TR" x="106.68" y="2.54" smashed="yes">
 <attribute name="NAME" x="104.14" y="6.35" size="1.27" layer="21"/>
 </element>
 </elements>

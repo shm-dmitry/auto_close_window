@@ -30,12 +30,10 @@ Project status
 | Indoor board :: servo module | OK |
 | Outdoor module board | OK |
 
-Boards status: I ordered boards on jlcpcb. At now I await for a production and delivery. 
-
 | Firmware | status |
 | ---- | ---- |
 | Indoor firmware :: hardware sensors - hall, switch and soft lock | OK |
-| Indoor firmware :: touchpads | In progress - Touch sensor driver will be replaced by button driver |
+| Indoor firmware :: buttons | OK |
 | Indoor firmware :: servo control and calibration | OK |
 | Indoor firmware :: led indication | OK |
 | Indoor firmware :: controller | OK |

@@ -1,6 +1,0 @@
-#ifndef MAIN_CONTROLLER_CONTROLLER_H_
-#define MAIN_CONTROLLER_CONTROLLER_H_
-
-void controller_init();
-
-#endif /* MAIN_CONTROLLER_CONTROLLER_H_ */

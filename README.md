@@ -1,6 +1,8 @@
 This project allows auto-open and auto-close your windows.
 Project consists schematics of 3 modules and firmware for 2 controllers
 
+Project re-started
+
 In-door modules:
 ==============
 
@@ -18,27 +20,27 @@ Project status
 
 | Hardware | status |
 | ---- | ---- |
-| Indoor schema :: near-handle module | OK |
-| Indoor schema :: servo module | OK |
-| Indoor schema :: digital channel to outdoor schema | OK |
-| Outdoor module schema :: microcontroller and its periphery | OK |
-| Outdoor module schema :: sensors | OK |
+| Indoor schema :: near-handle module | no |
+| Indoor schema :: servo module | no |
+| Indoor schema :: digital channel to outdoor schema | no |
+| Outdoor module schema :: microcontroller and its periphery | no |
+| Outdoor module schema :: sensors | no |
 
 | Board | status |
 | ---- | ---- |
-| Indoor board :: near-handle module | OK |
-| Indoor board :: servo module | OK |
-| Outdoor module board | OK |
+| Indoor board :: near-handle module | no |
+| Indoor board :: servo module | no |
+| Outdoor module board | no |
 
 | Firmware | status |
 | ---- | ---- |
-| Indoor firmware :: hardware sensors - hall, switch and soft lock | OK |
-| Indoor firmware :: buttons | OK |
-| Indoor firmware :: servo control and calibration | OK |
-| Indoor firmware :: led indication | OK |
-| Indoor firmware :: controller | OK |
-| Outdoor firmware :: BMP280 | OK |
-| Outdoor firmware :: SGP30 | OK |
-| Outdoor firmware :: Noise sensor | OK |
-| Outdoor firmware :: Sensor value filters and controller | OK |
-| Outdoor firmware :: Data transmitter | OK |
+| Indoor firmware :: hardware sensors - hall, switch and soft lock | no |
+| Indoor firmware :: buttons | no |
+| Indoor firmware :: servo control and calibration | no |
+| Indoor firmware :: led indication | no |
+| Indoor firmware :: controller | no |
+| Outdoor firmware :: BMP280 | no |
+| Outdoor firmware :: SGP30 | no |
+| Outdoor firmware :: Noise sensor | no |
+| Outdoor firmware :: Sensor value filters and controller | no |
+| Outdoor firmware :: Data transmitter | no |

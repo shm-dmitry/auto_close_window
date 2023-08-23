@@ -2,3 +2,7 @@ build
 
 sdkconfig.old
 sdkconfig
+
+schematics/handle-module/handle-module-backups/
+schematics/main-module/main-module-backups/
+schematics/outdoor-module/outdoor-module-backups/

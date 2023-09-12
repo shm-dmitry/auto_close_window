@@ -4423,6 +4423,31 @@
     )
   )
 
+  (symbol (lib_id "power:GNDA") (at 358.14 140.97 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 0519684f-6369-44fa-8989-4667a5a1fec2)
+    (property "Reference" "#PWR053" (at 358.14 147.32 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GNDA" (at 358.14 146.05 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 358.14 140.97 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 358.14 140.97 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ae89fdb0-2553-4d58-b472-64b967f6785c))
+    (instances
+      (project "handle-module"
+        (path "/5a1662b2-39be-45fc-af40-ee8b9104876f"
+          (reference "#PWR053") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:C") (at 323.85 351.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 052817f2-24b7-4047-8d1f-ea4cb233a935)
@@ -8645,31 +8670,6 @@
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
           (reference "C10") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDPWR") (at 358.14 140.97 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid b58dabd4-d6f0-4309-a369-4c8ad65cdeb5)
-    (property "Reference" "#PWR053" (at 358.14 146.05 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDPWR" (at 358.013 144.78 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 358.14 142.24 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 358.14 142.24 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid e33efcdb-eaad-4d9d-b1ca-4c7849d2c181))
-    (instances
-      (project "handle-module"
-        (path "/5a1662b2-39be-45fc-af40-ee8b9104876f"
-          (reference "#PWR053") (unit 1)
         )
       )
     )

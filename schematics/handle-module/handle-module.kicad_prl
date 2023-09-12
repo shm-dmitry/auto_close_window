@@ -1,7 +1,7 @@
 {
   "board": {
-    "active_layer": 0,
-    "active_layer_preset": "Все слои (кроме Fab)",
+    "active_layer": 31,
+    "active_layer_preset": "Вид снизу (кроме Fab)",
     "auto_track_width": false,
     "hidden_netclasses": [],
     "hidden_nets": [],
@@ -64,7 +64,7 @@
       39,
       40
     ],
-    "visible_layers": "ffcffff_ffffffff",
+    "visible_layers": "0005050_00000000",
     "zone_display_mode": 0
   },
   "meta": {

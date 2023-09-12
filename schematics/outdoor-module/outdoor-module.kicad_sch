@@ -2479,9 +2479,6 @@
   (junction (at 278.13 26.67) (diameter 0) (color 0 0 0 0)
     (uuid 231d441e-fa96-4e35-87c3-807a6637fbed)
   )
-  (junction (at 397.51 334.01) (diameter 0) (color 0 0 0 0)
-    (uuid 291ed96b-a663-425a-929e-533a1f641d9c)
-  )
   (junction (at 298.45 168.91) (diameter 0) (color 0 0 0 0)
     (uuid 29bcec84-bec8-4184-848f-a9b87a0069d7)
   )
@@ -2586,6 +2583,9 @@
   )
   (junction (at 233.68 57.15) (diameter 0) (color 0 0 0 0)
     (uuid 82e9158b-a359-43f4-871d-cc957902a7e3)
+  )
+  (junction (at 397.51 334.01) (diameter 0) (color 0 0 0 0)
+    (uuid 833753bc-f3eb-4386-a3d3-a70c21e1ce24)
   )
   (junction (at 59.69 347.98) (diameter 0) (color 0 0 0 0)
     (uuid 867dac41-30be-4e7a-87dc-16dfc0ceaa56)
@@ -2911,6 +2911,10 @@
   (wire (pts (xy 288.29 24.13) (xy 288.29 26.67))
     (stroke (width 0) (type default))
     (uuid 161b6e50-e127-4afb-85e7-3f1f4e35699a)
+  )
+  (wire (pts (xy 397.51 327.66) (xy 397.51 334.01))
+    (stroke (width 0) (type default))
+    (uuid 1620a037-afb3-44f0-9cad-1660339da980)
   )
   (wire (pts (xy 123.19 215.9) (xy 123.19 219.71))
     (stroke (width 0) (type default))
@@ -3452,6 +3456,10 @@
     (stroke (width 0) (type default))
     (uuid 6750ca5d-f051-4f49-90e1-4c2288cba4b2)
   )
+  (wire (pts (xy 384.81 323.85) (xy 393.7 323.85))
+    (stroke (width 0) (type default))
+    (uuid 679d00d7-8d45-4833-9f6c-26a3ada2a0f0)
+  )
   (wire (pts (xy 76.2 247.65) (xy 81.28 247.65))
     (stroke (width 0) (type default))
     (uuid 68adc5c6-aa5f-4b4c-ae79-8129a5c6c3d0)
@@ -3579,10 +3587,6 @@
   (wire (pts (xy 99.06 46.99) (xy 99.06 48.26))
     (stroke (width 0) (type default))
     (uuid 79c39d2f-1083-487c-8e89-aab84c20d9d6)
-  )
-  (wire (pts (xy 384.81 323.85) (xy 393.7 323.85))
-    (stroke (width 0) (type default))
-    (uuid 79f65adb-729c-4b21-a7ce-acde0651a4b0)
   )
   (wire (pts (xy 373.38 245.11) (xy 373.38 250.19))
     (stroke (width 0) (type default))
@@ -3736,6 +3740,10 @@
     (stroke (width 0) (type default))
     (uuid 8f560ddf-15ab-426b-b7c8-3a05ee773387)
   )
+  (wire (pts (xy 401.32 323.85) (xy 406.4 323.85))
+    (stroke (width 0) (type default))
+    (uuid 8f7de720-16b0-4ef3-92cd-a60853e51c9b)
+  )
   (wire (pts (xy 119.38 26.67) (xy 119.38 31.75))
     (stroke (width 0) (type default))
     (uuid 8fba5716-f37c-4d73-9a5a-0db3c27854ee)
@@ -3827,10 +3835,6 @@
   (wire (pts (xy 331.47 143.51) (xy 334.01 143.51))
     (stroke (width 0) (type default))
     (uuid 9e740966-53b2-4f23-87b1-ae1a7caa39ff)
-  )
-  (wire (pts (xy 401.32 323.85) (xy 406.4 323.85))
-    (stroke (width 0) (type default))
-    (uuid a02c3b63-d881-47e7-8b8b-2c10a727bf46)
   )
   (wire (pts (xy 487.68 33.02) (xy 501.65 33.02))
     (stroke (width 0) (type default))
@@ -4335,10 +4339,6 @@
   (wire (pts (xy 135.89 46.99) (xy 121.92 46.99))
     (stroke (width 0) (type default))
     (uuid ebedb8b0-3a1b-4399-a218-7f877af4f66a)
-  )
-  (wire (pts (xy 397.51 327.66) (xy 397.51 334.01))
-    (stroke (width 0) (type default))
-    (uuid ec1afc7e-122b-4f98-8ad9-e62b1560affe)
   )
   (wire (pts (xy 405.13 240.03) (xy 402.59 240.03))
     (stroke (width 0) (type default))
@@ -4925,7 +4925,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR039") (unit 1)
         )
       )
     )
@@ -4955,7 +4955,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -5046,7 +5046,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
     )
@@ -5108,7 +5108,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR064") (unit 1)
+          (reference "#PWR065") (unit 1)
         )
       )
     )
@@ -5199,7 +5199,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR038") (unit 1)
         )
       )
     )
@@ -5383,7 +5383,7 @@
   (symbol (lib_id "power:+1V8") (at 300.99 90.17 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 19b28953-39ac-45bd-b43b-334f0d54adee)
-    (property "Reference" "#PWR040" (at 300.99 93.98 0)
+    (property "Reference" "#PWR041" (at 300.99 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+1V8" (at 300.99 85.09 0)
@@ -5399,7 +5399,7 @@
     (instances
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR041") (unit 1)
         )
       )
     )
@@ -5408,7 +5408,7 @@
   (symbol (lib_id "power:+1V8") (at 467.36 308.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1b3bca33-62dd-4668-9626-cfa838902a50)
-    (property "Reference" "#PWR066" (at 467.36 312.42 0)
+    (property "Reference" "#PWR067" (at 467.36 312.42 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+1V8" (at 467.36 303.53 0)
@@ -5424,7 +5424,7 @@
     (instances
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR066") (unit 1)
+          (reference "#PWR067") (unit 1)
         )
       )
     )
@@ -5683,7 +5683,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
     )
@@ -5798,7 +5798,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "C41") (unit 1)
+          (reference "C40") (unit 1)
         )
       )
     )
@@ -5888,7 +5888,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR065") (unit 1)
+          (reference "#PWR066") (unit 1)
         )
       )
     )
@@ -6010,7 +6010,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR051") (unit 1)
         )
       )
     )
@@ -6076,7 +6076,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -6271,7 +6271,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR046") (unit 1)
         )
       )
     )
@@ -6388,7 +6388,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR043") (unit 1)
         )
       )
     )
@@ -6463,7 +6463,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "C44") (unit 1)
+          (reference "C43") (unit 1)
         )
       )
     )
@@ -6520,7 +6520,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR045") (unit 1)
         )
       )
     )
@@ -6647,7 +6647,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR060") (unit 1)
+          (reference "#PWR061") (unit 1)
         )
       )
     )
@@ -6677,7 +6677,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR079") (unit 1)
+          (reference "#PWR080") (unit 1)
         )
       )
     )
@@ -6951,7 +6951,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
     )
@@ -7192,7 +7192,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR075") (unit 1)
+          (reference "#PWR076") (unit 1)
         )
       )
     )
@@ -7222,7 +7222,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR080") (unit 1)
+          (reference "#PWR081") (unit 1)
         )
       )
     )
@@ -7253,7 +7253,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "C43") (unit 1)
+          (reference "C42") (unit 1)
         )
       )
     )
@@ -7283,7 +7283,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR047") (unit 1)
         )
       )
     )
@@ -7428,7 +7428,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
     )
@@ -7552,7 +7552,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR062") (unit 1)
+          (reference "#PWR063") (unit 1)
         )
       )
     )
@@ -7646,13 +7646,13 @@
     )
   )
 
-  (symbol (lib_id "Device:R_Potentiometer") (at 397.51 323.85 270) (unit 1)
+  (symbol (lib_id "Device:R_Potentiometer") (at 397.51 323.85 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5f1e734d-5908-4b18-8be0-8e4727ecd6a9)
-    (property "Reference" "RV4" (at 398.78 317.5 90)
+    (property "Reference" "RV4" (at 396.24 317.5 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "RM065, 100K" (at 403.86 320.04 90)
+    (property "Value" "RM065, 100K" (at 391.16 320.04 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical" (at 397.51 323.85 0)
@@ -7702,7 +7702,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR032") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
     )
@@ -7732,7 +7732,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR055") (unit 1)
         )
       )
     )
@@ -7870,7 +7870,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR044") (unit 1)
         )
       )
     )
@@ -8087,7 +8087,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR057") (unit 1)
+          (reference "#PWR058") (unit 1)
         )
       )
     )
@@ -8243,7 +8243,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR048") (unit 1)
         )
       )
     )
@@ -8273,7 +8273,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR076") (unit 1)
+          (reference "#PWR077") (unit 1)
         )
       )
     )
@@ -8303,7 +8303,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR061") (unit 1)
+          (reference "#PWR062") (unit 1)
         )
       )
     )
@@ -8333,7 +8333,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR042") (unit 1)
         )
       )
     )
@@ -8423,7 +8423,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR072") (unit 1)
+          (reference "#PWR073") (unit 1)
         )
       )
     )
@@ -8453,7 +8453,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR028") (unit 1)
         )
       )
     )
@@ -8519,7 +8519,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "C42") (unit 1)
+          (reference "C41") (unit 1)
         )
       )
     )
@@ -8594,7 +8594,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR040") (unit 1)
         )
       )
     )
@@ -8983,7 +8983,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR067") (unit 1)
+          (reference "#PWR068") (unit 1)
         )
       )
     )
@@ -9013,7 +9013,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
     )
@@ -9085,7 +9085,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR078") (unit 1)
+          (reference "#PWR079") (unit 1)
         )
       )
     )
@@ -9526,7 +9526,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR082") (unit 1)
+          (reference "#PWR083") (unit 1)
         )
       )
     )
@@ -9695,7 +9695,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR070") (unit 1)
+          (reference "#PWR071") (unit 1)
         )
       )
     )
@@ -9898,7 +9898,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR056") (unit 1)
         )
       )
     )
@@ -9928,7 +9928,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR084") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -9964,7 +9964,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "C40") (unit 1)
+          (reference "C39") (unit 1)
         )
       )
     )
@@ -9994,7 +9994,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR059") (unit 1)
+          (reference "#PWR060") (unit 1)
         )
       )
     )
@@ -10054,7 +10054,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR081") (unit 1)
+          (reference "#PWR082") (unit 1)
         )
       )
     )
@@ -10122,7 +10122,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "C45") (unit 1)
+          (reference "C44") (unit 1)
         )
       )
     )
@@ -10183,7 +10183,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR048") (unit 1)
+          (reference "#PWR049") (unit 1)
         )
       )
     )
@@ -10340,7 +10340,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR053") (unit 1)
+          (reference "#PWR054") (unit 1)
         )
       )
     )
@@ -10718,7 +10718,7 @@
   (symbol (lib_id "power:+1V8") (at 440.69 314.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c160ce9f-55aa-43f9-9b31-cdd374eac125)
-    (property "Reference" "#PWR063" (at 440.69 318.77 0)
+    (property "Reference" "#PWR064" (at 440.69 318.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+1V8" (at 440.69 309.88 0)
@@ -10734,7 +10734,7 @@
     (instances
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR064") (unit 1)
         )
       )
     )
@@ -10860,7 +10860,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR083") (unit 1)
+          (reference "#PWR084") (unit 1)
         )
       )
     )
@@ -10981,7 +10981,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -11158,7 +11158,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR052") (unit 1)
         )
       )
     )
@@ -11224,7 +11224,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR073") (unit 1)
+          (reference "#PWR074") (unit 1)
         )
       )
     )
@@ -11351,7 +11351,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR049") (unit 1)
+          (reference "#PWR050") (unit 1)
         )
       )
     )
@@ -11381,7 +11381,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -11597,7 +11597,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR069") (unit 1)
+          (reference "#PWR070") (unit 1)
         )
       )
     )
@@ -11863,7 +11863,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR052") (unit 1)
+          (reference "#PWR053") (unit 1)
         )
       )
     )
@@ -11923,7 +11923,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR058") (unit 1)
+          (reference "#PWR059") (unit 1)
         )
       )
     )
@@ -11953,7 +11953,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR056") (unit 1)
+          (reference "#PWR057") (unit 1)
         )
       )
     )
@@ -11983,7 +11983,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR068") (unit 1)
+          (reference "#PWR069") (unit 1)
         )
       )
     )
@@ -12050,7 +12050,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR077") (unit 1)
+          (reference "#PWR078") (unit 1)
         )
       )
     )
@@ -12144,7 +12144,7 @@
   (symbol (lib_id "power:+1V8") (at 499.11 299.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fa558778-fb5b-4b96-a206-60490ceac593)
-    (property "Reference" "#PWR071" (at 499.11 303.53 0)
+    (property "Reference" "#PWR072" (at 499.11 303.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+1V8" (at 499.11 294.64 0)
@@ -12160,7 +12160,7 @@
     (instances
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR071") (unit 1)
+          (reference "#PWR072") (unit 1)
         )
       )
     )
@@ -12244,7 +12244,7 @@
       )
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR074") (unit 1)
+          (reference "#PWR075") (unit 1)
         )
       )
     )

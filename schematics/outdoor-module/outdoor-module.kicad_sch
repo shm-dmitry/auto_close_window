@@ -6307,12 +6307,12 @@
   )
 
   (symbol (lib_id "My_Library:BQ24780S") (at 368.3 212.09 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom yes) (on_board yes) (dnp no)
     (uuid 3384cc97-9d32-4316-ae5d-6dc410363b40)
-    (property "Reference" "U5" (at 371.7641 184.15 0)
+    (property "Reference" "U5" (at 377.19 181.61 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "BQ24780S" (at 359.41 193.04 0)
+    (property "Value" "BQ24780S" (at 382.27 184.15 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Package_DFN_QFN:QFN-28-1EP_4x4mm_P0.4mm_EP2.6x2.6mm_ThermalVias" (at 359.41 193.04 0)
@@ -7523,6 +7523,36 @@
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
           (reference "U4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GNDA") (at 67.31 67.31 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 5986b174-7280-4d85-b210-56fd7e35f488)
+    (property "Reference" "#PWR015" (at 67.31 73.66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GNDA" (at 67.31 72.39 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 67.31 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 67.31 67.31 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 30c27e91-0e9b-48f1-8b58-f84d0b52a9ae))
+    (instances
+      (project "handle-module"
+        (path "/5a1662b2-39be-45fc-af40-ee8b9104876f"
+          (reference "#PWR015") (unit 1)
+        )
+      )
+      (project "outdoor-module"
+        (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
+          (reference "#PWR09") (unit 1)
         )
       )
     )
@@ -9995,36 +10025,6 @@
       (project "outdoor-module"
         (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
           (reference "#PWR060") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDPWR") (at 67.31 67.31 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid a806531d-b5a9-4fcf-a941-9f901213a909)
-    (property "Reference" "#PWR014" (at 67.31 72.39 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDPWR" (at 67.183 71.12 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 67.31 68.58 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 67.31 68.58 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8f0fd60a-9142-4a53-8195-6194be1688b3))
-    (instances
-      (project "handle-module"
-        (path "/5a1662b2-39be-45fc-af40-ee8b9104876f"
-          (reference "#PWR014") (unit 1)
-        )
-      )
-      (project "outdoor-module"
-        (path "/f407c3fc-0a96-48ff-b74a-a4fbb61aa182"
-          (reference "#PWR09") (unit 1)
         )
       )
     )

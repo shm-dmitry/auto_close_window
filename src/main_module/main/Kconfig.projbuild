@@ -1,0 +1,100 @@
+menu "Auto-Close Window Settings"
+   menu "WIFI Configuration"
+   	  config WIFI_SSID
+   	  	string "Wifi AP SSID"
+   	  	default ""
+
+   	  config WIFI_PASSWORD
+   	  	string "Wifi AP Password"
+   	  	default ""
+   	  	
+   	  config WIFI_TOPIC
+   	  	string "WiFi MQTT Topic to listen Change-SSID command"
+   	  	default "/acw/system/0/wifi/command"
+   endmenu
+   
+   menu "MQTT Configuration"
+      config MQTT_BROKER_URI
+         string "Broker URL"
+         default ""
+
+      config MQTT_BROKER_USERNAME
+	     string "Broker user name"
+	     default ""
+
+      config MQTT_BROKER_PASSWORD
+	     string "Broker user password"
+	     default ""
+
+      config MQTT_INIT_LOGGER_ENABLED
+	     boolean "Enable log init messages to MQTT topic"
+	     default true
+
+      config MQTT_INIT_LOGGER_TOPIC
+	     string "MQTT Init logger topic"
+	     default "/acw/system/0/logger/init"
+
+      config MQTT_LIVE_LOGGER_ENABLED
+	     boolean "Enable log live messages to MQTT topic"
+	     default true
+
+      config MQTT_LIVE_LOGGER_TOPIC
+	     string "MQTT live logger topic"
+	     default "/acw/system/0/logger/live"
+   endmenu
+   
+   menu "Stepper configuration"
+   	  config PIN_STEPPER_ENABLE
+   	  	 int "Stepper Enable# pin connected to"
+   	  	 default 2
+
+   	  config PIN_STEPPER_POWER_ON
+   	  	 int "Stepper allow-power-on pin connected to"
+   	  	 default 12
+   	  	 
+   	  config PIN_STEPPER_DIR
+   	  	 int "Stepper Direction pin connected to"
+   	  	 default 16
+
+   	  config PIN_STEPPER_STEP
+   	  	 int "Stepper One-Step pin connected to"
+   	  	 default 17
+
+   	  config PIN_STEPPER_LIMITSWITCH
+   	  	 int "Stepper Limit switch pin connected to"
+   	  	 default 4
+   endmenu
+
+   menu "FM configuration"
+   	  config PIN_FM_OUT_433
+   	  	 int "FM Sender 433MHz connected to"
+   	  	 default 22
+
+   	  config PIN_FM_IN_433
+   	  	 int "FM Receiver 433MHz connected to"
+   	  	 default 5
+   	  	 
+   	  config PIN_FM_IN_315
+   	  	 int "FM Receiver 315MHz connected to"
+   	  	 default 21
+   	  	 
+   	  config FM_TX_CARRIER_FREQ
+   	  	 int "FM transmitter signal carrier frequency"
+   	  	 default 25000
+
+   	  config FM_RX_CARRIER_FREQ
+   	  	 int "FM receiver signal carrier frequency"
+   	  	 default 32000
+   endmenu
+
+   menu "Charger"
+   	  config PIN_CHARGER_START_BUTTON
+   	  	 int "Charger button connected to"
+   	  	 default 27
+
+   	  config PIN_CHARGER_ENABLE
+   	  	 int "Charger enable signal connected to"
+   	  	 default 32
+   endmenu
+  
+ endmenu

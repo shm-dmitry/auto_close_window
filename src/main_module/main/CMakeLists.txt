@@ -5,6 +5,6 @@ idf_component_register(SRCS "acw_main.c"
                             "fm/fm_sender.c" 
                             "fm/fm_receiver.c" 
                             "fm/fm_command_encoder.c"
-                            "fm/fm_crypter.c"
+                            "fm/crypto/encrypter.c"
                             "controller/controller.c"
                     INCLUDE_DIRS "")

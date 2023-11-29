@@ -9,5 +9,5 @@ schematics/outdoor-module/outdoor-module-backups/
 
 3d/*.FCBak
 
-src/main_module/main/fm/fm_crypter_private.h
+src/main_module/main/fm/crypto/encrypter_secret.private.h
 src/main_module/.settings/

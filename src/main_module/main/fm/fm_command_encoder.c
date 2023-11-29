@@ -4,7 +4,7 @@
 
 // this code based on https://github.com/espressif/esp-idf/blob/master/examples/peripherals/rmt/ir_nec_transceiver
 
-#include "fm_crypter.h"
+#include "crypto/encrypter.h"
 #include "driver/rmt_encoder.h"
 #include "string.h"
 #include "esp_err.h"
@@ -93,7 +93,7 @@ bool fm_command_decode(const rmt_rx_done_event_data_t *edata, t_fm_command * res
         cur++;
     }
 
-    return fm_crypter_decrypt(result);
+    return decrypter_process_memory(&(result->command), result->args, FM_COMMAND_ARG_MAXSIZE);
 }
 
 static size_t fm_isr_rmt_encode_nec(rmt_encoder_t *encoder, rmt_channel_handle_t channel, const void *primary_data, size_t data_size, rmt_encode_state_t *ret_state)
@@ -241,10 +241,8 @@ void rmt_new_ir_nec_encoder(uint32_t resolution, rmt_encoder_handle_t *ret_encod
 }
 
 void fm_command_encode(t_fm_command * command) {
-	if (command->protocol == FM_COMMAND_PROTOCOL_NEC) {
-		return;
+	if (command->protocol == FM_COMMAND_PROTOCOL_EXTENDED) {
+		encrypter_process_memory(&(command->command), command->args, FM_COMMAND_ARG_MAXSIZE);
 	}
-
-	fm_crypter_encrypt(command);
 }
 

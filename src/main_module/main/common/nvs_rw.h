@@ -4,6 +4,8 @@
 #include "esp_err.h"
 #include "stdint.h"
 
+void nvs_init();
+
 esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_size);
 esp_err_t nvs_write_buffer(const char* name, const uint8_t* buffer, size_t buffer_size);
 

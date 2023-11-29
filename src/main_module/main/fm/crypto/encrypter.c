@@ -12,7 +12,7 @@ uint8_t decrypter_byte_1 = 0;
 uint8_t decrypter_byte_2 = 0;
 uint8_t decrypter_crc = 0;
 
-uint8_t crypter_secret[ENCRYPTER_SEND_SECRET_KEY_SIZE] = ENCRYPTER_SEND_SECRET_KEY;
+uint8_t crypter_secret[ENCRYPTER_SECRET_KEY_SIZE] = ENCRYPTER_SECRET_KEY;
 
 void encrypter_reset();
 
@@ -35,7 +35,7 @@ uint8_t encrypter_next_random() {
 uint8_t encrypter_next(uint8_t value) {
   encrypter_crc += value;
 
-  if (encrypter_send_key_offset >= ENCRYPTER_SEND_SECRET_KEY_SIZE) {
+  if (encrypter_send_key_offset >= ENCRYPTER_SECRET_KEY_SIZE) {
     encrypter_send_key_offset = 0;
   }
 
@@ -58,7 +58,7 @@ void decrypter_reset() {
 }
 
 uint8_t decrypter_next(uint8_t value) {
-	if (decrypter_send_key_offset >= ENCRYPTER_SEND_SECRET_KEY_SIZE) {
+	if (decrypter_send_key_offset >= ENCRYPTER_SECRET_KEY_SIZE) {
 		decrypter_send_key_offset = 0;
 	}
 

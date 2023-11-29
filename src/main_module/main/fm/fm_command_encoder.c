@@ -9,21 +9,7 @@
 #include "string.h"
 #include "esp_err.h"
 #include "../log/log.h"
-
-#define NEC_DECODE_MARGIN 200
-
-#define NEC_LEADING_CODE_DURATION_0  9000ULL
-#define NEC_LEADING_CODE_DURATION_1  4500ULL
-#define NEC_PAYLOAD_ZERO_DURATION_0  560
-#define NEC_PAYLOAD_ONE_DURATION_0   560
-#define NEC_PAYLOAD_ZERO_DURATION_1  560
-#define NEC_PAYLOAD_ONE_DURATION_1   1690
-// TODO: repeat?
-#define NEC_REPEAT_CODE_DURATION_0   9000
-#define NEC_REPEAT_CODE_DURATION_1   2250
-
-#define EXTENDED_LEADING_CODE_DURATION_0  7000ULL
-#define EXTENDED_LEADING_CODE_DURATION_1  6500ULL
+#include "stdbool.h"
 
 typedef struct {
     rmt_encoder_t base;           // the base "class", declares the standard encoder interface
@@ -35,63 +21,93 @@ typedef struct {
     int state;
 } rmt_fm_nec_encoder_t;
 
-static inline bool nec_check_in_range(uint32_t signal_duration, uint32_t spec_duration) {
-    return (signal_duration < (spec_duration + NEC_DECODE_MARGIN)) &&
-           (signal_duration > (spec_duration - NEC_DECODE_MARGIN));
-}
+typedef struct {
+	bool found_preamble;
 
-static bool nec_parse_logic0(const rmt_symbol_word_t *rmt_nec_symbols) {
-    return nec_check_in_range(rmt_nec_symbols->duration0, NEC_PAYLOAD_ZERO_DURATION_0) &&
-           nec_check_in_range(rmt_nec_symbols->duration1, NEC_PAYLOAD_ZERO_DURATION_1);
-}
+	uint8_t * buffer;
+	uint8_t buffer_pointer;
+	uint8_t buffer_size;
 
-static bool nec_parse_logic1(const rmt_symbol_word_t *rmt_nec_symbols) {
-    return nec_check_in_range(rmt_nec_symbols->duration0, NEC_PAYLOAD_ONE_DURATION_0) &&
-           nec_check_in_range(rmt_nec_symbols->duration1, NEC_PAYLOAD_ONE_DURATION_1);
+	uint16_t prev_duration;
+} t_fm_encoder_context;
+
+void fm_command_decode_next_period(uint8_t level, uint16_t duration, t_fm_encoder_context * context) {
+	if (!context->found_preamble) {
+		if (level == 0 && context->prev_duration == 0) {
+			return;
+		}
+
+		if (level == 1 && context->prev_duration == 0) {
+			context->prev_duration = duration;
+			return;
+		}
+
+		if (level == 0) {
+			if (duration / context->prev_duration > 25) {
+				context->found_preamble = true;
+			}
+		}
+
+		context->prev_duration = duration;
+		return;
+	}
+
+	if (level == 1) {
+		context->prev_duration = duration;
+		return;
+	}
+
+	if (duration / context->prev_duration >= 2 && duration / context->prev_duration <= 5) {
+		context->buffer[context->buffer_pointer] = 1;
+		context->buffer_pointer++;
+	} else if (context->prev_duration / duration >= 2 && context->prev_duration / duration <= 5) {
+		context->buffer[context->buffer_pointer] = 0;
+		context->buffer_pointer++;
+	} else {
+		ESP_LOGW(LOG_FM_ENCODER, "Reset encoder, bad duration %d; prev %d", duration, context->prev_duration);
+		context->found_preamble = false;
+	}
+
+	context->prev_duration = duration;
 }
 
 bool fm_command_decode(const rmt_rx_done_event_data_t *edata, t_fm_command * result) {
-	if (edata->num_symbols == 0) {
+	if (edata->num_symbols == 0 || edata->num_symbols > 0xFFFF) {
 		return false;
 	}
 
-	const rmt_symbol_word_t *cur = edata->received_symbols;
-    if (nec_check_in_range(cur->duration0, NEC_LEADING_CODE_DURATION_0) &&
-            nec_check_in_range(cur->duration1, NEC_LEADING_CODE_DURATION_1)) {
-    	result->protocol = FM_COMMAND_PROTOCOL_NEC;
-    } else if (nec_check_in_range(cur->duration0, EXTENDED_LEADING_CODE_DURATION_0) &&
-            nec_check_in_range(cur->duration1, EXTENDED_LEADING_CODE_DURATION_1)) {
-    	result->protocol = FM_COMMAND_PROTOCOL_EXTENDED;
-    } else {
-    	return false;
-    }
+	if (edata->num_symbols < 10) {
+		return false;
+	}
 
-    if (edata->num_symbols != (FM_COMMAND_ADDRESS_BYTES(result->protocol) + 16 + 2)) {
-    	return false;
-    }
+	t_fm_encoder_context * context = malloc(sizeof(t_fm_encoder_context));
+	memset(context, 0, sizeof(t_fm_encoder_context));
+	context->buffer = malloc(24);
+	context->buffer_size = 24;
 
-    cur++;
-    for (int i = 0; i < FM_COMMAND_ADDRESS_BYTES(result->protocol); i++) {
-        if (nec_parse_logic1(cur)) {
-            result->args[i / 8] |= 1 << i;
-        } else if (nec_parse_logic0(cur)) {
-        	result->args[i / 8] &= ~(1 << i);
-        } else {
-            return false;
-        }
-        cur++;
-    }
+	for (uint16_t i = 0; i<edata->num_symbols; i++) {
+		if (edata->received_symbols[i].duration0 == 0 || edata->received_symbols[i].duration1 == 0) {
+			continue;
+		}
 
-    for (int i = 0; i < 16; i++) {
-        if (nec_parse_logic1(cur)) {
-            result->command |= 1 << i;
-        } else if (nec_parse_logic0(cur)) {
-        	result->command &= ~(1 << i);
-        } else {
-            return false;
-        }
-        cur++;
-    }
+
+		if (context->buffer_pointer == context->buffer_size) {
+			break;
+		}
+
+		fm_command_decode_next_period(edata->received_symbols[i].level0, edata->received_symbols[i].duration0, context);
+		fm_command_decode_next_period(edata->received_symbols[i].level1, edata->received_symbols[i].duration1, context);
+	}
+
+	for (uint8_t i = 0; i< context->buffer_pointer; i++) {
+		ESP_LOGI(LOG_FM_ENCODER, "#%d = %d", i, context->buffer[i]);
+	}
+
+	free(context->buffer);
+	context->buffer = NULL;
+	free(context);
+
+	return false;
 
     return decrypter_process_memory(&(result->command), result->args, FM_COMMAND_ARG_MAXSIZE);
 }
@@ -125,13 +141,13 @@ static size_t fm_isr_rmt_encode_nec(rmt_encoder_t *encoder, rmt_channel_handle_t
         }
     }
 
-    uint8_t size = FM_COMMAND_ADDRESS_BYTES(fm_command->protocol);
+    uint8_t size = FM_COMMAND_ADDRESS_BITES(fm_command->protocol);
 
     if (nec_encoder->state <= size) {
         encoded_symbols += bytes_encoder->encode(bytes_encoder,
         										 channel,
 												 fm_command->args,
-												 FM_COMMAND_ADDRESS_BYTES(fm_command->protocol),
+												 FM_COMMAND_ADDRESS_BITES(fm_command->protocol),
 												 &session_state);
         if (session_state & RMT_ENCODING_COMPLETE) {
             nec_encoder->state = size; // we can only switch to next state when current encoder finished
@@ -192,31 +208,30 @@ static esp_err_t fm_isr_rmt_reset_encoder(rmt_encoder_t *encoder)
 }
 
 void rmt_new_ir_nec_encoder(uint32_t resolution, rmt_encoder_handle_t *ret_encoder) {
-    rmt_fm_nec_encoder_t *nec_encoder = NULL;
-    nec_encoder = calloc(1, sizeof(rmt_fm_nec_encoder_t));
-    nec_encoder->base.encode = fm_isr_rmt_encode_nec;
-    nec_encoder->base.del = fm_isr_rmt_del_encoder;
-    nec_encoder->base.reset = fm_isr_rmt_reset_encoder;
+    rmt_fm_nec_encoder_t *fm_encoder_iface = NULL;
+    fm_encoder_iface = calloc(1, sizeof(rmt_fm_nec_encoder_t));
+    fm_encoder_iface->base.encode = fm_isr_rmt_encode_nec;
+    fm_encoder_iface->base.del = fm_isr_rmt_del_encoder;
+    fm_encoder_iface->base.reset = fm_isr_rmt_reset_encoder;
 
     rmt_copy_encoder_config_t copy_encoder_config = {};
-    rmt_new_copy_encoder(&copy_encoder_config, &nec_encoder->copy_encoder);
+    rmt_new_copy_encoder(&copy_encoder_config, &fm_encoder_iface->copy_encoder);
 
-    // construct the leading code and ending code with RMT symbol format
-    nec_encoder->nec_leading_symbol = (rmt_symbol_word_t) {
+    fm_encoder_iface->nec_leading_symbol = (rmt_symbol_word_t) {
         .level0 = 1,
-        .duration0 = NEC_LEADING_CODE_DURATION_0 * resolution / 1000000,
+        .duration0 = 100 * resolution / 1000000,
         .level1 = 0,
-        .duration1 = NEC_LEADING_CODE_DURATION_1 * resolution / 1000000,
+        .duration1 = 31*100 * resolution / 1000000,
     };
-    nec_encoder->ext_leading_symbol = (rmt_symbol_word_t) {
+    fm_encoder_iface->ext_leading_symbol = (rmt_symbol_word_t) {
         .level0 = 1,
-        .duration0 = EXTENDED_LEADING_CODE_DURATION_0 * resolution / 1000000,
+        .duration0 = 500 * resolution / 1000000,
         .level1 = 0,
-        .duration1 = EXTENDED_LEADING_CODE_DURATION_1 * resolution / 1000000,
+        .duration1 = 1500 * resolution / 1000000,
     };
-    nec_encoder->nec_ending_symbol = (rmt_symbol_word_t) {
+    fm_encoder_iface->nec_ending_symbol = (rmt_symbol_word_t) {
         .level0 = 1,
-        .duration0 = 560 * resolution / 1000000,
+        .duration0 = 100 * resolution / 1000000,
         .level1 = 0,
         .duration1 = 0x7FFF,
     };
@@ -224,20 +239,20 @@ void rmt_new_ir_nec_encoder(uint32_t resolution, rmt_encoder_handle_t *ret_encod
     rmt_bytes_encoder_config_t bytes_encoder_config = {
         .bit0 = {
             .level0 = 1,
-            .duration0 = NEC_PAYLOAD_ZERO_DURATION_0 * resolution / 1000000, // T0H=560us
+            .duration0 = 100 * resolution / 1000000,
             .level1 = 0,
-            .duration1 = NEC_PAYLOAD_ONE_DURATION_0 * resolution / 1000000, // T0L=560us
+            .duration1 = 300 * resolution / 1000000,
         },
         .bit1 = {
             .level0 = 1,
-            .duration0 = NEC_PAYLOAD_ZERO_DURATION_1 * resolution / 1000000,  // T1H=560us
+            .duration0 = 300 * resolution / 1000000,
             .level1 = 0,
-            .duration1 = NEC_PAYLOAD_ONE_DURATION_1 * resolution / 1000000, // T1L=1690us
+            .duration1 = 100 * resolution / 1000000,
         },
     };
-    rmt_new_bytes_encoder(&bytes_encoder_config, &nec_encoder->bytes_encoder);
+    rmt_new_bytes_encoder(&bytes_encoder_config, &fm_encoder_iface->bytes_encoder);
 
-    *ret_encoder = &nec_encoder->base;
+    *ret_encoder = &fm_encoder_iface->base;
 }
 
 void fm_command_encode(t_fm_command * command) {

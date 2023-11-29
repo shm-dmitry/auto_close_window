@@ -2,6 +2,7 @@
 #include "stepper/stepper_init.h"
 #include "fm/fm_sender.c"
 #include "fm/fm_receiver.c"
+#include "common/nvs_rw.h"
 
 #include "stdbool.h"
 #include "freertos/FreeRTOS.h"
@@ -9,6 +10,8 @@
 
 void app_main(void)
 {
+	nvs_init();
+
 	charger_init();
 	stepper_init();
 	fm_sender_init();

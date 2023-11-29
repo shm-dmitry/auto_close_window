@@ -8,7 +8,7 @@
 #define FM_COMMAND_PROTOCOL_NEC 0x01
 #define FM_COMMAND_PROTOCOL_EXTENDED 0x02
 
-#define FM_COMMAND_ADDRESS_BYTES(protocol) ((protocol == FM_COMMAND_PROTOCOL_NEC) ? 16 : (8 * FM_COMMAND_ARG_MAXSIZE))
+#define FM_COMMAND_ADDRESS_BITES(protocol) ((protocol == FM_COMMAND_PROTOCOL_NEC) ? 16 : (8 * FM_COMMAND_ARG_MAXSIZE))
 
 typedef struct {
 	uint8_t protocol;

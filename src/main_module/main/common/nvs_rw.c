@@ -8,6 +8,10 @@
 
 #define STORAGE_NAMESPACE "acw"
 
+void nvs_init() {
+	ESP_ERROR_CHECK(nvs_flash_init());
+}
+
 esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_size) {
 	nvs_handle_t handle;
 	esp_err_t err;

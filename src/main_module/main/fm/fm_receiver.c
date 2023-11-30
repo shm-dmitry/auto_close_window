@@ -10,25 +10,40 @@
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "fm_command_encoder.h"
+#include "esp_timer.h"
 
 #include "../controller/controller.h"
 
-#define RX_BUFFER_SIZE 3
 #define FM_RECEIVER_TASK_STACK_SIZE 4096
+#define FM_RECEIVER_AIR_CLEAN_TIMEOUT 200000
 
-#define FM_COMMAND_SYMBOLS (FM_COMMAND_ARG_MAXSIZE * 8 + 2 * 8 + 2)
+#define FM_RECEIVER_DATA_ONE_PART 64
+
+int64_t volatile fm_receiver_last_received = 0;
 
 static bool IRAM_ATTR fm_rx_done_callback(rmt_channel_handle_t channel, const rmt_rx_done_event_data_t *edata, void *user_data) {
     BaseType_t high_task_wakeup = pdFALSE;
     QueueHandle_t receive_queue = (QueueHandle_t)user_data;
-    xQueueSendFromISR(receive_queue, edata, &high_task_wakeup);
+
+    rmt_rx_done_event_data_t copy;
+	copy.num_symbols = edata->num_symbols;
+	copy.flags = edata->flags;
+	copy.received_symbols = malloc(sizeof(rmt_symbol_word_t) * edata->num_symbols);
+	if (copy.received_symbols) {
+		memcpy(copy.received_symbols, edata->received_symbols, sizeof(rmt_symbol_word_t) * edata->num_symbols);
+		xQueueSendFromISR(receive_queue, &copy, &high_task_wakeup);
+	}
+
     return high_task_wakeup == pdTRUE;
 }
 
 static void fm_receiver_task(void* arg) {
 	rmt_receive_config_t fm_receiveconfig = {
-		.signal_range_min_ns = (uint32_t)1000,
-		.signal_range_max_ns = (uint32_t)12000000
+		.signal_range_min_ns = (uint32_t)100,
+		.signal_range_max_ns = (uint32_t)12000000,
+		.flags = {
+			.en_partial_rx = true
+		}
 	};
 
     rmt_rx_event_callbacks_t cbs = {
@@ -37,27 +52,41 @@ static void fm_receiver_task(void* arg) {
 
     rmt_channel_handle_t rx_chan = (rmt_channel_handle_t) arg;
 
-    QueueHandle_t queue = xQueueCreate(1, sizeof(rmt_rx_done_event_data_t));
+    QueueHandle_t queue = xQueueCreate(10, sizeof(rmt_rx_done_event_data_t));
 
     ESP_ERROR_CHECK(rmt_rx_register_event_callbacks(rx_chan, &cbs, queue));
 
     ESP_ERROR_CHECK(rmt_enable(rx_chan));
 
-    uint8_t buffsize = 250;
-    rmt_symbol_word_t raw_symbols[buffsize];
-	t_fm_command decoded;
+    rmt_symbol_word_t raw_symbols[FM_RECEIVER_DATA_ONE_PART];
     while(true) {
-    	memset(raw_symbols, 0, sizeof(rmt_symbol_word_t) * buffsize);
-    	ESP_ERROR_CHECK(rmt_receive(rx_chan, raw_symbols, sizeof(rmt_symbol_word_t) * buffsize, &fm_receiveconfig));
+    	memset(raw_symbols, 0, sizeof(rmt_symbol_word_t) * FM_RECEIVER_DATA_ONE_PART);
+    	ESP_ERROR_CHECK(rmt_receive(rx_chan, raw_symbols, sizeof(rmt_symbol_word_t) * FM_RECEIVER_DATA_ONE_PART, &fm_receiveconfig));
 
 		rmt_rx_done_event_data_t rx_data;
 		xQueueReceive(queue, &rx_data, portMAX_DELAY);
 
-		memset(&decoded, 0, sizeof(t_fm_command));
-		if (fm_command_decode(&rx_data, &decoded)) {
-			controller_process_command(&decoded);
+		t_fm_commands_list * list = fm_command_decode(&rx_data);
+
+		//free(rx_data.received_symbols);
+
+		if (list != NULL) {
+			for (uint8_t i = 0; i<list->commands_size; i++) {
+				controller_process_command(&(list->commands[i]));
+			}
+
+			free(list->commands);
+			list->commands = NULL;
+			free(list);
+			list = NULL;
+
+			fm_receiver_last_received = esp_timer_get_time() + FM_RECEIVER_AIR_CLEAN_TIMEOUT;
 		}
     }
+}
+
+bool fm_receiver_is_air_clean() {
+	return esp_timer_get_time() > fm_receiver_last_received;
 }
 
 void fm_receiver_init() {

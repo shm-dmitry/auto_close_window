@@ -80,11 +80,7 @@ menu "Auto-Close Window Settings"
    	  	 
    	  config FM_TX_CARRIER_FREQ
    	  	 int "FM transmitter signal carrier frequency"
-   	  	 default 25000
-
-   	  config FM_RX_CARRIER_FREQ
-   	  	 int "FM receiver signal carrier frequency"
-   	  	 default 32000
+   	  	 default 40000
    endmenu
 
    menu "Charger"

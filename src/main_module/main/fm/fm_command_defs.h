@@ -3,17 +3,12 @@
 
 #include "stdint.h"
 
-#define FM_COMMAND_ARG_MAXSIZE 10
-
-#define FM_COMMAND_PROTOCOL_NEC 0x01
-#define FM_COMMAND_PROTOCOL_EXTENDED 0x02
-
-#define FM_COMMAND_ADDRESS_BITES(protocol) ((protocol == FM_COMMAND_PROTOCOL_NEC) ? 16 : (8 * FM_COMMAND_ARG_MAXSIZE))
+#define FM_COMMAND_MAX_ARGS_SIZE 10
 
 typedef struct {
-	uint8_t protocol;
-	uint16_t command;
-	uint8_t args[FM_COMMAND_ARG_MAXSIZE];
+	uint16_t address;
+	uint8_t args[FM_COMMAND_MAX_ARGS_SIZE];
+	uint8_t args_size;
 } t_fm_command;
 
 #endif /* MAIN_FM_FM_COMMAND_DEFS_H_ */

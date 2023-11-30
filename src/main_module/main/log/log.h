@@ -10,5 +10,6 @@
 #define LOG_FM_RECEIVER "fm_receiver"
 #define LOG_CONTROLLER "controller"
 #define LOG_FM_ENCODER "fm_encoder"
+#define LOG_ENCRYPTOR "encryptor"
 
 #endif /* MAIN_LOG_LOG_H_ */

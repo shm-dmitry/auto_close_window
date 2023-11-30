@@ -9,28 +9,50 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+#include "fm_receiver.h"
 
-#define FM_SENDER_TASK_STACK_SIZE 1024
+#define FM_SENDER_TASK_STACK_SIZE 2048
 
 rmt_channel_handle_t tx_channel = NULL;
 rmt_encoder_handle_t fm_send_encoder = NULL;
 QueueHandle_t fm_send_queue = NULL;
 
 static void fm_sender_task(void* arg) {
+    rmt_transmit_config_t transmit_config = {
+        .loop_count = 0, // no loop
+    };
+
 	while(true) {
 		t_fm_command tx_command;
 		xQueueReceive(fm_send_queue, &tx_command, portMAX_DELAY);
 
-	    rmt_transmit_config_t transmit_config = {
-	        .loop_count = 0, // no loop
-	    };
+		while(!fm_receiver_is_air_clean()) {
+			vTaskDelay(100 / portTICK_PERIOD_MS);
+		}
 
-		fm_command_encode(&tx_command);
-        ESP_ERROR_CHECK(rmt_transmit(tx_channel,
-        							 fm_send_encoder,
-									 &tx_command,
-									 sizeof(t_fm_command),
-									 &transmit_config));
+	    uint8_t * buffer = NULL;
+	    uint8_t buffer_size = 0;
+		fm_command_encode(&tx_command, &buffer, &buffer_size);
+		if (buffer != NULL) {
+			ESP_LOGI(LOG_FM_SENDER, "Sending command %04X [ %02X %02X %02X %02X %02X %02X ]",
+					tx_command.address,
+					buffer[0],
+					buffer[1],
+					buffer[2],
+					buffer[3],
+					buffer[4],
+					buffer[5]);
+			ESP_ERROR_CHECK(rmt_transmit(tx_channel,
+										 fm_send_encoder,
+										 buffer,
+										 buffer_size,
+										 &transmit_config));
+
+			free(buffer);
+			buffer = NULL;
+		}
+
+		vTaskDelay(100 / portTICK_PERIOD_MS);
 	}
 }
 
@@ -40,7 +62,7 @@ void fm_sender_init() {
         .gpio_num = CONFIG_PIN_FM_OUT_433,
         .mem_block_symbols = 64,
         .resolution_hz = 1 * 1000 * 1000,
-        .trans_queue_depth = 4,
+        .trans_queue_depth = 2,
     };
 
     esp_err_t res = rmt_new_tx_channel(&tx_chan_config, &tx_channel);
@@ -50,8 +72,8 @@ void fm_sender_init() {
     }
 
     rmt_carrier_config_t tx_carrier_cfg = {
-        .duty_cycle = 0.33,
-        .frequency_hz = CONFIG_FM_TX_CARRIER_FREQ,
+        .duty_cycle = 0.5,
+        .frequency_hz = 50000,
     };
     // modulate carrier to TX channel
     res = rmt_apply_carrier(tx_channel, &tx_carrier_cfg);
@@ -66,7 +88,7 @@ void fm_sender_init() {
 		return;
     }
 
-    rmt_new_ir_nec_encoder(CONFIG_FM_TX_CARRIER_FREQ, &fm_send_encoder);
+    rmt_new_ir_nec_encoder(&fm_send_encoder);
 
 	fm_send_queue = xQueueCreate(10, sizeof(t_fm_command));
 

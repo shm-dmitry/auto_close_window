@@ -18,6 +18,6 @@ void app_main(void)
 	fm_receiver_init();
 
 	while(true) {
-		vTaskDelay(100 / portTICK_PERIOD_MS);
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 }

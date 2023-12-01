@@ -7,7 +7,7 @@ typedef struct {
 	t_fm_command_address_data data;
 } t_fm_command_size_by_address_data;
 
-#define FM_COMMAND_ADDRESS_DATA_SIZE 6
+#define FM_COMMAND_ADDRESS_DATA_SIZE 8
 t_fm_command_size_by_address_data address_data[FM_COMMAND_ADDRESS_DATA_SIZE] =
 {
 		{ .address = FM_COMMAND_ADDRESS__PDU,               .data.encrypted = false, .data.args_size = 1 },
@@ -17,8 +17,10 @@ t_fm_command_size_by_address_data address_data[FM_COMMAND_ADDRESS_DATA_SIZE] =
 		{ .address = FM_COMMAND_ADDRESS__OM_ALARM,          .data.encrypted = true,  .data.args_size = 1 },
 		{ .address = FM_COMMAND_ADDRESS__OM_AIR_STATUS,     .data.encrypted = true,  .data.args_size = 5 },
 		{ .address = FM_COMMAND_ADDRESS__OM_NOISE_DATA,     .data.encrypted = true,  .data.args_size = 10 },
+		{ .address = FM_COMMAND_ADDRESS__OM_CHARGE_STATUS,  .data.encrypted = true,  .data.args_size = 1 },
 
 		{ .address = FM_COMMAND_ADDRESS__HM_COMMAND,        .data.encrypted = true,  .data.args_size = 1 },
+		{ .address = FM_COMMAND_ADDRESS__HM_CHARGE_STATUS,  .data.encrypted = true,  .data.args_size = 1 },
 };
 
 t_fm_command_address_data address_unknown = { .val = FM_VAL_BY_ADDRESS_UNKNOWN };

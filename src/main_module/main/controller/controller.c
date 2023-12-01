@@ -60,9 +60,9 @@ void controller_process_hm_command(uint8_t arg) {
 	}
 }
 
-void controller_process_hm_charge_status(bool charge_started) {
-	if (charge_started) {
-		charger_confirm_started();
+void controller_process_hm_charge_status(bool charge_in_progress) {
+	if (charge_in_progress) {
+		charger_confirm_in_progress();
 	} else {
 		charger_stop();
 	}
@@ -76,9 +76,9 @@ void controller_process_om_noise_alarm(bool alarm) {
 	ESP_LOGI(LOG_CONTROLLER, "OM NOISE alarm: %s", (alarm ? "ON" : "OFF"));
 }
 
-void controller_process_om_charge_status(bool charge_started) {
-	if (charge_started) {
-		charger_confirm_started();
+void controller_process_om_charge_status(bool charge_in_progress) {
+	if (charge_in_progress) {
+		charger_confirm_in_progress();
 	} else {
 		charger_stop();
 	}

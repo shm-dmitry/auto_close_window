@@ -4,6 +4,8 @@
 #include "fm_command_defs.h"
 #include "driver/rmt_types.h"
 
+#define FM_COMMAND_ENCODER_MAX_IMPL_TIME (1000 * 31)
+
 typedef struct {
 	t_fm_command * commands;
 	uint8_t commands_size;

@@ -9,11 +9,12 @@
 #include "../common/nvs_rw.h"
 #include "stepper_commands.h"
 #include "../controller/controller.h"
+#include "../controller/controller_mqtt.h"
 
 #define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
 #define STEPPER_DIR_OPEN  1
 #define STEPPER_DIR_CLOSE 0
-#define STEPPER_DEFAULT_FULL_OPEN_STEPS 10
+#define STEPPER_DEFAULT_FULL_OPEN_STEPS 10000
 #define STEPPER_COMMAND_TASK_STACK_SIZE 2048
 #define STEPPER_CURRENT_STEPS_UNKNOWN_POSITION 0xFFFFFFFF
 #define STEPPER_ONE_STEP_SIZE (stepper_full_open_steps_count / 10)
@@ -22,6 +23,7 @@ uint32_t stepper_full_open_steps_count = STEPPER_DEFAULT_FULL_OPEN_STEPS;
 
 uint8_t stepper_next_command = STEPPER_COMMAND_NOCOMMAND;
 uint32_t stepper_current_steps = STEPPER_CURRENT_STEPS_UNKNOWN_POSITION;
+uint8_t stepper_part_open_percent = 0xFF;
 
 void stepper_motor_on() {
 	if (gpio_get_level(CONFIG_PIN_STEPPER_POWER_ON) == 0) {
@@ -47,6 +49,8 @@ void stepper_do_one_step() {
 static void stepper_on_execute_command_task(void* arg) {
 	uint8_t stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
 	uint32_t stepper_step_command_move_to = STEPPER_CURRENT_STEPS_UNKNOWN_POSITION;
+
+	controller_mqtt_on_stepper_current_open(0xFF);
 
 	while(true) {
 		if (stepper_next_command == STEPPER_COMMAND_NOCOMMAND &&
@@ -86,6 +90,19 @@ static void stepper_on_execute_command_task(void* arg) {
 				} else {
 					stepper_step_command_move_to = stepper_current_steps - inc;
 				}
+			} else if (stepper_current_command == STEPPER_COMMAND_PART_OPEN) {
+				stepper_step_command_move_to = ((stepper_full_open_steps_count * 100) / stepper_part_open_percent);
+
+				if (stepper_step_command_move_to == stepper_current_steps) {
+					stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
+					continue;
+				} else if (stepper_step_command_move_to > stepper_current_steps) {
+					stepper_current_command = STEPPER_COMMAND_STEP_OPEN;
+					controller_on_status(CONTROLLER_STATUS_START_EXECUTE_OPEN);
+				} else {
+					stepper_current_command = STEPPER_COMMAND_STEP_CLOSE;
+					controller_on_status(CONTROLLER_STATUS_START_EXECUTE_CLOSE);
+				}
 			}
 		}
 
@@ -105,6 +122,7 @@ static void stepper_on_execute_command_task(void* arg) {
 					nvs_write_32t(STEPPER_NVS_FULL_OPEN_STEPS, stepper_full_open_steps_count);
 
 					controller_on_status(CONTROLLER_STATUS_END_CALIBRATION);
+					controller_mqtt_on_stepper_current_open(100);
 					break;
 				}
 
@@ -115,6 +133,7 @@ static void stepper_on_execute_command_task(void* arg) {
 					stepper_next_command = STEPPER_COMMAND_NOCOMMAND;
 
 					controller_on_status(CONTROLLER_STATUS_FAIL_CALIBRATION);
+					controller_mqtt_on_stepper_current_open(0xFF);
 					break;
 				}
 
@@ -138,11 +157,13 @@ static void stepper_on_execute_command_task(void* arg) {
 						stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
 
 						controller_on_status(CONTROLLER_STATUS_END_EXECUTE_OPEN);
+						controller_mqtt_on_stepper_current_open(100);
 					} else if (stepper_current_command == STEPPER_COMMAND_STEP_OPEN &&
 						stepper_current_steps >= stepper_step_command_move_to) {
 						stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
 
 						controller_on_status(CONTROLLER_STATUS_END_EXECUTE_OPEN);
+						controller_mqtt_on_stepper_current_open((stepper_current_steps * 100) / stepper_step_command_move_to);
 					}
 					break;
 				case STEPPER_COMMAND_FULL_CLOSE:
@@ -164,12 +185,14 @@ static void stepper_on_execute_command_task(void* arg) {
 							stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
 
 							controller_on_status(CONTROLLER_STATUS_END_EXECUTE_CLOSE);
+							controller_mqtt_on_stepper_current_open(0);
 						}
 					} else if (stepper_current_command == STEPPER_COMMAND_STEP_CLOSE &&
 						stepper_current_steps <= stepper_step_command_move_to) {
 						stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
 
 						controller_on_status(CONTROLLER_STATUS_END_EXECUTE_CLOSE);
+						controller_mqtt_on_stepper_current_open((stepper_current_steps * 100) / stepper_step_command_move_to);
 					}
 					break;
 				case STEPPER_COMMAND_CALIBRATE:
@@ -241,5 +264,18 @@ void stepper_init() {
 
 void stepper_execute_command(uint8_t command) {
 	stepper_next_command = command;
+	if (command != STEPPER_COMMAND_PART_OPEN) {
+		stepper_part_open_percent = 0xFF;
+	}
 }
 
+void stepper_open_on_percent(uint8_t percent) {
+	if (percent == 0) {
+		stepper_execute_command(STEPPER_COMMAND_FULL_CLOSE);
+	} else if (percent >= 100) {
+		stepper_execute_command(STEPPER_COMMAND_FULL_OPEN);
+	} else {
+		stepper_part_open_percent = percent;
+		stepper_execute_command(STEPPER_COMMAND_PART_OPEN);
+	}
+}

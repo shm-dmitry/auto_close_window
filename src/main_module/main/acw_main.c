@@ -5,6 +5,7 @@
 #include "common/nvs_rw.h"
 #include "common/wifi.h"
 #include "common/mqtt.h"
+#include "controller/controller_mqtt.h"
 
 #include "stdbool.h"
 #include "freertos/FreeRTOS.h"
@@ -19,6 +20,7 @@ void app_main(void)
 	stepper_init();
 	fm_sender_init();
 	fm_receiver_init();
+	controller_mqtt_init();
 
 	mqtt_start();
 

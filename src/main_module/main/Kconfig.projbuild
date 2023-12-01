@@ -93,4 +93,27 @@ menu "Auto-Close Window Settings"
    	  	 default 32
    endmenu
   
+   menu "Controller2MQTT"
+   	  config CONTROLLER_MQTT_STEPPER_TOPIC
+   	     string "MQTT topic to stepper listen commands"
+   	     default "/acw/controller/0/stepper/commands"
+
+   	  config CONTROLLER_MQTT_STEPPER_STATUS_TOPIC
+   	     string "MQTT topic to send stepper status"
+   	     default "/acw/controller/0/stepper/status"
+
+   	  config CONTROLLER_MQTT_AIR_STATUS
+   	     string "MQTT topic to send outdoor air status"
+   	     default "/acw/controller/0/air/status"
+
+   	  config CONTROLLER_MQTT_NOISE_STATUS
+   	     string "MQTT topic to send outdoor noise status"
+   	     default "/acw/controller/0/noise/status"
+
+   	  config CONTROLLER_MQTT_NOISE_ALARM
+   	     string "MQTT topic to send outdoor noise alarms"
+   	     default "/acw/controller/0/noise/alarm"
+   endmenu
  endmenu
+ 
+ 

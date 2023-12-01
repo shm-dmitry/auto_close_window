@@ -12,4 +12,5 @@ idf_component_register(SRCS "acw_main.c"
                             "fm/fm_command_addresses.c"
                             "fm/crypto/encrypter.c"
                             "controller/controller.c"
+                            "controller/controller_mqtt.c"
                     INCLUDE_DIRS "")

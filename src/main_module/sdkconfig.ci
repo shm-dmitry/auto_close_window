@@ -23,3 +23,9 @@ FM_TX_CARRIER_FREQ=40000
 
 PIN_CHARGER_START_BUTTON=27
 PIN_CHARGER_ENABLE=32
+
+CONTROLLER_MQTT_STEPPER_TOPIC="/acw/controller/0/stepper/commands"
+CONTROLLER_MQTT_STEPPER_STATUS_TOPIC="/acw/controller/0/stepper/status"
+CONTROLLER_MQTT_AIR_STATUS="/acw/controller/0/air/status"
+CONTROLLER_MQTT_NOISE_STATUS="/acw/controller/0/noise/status"
+CONTROLLER_MQTT_NOISE_ALARM="/acw/controller/0/noise/alarm"

@@ -1,5 +1,6 @@
 #include "controller.h"
 
+#include "controller_mqtt.h"
 #include "../fm/fm_command_address_def.h"
 #include "../fm/fm_command_defs.h"
 #include "../fm/fm_sender.h"
@@ -68,30 +69,12 @@ void controller_process_hm_charge_status(bool charge_in_progress) {
 	}
 }
 
-void controller_process_om_air_data(int8_t temperature, uint8_t humidity, uint32_t pressure) {
-	ESP_LOGI(LOG_CONTROLLER, "OM AIR status: temperature=%d C, humidity=%d%%, pressure=%li Pa", temperature, humidity, pressure);
-}
-
-void controller_process_om_noise_alarm(bool alarm) {
-	ESP_LOGI(LOG_CONTROLLER, "OM NOISE alarm: %s", (alarm ? "ON" : "OFF"));
-}
-
 void controller_process_om_charge_status(bool charge_in_progress) {
 	if (charge_in_progress) {
 		charger_confirm_in_progress();
 	} else {
 		charger_stop();
 	}
-}
-
-void controller_process_om_noise_data(uint8_t freq1, uint8_t level1, uint8_t freq2, uint8_t level2, uint8_t freq3, uint8_t level3, uint8_t freq4, uint8_t level4, uint8_t freq5, uint8_t level5) {
-	ESP_LOGI(LOG_CONTROLLER, "OM NOISE data: freq1: [ %d = %d ]; freq2: [ %d = %d ]; freq3: [ %d = %d ]; freq4: [ %d = %d ]; freq5: [ %d = %d ]",
-			freq1, level1,
-			freq2, level2,
-			freq3, level3,
-			freq4, level4,
-			freq5, level5
-			);
 }
 
 void controller_process_command(const t_fm_command * command) {
@@ -110,19 +93,19 @@ void controller_process_command(const t_fm_command * command) {
 		controller_process_om_charge_status(args[0]);
 		break;
 	case FM_COMMAND_ADDRESS__OM_ALARM:
-		controller_process_om_noise_alarm(args[0]);
+		controller_mqtt_process_om_noise_alarm(args[0]);
 		break;
 	case FM_COMMAND_ADDRESS__OM_AIR_STATUS:
-		controller_process_om_air_data(args[0] - 100,
-				                       args[1],
-									   (args[2] << 16) + (args[3] << 8) + args[4]);
+		controller_mqtt_process_om_air_data(args[0] - 100,
+				                            args[1],
+							     		    (args[2] << 16) + (args[3] << 8) + args[4]);
 		break;
 	case FM_COMMAND_ADDRESS__OM_NOISE_DATA:
-		controller_process_om_noise_data(args[0], args[1],
-									     args[2], args[3],
-									     args[4], args[5],
-									     args[6], args[7],
-									     args[8], args[9]);
+		controller_mqtt_process_om_noise_data(args[0], args[1],
+									          args[2], args[3],
+									          args[4], args[5],
+									          args[6], args[7],
+									          args[8], args[9]);
 		break;
 
 	case FM_COMMAND_ADDRESS__HM_COMMAND:

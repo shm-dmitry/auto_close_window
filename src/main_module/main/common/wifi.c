@@ -15,10 +15,14 @@
 #include "cJSON.h"
 
 #define WIFI_MAXIMUM_RETRY 30
-#define WIFI_CONNECTED_BIT BIT0
-#define WIFI_FAIL_BIT      BIT1
+#define WIFI_CONNECTED_BIT 				BIT0
+#define WIFI_FAIL_BIT      				BIT1
+#define WIFI_ALLOW_BG_RECONNECT_BIT     BIT2
 
 #define WIFI_DEFAULT_WAIT_CONNECTION (30000 / portTICK_PERIOD_MS)
+
+#define WIFI_BG_RECONNECT_TASK_STACK_SIZE  2048
+#define WIFI_BG_RECONNECT_DELAY		 (30000 / portTICK_PERIOD_MS)
 
 #define WIFI_CONNECT \
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) ); \
@@ -42,6 +46,12 @@ static int s_retry_num = 0;
 
 static EventGroupHandle_t s_wifi_event_group;
 
+void wifi_bg_reconnect_delay_task(void *) {
+	s_retry_num = 0;
+	vTaskDelay(WIFI_BG_RECONNECT_DELAY);
+    esp_wifi_connect();
+}
+
 static void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
@@ -53,7 +63,11 @@ static void event_handler(void* arg, esp_event_base_t event_base,
             s_retry_num++;
             ESP_LOGI(LOG_WIFI, "retry to connect to the AP");
         } else {
-            xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
+        	if (xEventGroupGetBits(s_wifi_event_group) & WIFI_ALLOW_BG_RECONNECT_BIT) {
+        		xTaskCreate(wifi_bg_reconnect_delay_task, "wifi background reconnect", WIFI_BG_RECONNECT_TASK_STACK_SIZE, NULL, 10, NULL);
+        	} else {
+        		xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
+        	}
         }
         ESP_LOGI(LOG_WIFI,"connect to the AP fail");
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
@@ -158,9 +172,7 @@ void wifi_init() {
     	esp_restart();
     }
 
-    esp_event_handler_instance_unregister(IP_EVENT, IP_EVENT_STA_GOT_IP, instance_got_ip);
-    esp_event_handler_instance_unregister(WIFI_EVENT, ESP_EVENT_ANY_ID, instance_any_id);
-    vEventGroupDelete(s_wifi_event_group);
+	xEventGroupSetBits(s_wifi_event_group, WIFI_ALLOW_BG_RECONNECT_BIT);
 
     mqtt_subscribe(CONFIG_WIFI_TOPIC, wifi_mqtt_listener);
 

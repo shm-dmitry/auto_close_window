@@ -15,7 +15,7 @@
 #include "../controller/controller.h"
 
 #define FM_RECEIVER_TASK_STACK_SIZE 4096
-#define FM_RECEIVER_AIR_CLEAN_TIMEOUT ((uint64_t)200000)
+#define FM_RECEIVER_AIR_CLEAN_TIMEOUT ((uint64_t)20000)
 
 #define FM_RECEIVER_DATA_ONE_PART 192
 
@@ -46,6 +46,7 @@ static bool IRAM_ATTR fm_rx_done_callback(rmt_channel_handle_t channel, const rm
 
 	if (params->update_last_received && edata->num_symbols > 5) {
 		fm_receiver_last_received = esp_timer_get_time() + FM_RECEIVER_AIR_CLEAN_TIMEOUT;
+		ESP_DRAM_LOGI(LOG_FM_RECEIVER, "Last received updated");
 	}
 
     return high_task_wakeup == pdTRUE;
@@ -78,6 +79,8 @@ static void fm_receiver_task(void* arg) {
     ESP_ERROR_CHECK(rmt_enable(taskparams->rx_chan));
 
     rmt_symbol_word_t raw_symbols[FM_RECEIVER_DATA_ONE_PART];
+	void * decoder_context_data = NULL;
+
     while(true) {
     	memset(raw_symbols, 0, sizeof(rmt_symbol_word_t) * FM_RECEIVER_DATA_ONE_PART);
     	ESP_ERROR_CHECK(rmt_receive(taskparams->rx_chan, raw_symbols, sizeof(rmt_symbol_word_t) * FM_RECEIVER_DATA_ONE_PART, &fm_receiveconfig));
@@ -86,7 +89,7 @@ static void fm_receiver_task(void* arg) {
 			rmt_rx_done_event_data_t rx_data;
 			xQueueReceive(queue, &rx_data, portMAX_DELAY);
 
-			t_fm_commands_list * list = fm_command_decode(&rx_data);
+			t_fm_commands_list * list = fm_command_decode(&decoder_context_data, &rx_data);
 
 			free(rx_data.received_symbols);
 			rx_data.received_symbols = NULL;
@@ -154,7 +157,7 @@ void fm_receiver_init() {
     p315->update_last_received = true;
 
     p433->rx_chan = rx_chan_433;
-    p433->update_last_received = true;// TODO: false after debugging
+    p433->update_last_received = false;
 
 	xTaskCreate(fm_receiver_task, "FM receiver 433", FM_RECEIVER_TASK_STACK_SIZE, p433, 10, NULL);
 	xTaskCreate(fm_receiver_task, "FM receiver 315", FM_RECEIVER_TASK_STACK_SIZE, p315, 10, NULL);

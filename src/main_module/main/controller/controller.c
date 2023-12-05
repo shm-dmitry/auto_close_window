@@ -6,37 +6,33 @@
 #include "../fm/fm_sender.h"
 #include "../log/log.h"
 #include "../stepper/stepper_init.h"
-#include "../stepper/stepper_commands.h"
 #include "../charger/charger_init.h"
 #include "stdbool.h"
 #include <string.h>
 
+#include "../stepper/stepper_commands_def.h"
+#include "controller_args_def.h"
+
 #define CONTROLLER_PDU_ARG_FULL_OPEN   0x68
 #define CONTROLLER_PDU_ARG_FULL_CLOSE  0x64
-#define CONTROLLER_PDU_ARG_STEP_OPEN   0x62
-#define CONTROLLER_PDU_ARG_STEP_CLOSE  0x61
-
-#define CONTROLLER_HM_FULL_OPEN		   0x01
-#define CONTROLLER_HM_FULL_CLOSE	   0x02
-#define CONTROLLER_HM_STEP_OPEN		   0x03
-#define CONTROLLER_HM_STEP_CLOSE	   0x04
-#define CONTROLLER_HM_CALIBRATE		   0x05
+#define CONTROLLER_PDU_ARG_MOVE_TO_1   0x62
+#define CONTROLLER_PDU_ARG_MOVE_TO_2   0x61
 
 void controller_process_pdu_command(uint8_t arg) {
 	ESP_LOGI(LOG_CONTROLLER, "PDU command: arg=%02X", arg);
 
 	switch (arg) {
 		case CONTROLLER_PDU_ARG_FULL_OPEN:
-			stepper_execute_command(STEPPER_COMMAND_FULL_OPEN);
+			stepper_move_to(100);
 			break;
 		case CONTROLLER_PDU_ARG_FULL_CLOSE:
-			stepper_execute_command(STEPPER_COMMAND_FULL_CLOSE);
+			stepper_move_to(0);
 			break;
-		case CONTROLLER_PDU_ARG_STEP_OPEN:
-			stepper_execute_command(STEPPER_COMMAND_STEP_OPEN);
+		case CONTROLLER_PDU_ARG_MOVE_TO_1:
+			stepper_move_to(10); // TODO: config
 			break;
-		case CONTROLLER_PDU_ARG_STEP_CLOSE:
-			stepper_execute_command(STEPPER_COMMAND_STEP_CLOSE);
+		case CONTROLLER_PDU_ARG_MOVE_TO_2:
+			stepper_move_to(50); // TODO: config
 			break;
 	}
 }
@@ -44,19 +40,16 @@ void controller_process_pdu_command(uint8_t arg) {
 void controller_process_hm_command(uint8_t arg) {
 	switch (arg) {
 		case CONTROLLER_HM_FULL_OPEN:
-			stepper_execute_command(STEPPER_COMMAND_FULL_OPEN);
+			stepper_move_to(100);
 			break;
 		case CONTROLLER_HM_FULL_CLOSE:
-			stepper_execute_command(STEPPER_COMMAND_FULL_CLOSE);
+			stepper_move_to(0);
 			break;
-		case CONTROLLER_HM_STEP_OPEN:
-			stepper_execute_command(STEPPER_COMMAND_STEP_OPEN);
-			break;
-		case CONTROLLER_HM_STEP_CLOSE:
-			stepper_execute_command(STEPPER_COMMAND_STEP_CLOSE);
+		case CONTROLLER_HM_MOVE_TO_1:
+			stepper_move_to(10); // TODO: config
 			break;
 		case CONTROLLER_HM_CALIBRATE:
-			stepper_execute_command(STEPPER_COMMAND_CALIBRATE);
+			stepper_calibrate();
 			break;
 	}
 }
@@ -86,6 +79,7 @@ void controller_process_command(const t_fm_command * command) {
 		break;
 
 	case FM_COMMAND_ADDRESS__MM_STEPPER_STATUS:
+		ESP_LOGI(LOG_CONTROLLER, "Received self message with arg = %02X", args[0]);
 		// ignore this address - I receive myself commands
 		break;
 

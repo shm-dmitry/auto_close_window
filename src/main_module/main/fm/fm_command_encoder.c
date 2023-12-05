@@ -42,10 +42,7 @@ typedef struct {
 
 #define FM_DURATION_CHECK_BETWEEN(x, a, b) ((x) >= a && (x) <= b)
 
-QueueHandle_t send_log_queue = NULL;
-t_fm_encoder_context * decoder_context = NULL;
-
-uint8_t fm_command_decode_next_period(uint8_t level, uint16_t duration) {
+uint8_t fm_command_decode_next_period(t_fm_encoder_context * decoder_context, uint8_t level, uint16_t duration) {
 	if (!decoder_context->found_preamble) {
 		if (level == 0 && decoder_context->prev_duration == 0) {
 			return FM_COMMAND_DECODER_CONTINUE;
@@ -105,7 +102,7 @@ uint8_t fm_command_decode_next_period(uint8_t level, uint16_t duration) {
 	return FM_COMMAND_DECODER_CONTINUE;
 }
 
-void fm_command_restart_context() {
+void fm_command_restart_context(t_fm_encoder_context * decoder_context) {
 	if (decoder_context->buffer) {
 		free(decoder_context->buffer);
 	}
@@ -118,11 +115,11 @@ void fm_command_restart_context() {
 	}
 }
 
-void fm_command_decode_on_next_byte(t_fm_commands_list * list, uint8_t status) {
+void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm_commands_list * list, uint8_t status) {
 	if (status == FM_COMMAND_DECODER_BUFFER_LOADED) {
 		if (decoder_context->buffer == NULL) {
 			ESP_LOGW(LOG_FM_ENCODER, "Restart context - buffer == NULL");
-			fm_command_restart_context();
+			fm_command_restart_context(decoder_context);
 			return;
 		}
 
@@ -133,20 +130,20 @@ void fm_command_decode_on_next_byte(t_fm_commands_list * list, uint8_t status) {
 
 			if (decoder_context->decoded_address == 0) {
 				ESP_LOGW(LOG_FM_ENCODER, "Restart context - address = 0 not allowed");
-				fm_command_restart_context();
+				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			t_fm_command_address_data data = fm_command_metadata_by_address(decoder_context->decoded_address);
 			if (data.val == FM_VAL_BY_ADDRESS_UNKNOWN) {
 				ESP_LOGW(LOG_FM_ENCODER, "Restart context - address %04X not allowed", decoder_context->decoded_address);
-				fm_command_restart_context();
+				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			if (data.args_size > FM_COMMAND_MAX_ARGS_SIZE) {
 				ESP_LOGW(LOG_FM_ENCODER, "Restart context - Too many args for address %04X: %d, max %d", decoder_context->decoded_address, data.args_size, FM_COMMAND_MAX_ARGS_SIZE);
-				fm_command_restart_context();
+				fm_command_restart_context(decoder_context);
 				return;
 			}
 
@@ -166,14 +163,14 @@ void fm_command_decode_on_next_byte(t_fm_commands_list * list, uint8_t status) {
 			t_fm_command_address_data data = fm_command_metadata_by_address(decoder_context->decoded_address);
 			if (data.val == FM_VAL_BY_ADDRESS_UNKNOWN) {
 				ESP_LOGW(LOG_FM_ENCODER, "[BAD STATE] Restart context - address %04X not allowed", decoder_context->decoded_address);
-				fm_command_restart_context();
+				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			if (data.args_size > FM_COMMAND_MAX_ARGS_SIZE) {
 				ESP_LOGW(LOG_FM_ENCODER, "[BAD STATE] Restart context - Too many args for address %04X: %d, max %d",
 						decoder_context->decoded_address, data.args_size, FM_COMMAND_MAX_ARGS_SIZE);
-				fm_command_restart_context();
+				fm_command_restart_context(decoder_context);
 				return;
 			}
 /*
@@ -194,7 +191,7 @@ void fm_command_decode_on_next_byte(t_fm_commands_list * list, uint8_t status) {
 				}
 			}
 
-			fm_command_restart_context();
+			fm_command_restart_context(decoder_context);
 
 			if (temp) {
 				t_fm_command * prev = list->commands;
@@ -221,12 +218,12 @@ void fm_command_decode_on_next_byte(t_fm_commands_list * list, uint8_t status) {
 	}
 
 	if (status == FM_COMMAND_DECODER_RESTART) {
-		fm_command_restart_context();
+		fm_command_restart_context(decoder_context);
 		return;
 	}
 }
 
-t_fm_commands_list * fm_command_decode(const rmt_rx_done_event_data_t *edata) {
+t_fm_commands_list * fm_command_decode(void ** decoder_context_ptr, const rmt_rx_done_event_data_t *edata) {
 	if (edata->num_symbols == 0 || edata->num_symbols > 0xFFFF) {
 		return NULL;
 	}
@@ -234,6 +231,8 @@ t_fm_commands_list * fm_command_decode(const rmt_rx_done_event_data_t *edata) {
 	if (edata->num_symbols < 10) {
 		return NULL;
 	}
+
+	t_fm_encoder_context * decoder_context = (t_fm_encoder_context *)*decoder_context_ptr;
 
 	t_fm_commands_list * list = malloc(sizeof(t_fm_commands_list));
 	if (list == NULL) {
@@ -249,7 +248,7 @@ t_fm_commands_list * fm_command_decode(const rmt_rx_done_event_data_t *edata) {
 			return NULL;
 		}
 		memset(decoder_context, 0, sizeof(t_fm_encoder_context));
-		fm_command_restart_context();
+		fm_command_restart_context(decoder_context);
 	}
 
 	for (size_t i = 0; i<edata->num_symbols; i++) {
@@ -263,10 +262,10 @@ t_fm_commands_list * fm_command_decode(const rmt_rx_done_event_data_t *edata) {
 				edata->received_symbols[i].duration1,
 				edata->received_symbols[i].level1);
 */
-		uint8_t status = fm_command_decode_next_period(edata->received_symbols[i].level0, edata->received_symbols[i].duration0);
-		fm_command_decode_on_next_byte(list, status);
-		status = fm_command_decode_next_period(edata->received_symbols[i].level1, edata->received_symbols[i].duration1);
-		fm_command_decode_on_next_byte(list, status);
+		uint8_t status = fm_command_decode_next_period(decoder_context, edata->received_symbols[i].level0, edata->received_symbols[i].duration0);
+		fm_command_decode_on_next_byte(decoder_context, list, status);
+		status = fm_command_decode_next_period(decoder_context, edata->received_symbols[i].level1, edata->received_symbols[i].duration1);
+		fm_command_decode_on_next_byte(decoder_context, list, status);
 	}
 
 	if (edata->flags.is_last) {

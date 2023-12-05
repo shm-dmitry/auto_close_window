@@ -4,10 +4,10 @@
 #include "../common/mqtt.h"
 #include "sdkconfig.h"
 #include "../stepper/stepper_init.h"
-#include "../stepper/stepper_commands.h"
 #include "../log/log.h"
 
 #include "string.h"
+#include "../stepper/stepper_commands_def.h"
 
 void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 	cJSON *root = cJSON_Parse(data);
@@ -17,17 +17,13 @@ void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 
 	const char * type = cJSON_GetStringValue(cJSON_GetObjectItem(root, "type"));
 
-	if (strcmp(type, "open") == 0) {
-		stepper_execute_command(STEPPER_COMMAND_FULL_OPEN);
-	} else if (strcmp(type, "close") == 0) {
-		stepper_execute_command(STEPPER_COMMAND_FULL_CLOSE);
-	} else if (strcmp(type, "calibrate") == 0) {
-		stepper_execute_command(STEPPER_COMMAND_CALIBRATE);
-	} else if (strcmp(type, "part_open") == 0) {
+	if (strcmp(type, "move") == 0) {
 		uint8_t percent = get_number8_from_json(cJSON_GetObjectItem(root, "percent"), 0xFF);
 		if (percent <= 100) {
-			stepper_open_on_percent(percent);
+			stepper_move_to(percent);
 		}
+	} else if (strcmp(type, "calibrate") == 0) {
+		stepper_calibrate();
 	}
 
 	cJSON_Delete(root);

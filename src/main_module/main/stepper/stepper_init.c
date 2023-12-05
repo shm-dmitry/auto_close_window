@@ -7,23 +7,33 @@
 #include "../log/log.h"
 #include "sdkconfig.h"
 #include "../common/nvs_rw.h"
-#include "stepper_commands.h"
 #include "../controller/controller.h"
 #include "../controller/controller_mqtt.h"
+#include "stepper_commands_def.h"
+#include "../charger/charger_init.h"
+
+#define STEPPER_COMMAND_TASK_STACK_SIZE 2048
+
+#define STEPPER_DIR_CLOSE 0
+#define STEPPER_DIR_OPEN  1
 
 #define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
-#define STEPPER_DIR_OPEN  1
-#define STEPPER_DIR_CLOSE 0
-#define STEPPER_DEFAULT_FULL_OPEN_STEPS 10000
-#define STEPPER_COMMAND_TASK_STACK_SIZE 2048
-#define STEPPER_CURRENT_STEPS_UNKNOWN_POSITION 0xFFFFFFFF
-#define STEPPER_ONE_STEP_SIZE (stepper_full_open_steps_count / 10)
+#define STEPPER_DEFAULT_FULL_OPEN_STEPS 100
+#define STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY 10
+
+typedef struct {
+	uint32_t current_position;
+	t_stepper_command command;
+} t_stepper_context;
 
 uint32_t stepper_full_open_steps_count = STEPPER_DEFAULT_FULL_OPEN_STEPS;
+volatile bool stepper_calibrate_done = false;
 
-uint8_t stepper_next_command = STEPPER_COMMAND_NOCOMMAND;
-uint32_t stepper_current_steps = STEPPER_CURRENT_STEPS_UNKNOWN_POSITION;
-uint8_t stepper_part_open_percent = 0xFF;
+QueueHandle_t stepper_commands_queue;
+
+void stepper_calibrate_on_done() {
+	stepper_calibrate_done = true;
+}
 
 void stepper_motor_on() {
 	if (gpio_get_level(CONFIG_PIN_STEPPER_POWER_ON) == 0) {
@@ -46,167 +56,122 @@ void stepper_do_one_step() {
 	vTaskDelay(10 / portTICK_PERIOD_MS);
 }
 
-static void stepper_on_execute_command_task(void* arg) {
-	uint8_t stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-	uint32_t stepper_step_command_move_to = STEPPER_CURRENT_STEPS_UNKNOWN_POSITION;
+bool stepper_is_close_position_reached() {
+	return gpio_get_level(CONFIG_PIN_STEPPER_LIMITSWITCH) == 0;
+}
 
-	controller_mqtt_on_stepper_current_open(0xFF);
+void stepper_on_execute_locateposition(t_stepper_context * context) {
+	controller_on_status(CONTROLLER_STATUS_START_FIND_POSITION);
+
+	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
+	while(!stepper_is_close_position_reached()) {
+		stepper_do_one_step();
+	}
+	context->current_position = 0;
+}
+
+void stepper_on_execute_calibrate(t_stepper_context * context) {
+	controller_on_status(CONTROLLER_STATUS_START_CALIBRATION);
+
+	charger_set_isr_onkeypress_handler(stepper_calibrate_on_done);
+	// 1. close
+	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
+	while(!stepper_is_close_position_reached()) {
+		stepper_do_one_step();
+	}
+
+	context->current_position = 0;
+	stepper_calibrate_done = false;
+
+	// 2. open until command
+	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_OPEN);
+	while(!stepper_calibrate_done) {
+		stepper_do_one_step();
+		context->current_position++;
+	}
+
+	charger_set_isr_onkeypress_handler(NULL);
+	stepper_full_open_steps_count = context->current_position;
+	nvs_write_32t(STEPPER_NVS_FULL_OPEN_STEPS, stepper_full_open_steps_count);
+
+	controller_on_status(CONTROLLER_STATUS_END_CALIBRATION);
+}
+
+void stepper_on_execute_move_to_position(t_stepper_context * context) {
+	uint32_t newposition = context->command.move_to_percent * stepper_full_open_steps_count / 100;
+	if (newposition == context->current_position) {
+		return;
+	}
+
+	int8_t diff = 0;
+	if (newposition > context->current_position) {
+		diff = +1;
+		gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_OPEN);
+		controller_on_status(CONTROLLER_STATUS_START_EXECUTE_OPEN);
+	} else {
+		diff = -1;
+		gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
+		controller_on_status(CONTROLLER_STATUS_START_EXECUTE_CLOSE);
+	}
+
+	while(newposition != context->current_position) {
+		stepper_do_one_step();
+		context->current_position += diff;
+
+		if ((context->current_position % STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY) == 0) {
+			t_stepper_command temp;
+			if (xQueueReceive(stepper_commands_queue, &temp, 0) != errQUEUE_EMPTY) {
+				if (temp.calibrate == context->command.calibrate &&
+					temp.move_to_percent == context->command.move_to_percent) {
+					// we allready executing it, lets continue work
+					continue;
+				} else {
+					// stop! cleanup queue and receive last message from it.
+					t_stepper_command v;
+					while(xQueueReceive(stepper_commands_queue, &v, 0) != errQUEUE_EMPTY) {
+						temp.calibrate = v.calibrate;
+						temp.move_to_percent = v.move_to_percent;
+					}
+
+					// return last message back to queue
+					xQueueSend(stepper_commands_queue, &temp, ( TickType_t ) 10);
+
+					controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
+													CONTROLLER_STATUS_END_EXECUTE_CLOSE);
+
+					// and return back to execute it on next loop step
+					return;
+				}
+			}
+		}
+	}
+
+	controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
+									CONTROLLER_STATUS_END_EXECUTE_CLOSE);
+}
+
+static void stepper_on_execute_command_task(void* arg) {
+	t_stepper_context context = {
+		.current_position = 0xFFFFFFFF,
+		.command = {
+			.calibrate = false,
+			.move_to_percent = 0xFF
+		}
+	};
 
 	while(true) {
-		if (stepper_next_command == STEPPER_COMMAND_NOCOMMAND &&
-			stepper_current_command == STEPPER_COMMAND_NOCOMMAND) {
-			vTaskDelay(100 / portTICK_PERIOD_MS);
-			continue;
-		}
-
-		if (stepper_current_steps == STEPPER_CURRENT_STEPS_UNKNOWN_POSITION) {
-			controller_on_status(CONTROLLER_STATUS_START_FIND_POSITION);
-			stepper_current_command = STEPPER_COMMAND_FULL_CLOSE;
-		} else {
-			stepper_current_command = stepper_next_command;
-			stepper_next_command = STEPPER_COMMAND_NOCOMMAND;
-
-			if (stepper_current_command == STEPPER_COMMAND_STEP_CLOSE ||
-				stepper_current_command == STEPPER_COMMAND_FULL_CLOSE) {
-				controller_on_status(CONTROLLER_STATUS_START_EXECUTE_CLOSE);
-			}
-
-			if (stepper_current_command == STEPPER_COMMAND_STEP_OPEN ||
-				stepper_current_command == STEPPER_COMMAND_FULL_OPEN) {
-				controller_on_status(CONTROLLER_STATUS_START_EXECUTE_OPEN);
-			}
-
-			if (stepper_current_command == STEPPER_COMMAND_STEP_OPEN) {
-				uint32_t inc = STEPPER_ONE_STEP_SIZE;
-				if (stepper_current_steps + inc > stepper_full_open_steps_count) {
-					stepper_step_command_move_to = stepper_full_open_steps_count;
-				} else {
-					stepper_step_command_move_to = stepper_current_steps + inc;
-				}
-			} else if (stepper_current_command == STEPPER_COMMAND_STEP_CLOSE) {
-				uint32_t inc = STEPPER_ONE_STEP_SIZE;
-				if (stepper_current_steps <= inc) {
-					stepper_step_command_move_to = 0;
-				} else {
-					stepper_step_command_move_to = stepper_current_steps - inc;
-				}
-			} else if (stepper_current_command == STEPPER_COMMAND_PART_OPEN) {
-				stepper_step_command_move_to = ((stepper_full_open_steps_count * 100) / stepper_part_open_percent);
-
-				if (stepper_step_command_move_to == stepper_current_steps) {
-					stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-					continue;
-				} else if (stepper_step_command_move_to > stepper_current_steps) {
-					stepper_current_command = STEPPER_COMMAND_STEP_OPEN;
-					controller_on_status(CONTROLLER_STATUS_START_EXECUTE_OPEN);
-				} else {
-					stepper_current_command = STEPPER_COMMAND_STEP_CLOSE;
-					controller_on_status(CONTROLLER_STATUS_START_EXECUTE_CLOSE);
-				}
-			}
-		}
+		xQueueReceive(stepper_commands_queue, &(context.command), portMAX_DELAY);
 
 		stepper_motor_on();
 
-		while(stepper_current_command != STEPPER_COMMAND_NOCOMMAND) {
-			if (stepper_current_command != stepper_next_command &&
-				stepper_current_steps != STEPPER_CURRENT_STEPS_UNKNOWN_POSITION &&
-				stepper_next_command != STEPPER_COMMAND_NOCOMMAND) {
+		if (context.current_position == 0xFFFFFFFF) {
+			stepper_on_execute_locateposition(&context);
+		}
 
-				if (stepper_current_command == STEPPER_COMMAND_CALIBRATE_DO_OPEN &&
-					stepper_next_command != STEPPER_COMMAND_CALIBRATE) {
-					// end of calibration!
-					stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-					stepper_next_command = STEPPER_COMMAND_NOCOMMAND;
-					stepper_full_open_steps_count = stepper_current_steps;
-					nvs_write_32t(STEPPER_NVS_FULL_OPEN_STEPS, stepper_full_open_steps_count);
-
-					controller_on_status(CONTROLLER_STATUS_END_CALIBRATION);
-					controller_mqtt_on_stepper_current_open(100);
-					break;
-				}
-
-				if (stepper_current_command == STEPPER_COMMAND_CALIBRATE_DO_CLOSE &&
-					stepper_next_command != STEPPER_COMMAND_CALIBRATE) {
-					// something went wrong, stop
-					stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-					stepper_next_command = STEPPER_COMMAND_NOCOMMAND;
-
-					controller_on_status(CONTROLLER_STATUS_FAIL_CALIBRATION);
-					controller_mqtt_on_stepper_current_open(0xFF);
-					break;
-				}
-
-				if (stepper_current_command == STEPPER_COMMAND_FULL_OPEN  ||
-					stepper_current_command == STEPPER_COMMAND_FULL_CLOSE ||
-					stepper_current_command == STEPPER_COMMAND_STEP_OPEN  ||
-					stepper_current_command == STEPPER_COMMAND_STEP_CLOSE) {
-					stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-				}
-			}
-
-			switch (stepper_current_command) {
-				case STEPPER_COMMAND_FULL_OPEN:
-				case STEPPER_COMMAND_STEP_OPEN:
-				case STEPPER_COMMAND_CALIBRATE_DO_OPEN:
-					gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_OPEN);
-					stepper_do_one_step();
-					stepper_current_steps++;
-					if (stepper_current_command == STEPPER_COMMAND_FULL_OPEN &&
-						stepper_current_steps >= stepper_full_open_steps_count) {
-						stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-
-						controller_on_status(CONTROLLER_STATUS_END_EXECUTE_OPEN);
-						controller_mqtt_on_stepper_current_open(100);
-					} else if (stepper_current_command == STEPPER_COMMAND_STEP_OPEN &&
-						stepper_current_steps >= stepper_step_command_move_to) {
-						stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-
-						controller_on_status(CONTROLLER_STATUS_END_EXECUTE_OPEN);
-						controller_mqtt_on_stepper_current_open((stepper_current_steps * 100) / stepper_step_command_move_to);
-					}
-					break;
-				case STEPPER_COMMAND_FULL_CLOSE:
-				case STEPPER_COMMAND_STEP_CLOSE:
-				case STEPPER_COMMAND_CALIBRATE_DO_CLOSE:
-					gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
-					stepper_do_one_step();
-					if (stepper_current_steps != STEPPER_CURRENT_STEPS_UNKNOWN_POSITION) {
-						if (stepper_current_steps > 0) {
-							stepper_current_steps--;
-						}
-					}
-
-					if (gpio_get_level(CONFIG_PIN_STEPPER_LIMITSWITCH) == 0) {
-						stepper_current_steps = 0;
-						if (stepper_current_command == STEPPER_COMMAND_CALIBRATE_DO_CLOSE) {
-							stepper_current_command = STEPPER_COMMAND_CALIBRATE;
-						} else {
-							stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-
-							controller_on_status(CONTROLLER_STATUS_END_EXECUTE_CLOSE);
-							controller_mqtt_on_stepper_current_open(0);
-						}
-					} else if (stepper_current_command == STEPPER_COMMAND_STEP_CLOSE &&
-						stepper_current_steps <= stepper_step_command_move_to) {
-						stepper_current_command = STEPPER_COMMAND_NOCOMMAND;
-
-						controller_on_status(CONTROLLER_STATUS_END_EXECUTE_CLOSE);
-						controller_mqtt_on_stepper_current_open((stepper_current_steps * 100) / stepper_step_command_move_to);
-					}
-					break;
-				case STEPPER_COMMAND_CALIBRATE:
-					if (stepper_current_steps != 0) {
-						stepper_current_command = STEPPER_COMMAND_CALIBRATE_DO_CLOSE;
-					} else {
-						stepper_current_command = STEPPER_COMMAND_CALIBRATE_DO_OPEN;
-
-						controller_on_status(CONTROLLER_STATUS_START_CALIBRATION);
-					}
-					break;
-				default:
-					break;
-			}
+		if (context.command.calibrate) {
+			stepper_on_execute_calibrate(&context);
+		} else if (context.command.move_to_percent <= 100) {
+			stepper_on_execute_move_to_position(&context);
 		}
 	}
 }
@@ -232,7 +197,7 @@ void stepper_init() {
 	}
 
 	stepper_motor_off();
-	gpio_set_level(CONFIG_PIN_STEPPER_DIR, 0);
+	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
 	gpio_set_level(CONFIG_PIN_STEPPER_STEP, 0);
 
 	ESP_LOGI(LOG_STEPPER, "Initializing input pin...");
@@ -257,25 +222,26 @@ void stepper_init() {
 	ESP_LOGI(LOG_STEPPER, "Full-open-steps value : %li", stepper_full_open_steps_count);
 
 	ESP_LOGI(LOG_STEPPER, "Starting jobs....");
+	stepper_commands_queue = xQueueCreate(10, sizeof(t_stepper_command));
 	xTaskCreate(stepper_on_execute_command_task, "stepper on execute command task", STEPPER_COMMAND_TASK_STACK_SIZE, NULL, 10, NULL);
 
 	ESP_LOGI(LOG_STEPPER, "Stepper initialied");
 }
 
-void stepper_execute_command(uint8_t command) {
-	stepper_next_command = command;
-	if (command != STEPPER_COMMAND_PART_OPEN) {
-		stepper_part_open_percent = 0xFF;
-	}
+void stepper_calibrate() {
+	t_stepper_command cmd = {
+		.calibrate = true,
+		.move_to_percent = 0xFF
+	};
+
+	xQueueSend(stepper_commands_queue, &cmd, ( TickType_t ) 10);
 }
 
-void stepper_open_on_percent(uint8_t percent) {
-	if (percent == 0) {
-		stepper_execute_command(STEPPER_COMMAND_FULL_CLOSE);
-	} else if (percent >= 100) {
-		stepper_execute_command(STEPPER_COMMAND_FULL_OPEN);
-	} else {
-		stepper_part_open_percent = percent;
-		stepper_execute_command(STEPPER_COMMAND_PART_OPEN);
-	}
+void stepper_move_to(uint8_t percent) {
+	t_stepper_command cmd = {
+		.calibrate = false,
+		.move_to_percent = ((percent > 100) ? 100 : percent)
+	};
+
+	xQueueSend(stepper_commands_queue, &cmd, ( TickType_t ) 10);
 }

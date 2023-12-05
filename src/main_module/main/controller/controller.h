@@ -2,15 +2,7 @@
 #define MAIN_CONTROLLER_CONTROLLER_H_
 
 #include "../fm/fm_command_defs.h"
-
-#define CONTROLLER_STATUS_START_EXECUTE_OPEN  0x01
-#define CONTROLLER_STATUS_START_EXECUTE_CLOSE 0x02
-#define CONTROLLER_STATUS_END_EXECUTE_OPEN    0x03
-#define CONTROLLER_STATUS_END_EXECUTE_CLOSE   0x04
-#define CONTROLLER_STATUS_START_FIND_POSITION 0x05
-#define CONTROLLER_STATUS_START_CALIBRATION   0x06
-#define CONTROLLER_STATUS_END_CALIBRATION     0x07
-#define CONTROLLER_STATUS_FAIL_CALIBRATION    0x08
+#include "controller_status_def.h"
 
 void controller_process_command(const t_fm_command * command);
 void controller_on_status(uint8_t status);

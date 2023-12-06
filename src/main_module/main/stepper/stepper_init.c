@@ -22,6 +22,9 @@
 #define STEPPER_DEFAULT_FULL_OPEN_STEPS 1000
 #define STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY 10
 
+#define STEPPER_SYGNALS_PER_ONE_STEP  100
+#define STEPPER_SYGNAL_FREQUENCY      2000
+
 typedef struct {
 	uint32_t current_position;
 	t_stepper_command command;
@@ -67,8 +70,8 @@ static void stepper_timer_callback(void* arg) {
 }
 
 void stepper_do_one_step() {
-	stepper_timer_counter = 100;
-    ESP_ERROR_CHECK(esp_timer_start_periodic(stepper_timer, 500));
+	stepper_timer_counter = STEPPER_SYGNALS_PER_ONE_STEP;
+    ESP_ERROR_CHECK(esp_timer_start_periodic(stepper_timer, (1000000 / STEPPER_SYGNAL_FREQUENCY / 2)));
 
     uint8_t x;
 	xQueueReceive(stepper_end_of_timer_queue, &x, portMAX_DELAY);
@@ -119,6 +122,10 @@ void stepper_on_execute_calibrate(t_stepper_context * context) {
 
 void stepper_on_execute_move_to_position(t_stepper_context * context) {
 	uint32_t newposition = context->command.move_to_percent * stepper_full_open_steps_count / 100;
+	if (newposition > stepper_full_open_steps_count) {
+		newposition = stepper_full_open_steps_count;
+	}
+
 	if (newposition == context->current_position) {
 		return;
 	}
@@ -136,7 +143,11 @@ void stepper_on_execute_move_to_position(t_stepper_context * context) {
 
 	while(newposition != context->current_position) {
 		stepper_do_one_step();
-		context->current_position += diff;
+
+		if ((diff > 0 && context->current_position < stepper_full_open_steps_count) ||
+			(diff < 0 && context->current_position > 0)) {
+			context->current_position += diff;
+		}
 
 		if ((context->current_position % STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY) == 0) {
 			t_stepper_command temp;

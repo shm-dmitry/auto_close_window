@@ -11,6 +11,7 @@
 #include "../controller/controller_mqtt.h"
 #include "stepper_commands_def.h"
 #include "../charger/charger_init.h"
+#include "esp_timer.h"
 
 #define STEPPER_COMMAND_TASK_STACK_SIZE 2048
 
@@ -18,7 +19,7 @@
 #define STEPPER_DIR_OPEN  1
 
 #define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
-#define STEPPER_DEFAULT_FULL_OPEN_STEPS 100
+#define STEPPER_DEFAULT_FULL_OPEN_STEPS 1000
 #define STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY 10
 
 typedef struct {
@@ -30,6 +31,10 @@ uint32_t stepper_full_open_steps_count = STEPPER_DEFAULT_FULL_OPEN_STEPS;
 volatile bool stepper_calibrate_done = false;
 
 QueueHandle_t stepper_commands_queue;
+
+esp_timer_handle_t stepper_timer;
+uint32_t stepper_timer_counter;
+QueueHandle_t stepper_end_of_timer_queue;
 
 void stepper_calibrate_on_done() {
 	stepper_calibrate_done = true;
@@ -49,11 +54,26 @@ void stepper_motor_off() {
 	gpio_set_level(CONFIG_PIN_STEPPER_POWER_ON, 0);
 }
 
+static void stepper_timer_callback(void* arg) {
+	if (stepper_timer_counter > 0) {
+		gpio_set_level(CONFIG_PIN_STEPPER_STEP, (stepper_timer_counter % 2));
+		stepper_timer_counter--;
+
+		if (stepper_timer_counter == 0) {
+			uint8_t x;
+			xQueueSend(stepper_end_of_timer_queue, &x, 0);
+		}
+	}
+}
+
 void stepper_do_one_step() {
-	gpio_set_level(CONFIG_PIN_STEPPER_STEP, 1);
-	vTaskDelay(10 / portTICK_PERIOD_MS);
-	gpio_set_level(CONFIG_PIN_STEPPER_STEP, 0);
-	vTaskDelay(10 / portTICK_PERIOD_MS);
+	stepper_timer_counter = 100;
+    ESP_ERROR_CHECK(esp_timer_start_periodic(stepper_timer, 500));
+
+    uint8_t x;
+	xQueueReceive(stepper_end_of_timer_queue, &x, portMAX_DELAY);
+
+	esp_timer_stop(stepper_timer);
 }
 
 bool stepper_is_close_position_reached() {
@@ -198,7 +218,16 @@ void stepper_init() {
 
 	stepper_motor_off();
 	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
-	gpio_set_level(CONFIG_PIN_STEPPER_STEP, 0);
+
+	ESP_LOGI(LOG_STEPPER, "Init timer");
+
+    esp_timer_create_args_t stepper_timer_args = {
+            .callback = &stepper_timer_callback,
+            .name = "stepper-timer"
+    };
+    ESP_ERROR_CHECK(esp_timer_create(&stepper_timer_args, &stepper_timer));
+
+    stepper_end_of_timer_queue = xQueueCreate(1, sizeof(uint8_t));
 
 	ESP_LOGI(LOG_STEPPER, "Initializing input pin...");
 

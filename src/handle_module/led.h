@@ -15,6 +15,9 @@
 #define LED_FAIL_CALIBRATE      LED_NO_COMMAND
 #define LED_START_FIND_POS      0x06
 
+#define LED_POWER_MANAGER_OK      0x07
+#define LED_POWER_MANAGER_ERR     0x08
+
 void led_init();
 void led_on_main_loop();
 

@@ -23,6 +23,7 @@ uint8_t fm_decoder_filled_buffer = FM_DECODER_NO_FILLED_BUFFER;
 uint8_t fm_decoder_buffer_1[FM_DECODER_BUFFER_SIZE];
 uint8_t fm_decoder_buffer_2[FM_DECODER_BUFFER_SIZE];
 
+unsigned long fm_decoder_millis = 0;
 unsigned long fm_decoder_last_activity = 0;
 
 void fm_decoder_init() {
@@ -40,7 +41,7 @@ void isr_fm_decoder_on_symbol(uint16_t high, uint16_t low) {
     return;
   }
 
-  fm_decoder_last_activity = millis();
+  fm_decoder_last_activity = fm_decoder_millis;
 
   uint8_t * fm_decoder_buffer = FM_DECODER_GET_ACTIVE_BUFFER(fm_decoder_actual_buffer);
 
@@ -91,7 +92,16 @@ void fm_decoder_get_data(uint8_t ** buffer, uint8_t * buffer_size) {
   SREG = oldSREG;
 }
 
-bool isr_fm_decoder_is_air_clean() {
-  return (fm_decoder_last_activity + FM_DECODER_AIR_CLEAN_DELAY) < millis() ? true : false;
+void fm_decoder_on_main_loop() {
+  fm_decoder_millis = millis();
+}
+
+bool fm_decoder_is_air_clean() {
+  uint8_t oldSREG = SREG;
+  cli();
+  unsigned long temp = fm_decoder_last_activity;
+  SREG = oldSREG;
+
+  return (temp + FM_DECODER_AIR_CLEAN_DELAY) < millis() ? true : false;
 }
 

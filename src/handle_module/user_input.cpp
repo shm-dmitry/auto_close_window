@@ -10,8 +10,8 @@
 // PCINT0
 #define USER_INPUT_PIN_CLOSE 8
 
-#define USERINPUT_BIT_OPEN     (_BV(0))
-#define USERINPUT_BIT_CLOSE    (_BV(1))
+#define USERINPUT_BIT_OPEN     (0)
+#define USERINPUT_BIT_CLOSE    (1)
 
 #define USERINPUT_ENTER_CALIBRATE_CLOSE_NUM      10
 #define USERINPUT_ENTER_CALIBRATE_CLOSE_DELAY    1000
@@ -22,24 +22,29 @@
 #define USERINPUT_ENTER_CALIBRATE_PREPCAL_AFTER  5
 
 uint8_t user_input_buttons = 0;
+uint8_t user_input_buttons_in_progress = 0;
 
 uint8_t user_input_initcalibrate_step = 0;
 unsigned long user_input_initcalibrate_delay = 0;
 
 ISR(PCINT0_vect) {
   if (digitalRead(USER_INPUT_PIN_CLOSE) == LOW) {
+    bitSet(user_input_buttons_in_progress, USERINPUT_BIT_CLOSE);
+  } else if (bitRead(user_input_buttons_in_progress, USERINPUT_BIT_CLOSE)) {
     bitSet(user_input_buttons, USERINPUT_BIT_CLOSE);
+    bitClear(user_input_buttons_in_progress, USERINPUT_BIT_CLOSE);
   }
 }
 
 ISR(PCINT2_vect) {
   if (digitalRead(USER_INPUT_PIN_OPEN) == LOW) {
+    bitSet(user_input_buttons_in_progress, USERINPUT_BIT_OPEN);
+  } else if (bitRead(user_input_buttons_in_progress, USERINPUT_BIT_OPEN)) {
     bitSet(user_input_buttons, USERINPUT_BIT_OPEN);
+    bitClear(user_input_buttons_in_progress, USERINPUT_BIT_OPEN);
   }
 
-  if (digitalRead(FM_RECEIVER_PIN) == HIGH) {
-    isr_fm_receiver_on_high();
-  }
+  isr_fm_receiver_on_high(digitalRead(FM_RECEIVER_PIN) == HIGH);
 }
 
 void user_input_init() {
@@ -71,8 +76,8 @@ uint8_t user_input_get_event() {
   user_input_buttons = 0;
   SREG = oldSREG;
 
-  if (buttons & USERINPUT_BIT_CLOSE) {
-    if (millis() > user_input_initcalibrate_delay) {
+  if (bitRead(buttons, USERINPUT_BIT_CLOSE)) {
+    if (user_input_initcalibrate_delay == 0 || millis() < user_input_initcalibrate_delay) {
       if (user_input_initcalibrate_step < USERINPUT_ENTER_CALIBRATE_CLOSE_NUM) {
         user_input_initcalibrate_step++;
         user_input_initcalibrate_delay = millis() + ((user_input_initcalibrate_step == USERINPUT_ENTER_CALIBRATE_CLOSE_NUM - 1) ? 
@@ -83,18 +88,20 @@ uint8_t user_input_get_event() {
       } else {
         user_input_initcalibrate_step = 0;
         user_input_initcalibrate_delay = 0;
+
         return USER_INPUT__CLOSE;
       }
     } else {
       user_input_initcalibrate_step = 0;
       user_input_initcalibrate_delay = 0;
+
       return USER_INPUT__CLOSE;
     }
   }
 
-  if (buttons & USERINPUT_BIT_OPEN) {
+  if (bitRead(buttons, USERINPUT_BIT_OPEN)) {
     if (user_input_initcalibrate_delay > 0 && 
-        millis() > user_input_initcalibrate_delay && 
+        millis() < user_input_initcalibrate_delay && 
         user_input_initcalibrate_step >= USERINPUT_ENTER_CALIBRATE_CLOSE_NUM) {
 
         if (user_input_initcalibrate_step < USERINPUT_ENTER_CALIBRATE_CLOSE_NUM + USERINPUT_ENTER_CALIBRATE_OPEN_NUM) {
@@ -114,7 +121,7 @@ uint8_t user_input_get_event() {
   }
 
   if (user_input_initcalibrate_delay > 0) {
-    if (millis() <= user_input_initcalibrate_delay) {
+    if (millis() >= user_input_initcalibrate_delay) {
       user_input_initcalibrate_step = 0;
       user_input_initcalibrate_delay = 0;
     }

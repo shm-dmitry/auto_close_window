@@ -15,7 +15,7 @@
 #include "../controller/controller.h"
 
 #define FM_RECEIVER_TASK_STACK_SIZE 4096
-#define FM_RECEIVER_AIR_CLEAN_TIMEOUT ((uint64_t)20000)
+#define FM_RECEIVER_AIR_CLEAN_TIMEOUT ((uint64_t)30000)
 
 #define FM_RECEIVER_DATA_ONE_PART 192
 

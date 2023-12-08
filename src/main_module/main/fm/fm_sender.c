@@ -70,7 +70,7 @@ void fm_sender_init() {
 		ESP_LOGE(LOG_FM_SENDER, "rmt_new_tx_channel error: %d", res);
 		return;
     }
-
+/*
     rmt_carrier_config_t tx_carrier_cfg = {
         .duty_cycle = 0.5,
         .frequency_hz = 50000,
@@ -81,7 +81,7 @@ void fm_sender_init() {
 		ESP_LOGE(LOG_FM_SENDER, "rmt_apply_carrier error: %d", res);
 		return;
     }
-
+*/
     res = rmt_enable(tx_channel);
     if (res) {
 		ESP_LOGE(LOG_FM_SENDER, "rmt_enable error: %d", res);

@@ -14,46 +14,49 @@
 
 unsigned long fm_receiver_high_start = 0;
 unsigned long fm_receiver_low_start  = 0;
+bool fm_receiver_last_state_high = false;
 
-void isr_fm_receiver_on_high() {
-  unsigned long now = millis();
+void isr_fm_receiver_on_high(bool high) {
+  if (fm_receiver_last_state_high == high) {
+    return;
+  }
 
-  if (fm_receiver_low_start > 0 &&
-      fm_receiver_high_start < fm_receiver_low_start &&
-      fm_receiver_low_start < now
-      ) {
-    if (
-      // high duration
-      fm_receiver_high_start - fm_receiver_low_start >= FM_RECEIVER_MIN_SYMBOL_LEN &&
-      fm_receiver_high_start - fm_receiver_low_start <= FM_RECEIVER_MAX_SYMBOL_LEN &&
+  fm_receiver_last_state_high = high;
 
-      // low duration
-      now - fm_receiver_low_start >= FM_RECEIVER_MIN_SYMBOL_LEN &&
-      now - fm_receiver_low_start <= FM_RECEIVER_MAX_SYMBOL_LEN
+  unsigned long now = micros();
+
+  if (fm_receiver_last_state_high) {
+    if ( // check PREVIOUS times
+      fm_receiver_low_start > 0 &&
+      now > fm_receiver_low_start &&
+      fm_receiver_high_start < fm_receiver_low_start
     ) {
-      isr_fm_decoder_on_symbol(fm_receiver_high_start - fm_receiver_low_start, now - fm_receiver_low_start);
+      if (
+        // high duration
+        fm_receiver_low_start - fm_receiver_high_start >= FM_RECEIVER_MIN_SYMBOL_LEN &&
+        fm_receiver_low_start - fm_receiver_high_start <= FM_RECEIVER_MAX_SYMBOL_LEN &&
 
-      fm_receiver_high_start = 0;
-      fm_receiver_low_start = 0;
+        // low duration
+        now - fm_receiver_low_start >= FM_RECEIVER_MIN_SYMBOL_LEN &&
+        now - fm_receiver_low_start <= FM_RECEIVER_MAX_SYMBOL_LEN
+      ) {
+        isr_fm_decoder_on_symbol(fm_receiver_low_start - fm_receiver_high_start, now - fm_receiver_low_start);
+
+        // start next symbol recording
+        fm_receiver_high_start = now;
+        fm_receiver_low_start = 0;
+      } else {
+        // bad duration - reset
+        fm_receiver_high_start = now;
+        fm_receiver_low_start = 0;
+      }
     } else {
-      // bad length - reset states
-      fm_receiver_high_start = 0;
+      // something wrong with durations - start next symbol recording
+      fm_receiver_high_start = now;
       fm_receiver_low_start = 0;
     }
-  }
-
-  if (fm_receiver_high_start == 0) {
-    fm_receiver_high_start = now;
-  }
-}
-
-ISR (TIMER1_COMPA_vect) {
-  if (fm_receiver_low_start == 0) {
-    unsigned long now = millis();
-
-    if (fm_receiver_high_start + FM_RECEIVER_LOW_AFTER_HIGH_LEN < now) {
-      fm_receiver_low_start = now;
-    }
+  } else {
+    fm_receiver_low_start = now;
   }
 }
 
@@ -61,10 +64,4 @@ void fm_receiver_init() {
   fm_decoder_init();
 
   pinMode(FM_RECEIVER_PIN, INPUT);
-
-  OCR1A = F_CPU / 8 / FM_RECEIVER_TIMER_FREQ; 
-  TCCR1A = 0;
-  TCCR1B = _BV(WGM12) | _BV(CS11);
-
-  TIMSK1 = _BV(OCIE1A);
 }

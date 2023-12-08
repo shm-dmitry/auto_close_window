@@ -12,6 +12,7 @@
 #include "stepper_commands_def.h"
 #include "../charger/charger_init.h"
 #include "esp_timer.h"
+#include "time.h"
 
 #define STEPPER_COMMAND_TASK_STACK_SIZE 2048
 
@@ -21,6 +22,8 @@
 #define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
 #define STEPPER_DEFAULT_FULL_OPEN_STEPS 1000
 #define STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY 10
+
+#define STEPPER_MOTOR_OFF_DELAY_SECS  60
 
 #define STEPPER_SYGNALS_PER_ONE_STEP  100
 #define STEPPER_SYGNAL_FREQUENCY      2000
@@ -32,6 +35,7 @@ typedef struct {
 
 uint32_t stepper_full_open_steps_count = STEPPER_DEFAULT_FULL_OPEN_STEPS;
 volatile bool stepper_calibrate_done = false;
+uint32_t stepper_motor_off_timeout = 0;
 
 QueueHandle_t stepper_commands_queue;
 
@@ -79,16 +83,20 @@ void stepper_do_one_step() {
 	esp_timer_stop(stepper_timer);
 }
 
-bool stepper_is_close_position_reached() {
+inline bool stepper_is_close_position_reached() {
 	return gpio_get_level(CONFIG_PIN_STEPPER_LIMITSWITCH) == 0;
 }
 
-void stepper_on_execute_locateposition(t_stepper_context * context) {
-	controller_on_status(CONTROLLER_STATUS_START_FIND_POSITION);
+void stepper_on_execute_locateposition(t_stepper_context * context, bool sendnotify) {
+	if (sendnotify) {
+		controller_on_status(CONTROLLER_STATUS_START_FIND_POSITION);
+	}
 
-	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
-	while(!stepper_is_close_position_reached()) {
-		stepper_do_one_step();
+	if (!stepper_is_close_position_reached()) {
+		gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
+		while(!stepper_is_close_position_reached()) {
+			stepper_do_one_step();
+		}
 	}
 	context->current_position = 0;
 }
@@ -177,6 +185,10 @@ void stepper_on_execute_move_to_position(t_stepper_context * context) {
 		}
 	}
 
+	if (context->current_position == 0 && !stepper_is_close_position_reached()) {
+		stepper_on_execute_locateposition(context, false);
+	}
+
 	controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
 									CONTROLLER_STATUS_END_EXECUTE_CLOSE);
 }
@@ -191,12 +203,26 @@ static void stepper_on_execute_command_task(void* arg) {
 	};
 
 	while(true) {
-		xQueueReceive(stepper_commands_queue, &(context.command), portMAX_DELAY);
+		if (xQueueReceive(stepper_commands_queue, &(context.command), (context.current_position == 0xFFFFFFFF ? portMAX_DELAY : 10)) == errQUEUE_EMPTY) {
+			if (context.current_position != 0xFFFFFFFF) {
+				if (context.current_position == 0 || context.current_position == stepper_full_open_steps_count) {
+					if (stepper_motor_off_timeout == 0) {
+						stepper_motor_off_timeout = time(NULL) + STEPPER_MOTOR_OFF_DELAY_SECS;
+					} else if (time(NULL) > stepper_motor_off_timeout) {
+						stepper_motor_off();
+						stepper_motor_off_timeout = 0;
+						context.current_position = 0xFFFFFFFF;
+					}
+				}
+			}
+
+			continue;
+		}
 
 		stepper_motor_on();
 
 		if (context.current_position == 0xFFFFFFFF) {
-			stepper_on_execute_locateposition(&context);
+			stepper_on_execute_locateposition(&context, true);
 		}
 
 		if (context.command.calibrate) {

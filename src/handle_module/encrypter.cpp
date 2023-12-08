@@ -121,6 +121,10 @@ t_fm_command * decrypter_process_memory(uint16_t address, const uint8_t * buff, 
 	uint8_t calculated_crc = decrypter_get_crc();
 	uint8_t actual_crc = decrypter_next(buff[size - 1]);
 	if (actual_crc != calculated_crc) {
+    Serial.print("CRC ");
+    Serial.print(actual_crc);
+    Serial.print(" / ");
+    Serial.println(calculated_crc);
 		return NULL;
 	}
 

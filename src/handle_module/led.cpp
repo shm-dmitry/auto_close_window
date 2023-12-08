@@ -36,6 +36,12 @@ void led_on_main_loop() {
   unsigned long now = millis();
   led_execute_one(actual_data.red,   &led_red,   LED_PIN_RED,   now);
   led_execute_one(actual_data.green, &led_green, LED_PIN_GREEN, now);
+
+  if (led_red.repeat_index == 0xFF && led_green.repeat_index == 0xFF) {
+    led_running_type = LED_NO_COMMAND;
+    digitalWrite(LED_PIN_RED, HIGH); 
+    digitalWrite(LED_PIN_GREEN, HIGH); 
+  }
 }
 
 void led_run_inform(uint8_t type) {
@@ -48,12 +54,17 @@ void led_run_inform(uint8_t type) {
 }
 
 void led_execute_one(const uint8_t * led_timing, t_one_led_context * context, uint8_t pin, unsigned long now) {
-  uint8_t repeat_count = pgm_read_byte(&led_timing[0]);
-  if (context->repeat_index > repeat_count) {
+  if (context->repeat_index == 0xFF) {
     return;
   }
 
-  if (now > context->delay_until) {
+  uint8_t repeat_count = pgm_read_byte(&led_timing[0]);
+  if (context->repeat_index >= repeat_count) {
+    context->repeat_index = 0xFF;
+    return;
+  }
+
+  if (now < context->delay_until) {
     return;
   }
 
@@ -61,7 +72,9 @@ void led_execute_one(const uint8_t * led_timing, t_one_led_context * context, ui
   if (context->array_index >= array_size * 2) {
     context->repeat_index++;
     context->array_index = 0;
-    digitalWrite(pin, HIGH); // always OFF led at end-off-array
+    if (context->repeat_index >= repeat_count) {
+      digitalWrite(pin, HIGH); 
+    }
     return;
   }
 

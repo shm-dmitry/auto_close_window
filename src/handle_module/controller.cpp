@@ -91,8 +91,10 @@ void controller_check_data_received() {
   }
 
   uint16_t address = (buffer[0] << 8) + buffer[1];
+    Serial.print("FM addr ");
+    Serial.println(address, HEX);
 
-  t_fm_command * command = decrypter_process_memory(address, buffer + 2, buffer_size - 1);
+  t_fm_command * command = decrypter_process_memory(address, buffer + 2, buffer_size - 2);
   if (command == NULL) {
     free(buffer);
     return;

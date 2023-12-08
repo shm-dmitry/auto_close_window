@@ -70,9 +70,9 @@ uint8_t fm_command_decode_next_period(t_fm_encoder_context * decoder_context, ui
 	}
 
 	uint8_t bit = 0;
-	if (FM_DURATION_CHECK_BETWEEN((double)duration / decoder_context->prev_duration, 1.5, 10)) {
+	if (FM_DURATION_CHECK_BETWEEN((double)duration / decoder_context->prev_duration, 2, 10)) {
 		bit = 0;
-	} else if (FM_DURATION_CHECK_BETWEEN((double)decoder_context->prev_duration / duration, 1.5, 10)) {
+	} else if (FM_DURATION_CHECK_BETWEEN((double)decoder_context->prev_duration / duration, 2, 10)) {
 		bit = 1;
 	} else {
 		ESP_LOGW(LOG_FM_ENCODER, "Reset encoder, bad duration %d; prev %d", duration, decoder_context->prev_duration);

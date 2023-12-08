@@ -38,6 +38,8 @@ void controller_process_pdu_command(uint8_t arg) {
 }
 
 void controller_process_hm_command(uint8_t arg) {
+	ESP_LOGI(LOG_CONTROLLER, "HM command: arg=%02X", arg);
+
 	switch (arg) {
 		case CONTROLLER_HM_FULL_OPEN:
 			stepper_move_to(100);
@@ -50,6 +52,9 @@ void controller_process_hm_command(uint8_t arg) {
 			break;
 		case CONTROLLER_HM_CALIBRATE:
 			stepper_calibrate();
+			break;
+		default:
+			ESP_LOGW(LOG_CONTROLLER, "HM command : unknown arg %02X", arg);
 			break;
 	}
 }

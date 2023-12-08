@@ -46,7 +46,6 @@ static bool IRAM_ATTR fm_rx_done_callback(rmt_channel_handle_t channel, const rm
 
 	if (params->update_last_received && edata->num_symbols > 5) {
 		fm_receiver_last_received = esp_timer_get_time() + FM_RECEIVER_AIR_CLEAN_TIMEOUT;
-		ESP_DRAM_LOGI(LOG_FM_RECEIVER, "Last received updated");
 	}
 
     return high_task_wakeup == pdTRUE;

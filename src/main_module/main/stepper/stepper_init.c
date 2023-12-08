@@ -300,7 +300,9 @@ void stepper_calibrate() {
 		.move_to_percent = 0xFF
 	};
 
-	xQueueSend(stepper_commands_queue, &cmd, ( TickType_t ) 10);
+	if (xQueueSend(stepper_commands_queue, &cmd, ( TickType_t ) 10) == errQUEUE_FULL) {
+		ESP_LOGE(LOG_STEPPER, "Command queue full; calibrate skipped");
+	}
 }
 
 void stepper_move_to(uint8_t percent) {
@@ -309,5 +311,7 @@ void stepper_move_to(uint8_t percent) {
 		.move_to_percent = ((percent > 100) ? 100 : percent)
 	};
 
-	xQueueSend(stepper_commands_queue, &cmd, ( TickType_t ) 10);
+	if (xQueueSend(stepper_commands_queue, &cmd, ( TickType_t ) 10) == errQUEUE_FULL) {
+		ESP_LOGE(LOG_STEPPER, "Command queue full; move-to %d%% skipped", percent);
+	}
 }

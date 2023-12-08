@@ -38,7 +38,7 @@ typedef struct {
 #define FM_COMMAND_DECODER_RESTART       0x01
 #define FM_COMMAND_DECODER_BUFFER_LOADED 0x02
 
-#define FM_COMMAND_DURATION_BASE_SYMBOL  350
+#define FM_COMMAND_DURATION_BASE_SYMBOL  400
 
 #define FM_DURATION_CHECK_BETWEEN(x, a, b) ((x) >= a && (x) <= b)
 

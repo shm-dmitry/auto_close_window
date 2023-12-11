@@ -24,18 +24,12 @@ const uint8_t led_red_DONE_EXECUTION[]       PROGMEM = { 0, 0 };
 const uint8_t led_green_FIND_POSITION[]      PROGMEM = { 10, 4, 0, 250, 0, 250, 250, 0, 250, 0 };
 const uint8_t led_red_FIND_POSITION[]        PROGMEM = { 10, 4, 250, 0, 250, 0, 0, 250, 0, 250 };
 
-const uint8_t led_green_POWER_MANAGER_OK[]      PROGMEM = { 4, 1, 250, 0 };
-const uint8_t led_red_POWER_MANAGER_OK[]        PROGMEM = { 0, 0 };
-
-const uint8_t led_green_POWER_MANAGER_ERR[]      PROGMEM = { 0, 0 };
-const uint8_t led_red_POWER_MANAGER_ERR[]        PROGMEM = { 4, 1, 250, 0 };
-
 typedef struct {
   const uint8_t * red;
   const uint8_t * green;
 } t_led_data;
 
-#define LED_DATA_ARRAY_SIZE 9
+#define LED_DATA_ARRAY_SIZE 7
 
 t_led_data led_data[LED_DATA_ARRAY_SIZE] = {
   { .red = led_red_OPEN,               .green = led_green_OPEN },
@@ -45,8 +39,6 @@ t_led_data led_data[LED_DATA_ARRAY_SIZE] = {
   { .red = led_red_CALIBRATE_END,      .green = led_green_CALIBRATE_END },
   { .red = led_red_DONE_EXECUTION,     .green = led_green_DONE_EXECUTION },
   { .red = led_red_FIND_POSITION,      .green = led_green_FIND_POSITION },
-  { .red = led_red_POWER_MANAGER_OK,   .green = led_green_POWER_MANAGER_OK },
-  { .red = led_red_POWER_MANAGER_ERR,  .green = led_green_POWER_MANAGER_ERR },
 };
 
 #endif /* #define LED_ARRAYS_H_ */

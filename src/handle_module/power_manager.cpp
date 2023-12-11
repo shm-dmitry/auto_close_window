@@ -3,23 +3,78 @@
 #include "Arduino.h"
 #include "Wire.h"
 #include "led.h"
+#include "controller.h"
 
 #define POWER_MANAGER_PIN_LOCK  5
 
 #define POWER_MANAGER_NOEVENT_POWEROFF_DELAY  20000
 
-#define POWER_MANAGER_CHARGER_I2C_ADDRESS      0x9
+#define POWER_MANAGER_CHARGER_I2C_ADDRESS      0x09
 #define POWER_MANAGER_CHARGER_I2C_TIMEOUT      1000
 
-#define POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE   0x15
-#define POWER_MANAGER_CHARGER_I2C_REG__CURRENT   0x14
-#define POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3 0x37
+#define POWER_MANAGER_CHARGER_I2C_RECHECK_CONFIG       5000
+
+#define POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE         0x15
+#define POWER_MANAGER_CHARGER_I2C_REG__CURRENT         0x14
+#define POWER_MANAGER_CHARGER_I2C_REG__INPUT_CURRENT   0x3F
+#define POWER_MANAGER_CHARGER_I2C_REG__DISCH_CURRENT   0x39
+#define POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_0       0x12
+#define POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_1       0x3B
+#define POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_2       0x38
+#define POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3       0x37
+#define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_0       0x3C
+#define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_1       0x3D
+#define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS  0x3A
 
 // 3.6V*2 = 7.2V = 4096mV[12] + 2048mV[11] + 1024mV[10] + 32mV[5]
 #define POWER_MANAGER_VOLTAGE_VALUE (_BV(12) | _BV(11) | _BV(10) | _BV(5))
 
 // 1A ~ 1024mA = bit10
 #define POWER_MANAGER_CURRENT_VALUE (_BV(10))
+
+// 1.5A = 1024mA[10] + 512mA[9]
+#define POWER_MANAGER_INPUT_CURRENT (_BV(10) | _BV(9)) 
+
+// 0.5A = 512mA[9]
+#define POWER_MANAGER_DISCH_CURRENT (_BV(9)) 
+
+// 800 kHz                    [9:8 = 01]
+// IDCHG Amplifier Gain = 16x ]3 = 1]
+#define POWER_MANAGER_OPTIONS_0 (_BV(8) | _BV(3))
+
+// Battery Depletion Threshold = 60% [15:14 = 00]
+// EN_IDCHG - enable [11 = 1]
+// EN_PMON - enable [10 = 1]
+#define POWER_MANAGER_OPTIONS_1 (_BV(11) | _BV(10))
+
+// External Current Limit Enable = ILIM + regs [7 = 1]
+// other bits - as default
+#define POWER_MANAGER_OPTIONS_2 (_BV(7) | _BV(9) | _BV(8) | _BV(2))
+
+// enable disch regul [15 = 1]
+// ACOK Deglitch Time for Primary = 150mS [12 = 0]
+// EN_ACOC [10 = 1]
+// ACOC Limit [9 = 1]
+// IFAULT_HI [7 = 1]
+// IFAULT_LO [6 = 1]
+// FDPM_VTH [5 = 0]
+// FDPM_DEG [4:3 = 00]
+// EN_BOOST [2 = 1]
+#define POWER_MANAGER_OPTIONS_3 (_BV(15) | _BV(10) | _BV(9) | _BV(7) | _BV(6) | _BV(2))
+
+// ICRIT Threshold = 110% [15:11 == 00000]
+// ICRIT_DEG = 800 μs [10:9 = 11]
+// VSYS_VTH = 5.75 V [7:6 = 00]
+// EN_PROCHOT_EXT en [5 = 1]
+// PROCHOT Pulse Width 10 ms [4:3 = 10]
+// PROCHOT_CLEAR [2 = 1]
+// INOM_DEG = 60mS [1 = 1]
+#define POWER_MANAGER_PROCHOT_0 (_BV(10) | _BV(9) | _BV(5) | _BV(4) | _BV(2) | _BV(1))
+
+// IDCHG_VTH = 16384 mA [15:10 = 100000]
+// IDCHG_DEG = 12 ms [9:8 = 11]
+// PROCHOT PROFILE = all except VSYS [6:0 = 1111011]
+#define POWER_MANAGER_PROCHOT_1 (_BV(15) | _BV(9) | _BV(8) | _BV(6) | _BV(5) | _BV(4) | _BV(3) | _BV(1) | _BV(0))
 
 #define POWER_MANAGER_I2C_READ_8T_WITH_TIMEOUT(timeout, var, return_timeout_value) \
           while(!Wire.available()) { \
@@ -31,10 +86,12 @@
           var = Wire.read();
 
 unsigned long power_manager_noevent_timer = 0;
+unsigned long power_manager_i2c_next_recheck_config = 0;
 
 void power_manager_configure_charger();
 uint16_t power_manager_read_16t(uint8_t reg);
 void power_manager_write_16t(uint8_t reg, uint16_t value);
+void power_manager_check_write_16t(uint8_t reg, uint16_t value);
 
 void power_manager_init() {
   pinMode(POWER_MANAGER_PIN_LOCK, OUTPUT);
@@ -50,25 +107,35 @@ void power_manager_init() {
 void power_manager_configure_charger() {
   // charger may be allready configured, but every start we will re-check it's configuration.
 
-  bool ok = true;
-
   // 1. battery voltage
-  if (power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE) != POWER_MANAGER_VOLTAGE_VALUE) {
-    power_manager_write_16t(POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE, POWER_MANAGER_VOLTAGE_VALUE);
-    if (power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE) != POWER_MANAGER_VOLTAGE_VALUE) {
-      ok = false;
-    }
-  }
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE, POWER_MANAGER_VOLTAGE_VALUE);
 
   // 2. charge current limit
-  if (power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__CURRENT) != POWER_MANAGER_CURRENT_VALUE) {
-    power_manager_write_16t(POWER_MANAGER_CHARGER_I2C_REG__CURRENT, POWER_MANAGER_CURRENT_VALUE);
-    if (power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__CURRENT) != POWER_MANAGER_CURRENT_VALUE) {
-      ok = false;
-    }
-  }
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__CURRENT, POWER_MANAGER_CURRENT_VALUE);
 
-  led_run_inform(ok ? LED_POWER_MANAGER_OK : LED_POWER_MANAGER_ERR);
+  // 3. input current limit
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__INPUT_CURRENT, POWER_MANAGER_INPUT_CURRENT);
+
+  // 4. input current limit
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__DISCH_CURRENT, POWER_MANAGER_DISCH_CURRENT);
+
+  // 5. opt-0
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_0, POWER_MANAGER_OPTIONS_0);
+
+  // 6. opt-1
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_1, POWER_MANAGER_OPTIONS_1);
+
+  // 7. opt-2
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_2, POWER_MANAGER_OPTIONS_2);
+
+  // 8. opt-3
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3, POWER_MANAGER_OPTIONS_3);
+
+  // 9. prochot-0
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_0, POWER_MANAGER_PROCHOT_0);
+
+  // 9. prochot-1
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_1, POWER_MANAGER_PROCHOT_1);
 }
 
 uint16_t power_manager_read_16t(uint8_t reg) {
@@ -99,6 +166,12 @@ void power_manager_write_16t(uint8_t reg, uint16_t value) {
   Wire.endTransmission();
 }
 
+void power_manager_check_write_16t(uint8_t reg, uint16_t val)  {
+  if (power_manager_read_16t(reg) != val) { 
+    power_manager_write_16t(reg, val); 
+  }
+}
+
 bool power_manager_is_charging() {
   uint16_t value = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3);
   if (value == 0xFFFF) {
@@ -117,9 +190,25 @@ void power_manager_on_event() {
 }
 
 void power_manager_on_main_loop() {
-  if (power_manager_noevent_timer > 0 && millis() > power_manager_noevent_timer) {
+  unsigned long now = millis();
+
+  if (power_manager_noevent_timer > 0 && now > power_manager_noevent_timer) {
     digitalWrite(POWER_MANAGER_PIN_LOCK, LOW);
     power_manager_noevent_timer = 0;
+  }
+
+  if (now > power_manager_i2c_next_recheck_config) {
+    // check prochot to print error
+    uint16_t prochot_status = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS);
+    if (prochot_status != 0 && prochot_status != 0b00000001) {
+      Serial.print("PROCHOT STATUS ERR ");
+      Serial.println(prochot_status, HEX);
+
+      controller_on_charger_error(prochot_status);
+    }
+    
+    power_manager_i2c_next_recheck_config = now + POWER_MANAGER_CHARGER_I2C_RECHECK_CONFIG;
+    power_manager_configure_charger();
   }
 }
 

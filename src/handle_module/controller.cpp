@@ -12,7 +12,7 @@
 #include "fm_sender.h"
 #include "led.h"
 
-#define CONTROLLER_CHECK_CHARGING_DELAY_MS 10000
+#define CONTROLLER_CHECK_CHARGING_DELAY_MS 5000
 
 unsigned long controller_check_chargin_delay = 0;
 bool controller_charge_in_progress = false;
@@ -62,6 +62,8 @@ void controller_check_charging() {
       controller_charge_in_progress = true;
       power_manager_on_event();
 
+      Serial.println("CHRG 1");
+
       t_fm_command cmd = {
         .address = FM_COMMAND_ADDRESS__HM_CHARGE_STATUS,
         .arg = true
@@ -71,6 +73,8 @@ void controller_check_charging() {
     } else if (controller_charge_in_progress) {
       controller_charge_in_progress = false;
 
+      Serial.println("CHRG 0");
+
       t_fm_command cmd = {
         .address = FM_COMMAND_ADDRESS__HM_CHARGE_STATUS,
         .arg = false
@@ -79,6 +83,15 @@ void controller_check_charging() {
       fm_sender_send_command(&cmd);
     }
   }
+}
+
+void controller_on_charger_error(uint8_t err) {
+  t_fm_command cmd = {
+    .address = FM_COMMAND_ADDRESS__HM_CHARGE_ERROR,
+    .arg = err
+  };
+
+  fm_sender_send_command(&cmd);
 }
 
 void controller_check_data_received() {

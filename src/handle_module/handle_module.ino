@@ -5,9 +5,12 @@
 #include "fm_sender.h"
 #include "controller.h"
 #include "fm_decoder.h"
+//#include "power_manager_monitor.h"
 
 void setup() {
   Serial.begin(115200);
+
+//  power_manager_monitor_process();
 
   led_init();
 

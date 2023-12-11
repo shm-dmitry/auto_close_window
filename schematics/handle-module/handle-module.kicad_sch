@@ -9216,7 +9216,7 @@
     (property "Reference" "R15" (at 500.38 139.7 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "7K" (at 500.38 142.24 0)
+    (property "Value" "62K" (at 500.38 142.24 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 494.792 140.97 90)

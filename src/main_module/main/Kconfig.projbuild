@@ -60,9 +60,23 @@ menu "Auto-Close Window Settings"
    	  	 int "Stepper One-Step pin connected to"
    	  	 default 17
 
-   	  config PIN_STEPPER_LIMITSWITCH
-   	  	 int "Stepper Limit switch pin connected to"
+   	  config ADC_STEPPER_LIMITSWITCH
+   	  	 int "Stepper Limit switch ADC channel"
    	  	 default 4
+   	  	 
+   	  menu "ADC measurement value"
+	   	  config ADC_STEPPER_OPEN_VALUE
+	   	  	 int "Stepper Full Open ADC value (percent)"
+	   	  	 default 70
+	   	  	 
+	   	  config ADC_STEPPER_CLOSE_VALUE
+	   	  	 int "Stepper Full Close ADC value (percent)"
+	   	  	 default 30
+	   	  	 
+	   	  config ADC_STEPPER_STEPPER_NOT_ALLOWED_VALUE
+	   	  	 int "Window clamp not locked value (percent)"
+	   	  	 default 0
+   	  endmenu
    endmenu
 
    menu "FM configuration"

@@ -23,14 +23,8 @@
 
 uint32_t charger_auto_stop = 0;
 QueueHandle_t charger_auto_stop_queue = NULL;
-t_isr_charger_onkeypress charger_isr_onkeypress_handler = NULL;
 
 static void IRAM_ATTR isr_charger_on_button_click(void* arg) {
-	if (charger_isr_onkeypress_handler != NULL) {
-		charger_isr_onkeypress_handler();
-		return;
-	}
-
 	uint8_t level = gpio_get_level(CONFIG_PIN_CHARGER_ENABLE);
 	level = ((level == 1) ? CHARGER_COMMAND_OFF : CHARGER_COMMAND_ON);
 
@@ -131,9 +125,3 @@ void charger_confirm_in_progress() {
 	uint8_t level = CHARGER_COMMAND_CONFIRM_IN_PROGRESS;
     xQueueSend(charger_auto_stop_queue, &level, 0);
 }
-
-void charger_set_isr_onkeypress_handler(t_isr_charger_onkeypress handler) {
-	charger_isr_onkeypress_handler = handler;
-}
-
-

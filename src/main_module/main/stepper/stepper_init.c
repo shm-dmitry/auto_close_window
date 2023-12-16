@@ -3,6 +3,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
+#include "esp_adc/adc_oneshot.h"
+#include "esp_adc/adc_cali.h"
+#include "esp_adc/adc_cali_scheme.h"
 #include "esp_attr.h"
 #include "../log/log.h"
 #include "sdkconfig.h"
@@ -28,13 +31,23 @@
 #define STEPPER_SYGNALS_PER_ONE_STEP  100
 #define STEPPER_SYGNAL_FREQUENCY      2000
 
+#define STEPPER_ADC_MAXVALUE       4095
+#define STEPPER_ADC_VALUE_DELTA    100
+
+#define STEPPER_IS_ALLOWED(x) ((x) >= ((CONFIG_ADC_STEPPER_STEPPER_NOT_ALLOWED_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
+#define STEPPER_IS_OPENED(x)  ((x) >= ((CONFIG_ADC_STEPPER_OPEN_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_OPEN_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
+#define STEPPER_IS_CLOSED(x)  ((x) >= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
+
+#define STEPPER_ENABLE_LIMIT_SWITCH false
+
 typedef struct {
 	uint32_t current_position;
 	t_stepper_command command;
 } t_stepper_context;
 
+adc_oneshot_unit_handle_t adc_limit_sw_handle;
+
 uint32_t stepper_full_open_steps_count = STEPPER_DEFAULT_FULL_OPEN_STEPS;
-volatile bool stepper_calibrate_done = false;
 uint32_t stepper_motor_off_timeout = 0;
 
 QueueHandle_t stepper_commands_queue;
@@ -42,10 +55,6 @@ QueueHandle_t stepper_commands_queue;
 esp_timer_handle_t stepper_timer;
 uint32_t stepper_timer_counter;
 QueueHandle_t stepper_end_of_timer_queue;
-
-void stepper_calibrate_on_done() {
-	stepper_calibrate_done = true;
-}
 
 void stepper_motor_on() {
 	if (gpio_get_level(CONFIG_PIN_STEPPER_POWER_ON) == 0) {
@@ -83,8 +92,54 @@ void stepper_do_one_step() {
 	esp_timer_stop(stepper_timer);
 }
 
-inline bool stepper_is_close_position_reached() {
-	return gpio_get_level(CONFIG_PIN_STEPPER_LIMITSWITCH) == 0;
+bool stepper_is_close_position_reached() {
+#if STEPPER_ENABLE_LIMIT_SWITCH
+	int value = 0;
+	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+	if (res != ESP_OK) {
+		return true;
+	}
+
+	if (!STEPPER_IS_ALLOWED(value)) {
+		return true;
+	}
+
+	return STEPPER_IS_CLOSED(value);
+#else
+	return true;
+#endif
+}
+
+bool stepper_is_open_position_reached() {
+#if STEPPER_ENABLE_LIMIT_SWITCH
+	int value = 0;
+	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+	if (res != ESP_OK) {
+		return true;
+	}
+
+	if (!STEPPER_IS_ALLOWED(value)) {
+		return true;
+	}
+
+	return STEPPER_IS_OPENED(value);
+#else
+	return true;
+#endif
+}
+
+bool stepper_is_stepper_allowed() {
+#if STEPPER_ENABLE_LIMIT_SWITCH
+	int value = 0;
+	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+	if (res != ESP_OK) {
+		return true;
+	}
+
+	return STEPPER_IS_ALLOWED(value);
+#else
+	return true;
+#endif
 }
 
 void stepper_on_execute_locateposition(t_stepper_context * context, bool sendnotify) {
@@ -104,7 +159,6 @@ void stepper_on_execute_locateposition(t_stepper_context * context, bool sendnot
 void stepper_on_execute_calibrate(t_stepper_context * context) {
 	controller_on_status(CONTROLLER_STATUS_START_CALIBRATION);
 
-	charger_set_isr_onkeypress_handler(stepper_calibrate_on_done);
 	// 1. close
 	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_CLOSE);
 	while(!stepper_is_close_position_reached()) {
@@ -112,16 +166,14 @@ void stepper_on_execute_calibrate(t_stepper_context * context) {
 	}
 
 	context->current_position = 0;
-	stepper_calibrate_done = false;
 
-	// 2. open until command
+	// 2. open
 	gpio_set_level(CONFIG_PIN_STEPPER_DIR, STEPPER_DIR_OPEN);
-	while(!stepper_calibrate_done) {
+	while(!stepper_is_open_position_reached()) {
 		stepper_do_one_step();
 		context->current_position++;
 	}
 
-	charger_set_isr_onkeypress_handler(NULL);
 	stepper_full_open_steps_count = context->current_position;
 	nvs_write_32t(STEPPER_NVS_FULL_OPEN_STEPS, stepper_full_open_steps_count);
 
@@ -158,6 +210,10 @@ void stepper_on_execute_move_to_position(t_stepper_context * context) {
 		}
 
 		if ((context->current_position % STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY) == 0) {
+			if (!stepper_is_stepper_allowed()) {
+				return;
+			}
+
 			t_stepper_command temp;
 			if (xQueueReceive(stepper_commands_queue, &temp, 0) != errQUEUE_EMPTY) {
 				if (temp.calibrate == context->command.calibrate &&
@@ -187,6 +243,10 @@ void stepper_on_execute_move_to_position(t_stepper_context * context) {
 
 	if (context->current_position == 0 && !stepper_is_close_position_reached()) {
 		stepper_on_execute_locateposition(context, false);
+	} else if (context->current_position == stepper_full_open_steps_count && !stepper_is_open_position_reached()) {
+		while(!stepper_is_open_position_reached()) {
+			stepper_do_one_step();
+		}
 	}
 
 	controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
@@ -216,6 +276,13 @@ static void stepper_on_execute_command_task(void* arg) {
 				}
 			}
 
+			continue;
+		}
+
+		if (!stepper_is_stepper_allowed()) {
+			stepper_motor_off();
+			stepper_motor_off_timeout = 0;
+			context.current_position = 0xFFFFFFFF;
 			continue;
 		}
 
@@ -266,21 +333,18 @@ void stepper_init() {
 
     stepper_end_of_timer_queue = xQueueCreate(1, sizeof(uint8_t));
 
-	ESP_LOGI(LOG_STEPPER, "Initializing input pin...");
+	ESP_LOGI(LOG_STEPPER, "Initializing limit switch channel...");
 
-	gpio_config_t limitswConfig = {
-		.intr_type = GPIO_INTR_POSEDGE,
-		.pin_bit_mask = BIT64(CONFIG_PIN_STEPPER_LIMITSWITCH),
-		.mode = GPIO_MODE_INPUT,
-		.pull_down_en = GPIO_PULLDOWN_DISABLE,
-		.pull_up_en = GPIO_PULLUP_DISABLE
-	};
+    adc_oneshot_unit_init_cfg_t init_config1 = {
+        .unit_id = ADC_UNIT_1,
+    };
+    ESP_ERROR_CHECK(adc_oneshot_new_unit(&init_config1, &adc_limit_sw_handle));
 
-	res = gpio_config(&limitswConfig);
-	if (res) {
-		ESP_LOGE(LOG_STEPPER, "gpio_config error: %d", res);
-		return;
-	}
+    adc_oneshot_chan_cfg_t config = {
+        .bitwidth = ADC_BITWIDTH_DEFAULT,
+        .atten = ADC_ATTEN_DB_12,
+    };
+    ESP_ERROR_CHECK(adc_oneshot_config_channel(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &config));
 
 	ESP_LOGI(LOG_STEPPER, "Reading NVS");
 

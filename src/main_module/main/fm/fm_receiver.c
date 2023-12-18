@@ -27,6 +27,7 @@ typedef struct {
 typedef struct {
 	rmt_channel_handle_t rx_chan;
 	bool update_last_received;
+	uint16_t freq;
 } t_fm_task_parameters;
 
 int64_t volatile fm_receiver_last_received = 0;
@@ -77,6 +78,8 @@ static void fm_receiver_task(void* arg) {
 
     ESP_ERROR_CHECK(rmt_enable(taskparams->rx_chan));
 
+    ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz started to listen", taskparams->freq);
+
     rmt_symbol_word_t raw_symbols[FM_RECEIVER_DATA_ONE_PART];
 	void * decoder_context_data = NULL;
 
@@ -88,7 +91,7 @@ static void fm_receiver_task(void* arg) {
 			rmt_rx_done_event_data_t rx_data;
 			xQueueReceive(queue, &rx_data, portMAX_DELAY);
 
-			t_fm_commands_list * list = fm_command_decode(&decoder_context_data, &rx_data);
+			t_fm_commands_list * list = fm_command_decode(&decoder_context_data, &rx_data, taskparams->freq);
 
 			free(rx_data.received_symbols);
 			rx_data.received_symbols = NULL;
@@ -154,10 +157,14 @@ void fm_receiver_init() {
 
     p315->rx_chan = rx_chan_315;
     p315->update_last_received = true;
+    p315->freq = 315;
 
     p433->rx_chan = rx_chan_433;
     p433->update_last_received = false;
+    p433->freq = 433;
 
 	xTaskCreate(fm_receiver_task, "FM receiver 433", FM_RECEIVER_TASK_STACK_SIZE, p433, 10, NULL);
 	xTaskCreate(fm_receiver_task, "FM receiver 315", FM_RECEIVER_TASK_STACK_SIZE, p315, 10, NULL);
+
+	ESP_LOGI(LOG_FM_RECEIVER, "FM Receiver initialized");
 }

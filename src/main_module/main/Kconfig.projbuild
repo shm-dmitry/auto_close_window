@@ -67,15 +67,23 @@ menu "Auto-Close Window Settings"
    	  menu "ADC measurement value"
 	   	  config ADC_STEPPER_OPEN_VALUE
 	   	  	 int "Stepper Full Open ADC value (percent)"
-	   	  	 default 70
+	   	  	 default 60
 	   	  	 
 	   	  config ADC_STEPPER_CLOSE_VALUE
 	   	  	 int "Stepper Full Close ADC value (percent)"
-	   	  	 default 30
+	   	  	 default 20
 	   	  	 
 	   	  config ADC_STEPPER_STEPPER_NOT_ALLOWED_VALUE
 	   	  	 int "Window clamp not locked value (percent)"
 	   	  	 default 0
+	   	  	 
+	   	  config ADC_STEPPER_CALIBRATION_MODE
+	   	  	 boolean "Measure and print to STDOUT ADC values. DEBUG ONLY!"
+	   	  	 default true
+	   	  	 
+	   	  config ADC_STEPPER_DELTA_PC
+	   	  	 int "Delta (int percent) from configured values"
+	   	  	 default 7
    	  endmenu
    endmenu
 

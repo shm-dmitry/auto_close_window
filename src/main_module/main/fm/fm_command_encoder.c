@@ -223,7 +223,7 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 	}
 }
 
-t_fm_commands_list * fm_command_decode(void ** decoder_context_ptr, const rmt_rx_done_event_data_t *edata) {
+t_fm_commands_list * fm_command_decode(void ** decoder_context_ptr, const rmt_rx_done_event_data_t *edata, uint16_t freq) {
 	if (edata->num_symbols == 0 || edata->num_symbols > 0xFFFF) {
 		return NULL;
 	}
@@ -275,7 +275,7 @@ t_fm_commands_list * fm_command_decode(void ** decoder_context_ptr, const rmt_rx
 		}
 		free(decoder_context);
 		decoder_context = NULL;
-		ESP_LOGI(LOG_FM_ENCODER, "Context destroyed");
+		ESP_LOGI(LOG_FM_ENCODER, "Context destroyed [freq = %dMHz]", freq);
 	} else {
 		ESP_LOGI(LOG_FM_ENCODER, "Partical transfer - context saved");
 	}

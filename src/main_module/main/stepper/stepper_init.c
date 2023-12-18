@@ -16,11 +16,12 @@
 #include "../charger/charger_init.h"
 #include "esp_timer.h"
 #include "time.h"
+#include "sdkconfig.h"
 
 #define STEPPER_COMMAND_TASK_STACK_SIZE 2048
 
-#define STEPPER_DIR_CLOSE 0
-#define STEPPER_DIR_OPEN  1
+#define STEPPER_DIR_CLOSE (1)
+#define STEPPER_DIR_OPEN  (0)
 
 #define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
 #define STEPPER_DEFAULT_FULL_OPEN_STEPS 1000
@@ -32,13 +33,14 @@
 #define STEPPER_SYGNAL_FREQUENCY      2000
 
 #define STEPPER_ADC_MAXVALUE       4095
-#define STEPPER_ADC_VALUE_DELTA    100
+#define STEPPER_ADC_VALUE_DELTA    (STEPPER_ADC_MAXVALUE / CONFIG_ADC_STEPPER_DELTA_PC)
+
 
 #define STEPPER_IS_ALLOWED(x) ((x) >= ((CONFIG_ADC_STEPPER_STEPPER_NOT_ALLOWED_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
 #define STEPPER_IS_OPENED(x)  ((x) >= ((CONFIG_ADC_STEPPER_OPEN_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_OPEN_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
 #define STEPPER_IS_CLOSED(x)  ((x) >= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
 
-#define STEPPER_ENABLE_LIMIT_SWITCH false
+#define STEPPER_ENABLE_LIMIT_SWITCH true
 
 typedef struct {
 	uint32_t current_position;
@@ -209,11 +211,21 @@ void stepper_on_execute_move_to_position(t_stepper_context * context) {
 			context->current_position += diff;
 		}
 
-		if ((context->current_position % STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY) == 0) {
-			if (!stepper_is_stepper_allowed()) {
-				return;
-			}
+		if (!stepper_is_stepper_allowed()) {
+			return;
+		}
 
+		if (diff > 0 && stepper_is_open_position_reached()) {
+			// adjust full-open value
+			stepper_full_open_steps_count = context->current_position;
+			break;
+		} else if (diff < 0 && stepper_is_close_position_reached()) {
+			// adjust current position to 'closed'
+			context->current_position = 0;
+			break;
+		}
+
+		if ((context->current_position % STEPPER_MOVE_TO_POS_RECHECK_QUEUE_EVERY) == 0) {
 			t_stepper_command temp;
 			if (xQueueReceive(stepper_commands_queue, &temp, 0) != errQUEUE_EMPTY) {
 				if (temp.calibrate == context->command.calibrate &&
@@ -345,6 +357,24 @@ void stepper_init() {
         .atten = ADC_ATTEN_DB_12,
     };
     ESP_ERROR_CHECK(adc_oneshot_config_channel(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &config));
+
+#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+    while(true) {
+    	int value = 0;
+    	adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+    	ESP_LOGI(LOG_STEPPER, "Value: %d / %d%%", value, ((value * 100) / 4095));
+
+    	if (!stepper_is_stepper_allowed()) {
+    		ESP_LOGI(LOG_STEPPER, "Stepper disabled!");
+    	} else if (stepper_is_close_position_reached()) {
+    		ESP_LOGI(LOG_STEPPER, "CLose position reached!");
+    	} else if (stepper_is_open_position_reached()) {
+    		ESP_LOGI(LOG_STEPPER, "Open position reached!");
+    	}
+
+    	vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
+#endif
 
 	ESP_LOGI(LOG_STEPPER, "Reading NVS");
 

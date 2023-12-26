@@ -59,6 +59,8 @@ uint32_t stepper_timer_counter;
 QueueHandle_t stepper_end_of_timer_queue;
 
 void stepper_motor_on() {
+	stepper_motor_off_timeout = 0;
+
 	if (gpio_get_level(CONFIG_PIN_STEPPER_POWER_ON) == 0) {
 		gpio_set_level(CONFIG_PIN_STEPPER_POWER_ON, 1);
 		vTaskDelay(10 / portTICK_PERIOD_MS);
@@ -183,6 +185,8 @@ void stepper_on_execute_calibrate(t_stepper_context * context) {
 }
 
 void stepper_on_execute_move_to_position(t_stepper_context * context) {
+	ESP_LOGI(LOG_STEPPER, "Execute move-to-position: %d%%", context->command.move_to_percent);
+
 	uint32_t newposition = context->command.move_to_percent * stepper_full_open_steps_count / 100;
 	if (newposition > stepper_full_open_steps_count) {
 		newposition = stepper_full_open_steps_count;
@@ -216,10 +220,12 @@ void stepper_on_execute_move_to_position(t_stepper_context * context) {
 		}
 
 		if (diff > 0 && stepper_is_open_position_reached()) {
+			ESP_LOGW(LOG_STEPPER, "Adjust FULL OPEN POSITION value from %d to %d", (int)stepper_full_open_steps_count, (int)context->current_position);
 			// adjust full-open value
 			stepper_full_open_steps_count = context->current_position;
 			break;
 		} else if (diff < 0 && stepper_is_close_position_reached()) {
+			ESP_LOGW(LOG_STEPPER, "Adjust FULL CLOSED POSITION from %d to 0", (int)context->current_position);
 			// adjust current position to 'closed'
 			context->current_position = 0;
 			break;
@@ -284,7 +290,15 @@ static void stepper_on_execute_command_task(void* arg) {
 						stepper_motor_off();
 						stepper_motor_off_timeout = 0;
 						context.current_position = 0xFFFFFFFF;
+					} else if (!stepper_is_stepper_allowed()) {
+						stepper_motor_off();
+						stepper_motor_off_timeout = 0;
+						context.current_position = 0xFFFFFFFF;
 					}
+				} else if (!stepper_is_stepper_allowed()) {
+					stepper_motor_off();
+					stepper_motor_off_timeout = 0;
+					context.current_position = 0xFFFFFFFF;
 				}
 			}
 

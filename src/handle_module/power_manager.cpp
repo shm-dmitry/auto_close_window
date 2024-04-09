@@ -38,29 +38,42 @@
 // 0.5A = 512mA[9]
 #define POWER_MANAGER_DISCH_CURRENT (_BV(9)) 
 
-// 800 kHz                    [9:8 = 01]
-// IDCHG Amplifier Gain = 16x ]3 = 1]
-#define POWER_MANAGER_OPTIONS_0 (_BV(8) | _BV(3))
+// EN_LWPWR - enable          [15 = 1]
+// WDTMR_ADJ - 5 sec          [14:13 = 01]
+// freq = 800 kHz             [9:8 = 01]
+// EN_LEARN - disable         [5 = 0]
+// IADP_GAIN = 20x (unused)   [4 = 0]
+// IDCHG Amplifier Gain = 8x  ]3 = 0]
+// CHRG_INHIBIT enable charge [0 = 0]
+#define POWER_MANAGER_OPTIONS_0 (_BV(15) | _BV(13) | _BV(8))
 
 // Battery Depletion Threshold = 60% [15:14 = 00]
-// EN_IDCHG - enable [11 = 1]
-// EN_PMON - enable [10 = 1]
-#define POWER_MANAGER_OPTIONS_1 (_BV(11) | _BV(10))
+// EN_IDCHG - disable        [[11 = 0]
+// RSNS_RATIO - unused       [[13:12 = 11]
+// EN_IDCHG - disable        [[11 = 0]
+// EN_PMON - disable         [[10 = 0]
+// PMON_RATIO - default      [[9 = 1]
+// CMP_REF - unused          [[7 = 0]
+// CMP_POL - unused          [[6 = 0]
+// CMP_DEG - disable         [5:4 = 00]
+// EN_FET_LATCHOFF - unused  [3 = 0]
+// EN_SHIP_DCHG - disable    [1 = 0]
+#define POWER_MANAGER_OPTIONS_1 (_BV(13) | _BV(12) | _BV(9))
 
-// External Current Limit Enable = ILIM + regs [7 = 1]
-// other bits - as default
-#define POWER_MANAGER_OPTIONS_2 (_BV(7) | _BV(9) | _BV(8) | _BV(2))
+// External Current Limit Enable = regs only [7 = 0]
+// other bits - as default                   [9:8 = 11; 2 = 1]
+#define POWER_MANAGER_OPTIONS_2 (_BV(9) | _BV(8) | _BV(2))
 
-// enable disch regul [15 = 1]
-// ACOK Deglitch Time for Primary = 150mS [12 = 0]
-// EN_ACOC [10 = 1]
-// ACOC Limit [9 = 1]
-// IFAULT_HI [7 = 1]
-// IFAULT_LO [6 = 1]
-// FDPM_VTH [5 = 0]
-// FDPM_DEG [4:3 = 00]
-// EN_BOOST [2 = 1]
-#define POWER_MANAGER_OPTIONS_3 (_BV(15) | _BV(10) | _BV(9) | _BV(7) | _BV(6) | _BV(2))
+// EN_IDCHG_REG - disable      [15 = 1]
+// ACOK_DEG - deglich 1.3 sec  [12 = 1]
+// EN_ACOC  - enable           [10 = 1]
+// ACOC_VTH - 200%             [9  = 1]
+// IFAULT_HI - enable          [7  = 1]
+// IFAULT_LO - enable          [6  = 1]
+// FDPM_VTH - default          [5  = 0]
+// FDPM_DEG - default          [4:3 = 00]
+// EN_BOOST - disable          [2 = 0]
+#define POWER_MANAGER_OPTIONS_3 (_BV(15) | _BV(12) | _BV(10) | _BV(9) | _BV(7) | _BV(6))
 
 // ICRIT Threshold = 110% [15:11 == 00000]
 // ICRIT_DEG = 800 μs [10:9 = 11]

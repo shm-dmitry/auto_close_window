@@ -5,6 +5,8 @@
 
 #define LOG_CHARGER      "charger"
 #define LOG_STEPPER      "stepper"
+#define LOG_STEPPER_EXEC "stepper_exec"
+#define LOG_STEPPER_STEP "stepper_step"
 #define LOG_NWS_RW       "nws_rw"
 #define LOG_FM_SENDER    "fm_sender"
 #define LOG_FM_RECEIVER  "fm_receiver"

@@ -7,7 +7,6 @@
 #include "../log/log.h"
 
 #include "string.h"
-#include "../stepper/stepper_commands_def.h"
 
 void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 	cJSON *root = cJSON_Parse(data);

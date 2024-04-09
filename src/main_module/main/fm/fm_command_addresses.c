@@ -7,7 +7,7 @@ typedef struct {
 	t_fm_command_address_data data;
 } t_fm_command_size_by_address_data;
 
-#define FM_COMMAND_ADDRESS_DATA_SIZE 8
+#define FM_COMMAND_ADDRESS_DATA_SIZE 9
 t_fm_command_size_by_address_data address_data[FM_COMMAND_ADDRESS_DATA_SIZE] =
 {
 		{ .address = FM_COMMAND_ADDRESS__PDU,               .data.encrypted = false, .data.args_size = 1 },

@@ -64,6 +64,10 @@ menu "Auto-Close Window Settings"
    	  	 int "Stepper Limit switch ADC channel"
    	  	 default 4
    	  	 
+   	  config ADC_STEPPER_NOISE_ALARM
+   	  	 int "Noise alarm ADC channel"
+   	  	 default 7
+   	  	 
    	  menu "ADC measurement value"
 	   	  config ADC_STEPPER_OPEN_VALUE
 	   	  	 int "Stepper Full Open ADC value (percent)"
@@ -72,6 +76,10 @@ menu "Auto-Close Window Settings"
 	   	  config ADC_STEPPER_CLOSE_VALUE
 	   	  	 int "Stepper Full Close ADC value (percent)"
 	   	  	 default 20
+	   	  	 
+	   	  config ADC_STEPPER_NOISE_ALARM_VALUE
+	   	  	 int "Noise alarm fired ADC value (percent)"
+	   	  	 default 60
 	   	  	 
 	   	  config ADC_STEPPER_STEPPER_NOT_ALLOWED_VALUE
 	   	  	 int "Window clamp not locked value (percent)"

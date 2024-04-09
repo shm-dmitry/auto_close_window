@@ -10,7 +10,6 @@
 #include "stdbool.h"
 #include <string.h>
 
-#include "../stepper/stepper_commands_def.h"
 #include "controller_args_def.h"
 
 #define CONTROLLER_PDU_ARG_FULL_OPEN   0x68

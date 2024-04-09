@@ -1,6 +1,10 @@
 #ifndef MAIN_FM_FM_COMMAND_ADDRESS_DEF_H_
 #define MAIN_FM_FM_COMMAND_ADDRESS_DEF_H_
 
+// this is my remote control unit address.
+// Write here your address.
+// You can press any button on your remote control unit and check it in logs
+// you also need to correct defines CONTROLLER_PDU_ARG_*
 #define FM_COMMAND_ADDRESS__PDU 		        0xA5B2
 
 #define FM_COMMAND_ADDRESS__MM_STEPPER_STATUS 	0x3726

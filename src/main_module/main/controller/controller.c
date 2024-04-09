@@ -12,6 +12,9 @@
 
 #include "controller_args_def.h"
 
+// This codes used by my remote control unit
+// Change them to your codes.
+// You can just press buttons and check log messages
 #define CONTROLLER_PDU_ARG_FULL_OPEN   0x68
 #define CONTROLLER_PDU_ARG_FULL_CLOSE  0x64
 #define CONTROLLER_PDU_ARG_MOVE_TO_1   0x62
@@ -28,7 +31,8 @@ void controller_process_pdu_command(uint8_t arg) {
 			stepper_move_to(0);
 			break;
 		case CONTROLLER_PDU_ARG_MOVE_TO_1:
-			stepper_move_to(10); // TODO: config
+			stepper_cancel();
+//			stepper_move_to(10); // TODO: config
 			break;
 		case CONTROLLER_PDU_ARG_MOVE_TO_2:
 			stepper_move_to(50); // TODO: config
@@ -111,6 +115,9 @@ void controller_process_command(const t_fm_command * command) {
 		break;
 	case FM_COMMAND_ADDRESS__HM_CHARGE_STATUS:
 		controller_process_hm_charge_status(args[0]);
+		break;
+	default:
+		ESP_LOGW(LOG_CONTROLLER, "Unknown address = %04X (arg0 == %02X)", command->address, args[0]);
 		break;
 	}
 }

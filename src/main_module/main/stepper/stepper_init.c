@@ -178,6 +178,10 @@ void stepper_calibrate() {
 }
 
 void stepper_move_to(uint8_t percent) {
+	if (percent > 100) {
+		percent = 100;
+	}
+
 	stepper_executor_moveto(percent);
 }
 

@@ -32,6 +32,9 @@
 #define STEPPER_ENABLE_LIMIT_SWITCH true
 #define STEPPER_ENABLE_NOISE_ALARM  false
 
+// Was not tested! Maybe I will rewrite this code.
+#define STEPPER_NOISE_ALARM_DEGLICH 2
+
 adc_oneshot_unit_handle_t adc_limit_sw_handle;
 
 #if STEPPER_ENABLE_NOISE_ALARM
@@ -163,9 +166,16 @@ void stepper_init() {
 
 #if STEPPER_ENABLE_NOISE_ALARM
 static void stepper_noise_alarm_task(void*) {
+	uint8_t deglich = 0;
 	while(true) {
 		if (stepper_is_noise_alarm()) {
-			stepper_executor_on_alarm();
+			if (deglich >= STEPPER_NOISE_ALARM_DEGLICH) {
+				stepper_executor_on_alarm();
+			} else {
+				deglich++;
+			}
+		} else {
+			deglich = 0;
 		}
 
     	vTaskDelay(10 / portTICK_PERIOD_MS);

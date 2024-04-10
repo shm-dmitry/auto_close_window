@@ -167,6 +167,10 @@ static void stepper_executor_on_execute_command_task(void*) {
 		} else if (currentcommand <= STEPPER_EXEC_CMD__MAX_MOVETO) {
 			stepper_executor_do_moveto(currentcommand);
 		}
+
+		if (stepper_exec_command == currentcommand) {
+			stepper_exec_command = STEPPER_EXEC_CMD__IDLE;
+		}
 	}
 }
 
@@ -223,6 +227,8 @@ void stepper_executor_do_calibrate(uint8_t currentcommand) {
 }
 
 void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_close) {
+	ESP_LOGI(LOG_STEPPER_EXEC, "Locate position fired for command %d. Moving to %s", currentcommand, (move_to_close ? "CLOSE" : "OPEN"));
+
 	if (stepper_exec_max_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 		stepper_executor_do_calibrate(currentcommand);
 	} else if (move_to_close) {
@@ -307,16 +313,19 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 					endstops->is_close_fired()) {
 			ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL CLOSED POSITION from %li to 0", stepper_exec_max_position);
 			// adjust current position to 'closed'
-			stepper_exec_max_position = 0;
+			stepper_exec_current_position = 0;
 			break;
 		}
 	}
 
 	if (stepper_exec_current_position == 0 && !endstops->is_close_fired()) {
+		ESP_LOGI(LOG_STEPPER_EXEC, "Move-to - END OF LOOP, correcting position via CLOSE endstop.");
+
 		t_delay_timer * timer = delay_timer_allocate(STEPPER_EXEC_CORRECT_POSITION_TIMEOUT);
 
 		while(!endstops->is_close_fired()) {
 			if (delay_timer_start_or_check(timer)) {
+				ESP_LOGW(LOG_STEPPER_EXEC, "Move-to : after END OF LOOP - move timeout. Stopped.");
 				break;
 			}
 
@@ -330,10 +339,13 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 
 		delay_timer_release(&timer);
 	} else if (stepper_exec_current_position == stepper_exec_max_position && !endstops->is_open_fired()) {
+		ESP_LOGI(LOG_STEPPER_EXEC, "Move-to - END OF LOOP, correcting position via OPEN endstop.");
+
 		t_delay_timer * timer = delay_timer_allocate(STEPPER_EXEC_CORRECT_POSITION_TIMEOUT);
 
 		while(!endstops->is_open_fired()) {
 			if (delay_timer_start_or_check(timer)) {
+				ESP_LOGW(LOG_STEPPER_EXEC, "Move-to : after END OF LOOP - move timeout. Stopped.");
 				break;
 			}
 

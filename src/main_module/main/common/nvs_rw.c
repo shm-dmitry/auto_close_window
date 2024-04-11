@@ -23,7 +23,7 @@ esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_si
 
     err = nvs_open(STORAGE_NAMESPACE, NVS_READONLY, &handle);
     if (err != ESP_OK) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant open namespace %s for paramter %s: %d", STORAGE_NAMESPACE, name, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant open namespace %s for paramter %s: %d", STORAGE_NAMESPACE, name, err);
     	return err;
     }
 
@@ -31,7 +31,7 @@ esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_si
 
     err = nvs_get_blob(handle, name, NULL, buffer_size);
     if (err != ESP_OK || *buffer_size == 0) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant read blob size for blob %s from NVS: %d", name, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant read blob size for blob %s from NVS: %d", name, err);
 
     	nvs_close(handle);
     	return err;
@@ -39,7 +39,7 @@ esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_si
 
     *buffer = (uint8_t *) malloc(*buffer_size);
     if (*buffer == NULL) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant allocate %d bytes. OOM.", *buffer_size);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant allocate %d bytes. OOM.", *buffer_size);
 
     	nvs_close(handle);
     	return ESP_FAIL;
@@ -47,7 +47,7 @@ esp_err_t nvs_read_buffer(const char* name, uint8_t** buffer, size_t * buffer_si
 
     err = nvs_get_blob(handle, name, *buffer, buffer_size);
     if (err != ESP_OK) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant read blob %s from NVS: %d", name, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant read blob %s from NVS: %d", name, err);
 
     	nvs_close(handle);
     	return err;
@@ -63,13 +63,13 @@ esp_err_t nvs_write_buffer(const char* name, const uint8_t* buffer, size_t buffe
 
     err = nvs_open(STORAGE_NAMESPACE, NVS_READWRITE, &handle);
     if (err != ESP_OK) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant open namespace %s for paramter %s: %d", STORAGE_NAMESPACE, name, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant open namespace %s for paramter %s: %d", STORAGE_NAMESPACE, name, err);
     	return err;
     }
 
     err = nvs_erase_key(handle, name);
     if (err != ESP_OK && err != ESP_ERR_NVS_NOT_FOUND) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant cleanup memory for %s: %d", name, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant cleanup memory for %s: %d", name, err);
 
     	nvs_close(handle);
     	return err;
@@ -77,7 +77,7 @@ esp_err_t nvs_write_buffer(const char* name, const uint8_t* buffer, size_t buffe
 
     err = nvs_commit(handle);
     if (err) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant commit cleanup changes for %s: %d", name, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant commit cleanup changes for %s: %d", name, err);
 
     	nvs_close(handle);
     	return err;
@@ -90,7 +90,7 @@ esp_err_t nvs_write_buffer(const char* name, const uint8_t* buffer, size_t buffe
 
     err = nvs_set_blob(handle, name, buffer, buffer_size);
     if (err != ESP_OK) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant set blob for %s [%d bytes]: %d", name, buffer_size, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant set blob for %s [%d bytes]: %d", name, buffer_size, err);
 
     	nvs_close(handle);
     	return err;
@@ -99,7 +99,7 @@ esp_err_t nvs_write_buffer(const char* name, const uint8_t* buffer, size_t buffe
 
     err = nvs_commit(handle);
     if (err) {
-    	ESP_LOGE(LOG_NWS_RW, "Cant commit setblob changes for %s [%d bytes]: %d", name, buffer_size, err);
+    	_ESP_LOGE(LOG_NWS_RW, "Cant commit setblob changes for %s [%d bytes]: %d", name, buffer_size, err);
 
     	nvs_close(handle);
     	return err;

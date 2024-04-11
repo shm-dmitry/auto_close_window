@@ -24,6 +24,8 @@ void app_main(void)
 
 	mqtt_start();
 
+	ESP_LOGI(LOG_MAIN, "Firmware initialied");
+
 	while(true) {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}

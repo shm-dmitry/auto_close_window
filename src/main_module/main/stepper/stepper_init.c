@@ -30,7 +30,7 @@
 #define STEPPER_IS_CLOSED(x)      ((x) >= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
 
 #define STEPPER_ENABLE_LIMIT_SWITCH true
-#define STEPPER_ENABLE_NOISE_ALARM  false
+#define STEPPER_ENABLE_NOISE_ALARM  true
 
 // Was not tested! Maybe I will rewrite this code.
 #define STEPPER_NOISE_ALARM_DEGLICH 2
@@ -106,7 +106,7 @@ bool stepper_is_noise_alarm() {
 }
 
 void stepper_init() {
-	ESP_LOGI(LOG_STEPPER, "Initializing limit switch channel...");
+	_ESP_LOGI(LOG_STEPPER, "Initializing limit switch channel...");
 
     adc_oneshot_unit_init_cfg_t init_config1 = {
         .unit_id = ADC_UNIT_1,
@@ -144,7 +144,7 @@ void stepper_init() {
     }
 #endif
 
-	ESP_LOGI(LOG_STEPPER, "Initializing stepper executor controller");
+	_ESP_LOGI(LOG_STEPPER, "Initializing stepper executor controller");
 
     t_endstops * endstops = (t_endstops *) malloc(sizeof(t_endstops));
     memset(endstops, 0, sizeof(t_endstops));
@@ -156,12 +156,12 @@ void stepper_init() {
     stepper_executor_init(endstops);
 
 #if STEPPER_ENABLE_NOISE_ALARM
-	ESP_LOGI(LOG_STEPPER, "Starting check noise alarm thread");
+	_ESP_LOGI(LOG_STEPPER, "Starting check noise alarm thread");
 
 	xTaskCreate(stepper_noise_alarm_task, "noise alarm task", STEPPER_COMMAND_TASK_STACK_SIZE, NULL, 10, NULL);
 #endif
 
-	ESP_LOGI(LOG_STEPPER, "Stepper initialied");
+	_ESP_LOGI(LOG_STEPPER, "Stepper initialied");
 }
 
 #if STEPPER_ENABLE_NOISE_ALARM
@@ -185,6 +185,10 @@ static void stepper_noise_alarm_task(void*) {
 
 void stepper_calibrate() {
 	stepper_executor_calibrate();
+}
+
+void stepper_cancel_error() {
+	stepper_executor_cancel_error();
 }
 
 void stepper_move_to(uint8_t percent) {

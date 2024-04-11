@@ -78,7 +78,7 @@ static void fm_receiver_task(void* arg) {
 
     ESP_ERROR_CHECK(rmt_enable(taskparams->rx_chan));
 
-    ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz started to listen", taskparams->freq);
+    _ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz started to listen", taskparams->freq);
 
     rmt_symbol_word_t raw_symbols[FM_RECEIVER_DATA_ONE_PART];
 	void * decoder_context_data = NULL;
@@ -133,7 +133,7 @@ void fm_receiver_init() {
 
     esp_err_t res = rmt_new_rx_channel(&rx_chan_config_433, &rx_chan_433);
     if (res) {
-		ESP_LOGE(LOG_FM_RECEIVER, "rmt_new_rx_channel-433 error: %d", res);
+		_ESP_LOGE(LOG_FM_RECEIVER, "rmt_new_rx_channel-433 error: %d", res);
 		return;
     }
 
@@ -148,7 +148,7 @@ void fm_receiver_init() {
 
     res = rmt_new_rx_channel(&rx_chan_config_315, &rx_chan_315);
     if (res) {
-		ESP_LOGE(LOG_FM_RECEIVER, "rmt_new_rx_channel-315 error: %d", res);
+		_ESP_LOGE(LOG_FM_RECEIVER, "rmt_new_rx_channel-315 error: %d", res);
 		return;
     }
 
@@ -166,5 +166,5 @@ void fm_receiver_init() {
 	xTaskCreate(fm_receiver_task, "FM receiver 433", FM_RECEIVER_TASK_STACK_SIZE, p433, 10, NULL);
 	xTaskCreate(fm_receiver_task, "FM receiver 315", FM_RECEIVER_TASK_STACK_SIZE, p315, 10, NULL);
 
-	ESP_LOGI(LOG_FM_RECEIVER, "FM Receiver initialized");
+	_ESP_LOGI(LOG_FM_RECEIVER, "FM Receiver initialized");
 }

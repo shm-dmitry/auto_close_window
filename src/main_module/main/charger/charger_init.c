@@ -60,7 +60,7 @@ void charger_init() {
 	charger_auto_stop_queue = xQueueCreate(5, sizeof(uint8_t));
 	xTaskCreate(charger_auto_stop_on_timeout, "charger_auto_stop", CHARGER_TASK_STACK_SIZE, NULL, 10, NULL);
 
-	ESP_LOGI(LOG_CHARGER, "Initializing output pin...");
+	_ESP_LOGI(LOG_CHARGER, "Initializing output pin...");
 
 	gpio_config_t chargerEnableConfig = {
 		.intr_type = GPIO_INTR_DISABLE,
@@ -72,14 +72,14 @@ void charger_init() {
 
 	esp_err_t res = gpio_config(&chargerEnableConfig);
 	if (res) {
-		ESP_LOGE(LOG_CHARGER, "gpio_config error: %d", res);
+		_ESP_LOGE(LOG_CHARGER, "gpio_config error: %d", res);
 		return;
 	}
 
 	uint8_t level = CHARGER_COMMAND_OFF;
     xQueueSend(charger_auto_stop_queue, &level, 0);
 
-	ESP_LOGI(LOG_CHARGER, "Initializing input pin...");
+	_ESP_LOGI(LOG_CHARGER, "Initializing input pin...");
 
 	gpio_config_t buttonConfig = {
 		.intr_type = GPIO_INTR_POSEDGE,
@@ -91,29 +91,29 @@ void charger_init() {
 
 	res = gpio_config(&buttonConfig);
 	if (res) {
-		ESP_LOGE(LOG_CHARGER, "gpio_config error: %d", res);
+		_ESP_LOGE(LOG_CHARGER, "gpio_config error: %d", res);
 		return;
 	}
 
 	res = gpio_set_intr_type(CONFIG_PIN_CHARGER_START_BUTTON, GPIO_INTR_NEGEDGE);
 	if (res) {
-		ESP_LOGE(LOG_CHARGER, "gpio_set_intr_type error: %d", res);
+		_ESP_LOGE(LOG_CHARGER, "gpio_set_intr_type error: %d", res);
 		return;
 	}
 
 	res = gpio_install_isr_service(0);
 	if (res && res != ESP_ERR_INVALID_STATE) {
-		ESP_LOGE(LOG_CHARGER, "gpio_install_isr_service error: %d", res);
+		_ESP_LOGE(LOG_CHARGER, "gpio_install_isr_service error: %d", res);
 		return;
 	}
 
     res = gpio_isr_handler_add(CONFIG_PIN_CHARGER_START_BUTTON, isr_charger_on_button_click, NULL);
 	if (res) {
-		ESP_LOGE(LOG_CHARGER, "gpio_isr_handler_add A error: %d", res);
+		_ESP_LOGE(LOG_CHARGER, "gpio_isr_handler_add A error: %d", res);
 		return;
 	}
 
-	ESP_LOGI(LOG_CHARGER, "Charger initialied");
+	_ESP_LOGI(LOG_CHARGER, "Charger initialied");
 }
 
 void charger_stop() {

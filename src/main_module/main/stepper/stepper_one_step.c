@@ -42,7 +42,7 @@ void stepper_one_step_init() {
 
 	esp_err_t res = gpio_config(&chargerEnableConfig);
 	if (res) {
-		ESP_LOGE(LOG_STEPPER_STEP, "gpio_config error: %d", res);
+		_ESP_LOGE(LOG_STEPPER_STEP, "gpio_config error: %d", res);
 		return;
 	}
 

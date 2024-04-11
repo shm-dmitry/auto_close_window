@@ -30,7 +30,7 @@
 #define STEPPER_DEFAULT_FULL_OPEN_STEPS 1000
 
 volatile uint8_t stepper_exec_command = STEPPER_EXEC_CMD__IDLE;
-volatile bool stepper_on_in_error_now = false;
+volatile bool stepper_executor_is_in_error_now = false;
 
 t_endstops * endstops;
 t_delay_timer * stepper_exec_stop_timer = NULL;
@@ -57,6 +57,10 @@ void stepper_executor_motor_off() {
 	gpio_set_level(CONFIG_PIN_STEPPER_POWER_ON, 0);
 }
 
+bool stepper_executor_is_motor_on() {
+	return gpio_get_level(CONFIG_PIN_STEPPER_POWER_ON) == 1;
+}
+
 void stepper_executor_init(t_endstops * _endstops) {
 	endstops = _endstops;
 
@@ -71,7 +75,7 @@ void stepper_executor_init(t_endstops * _endstops) {
 
 	esp_err_t res = gpio_config(&chargerEnableConfig);
 	if (res) {
-		ESP_LOGE(LOG_STEPPER_EXEC, "gpio_config error: %d", res);
+		_ESP_LOGE(LOG_STEPPER_EXEC, "gpio_config error: %d", res);
 		return;
 	}
 
@@ -79,24 +83,28 @@ void stepper_executor_init(t_endstops * _endstops) {
 
 	stepper_exec_stop_timer = delay_timer_allocate(STEPPER_MOTOR_OFF_DELAY_MILLIS);
 
-	ESP_LOGI(LOG_STEPPER_EXEC, "Reading NVS");
+	_ESP_LOGI(LOG_STEPPER_EXEC, "Reading NVS");
 
 	stepper_exec_max_position = nvs_read_32t(STEPPER_NVS_FULL_OPEN_STEPS, STEPPER_DEFAULT_FULL_OPEN_STEPS);
-	ESP_LOGI(LOG_STEPPER_EXEC, "Full-open-steps value : %li", stepper_exec_max_position);
+	_ESP_LOGI(LOG_STEPPER_EXEC, "Full-open-steps value : %li", stepper_exec_max_position);
 
 	xTaskCreate(stepper_executor_on_execute_command_task, "stepper on execute command task", STEPPER_COMMAND_TASK_STACK_SIZE, NULL, 10, NULL);
 }
 
 static void stepper_executor_on_execute_command_task(void*) {
 	while(true) {
-		if (stepper_on_in_error_now) {
-			if (stepper_exec_command == STEPPER_EXEC_CMD__CANCEL) {
+		if (stepper_executor_is_in_error_now) {
+			if (stepper_exec_command != STEPPER_EXEC_CMD__IDLE) {
 				controller_on_status(CONTROLLER_STATUS_ERROR_RAISED);
 				stepper_exec_command = STEPPER_EXEC_CMD__IDLE;
 			}
 
 			if (stepper_exec_current_position != STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 				stepper_exec_current_position = STEPPER_EXEC_CURRENT_POSITION_UNKNOWN;
+			}
+
+			if (stepper_executor_is_motor_on()) {
+				stepper_executor_motor_off();
 			}
 
 			vTaskDelay(10 / portTICK_PERIOD_MS);
@@ -130,7 +138,7 @@ static void stepper_executor_on_execute_command_task(void*) {
 
 		if (stepper_exec_command == STEPPER_EXEC_CMD__CANCEL) {
 			controller_on_status(
-					stepper_on_in_error_now ?
+					stepper_executor_is_in_error_now ?
 							CONTROLLER_STATUS_ERROR_RAISED :
 							CONTROLLER_STATUS_TASK_CANCELLED);
 
@@ -175,23 +183,32 @@ static void stepper_executor_on_execute_command_task(void*) {
 }
 
 void stepper_executor_calibrate() {
+	stepper_executor_is_in_error_now = false; // calibration resets error flag
 	stepper_exec_command = STEPPER_EXEC_CMD__CALIBRATE;
 }
 
 void stepper_executor_moveto(uint8_t percent) {
-	stepper_exec_command = percent;
+	if (!stepper_executor_is_in_error_now) {
+		stepper_exec_command = percent;
+	}
 }
 
 void stepper_executor_cancel() {
-	stepper_exec_command = STEPPER_EXEC_CMD__CANCEL;
+	if (!stepper_executor_is_in_error_now) {
+		stepper_exec_command = STEPPER_EXEC_CMD__CANCEL;
+	}
 }
 
 void stepper_executor_on_alarm() {
-	if (!stepper_on_in_error_now) {
+	if (!stepper_executor_is_in_error_now) {
 		stepper_executor_motor_off();
-		stepper_on_in_error_now = true;
+		stepper_executor_is_in_error_now = true;
 		stepper_exec_command = STEPPER_EXEC_CMD__CANCEL;
 	}
+}
+
+void stepper_executor_cancel_error() {
+	stepper_executor_is_in_error_now = false;
 }
 
 void stepper_executor_do_calibrate(uint8_t currentcommand) {
@@ -227,7 +244,7 @@ void stepper_executor_do_calibrate(uint8_t currentcommand) {
 }
 
 void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_close) {
-	ESP_LOGI(LOG_STEPPER_EXEC, "Locate position fired for command %d. Moving to %s", currentcommand, (move_to_close ? "CLOSE" : "OPEN"));
+	_ESP_LOGI(LOG_STEPPER_EXEC, "Locate position fired for command %d. Moving to %s", currentcommand, (move_to_close ? "CLOSE" : "OPEN"));
 
 	if (stepper_exec_max_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 		stepper_executor_do_calibrate(currentcommand);
@@ -257,7 +274,7 @@ void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_cl
 }
 
 void stepper_executor_do_moveto(uint8_t currentcommand) {
-	ESP_LOGI(LOG_STEPPER_EXEC, "Execute move-to-position: %d%%", currentcommand);
+	_ESP_LOGI(LOG_STEPPER_EXEC, "Execute move-to-position: %d%%", currentcommand);
 
 	if (stepper_exec_max_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 		stepper_executor_do_calibrate(currentcommand);
@@ -304,14 +321,14 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 		if (stepper_exec_current_position != stepper_exec_max_position &&
 				diff > 0 &&
 				endstops->is_open_fired()) {
-			ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL OPEN POSITION value from %li to %li", stepper_exec_max_position, stepper_exec_current_position);
+			_ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL OPEN POSITION value from %li to %li", stepper_exec_max_position, stepper_exec_current_position);
 			// adjust full-open value
 			stepper_exec_max_position = stepper_exec_current_position;
 			break;
 		} else if (stepper_exec_max_position != 0 &&
 					diff < 0 &&
 					endstops->is_close_fired()) {
-			ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL CLOSED POSITION from %li to 0", stepper_exec_max_position);
+			_ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL CLOSED POSITION from %li to 0", stepper_exec_max_position);
 			// adjust current position to 'closed'
 			stepper_exec_current_position = 0;
 			break;
@@ -319,13 +336,13 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 	}
 
 	if (stepper_exec_current_position == 0 && !endstops->is_close_fired()) {
-		ESP_LOGI(LOG_STEPPER_EXEC, "Move-to - END OF LOOP, correcting position via CLOSE endstop.");
+		_ESP_LOGI(LOG_STEPPER_EXEC, "Move-to - END OF LOOP, correcting position via CLOSE endstop.");
 
 		t_delay_timer * timer = delay_timer_allocate(STEPPER_EXEC_CORRECT_POSITION_TIMEOUT);
 
 		while(!endstops->is_close_fired()) {
 			if (delay_timer_start_or_check(timer)) {
-				ESP_LOGW(LOG_STEPPER_EXEC, "Move-to : after END OF LOOP - move timeout. Stopped.");
+				_ESP_LOGW(LOG_STEPPER_EXEC, "Move-to : after END OF LOOP - move timeout. Stopped.");
 				break;
 			}
 
@@ -339,13 +356,13 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 
 		delay_timer_release(&timer);
 	} else if (stepper_exec_current_position == stepper_exec_max_position && !endstops->is_open_fired()) {
-		ESP_LOGI(LOG_STEPPER_EXEC, "Move-to - END OF LOOP, correcting position via OPEN endstop.");
+		_ESP_LOGI(LOG_STEPPER_EXEC, "Move-to - END OF LOOP, correcting position via OPEN endstop.");
 
 		t_delay_timer * timer = delay_timer_allocate(STEPPER_EXEC_CORRECT_POSITION_TIMEOUT);
 
 		while(!endstops->is_open_fired()) {
 			if (delay_timer_start_or_check(timer)) {
-				ESP_LOGW(LOG_STEPPER_EXEC, "Move-to : after END OF LOOP - move timeout. Stopped.");
+				_ESP_LOGW(LOG_STEPPER_EXEC, "Move-to : after END OF LOOP - move timeout. Stopped.");
 				break;
 			}
 
@@ -361,7 +378,7 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 		delay_timer_release(&timer);
 
 		if (endstops->is_open_fired()) {
-			ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL OPEN POSITION value from %li to %li", stepper_exec_max_position, stepper_exec_current_position);
+			_ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL OPEN POSITION value from %li to %li", stepper_exec_max_position, stepper_exec_current_position);
 			stepper_exec_max_position = stepper_exec_current_position;
 		}
 	}

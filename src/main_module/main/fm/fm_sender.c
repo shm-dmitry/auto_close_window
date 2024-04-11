@@ -34,7 +34,7 @@ static void fm_sender_task(void* arg) {
 	    uint8_t buffer_size = 0;
 		fm_command_encode(&tx_command, &buffer, &buffer_size);
 		if (buffer != NULL) {
-			ESP_LOGI(LOG_FM_SENDER, "Sending command %04X [ %02X %02X %02X %02X %02X %02X ]",
+			_ESP_LOGI(LOG_FM_SENDER, "Sending command %04X [ %02X %02X %02X %02X %02X %02X ]",
 					tx_command.address,
 					buffer[0],
 					buffer[1],
@@ -42,6 +42,7 @@ static void fm_sender_task(void* arg) {
 					buffer[3],
 					buffer[4],
 					buffer[5]);
+
 			ESP_ERROR_CHECK(rmt_transmit(tx_channel,
 										 fm_send_encoder,
 										 buffer,
@@ -67,24 +68,13 @@ void fm_sender_init() {
 
     esp_err_t res = rmt_new_tx_channel(&tx_chan_config, &tx_channel);
     if (res) {
-		ESP_LOGE(LOG_FM_SENDER, "rmt_new_tx_channel error: %d", res);
+		_ESP_LOGE(LOG_FM_SENDER, "rmt_new_tx_channel error: %d", res);
 		return;
     }
-/*
-    rmt_carrier_config_t tx_carrier_cfg = {
-        .duty_cycle = 0.5,
-        .frequency_hz = 50000,
-    };
-    // modulate carrier to TX channel
-    res = rmt_apply_carrier(tx_channel, &tx_carrier_cfg);
-    if (res) {
-		ESP_LOGE(LOG_FM_SENDER, "rmt_apply_carrier error: %d", res);
-		return;
-    }
-*/
+
     res = rmt_enable(tx_channel);
     if (res) {
-		ESP_LOGE(LOG_FM_SENDER, "rmt_enable error: %d", res);
+		_ESP_LOGE(LOG_FM_SENDER, "rmt_enable error: %d", res);
 		return;
     }
 
@@ -94,7 +84,7 @@ void fm_sender_init() {
 
 	xTaskCreate(fm_sender_task, "FM sender", FM_SENDER_TASK_STACK_SIZE, NULL, 10, NULL);
 
-    ESP_LOGI(LOG_FM_SENDER, "FM Sender initialized");
+    _ESP_LOGI(LOG_FM_SENDER, "FM Sender initialized");
 }
 
 void fm_sender_send(const t_fm_command * command) {

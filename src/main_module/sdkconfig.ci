@@ -1,14 +1,16 @@
 WIFI_SSID=""
 WIFI_PASSWORD=""
-CONFIG_WIFI_TOPIC="/acw/system/0/wifi/command"
+CONFIG_WIFI_TOPIC="/system/wifi/command"
 
 MQTT_BROKER_URI=""
 MQTT_BROKER_USERNAME=""
 MQTT_BROKER_PASSWORD=""
-MQTT_INIT_LOGGER_ENABLED=false
-MQTT_INIT_LOGGER_TOPIC="/acw/system/0/logger/init"
-MQTT_LIVE_LOGGER_ENABLED=false
-MQTT_LIVE_LOGGER_TOPIC="/acw/system/0/logger/live"
+MQTT_TOPICS_PREFIX="/acw/0"
+MQTT_HEALTHCHECK_ENABLED=true
+MQTT_HEALTHCHECK_TOPIC="/system/healthcheck"
+MQTT_OTA_ENABLED=false
+MQTT_OTA_TOPIC="/system/ota"
+MQTT_OTA_VERSION_TOPIC="/system/ota/version"
 
 PIN_STEPPER_ENABLE=2
 PIN_STEPPER_POWER_ON=12
@@ -31,8 +33,8 @@ FM_TX_CARRIER_FREQ=40000
 PIN_CHARGER_START_BUTTON=27
 PIN_CHARGER_ENABLE=32
 
-CONTROLLER_MQTT_STEPPER_TOPIC="/acw/controller/0/stepper/commands"
-CONTROLLER_MQTT_STEPPER_STATUS_TOPIC="/acw/controller/0/stepper/status"
-CONTROLLER_MQTT_AIR_STATUS="/acw/controller/0/air/status"
-CONTROLLER_MQTT_NOISE_STATUS="/acw/controller/0/noise/status"
-CONTROLLER_MQTT_NOISE_ALARM="/acw/controller/0/noise/alarm"
+CONTROLLER_MQTT_STEPPER_TOPIC="/controller/stepper/commands"
+CONTROLLER_MQTT_STEPPER_STATUS_TOPIC="/controller/stepper/status"
+CONTROLLER_MQTT_AIR_STATUS="/controller/air/status"
+CONTROLLER_MQTT_NOISE_STATUS="/controller/noise/status"
+CONTROLLER_MQTT_NOISE_ALARM="/controller/noise/alarm"

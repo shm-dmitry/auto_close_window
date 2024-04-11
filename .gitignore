@@ -12,3 +12,4 @@ schematics/outdoor-module/outdoor-module-backups/
 src/main_module/main/fm/crypto/encrypter_secret.private.h
 src/main_module/.settings/
 src/handle_module/encrypter_secret.private.h
+src/main_module/server_certs/ca_cert.pem

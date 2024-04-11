@@ -131,7 +131,7 @@ t_fm_command * decrypter_process_memory(uint16_t address, const uint8_t * buff, 
 	uint8_t calculated_crc = decrypter_get_crc();
 	uint8_t actual_crc = decrypter_next(buff[size - 1]);
 	if (actual_crc != calculated_crc) {
-		ESP_LOGE(LOG_ENCRYPTOR, "BAD CRC calculated %d, actual: %d. Buffer: [ %02X %02X %02X %02X ]",
+		_ESP_LOGE(LOG_ENCRYPTOR, "BAD CRC calculated %d, actual: %d. Buffer: [ %02X %02X %02X %02X ]",
 				calculated_crc,
 				actual_crc,
 				buff[0],

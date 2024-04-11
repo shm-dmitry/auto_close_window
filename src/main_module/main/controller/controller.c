@@ -21,7 +21,7 @@
 #define CONTROLLER_PDU_ARG_MOVE_TO_2   0x61
 
 void controller_process_pdu_command(uint8_t arg) {
-	ESP_LOGI(LOG_CONTROLLER, "PDU command: arg=%02X", arg);
+	_ESP_LOGI(LOG_CONTROLLER, "PDU command: arg=%02X", arg);
 
 	switch (arg) {
 		case CONTROLLER_PDU_ARG_FULL_OPEN:
@@ -41,7 +41,7 @@ void controller_process_pdu_command(uint8_t arg) {
 }
 
 void controller_process_hm_command(uint8_t arg) {
-	ESP_LOGI(LOG_CONTROLLER, "HM command: arg=%02X", arg);
+	_ESP_LOGI(LOG_CONTROLLER, "HM command: arg=%02X", arg);
 
 	switch (arg) {
 		case CONTROLLER_HM_FULL_OPEN:
@@ -55,6 +55,9 @@ void controller_process_hm_command(uint8_t arg) {
 			break;
 		case CONTROLLER_HM_CALIBRATE:
 			stepper_calibrate();
+			break;
+		case CONTROLLER_HM_CANCEL_ERROR:
+			stepper_cancel_error();
 			break;
 		default:
 			ESP_LOGW(LOG_CONTROLLER, "HM command : unknown arg %02X", arg);
@@ -87,7 +90,7 @@ void controller_process_command(const t_fm_command * command) {
 		break;
 
 	case FM_COMMAND_ADDRESS__MM_STEPPER_STATUS:
-		ESP_LOGI(LOG_CONTROLLER, "Received self message with arg = %02X", args[0]);
+		_ESP_LOGI(LOG_CONTROLLER, "Received self message with arg = %02X", args[0]);
 		// ignore this address - I receive myself commands
 		break;
 

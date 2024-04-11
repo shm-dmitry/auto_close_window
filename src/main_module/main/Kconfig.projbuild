@@ -25,22 +25,30 @@ menu "Auto-Close Window Settings"
       config MQTT_BROKER_PASSWORD
 	     string "Broker user password"
 	     default ""
-
-      config MQTT_INIT_LOGGER_ENABLED
-	     boolean "Enable log init messages to MQTT topic"
-	     default true
-
-      config MQTT_INIT_LOGGER_TOPIC
-	     string "MQTT Init logger topic"
-	     default "/acw/system/0/logger/init"
-
-      config MQTT_LIVE_LOGGER_ENABLED
-	     boolean "Enable log live messages to MQTT topic"
-	     default true
-
-      config MQTT_LIVE_LOGGER_TOPIC
-	     string "MQTT live logger topic"
-	     default "/acw/system/0/logger/live"
+	     
+	  config MQTT_TOPICS_PREFIX
+	  	 string "Prefix for all topics"
+	  	 default "/acw/0"
+	  	 
+	  config MQTT_HEALTHCHECK_ENABLED
+	     boolean "Enable MQTT healthchecks"
+	     default false
+	  	 
+	  config MQTT_HEALTHCHECK_TOPIC
+	  	 string "Topic to send/read healthcheck pings"
+	  	 default "/system/healthcheck"
+	  	 
+	  config MQTT_OTA_ENABLED
+	     boolean "Enable MQTT OTA"
+	     default false
+	  	 
+	  config MQTT_OTA_TOPIC
+	  	 string "Topic to read OTA firmware URL"
+	  	 default "/system/ota"
+	  	 
+	  config MQTT_OTA_VERSION_TOPIC
+	  	 string "Topic to read OTA firmware URL"
+	  	 default "/system/ota/version"
    endmenu
    
    menu "Stepper configuration"

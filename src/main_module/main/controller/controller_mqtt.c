@@ -23,13 +23,15 @@ void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 		}
 	} else if (strcmp(type, "calibrate") == 0) {
 		stepper_calibrate();
+	} else if (strcmp(type, "cancel_error") == 0) {
+		stepper_cancel_error();
 	}
 
 	cJSON_Delete(root);
 }
 
 void controller_mqtt_process_om_air_data(int8_t temperature, uint8_t humidity, uint32_t pressure) {
-	ESP_LOGI(LOG_CONTROLLER, "OM AIR status: temperature=%d C, humidity=%d%%, pressure=%li Pa", temperature, humidity, pressure);
+	_ESP_LOGI(LOG_CONTROLLER, "OM AIR status: temperature=%d C, humidity=%d%%, pressure=%li Pa", temperature, humidity, pressure);
 
     cJSON *root = cJSON_CreateObject();
     cJSON_AddNumberToObject(root, "temperature", temperature);
@@ -44,7 +46,7 @@ void controller_mqtt_process_om_air_data(int8_t temperature, uint8_t humidity, u
 }
 
 void controller_mqtt_process_om_noise_alarm(bool alarm) {
-    ESP_LOGI(LOG_CONTROLLER, "OM NOISE alarm: %s", (alarm ? "ON" : "OFF"));
+    _ESP_LOGI(LOG_CONTROLLER, "OM NOISE alarm: %s", (alarm ? "ON" : "OFF"));
 
     cJSON *root = cJSON_CreateObject();
     cJSON_AddBoolToObject(root, "noise_alarm", alarm);
@@ -57,7 +59,7 @@ void controller_mqtt_process_om_noise_alarm(bool alarm) {
 }
 
 void controller_mqtt_process_om_noise_data(uint8_t freq1, uint8_t level1, uint8_t freq2, uint8_t level2, uint8_t freq3, uint8_t level3, uint8_t freq4, uint8_t level4, uint8_t freq5, uint8_t level5) {
-	ESP_LOGI(LOG_CONTROLLER, "OM NOISE data: freq1: [ %d = %d ]; freq2: [ %d = %d ]; freq3: [ %d = %d ]; freq4: [ %d = %d ]; freq5: [ %d = %d ]",
+	_ESP_LOGI(LOG_CONTROLLER, "OM NOISE data: freq1: [ %d = %d ]; freq2: [ %d = %d ]; freq3: [ %d = %d ]; freq4: [ %d = %d ]; freq5: [ %d = %d ]",
 			freq1, level1,
 			freq2, level2,
 			freq3, level3,

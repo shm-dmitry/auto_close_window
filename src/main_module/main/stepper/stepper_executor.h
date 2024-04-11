@@ -14,6 +14,7 @@ typedef struct {
 
 void stepper_executor_init(t_endstops * endstops);
 
+void stepper_executor_cancel_error();
 void stepper_executor_calibrate();
 void stepper_executor_moveto(uint8_t percent);
 void stepper_executor_cancel();

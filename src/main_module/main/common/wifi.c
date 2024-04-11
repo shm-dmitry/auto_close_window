@@ -35,11 +35,11 @@
 			WIFI_DEFAULT_WAIT_CONNECTION); \
     \
     if (bits & WIFI_CONNECTED_BIT) { \
-        ESP_LOGI(LOG_WIFI, "connected to ap SSID:%s", wifi_config.sta.ssid); \
+        _ESP_LOGI(LOG_WIFI, "connected to ap SSID:%s", wifi_config.sta.ssid); \
     } else if (bits & WIFI_FAIL_BIT) { \
-        ESP_LOGE(LOG_WIFI, "Failed to connect to SSID:%s", wifi_config.sta.ssid); \
+        _ESP_LOGE(LOG_WIFI, "Failed to connect to SSID:%s", wifi_config.sta.ssid); \
     } else { \
-        ESP_LOGE(LOG_WIFI, "UNEXPECTED EVENT"); \
+        _ESP_LOGE(LOG_WIFI, "UNEXPECTED EVENT"); \
     } \
 
 static int s_retry_num = 0;
@@ -61,7 +61,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         if (s_retry_num < WIFI_MAXIMUM_RETRY) {
             esp_wifi_connect();
             s_retry_num++;
-            ESP_LOGI(LOG_WIFI, "retry to connect to the AP");
+            _ESP_LOGI(LOG_WIFI, "retry to connect to the AP");
         } else {
         	if (xEventGroupGetBits(s_wifi_event_group) & WIFI_ALLOW_BG_RECONNECT_BIT) {
         		xTaskCreate(wifi_bg_reconnect_delay_task, "wifi background reconnect", WIFI_BG_RECONNECT_TASK_STACK_SIZE, NULL, 10, NULL);
@@ -69,10 +69,11 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         		xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
         	}
         }
-        ESP_LOGI(LOG_WIFI,"connect to the AP fail");
+
+        _ESP_LOGI(LOG_WIFI,"connect to the AP fail");
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
-        ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
-        ESP_LOGI(LOG_WIFI, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
+        _ESP_LOGI(LOG_WIFI, "got ip:" IPSTR, IP2STR(&((ip_event_got_ip_t*) event_data)->ip_info.ip));
+
         s_retry_num = 0;
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
     }
@@ -87,7 +88,7 @@ void wifi_mqtt_listener(const char * topic, const char * data) {
 	const char * type = cJSON_GetStringValue(cJSON_GetObjectItem(root, "type"));
 	if (strcmp(type, "wifi_reset_ssid") == 0) {
 		if (wifi_nvs_set_ssid_password(NULL, NULL)) {
-			ESP_LOGI(LOG_WIFI, "WiFi SSID/PASSWORD resetted to default. Restart.");
+			_ESP_LOGI(LOG_WIFI, "WiFi SSID/PASSWORD resetted to default. Restart.");
 			esp_restart();
 		}
 	} else if (strcmp(type, "wifi_set_ssid") == 0) {
@@ -96,7 +97,7 @@ void wifi_mqtt_listener(const char * topic, const char * data) {
 
 		if (ssid && password) {
 			if (wifi_nvs_set_ssid_password(ssid, password)) {
-				ESP_LOGI(LOG_WIFI, "WiFi SSID/PASSWORD Changed to %s:***. Restart", ssid);
+				_ESP_LOGI(LOG_WIFI, "WiFi SSID/PASSWORD Changed to %s:***. Restart", ssid);
 				esp_restart();
 			}
 		}
@@ -165,7 +166,7 @@ void wifi_init() {
     }
 
     if (!(bits & WIFI_CONNECTED_BIT)) {
-    	ESP_LOGE(LOG_WIFI, "Cant connect to WIFI. Restart.");
+    	_ESP_LOGE(LOG_WIFI, "Cant connect to WIFI. Restart.");
 
     	esp_wifi_stop();
 
@@ -176,5 +177,5 @@ void wifi_init() {
 
     mqtt_subscribe(CONFIG_WIFI_TOPIC, wifi_mqtt_listener);
 
-	ESP_LOGI(LOG_WIFI, "WIFI configured");
+	_ESP_LOGI(LOG_WIFI, "WIFI configured");
 }

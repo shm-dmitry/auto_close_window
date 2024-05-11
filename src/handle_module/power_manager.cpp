@@ -39,13 +39,13 @@
 #define POWER_MANAGER_DISCH_CURRENT (_BV(9)) 
 
 // EN_LWPWR - enable          [15 = 1]
-// WDTMR_ADJ - 5 sec          [14:13 = 01]
+// WDTMR_ADJ - disable        [14:13 = 00]
 // freq = 800 kHz             [9:8 = 01]
 // EN_LEARN - disable         [5 = 0]
 // IADP_GAIN = 20x (unused)   [4 = 0]
 // IDCHG Amplifier Gain = 8x  ]3 = 0]
 // CHRG_INHIBIT enable charge [0 = 0]
-#define POWER_MANAGER_OPTIONS_0 (_BV(15) | _BV(13) | _BV(8))
+#define POWER_MANAGER_OPTIONS_0 (_BV(15) | _BV(8))
 
 // Battery Depletion Threshold = 60% [15:14 = 00]
 // EN_IDCHG - disable        [[11 = 0]
@@ -98,7 +98,11 @@
           } \
           var = Wire.read();
 
+#define POWER_MANAGER_NOEVENT_TIMER_ENABLED  false
+
+#if POWER_MANAGER_NOEVENT_TIMER_ENABLED
 unsigned long power_manager_noevent_timer = 0;
+#endif
 unsigned long power_manager_i2c_next_recheck_config = 0;
 
 void power_manager_configure_charger();
@@ -114,7 +118,9 @@ void power_manager_init() {
 
   power_manager_configure_charger();
 
+#if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   power_manager_noevent_timer = millis() + POWER_MANAGER_NOEVENT_POWEROFF_DELAY;
+#endif
 }
 
 void power_manager_configure_charger() {
@@ -195,20 +201,24 @@ bool power_manager_is_charging() {
 }
 
 void power_manager_on_event() {
+  #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   if (power_manager_noevent_timer == 0) {
     digitalWrite(POWER_MANAGER_PIN_LOCK, HIGH); // restore HIGH state - user interacted with us during shutdown-delay
   }
 
   power_manager_noevent_timer = millis() + POWER_MANAGER_NOEVENT_POWEROFF_DELAY;
+  #endif
 }
 
 void power_manager_on_main_loop() {
   unsigned long now = millis();
 
+#if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   if (power_manager_noevent_timer > 0 && now > power_manager_noevent_timer) {
     digitalWrite(POWER_MANAGER_PIN_LOCK, LOW);
     power_manager_noevent_timer = 0;
   }
+#endif
 
   if (now > power_manager_i2c_next_recheck_config) {
     // check prochot to print error

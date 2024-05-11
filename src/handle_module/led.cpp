@@ -3,8 +3,9 @@
 #include "Arduino.h"
 #include "led_arrays.h"
 
-#define LED_PIN_RED 10
-#define LED_PIN_GREEN 9
+// TODO: re-solder LED and switch values
+#define LED_PIN_RED 9
+#define LED_PIN_GREEN 10
 
 uint8_t led_running_type = LED_NO_COMMAND;
 

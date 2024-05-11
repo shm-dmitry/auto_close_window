@@ -23094,7 +23094,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "RM065, 100K"
+		(property "Value" "RM065, 20K"
 			(at 186.69 223.52 0)
 			(effects
 				(font
@@ -30342,7 +30342,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100K"
+		(property "Value" "250K"
 			(at 480.06 238.7599 0)
 			(effects
 				(font

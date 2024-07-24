@@ -3,7 +3,7 @@
 
 #include "esp_log.h"
 
-#define LOG_SHOW_DEBUG_MESSAGES  true
+#define LOG_SHOW_DEBUG_MESSAGES  false
 
 #if LOG_SHOW_DEBUG_MESSAGES
 #define _ESP_LOGI(tag, format, ...) ESP_LOGI(tag, format, ##__VA_ARGS__)

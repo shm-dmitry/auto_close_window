@@ -77,6 +77,10 @@ menu "Auto-Close Window Settings"
    	  	 default 7
    	  	 
    	  menu "ADC measurement value"
+   	  	  config ADC_STEPPER_CONNECTED_VALUE
+   	  	  	 int "Stepper endstops connected value (percent)"
+   	  	  	 default 90
+   	  
 	   	  config ADC_STEPPER_OPEN_VALUE
 	   	  	 int "Stepper Full Open ADC value (percent)"
 	   	  	 default 60

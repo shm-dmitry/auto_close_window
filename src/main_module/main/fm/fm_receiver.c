@@ -58,9 +58,11 @@ static void fm_receiver_task(void* arg) {
     rmt_receive_config_t fm_receiveconfig = {
 		.signal_range_min_ns = 100,
 		.signal_range_max_ns = FM_COMMAND_ENCODER_MAX_IMPL_TIME * 1000,
+#if SOC_RMT_SUPPORT_RX_PINGPONG
 		.flags = {
 			.en_partial_rx = true
 		}
+#endif
 	};
 
     rmt_rx_event_callbacks_t cbs = {

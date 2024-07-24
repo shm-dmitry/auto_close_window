@@ -3,16 +3,18 @@
 
 #include "esp_log.h"
 
-#define LOG_SHOW_DEBUG_MESSAGES  false
+#define LOG_SHOW_DEBUG_MESSAGES  true
 
 #if LOG_SHOW_DEBUG_MESSAGES
 #define _ESP_LOGI(tag, format, ...) ESP_LOGI(tag, format, ##__VA_ARGS__)
 #define _ESP_LOGW(tag, format, ...) ESP_LOGW(tag, format, ##__VA_ARGS__)
 #define _ESP_LOGE(tag, format, ...) ESP_LOGE(tag, format, ##__VA_ARGS__)
+#define _ESP_DRAM_LOGI(tag, format, ...) ESP_DRAM_LOGI(tag, format, ##__VA_ARGS__)
 #else
 #define _ESP_LOGI(tag, format, ...)
 #define _ESP_LOGW(tag, format, ...)
 #define _ESP_LOGE(tag, format, ...)
+#define _ESP_DRAM_LOGI(tag, format, ...)
 #endif
 
 #define LOG_OTA          "ota"

@@ -35,7 +35,7 @@
 // Was not tested! Maybe I will rewrite this code.
 #define STEPPER_NOISE_ALARM_DEGLICH 2
 
-adc_oneshot_unit_handle_t adc_limit_sw_handle;
+adc_oneshot_unit_handle_t adc_handle;
 
 #if STEPPER_ENABLE_NOISE_ALARM
 static void stepper_noise_alarm_task(void*);
@@ -44,7 +44,7 @@ static void stepper_noise_alarm_task(void*);
 bool stepper_is_close_position_reached() {
 #if STEPPER_ENABLE_LIMIT_SWITCH
 	int value = 0;
-	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+	esp_err_t res = adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
 	if (res != ESP_OK) {
 		return true;
 	}
@@ -62,7 +62,7 @@ bool stepper_is_close_position_reached() {
 bool stepper_is_open_position_reached() {
 #if STEPPER_ENABLE_LIMIT_SWITCH
 	int value = 0;
-	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+	esp_err_t res = adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
 	if (res != ESP_OK) {
 		return true;
 	}
@@ -80,7 +80,7 @@ bool stepper_is_open_position_reached() {
 bool stepper_is_stepper_allowed() {
 #if STEPPER_ENABLE_LIMIT_SWITCH
 	int value = 0;
-	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+	esp_err_t res = adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
 	if (res != ESP_OK) {
 		return true;
 	}
@@ -94,7 +94,7 @@ bool stepper_is_stepper_allowed() {
 bool stepper_is_noise_alarm() {
 #if STEPPER_ENABLE_NOISE_ALARM
 	int value = 0;
-	esp_err_t res = adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_NOISE_ALARM, &value);
+	esp_err_t res = adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_NOISE_ALARM, &value);
 	if (res != ESP_OK) {
 		return true;
 	}
@@ -108,16 +108,16 @@ bool stepper_is_noise_alarm() {
 void stepper_init() {
 	_ESP_LOGI(LOG_STEPPER, "Initializing limit switch channel...");
 
-    adc_oneshot_unit_init_cfg_t init_config1 = {
+    adc_oneshot_unit_init_cfg_t init_config = {
         .unit_id = ADC_UNIT_1,
     };
-    ESP_ERROR_CHECK(adc_oneshot_new_unit(&init_config1, &adc_limit_sw_handle));
+    ESP_ERROR_CHECK(adc_oneshot_new_unit(&init_config, &adc_handle));
 
     adc_oneshot_chan_cfg_t config = {
         .bitwidth = ADC_BITWIDTH_DEFAULT,
         .atten = ADC_ATTEN_DB_12,
     };
-    ESP_ERROR_CHECK(adc_oneshot_config_channel(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &config));
+    ESP_ERROR_CHECK(adc_oneshot_config_channel(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &config));
 
 #if CONFIG_ADC_STEPPER_CALIBRATION_MODE
     while(true) {

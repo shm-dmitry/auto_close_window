@@ -1,8 +1,8 @@
 <circuit version="1.1.0-SR0" rev="1917" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
 
-<item itemtype="WaveGen" CircId="WaveGen-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-336,-120" rotation="0" hflip="1" vflip="1" label="WaveGen-5" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Out="false" Running="false" Wave_Type="Sine" Freq="1 kHz" Phase="0 _º" Steps="100 _Steps" Duty="50 _%" Always_On="false" Bipolar="false" Floating="false" Semi_Ampli="0.15 V" Mid_Volt="0 V" />
+<item itemtype="WaveGen" CircId="WaveGen-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-336,-120" rotation="0" hflip="1" vflip="1" label="WaveGen-5" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Out="true" Running="true" Wave_Type="Sine" Freq="500 Hz" Phase="0 _º" Steps="100 _Steps" Duty="50 _%" Always_On="false" Bipolar="false" Floating="false" Semi_Ampli="0.15 V" Mid_Volt="0 V" />
 
-<item itemtype="Capacitor" CircId="Capacitor-6" mainComp="false" ShowProp="Capacitance" Show_id="false" Show_Val="true" Pos="-276,-120" rotation="0" hflip="1" vflip="1" label="Capacitor-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Capacitance="47 nF" Resistance="1 µΩ" InitVolt="0 V" ReaStep="0 ns" />
+<item itemtype="Capacitor" CircId="Capacitor-6" mainComp="false" ShowProp="Capacitance" Show_id="false" Show_Val="true" Pos="-276,-120" rotation="0" hflip="1" vflip="1" label="Capacitor-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Capacitance="100 nF" Resistance="1 µΩ" InitVolt="0 V" ReaStep="0 ns" />
 
 <item itemtype="Resistor" CircId="Resistor-7" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-216,-156" rotation="-90" hflip="1" vflip="1" label="Resistor-7" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="20000 Ω" />
 

@@ -74,6 +74,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/cxx/cxx_guards.cpp</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/cxx/cxx_init.cpp</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/cxx/cxx_init.cpp</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp-tls/esp_tls.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp-tls/esp_tls.c</location>
@@ -87,6 +92,11 @@
 			<name>build/ide/esp_idf_components/esp-tls/esp_tls_mbedtls.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp-tls/esp_tls_mbedtls.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp-tls/esp_tls_platform_port.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp-tls/esp_tls_platform_port.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_adc/adc_cali.c</name>
@@ -122,6 +132,16 @@
 			<name>build/ide/esp_idf_components/esp_bootloader_format/esp_bootloader_desc.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_bootloader_format/esp_bootloader_desc.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_driver_cam/dvp_share_ctrl.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_driver_cam/dvp_share_ctrl.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_driver_cam/esp_cam_ctlr.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_driver_cam/esp_cam_ctlr.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_driver_dac/dac_common.c</name>
@@ -339,6 +359,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_mm/esp_mmu_map.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_mm/heap_align_hw.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_mm/heap_align_hw.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_netif/esp_netif_defaults.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_netif/esp_netif_defaults.c</location>
@@ -447,6 +472,11 @@
 			<name>build/ide/esp_idf_components/esp_system/xt_wdt.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_system/xt_wdt.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_vfs_console/vfs_console.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_vfs_console/vfs_console.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/freertos/app_startup.c</name>
@@ -674,6 +704,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/heap/heap_caps.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/heap/heap_caps_base.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/heap/heap_caps_base.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/heap/heap_caps_init.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/heap/heap_caps_init.c</location>
@@ -689,21 +724,6 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/http_parser/http_parser.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/log/log.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/log/log.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/log/log_buffers.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/log/log_buffers.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/log/log_freertos.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/log/log_freertos.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/newlib/abort.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/newlib/abort.c</location>
@@ -712,6 +732,11 @@
 			<name>build/ide/esp_idf_components/newlib/assert.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/newlib/assert.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/newlib/flockfile.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/newlib/flockfile.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/newlib/getentropy.c</name>
@@ -832,6 +857,16 @@
 			<name>build/ide/esp_idf_components/pthread/pthread_semaphore.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/pthread/pthread_semaphore.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/rt/FreeRTOS_POSIX_mqueue.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/rt/FreeRTOS_POSIX_mqueue.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/rt/FreeRTOS_POSIX_utils.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/rt/FreeRTOS_POSIX_utils.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/sdmmc/sdmmc_cmd.c</name>
@@ -1034,14 +1069,14 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/unity/unity_utils_memory.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/vfs/nullfs.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/vfs/nullfs.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/vfs/vfs.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/vfs/vfs.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/vfs/vfs_console.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/vfs/vfs_console.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/vfs/vfs_eventfd.c</name>
@@ -1349,6 +1384,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/efuse/src/esp_efuse_fields.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/efuse/src/esp_efuse_startup.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/efuse/src/esp_efuse_startup.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/efuse/src/esp_efuse_utility.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/efuse/src/esp_efuse_utility.c</location>
@@ -1367,6 +1407,11 @@
 			<name>build/ide/esp_idf_components/esp_adc/esp32/adc_cali_line_fitting.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_adc/esp32/adc_cali_line_fitting.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_adc/esp32/adc_dma.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_adc/esp32/adc_dma.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_coex/esp32/esp_coex_adapter.c</name>
@@ -1404,9 +1449,9 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_driver_gptimer/src/gptimer.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/esp_driver_gptimer/src/gptimer_priv.c</name>
+			<name>build/ide/esp_idf_components/esp_driver_gptimer/src/gptimer_common.c</name>
 			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_driver_gptimer/src/gptimer_priv.c</location>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_driver_gptimer/src/gptimer_common.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_driver_ledc/src/ledc.c</name>
@@ -1529,54 +1574,9 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth.c</location>
 		</link>
 		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_mac_esp.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_mac_esp.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_mac_esp_dma.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_mac_esp_dma.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_mac_esp_gpio.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_mac_esp_gpio.c</location>
-		</link>
-		<link>
 			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_netif_glue.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_netif_glue.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_phy_802_3.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_phy_802_3.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_phy_dp83848.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_phy_dp83848.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_phy_ip101.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_phy_ip101.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_phy_ksz80xx.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_phy_ksz80xx.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_phy_lan87xx.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_phy_lan87xx.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_eth/src/esp_eth_phy_rtl8201.c</name>
-			<type>1</type>
-			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/esp_eth_phy_rtl8201.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_gdbstub/src/gdbstub.c</name>
@@ -1759,6 +1759,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_netif/lwip/esp_netif_sntp.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_phy/esp32/phy_init_data.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_phy/esp32/phy_init_data.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_phy/src/btbb_init.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_phy/src/btbb_init.c</location>
@@ -1799,6 +1804,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_rom/patches/esp_rom_longjmp.S</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_rom/patches/esp_rom_print.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_rom/patches/esp_rom_print.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_rom/patches/esp_rom_spiflash.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c</location>
@@ -1834,6 +1844,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_system/port/esp_system_chip.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_system/port/image_process.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_system/port/image_process.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_system/port/panic_handler.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_system/port/panic_handler.c</location>
@@ -1864,6 +1879,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_timer/src/esp_timer_impl_lac.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_timer/src/esp_timer_init.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_timer/src/esp_timer_init.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_timer/src/ets_timer_legacy.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_timer/src/ets_timer_legacy.c</location>
@@ -1877,6 +1897,11 @@
 			<name>build/ide/esp_idf_components/esp_wifi/esp32/esp_adapter.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_wifi/esp32/esp_adapter.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_wifi/src/lib_printf.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_wifi/src/lib_printf.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_wifi/src/mesh_event.c</name>
@@ -1937,6 +1962,11 @@
 			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_flash.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/espcoredump/src/core_dump_flash.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_init.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/espcoredump/src/core_dump_init.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/espcoredump/src/core_dump_sha.c</name>
@@ -2079,6 +2109,16 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/json/cJSON/cJSON_Utils.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/log/src/log_timestamp_common.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/log_timestamp_common.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/util.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/util.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/lwip/port/sockets_ext.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/lwip/port/sockets_ext.c</location>
@@ -2184,6 +2224,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/nvs_flash/src/nvs_partition_manager.cpp</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/nvs_flash/src/nvs_platform.cpp</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/nvs_flash/src/nvs_platform.cpp</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/nvs_flash/src/nvs_storage.cpp</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/nvs_flash/src/nvs_storage.cpp</location>
@@ -2219,6 +2264,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/protocomm/proto-c/session.pb-c.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/sdmmc/sd_pwr_ctrl/sd_pwr_ctrl.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/soc/esp32/adc_periph.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/soc/esp32/adc_periph.c</location>
@@ -2232,6 +2282,11 @@
 			<name>build/ide/esp_idf_components/soc/esp32/dport_access.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/soc/esp32/dport_access.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/soc/esp32/emac_periph.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/soc/esp32/emac_periph.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/soc/esp32/gpio_periph.c</name>
@@ -2329,6 +2384,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/soc/esp32/uart_periph.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/soc/esp32/wdt_periph.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/soc/esp32/wdt_periph.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/wifi_provisioning/proto-c/wifi_config.pb-c.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/wifi_provisioning/proto-c/wifi_config.pb-c.c</location>
@@ -2409,6 +2469,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/bootloader_support/bootloader_flash/src/flash_qio_mode.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/bootloader_support/src/esp32/secure_boot_secure_features.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/bootloader_support/src/esp32/secure_boot_secure_features.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/bootloader_support/src/idf/bootloader_sha.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/bootloader_support/src/idf/bootloader_sha.c</location>
@@ -2454,6 +2519,51 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/mac/esp_eth_mac_esp.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/mac/esp_eth_mac_esp.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/mac/esp_eth_mac_esp_dma.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/mac/esp_eth_mac_esp_dma.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/mac/esp_eth_mac_esp_gpio.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/mac/esp_eth_mac_esp_gpio.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/phy/esp_eth_phy_802_3.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/phy/esp_eth_phy_802_3.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/phy/esp_eth_phy_dp83848.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/phy/esp_eth_phy_dp83848.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/phy/esp_eth_phy_ip101.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/phy/esp_eth_phy_ip101.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/phy/esp_eth_phy_ksz80xx.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/phy/esp_eth_phy_ksz80xx.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/phy/esp_eth_phy_lan87xx.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/phy/esp_eth_phy_lan87xx.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_eth/src/phy/esp_eth_phy_rtl8201.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_eth/src/phy/esp_eth_phy_rtl8201.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_http_server/src/util/ctrl_sock.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_http_server/src/util/ctrl_sock.c</location>
@@ -2477,6 +2587,11 @@
 			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32/esp_clk_tree.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/esp_hw_support/port/esp32/esp_clk_tree.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32/esp_cpu_intr.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/esp_hw_support/port/esp32/esp_cpu_intr.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_hw_support/port/esp32/esp_crypto_lock.c</name>
@@ -2547,6 +2662,31 @@
 			<name>build/ide/esp_idf_components/heap/port/esp32/memory_layout.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/heap/port/esp32/memory_layout.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/buffer/log_buffers.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/buffer/log_buffers.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/log_level/log_level.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/log_level/log_level.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/os/log_lock.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/os/log_lock.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/os/log_timestamp.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/os/log_timestamp.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/os/log_write.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/os/log_write.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/lwip/apps/dhcpserver/dhcpserver.c</name>
@@ -2652,6 +2792,11 @@
 			<name>build/ide/esp_idf_components/mbedtls/mbedtls/library/bignum_mod_raw.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/mbedtls/mbedtls/library/bignum_mod_raw.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/mbedtls/mbedtls/library/block_cipher.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/mbedtls/mbedtls/library/block_cipher.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/mbedtls/mbedtls/library/camellia.c</name>
@@ -2832,6 +2977,11 @@
 			<name>build/ide/esp_idf_components/mbedtls/mbedtls/library/pk.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/mbedtls/mbedtls/library/pk.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/mbedtls/mbedtls/library/pk_ecc.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/mbedtls/mbedtls/library/pk_ecc.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/mbedtls/mbedtls/library/pk_wrap.c</name>
@@ -3739,6 +3889,11 @@
 			<location>/opt/work-iot/espidf/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/xtensa_overlay_os_hook.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/log/src/log_level/tag_log_level/tag_log_level.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/log_level/tag_log_level/tag_log_level.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/lwip/lwip/src/api/api_lib.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/lwip/lwip/src/api/api_lib.c</location>
@@ -3957,6 +4112,16 @@
 			<name>build/ide/esp_idf_components/wpa_supplicant/esp_supplicant/src/crypto/tls_mbedtls.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/tls_mbedtls.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/log_level/tag_log_level/cache/log_binary_heap.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/log_level/tag_log_level/cache/log_binary_heap.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/log/src/log_level/tag_log_level/linked_list/log_linked_list.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/log/src/log_level/tag_log_level/linked_list/log_linked_list.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/lwip/lwip/src/apps/netbiosns/netbiosns.c</name>
@@ -4207,6 +4372,31 @@
 			<name>build/ide/esp_idf_components/efuse/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c</name>
 			<type>1</type>
 			<location>/opt/work-iot/espidf/esp-idf/components/efuse/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/arc4.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/lwip/lwip/src/netif/ppp/polarssl/arc4.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/des.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/lwip/lwip/src/netif/ppp/polarssl/des.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/md4.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/lwip/lwip/src/netif/ppp/polarssl/md4.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/md5.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/lwip/lwip/src/netif/ppp/polarssl/md5.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/lwip/lwip/src/netif/ppp/polarssl/sha1.c</name>
+			<type>1</type>
+			<location>/opt/work-iot/espidf/esp-idf/components/lwip/lwip/src/netif/ppp/polarssl/sha1.c</location>
 		</link>
 	</linkedResources>
 </projectDescription>

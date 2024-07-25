@@ -14267,25 +14267,6 @@
 		)
 		(uuid a1e6d02d-bb02-40d7-a320-1a20e02327b8)
 	)
-	(text_box "Change to 1K\n"
-		(exclude_from_sim no)
-		(at 317.5 267.97 0)
-		(size 16.51 3.81)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "044dfdb3-35e8-4489-82e7-7d03013ede6e")
-	)
 	(text "2A"
 		(exclude_from_sim no)
 		(at 78.74 109.22 0)
@@ -21844,7 +21825,7 @@
 				)
 			)
 		)
-		(property "Value" "200K"
+		(property "Value" "62K"
 			(at 482.6 116.84 0)
 			(effects
 				(font

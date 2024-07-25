@@ -92,6 +92,8 @@ void stepper_executor_init(t_endstops * _endstops) {
 }
 
 static void stepper_executor_on_execute_command_task(void*) {
+	_ESP_LOGI(LOG_STEPPER_EXEC, "Stepper execution task started");
+
 	while(true) {
 		if (stepper_executor_is_in_error_now) {
 			if (stepper_exec_command != STEPPER_EXEC_CMD__IDLE) {
@@ -137,6 +139,8 @@ static void stepper_executor_on_execute_command_task(void*) {
 		delay_timer_stop(stepper_exec_stop_timer);
 
 		if (stepper_exec_command == STEPPER_EXEC_CMD__CANCEL) {
+			_ESP_LOGW(LOG_STEPPER_EXEC, "Stepper execution cancelled");
+
 			controller_on_status(
 					stepper_executor_is_in_error_now ?
 							CONTROLLER_STATUS_ERROR_RAISED :
@@ -156,6 +160,8 @@ static void stepper_executor_on_execute_command_task(void*) {
 		}
 
 		if (!endstops->is_stepper_allowed()) {
+			_ESP_LOGW(LOG_STEPPER_EXEC, "Stepper execution not allowed, check limit switch");
+
 			controller_on_status(CONTROLLER_STATUS_WINDOW_LOCK_OPENED);
 
 			stepper_executor_motor_off();
@@ -201,6 +207,8 @@ void stepper_executor_cancel() {
 
 void stepper_executor_on_alarm() {
 	if (!stepper_executor_is_in_error_now) {
+		_ESP_LOGE(LOG_STEPPER_EXEC, "ON NOISE ALARM");
+
 		stepper_executor_motor_off();
 		stepper_executor_is_in_error_now = true;
 		stepper_exec_command = STEPPER_EXEC_CMD__CANCEL;
@@ -208,8 +216,14 @@ void stepper_executor_on_alarm() {
 }
 
 void stepper_executor_cancel_error() {
+	_ESP_LOGI(LOG_STEPPER_EXEC, "NOISE ALARM cancelled");
 	stepper_executor_is_in_error_now = false;
 }
+
+bool stepper_executor_is_in_error() {
+	return stepper_executor_is_in_error_now;
+}
+
 
 void stepper_executor_do_calibrate(uint8_t currentcommand) {
 	controller_on_status(CONTROLLER_STATUS_START_CALIBRATION);

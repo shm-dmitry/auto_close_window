@@ -29,11 +29,12 @@
 #define STEPPER_IS_OPENED(x)      ((x) >= ((CONFIG_ADC_STEPPER_OPEN_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_OPEN_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
 #define STEPPER_IS_CLOSED(x)      ((x) >= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) - STEPPER_ADC_VALUE_DELTA) && (x) <= ((CONFIG_ADC_STEPPER_CLOSE_VALUE * STEPPER_ADC_MAXVALUE / 100) + STEPPER_ADC_VALUE_DELTA))
 
-#define STEPPER_ENABLE_LIMIT_SWITCH true
-#define STEPPER_ENABLE_NOISE_ALARM  true
+#define STEPPER_ENABLE_LIMIT_SWITCH 		true
+#define STEPPER_ENABLE_NOISE_ALARM  		true
+#define STEPPER_ENABLE_NOISE_AUTO_DEALARM	true
 
-// Was not tested! Maybe I will rewrite this code.
-#define STEPPER_NOISE_ALARM_DEGLICH 2
+#define STEPPER_NOISE_ALARM_DEGLICH   		2
+#define STEPPER_NOISE_AUTO_DEALARM_DEGLICH	(60*1000/10)
 
 adc_oneshot_unit_handle_t adc_handle;
 
@@ -122,10 +123,10 @@ void stepper_init() {
 #if CONFIG_ADC_STEPPER_CALIBRATION_MODE
     while(true) {
     	int value = 0;
-    	adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
+    	adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
     	ESP_LOGI(LOG_STEPPER, "LSW Value: %d / %d%%", value, ((value * 100) / 4095));
 
-    	adc_oneshot_read(adc_limit_sw_handle, (adc_channel_t) CONFIG_ADC_STEPPER_NOISE_ALARM, &value);
+    	adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_NOISE_ALARM, &value);
     	ESP_LOGI(LOG_STEPPER, "Noise Value: %d / %d%%", value, ((value * 100) / 4095));
 
     	if (!stepper_is_stepper_allowed()) {
@@ -166,16 +167,31 @@ void stepper_init() {
 
 #if STEPPER_ENABLE_NOISE_ALARM
 static void stepper_noise_alarm_task(void*) {
-	uint8_t deglich = 0;
+	uint8_t deglichON = 0;
+#if STEPPER_ENABLE_NOISE_AUTO_DEALARM
+	uint16_t deglichOFF = 0;
+#endif
+
 	while(true) {
 		if (stepper_is_noise_alarm()) {
-			if (deglich >= STEPPER_NOISE_ALARM_DEGLICH) {
+			if (deglichON >= STEPPER_NOISE_ALARM_DEGLICH) {
 				stepper_executor_on_alarm();
 			} else {
-				deglich++;
+				deglichON++;
 			}
 		} else {
-			deglich = 0;
+			deglichON = 0;
+#if STEPPER_ENABLE_NOISE_AUTO_DEALARM
+			if (stepper_executor_is_in_error()) {
+				if (deglichOFF >= STEPPER_NOISE_AUTO_DEALARM_DEGLICH) {
+					stepper_executor_cancel_error();
+				} else {
+					deglichOFF++;
+				}
+			} else {
+				deglichOFF = 0;
+			}
+#endif
 		}
 
     	vTaskDelay(10 / portTICK_PERIOD_MS);

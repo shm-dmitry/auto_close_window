@@ -7,6 +7,10 @@ schematics/handle-module/handle-module-backups/
 schematics/main-module/main-module-backups/
 schematics/outdoor-module/outdoor-module-backups/
 
+schematics/handle-module/*.lck
+schematics/main-module/*.lck
+schematics/outdoor-module/*.lck
+
 3d/*.FCBak
 
 src/main_module/main/fm/crypto/encrypter_secret.private.h

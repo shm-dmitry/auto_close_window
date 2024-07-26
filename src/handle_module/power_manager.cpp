@@ -9,8 +9,11 @@
 
 #define POWER_MANAGER_NOEVENT_POWEROFF_DELAY  20000
 
+#define POWER_MANAGER_I2C_TIMEOUT             1000
+
 #define POWER_MANAGER_CHARGER_I2C_ADDRESS      0x09
-#define POWER_MANAGER_CHARGER_I2C_TIMEOUT      1000
+
+#define POWER_MANAGER_BAT_STATUS_I2C_ADDRESS   0x4A
 
 #define POWER_MANAGER_CHARGER_I2C_RECHECK_CONFIG       5000
 
@@ -25,6 +28,10 @@
 #define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_0       0x3C
 #define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_1       0x3D
 #define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS  0x3A
+
+#define POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG        0x00
+#define POWER_MANAGER_BAT_STATUS_I2C_REG_CURRENT       0x01
+#define POWER_MANAGER_BAT_STATUS_I2C_REG_VOLTAGE       0x02
 
 // 3.6V*2 = 7.2V = 4096mV[12] + 2048mV[11] + 1024mV[10] + 32mV[5]
 #define POWER_MANAGER_VOLTAGE_VALUE (_BV(12) | _BV(11) | _BV(10) | _BV(5))
@@ -89,6 +96,21 @@
 // PROCHOT PROFILE = all except VSYS [6:0 = 1111011]
 #define POWER_MANAGER_PROCHOT_1 (_BV(15) | _BV(9) | _BV(8) | _BV(6) | _BV(5) | _BV(4) | _BV(3) | _BV(1) | _BV(0))
 
+// generates INA219 self-reset
+#define POWER_MANAGER_BAT_STATUS_CONFIG_RESET (_BV(15))
+
+// generates INA219 shutdown
+#define POWER_MANAGER_BAT_STATUS_CONFIG_SHUTDOWN (_BV(13) | _BV(8) | _BV(7) | _BV(4) | _BV(3))
+
+// INA219 configuration
+// BRNG 32V FSR [13 = 1]
+// PG: ±40 mV [12:11 = 00]
+// BADC: [10;7 = 0011] ? used default
+// SADC: [6:3 = 0011] ? used default
+// MODE: Shunt and bus, continuous [2:0 = 111]
+#define POWER_MANAGER_BAT_STATUS_CONFIG_STARTUP (_BV(13) | _BV(8) | _BV(7) | _BV(4) | _BV(3) | _BV(2) | _BV(1) | _BV(0))
+
+
 #define POWER_MANAGER_I2C_READ_8T_WITH_TIMEOUT(timeout, var, return_timeout_value) \
           while(!Wire.available()) { \
             if (millis() > timeout) { \
@@ -105,10 +127,12 @@ unsigned long power_manager_noevent_timer = 0;
 #endif
 unsigned long power_manager_i2c_next_recheck_config = 0;
 
+void power_manager_batstatus_shutdown();
 void power_manager_configure_charger();
-uint16_t power_manager_read_16t(uint8_t reg);
-void power_manager_write_16t(uint8_t reg, uint16_t value);
-void power_manager_check_write_16t(uint8_t reg, uint16_t value);
+void power_manager_configure_batstatus();
+uint16_t power_manager_read_16t(uint8_t reg, uint8_t address);
+void power_manager_write_16t(uint8_t reg, uint16_t value, uint8_t address);
+void power_manager_check_write_16t(uint8_t reg, uint16_t value, uint8_t address);
 
 void power_manager_init() {
   pinMode(POWER_MANAGER_PIN_LOCK, OUTPUT);
@@ -117,6 +141,7 @@ void power_manager_init() {
   Wire.begin();
 
   power_manager_configure_charger();
+  power_manager_configure_batstatus();
 
 #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   power_manager_noevent_timer = millis() + POWER_MANAGER_NOEVENT_POWEROFF_DELAY;
@@ -127,43 +152,49 @@ void power_manager_configure_charger() {
   // charger may be allready configured, but every start we will re-check it's configuration.
 
   // 1. battery voltage
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE, POWER_MANAGER_VOLTAGE_VALUE);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__VOLTAGE, POWER_MANAGER_VOLTAGE_VALUE, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 2. charge current limit
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__CURRENT, POWER_MANAGER_CURRENT_VALUE);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__CURRENT, POWER_MANAGER_CURRENT_VALUE, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 3. input current limit
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__INPUT_CURRENT, POWER_MANAGER_INPUT_CURRENT);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__INPUT_CURRENT, POWER_MANAGER_INPUT_CURRENT, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 4. input current limit
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__DISCH_CURRENT, POWER_MANAGER_DISCH_CURRENT);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__DISCH_CURRENT, POWER_MANAGER_DISCH_CURRENT, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 5. opt-0
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_0, POWER_MANAGER_OPTIONS_0);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_0, POWER_MANAGER_OPTIONS_0, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 6. opt-1
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_1, POWER_MANAGER_OPTIONS_1);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_1, POWER_MANAGER_OPTIONS_1, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 7. opt-2
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_2, POWER_MANAGER_OPTIONS_2);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_2, POWER_MANAGER_OPTIONS_2, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 8. opt-3
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3, POWER_MANAGER_OPTIONS_3);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3, POWER_MANAGER_OPTIONS_3, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 9. prochot-0
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_0, POWER_MANAGER_PROCHOT_0);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_0, POWER_MANAGER_PROCHOT_0, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 
   // 9. prochot-1
-  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_1, POWER_MANAGER_PROCHOT_1);
+  power_manager_check_write_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_1, POWER_MANAGER_PROCHOT_1, POWER_MANAGER_CHARGER_I2C_ADDRESS);
 }
 
-uint16_t power_manager_read_16t(uint8_t reg) {
-  Wire.beginTransmission(POWER_MANAGER_CHARGER_I2C_ADDRESS);
+void  power_manager_configure_batstatus() {
+  power_manager_check_write_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG, POWER_MANAGER_BAT_STATUS_CONFIG_RESET, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+  delay(10);
+  power_manager_check_write_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG, POWER_MANAGER_BAT_STATUS_CONFIG_STARTUP, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+}
+
+uint16_t power_manager_read_16t(uint8_t reg, uint8_t address) {
+  Wire.beginTransmission(address);
   Wire.write(reg);
   Wire.endTransmission(false);
-  Wire.requestFrom(POWER_MANAGER_CHARGER_I2C_ADDRESS, 2, false);
+  Wire.requestFrom(address, 2, false);
 
-  unsigned long now = millis() + POWER_MANAGER_CHARGER_I2C_TIMEOUT;
+  unsigned long now = millis() + POWER_MANAGER_I2C_TIMEOUT;
 
   uint8_t low = 0;
   POWER_MANAGER_I2C_READ_8T_WITH_TIMEOUT(now, low,  0xFFFF);
@@ -175,8 +206,8 @@ uint16_t power_manager_read_16t(uint8_t reg) {
   return (high << 8) + low;
 }
 
-void power_manager_write_16t(uint8_t reg, uint16_t value) {
-  Wire.beginTransmission(POWER_MANAGER_CHARGER_I2C_ADDRESS);
+void power_manager_write_16t(uint8_t reg, uint16_t value, uint8_t address) {
+  Wire.beginTransmission(address);
   Wire.write(reg);
 
   Wire.write((uint8_t)(value - ((value >> 8) << 8)));
@@ -185,14 +216,14 @@ void power_manager_write_16t(uint8_t reg, uint16_t value) {
   Wire.endTransmission();
 }
 
-void power_manager_check_write_16t(uint8_t reg, uint16_t val)  {
-  if (power_manager_read_16t(reg) != val) { 
-    power_manager_write_16t(reg, val); 
+void power_manager_check_write_16t(uint8_t reg, uint16_t val, uint8_t address)  {
+  if (power_manager_read_16t(reg, address) != val) { 
+    power_manager_write_16t(reg, val, address); 
   }
 }
 
 bool power_manager_is_charging() {
-  uint16_t value = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3);
+  uint16_t value = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3, POWER_MANAGER_CHARGER_I2C_ADDRESS);
   if (value == 0xFFFF) {
     return false;
   }
@@ -204,6 +235,8 @@ void power_manager_on_event() {
   #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   if (power_manager_noevent_timer == 0) {
     digitalWrite(POWER_MANAGER_PIN_LOCK, HIGH); // restore HIGH state - user interacted with us during shutdown-delay
+
+    power_manager_configure_batstatus();
   }
 
   power_manager_noevent_timer = millis() + POWER_MANAGER_NOEVENT_POWEROFF_DELAY;
@@ -215,6 +248,8 @@ void power_manager_on_main_loop() {
 
 #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   if (power_manager_noevent_timer > 0 && now > power_manager_noevent_timer) {
+    power_manager_batstatus_shutdown();
+
     digitalWrite(POWER_MANAGER_PIN_LOCK, LOW);
     power_manager_noevent_timer = 0;
   }
@@ -222,7 +257,7 @@ void power_manager_on_main_loop() {
 
   if (now > power_manager_i2c_next_recheck_config) {
     // check prochot to print error
-    uint16_t prochot_status = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS);
+    uint16_t prochot_status = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS, POWER_MANAGER_CHARGER_I2C_ADDRESS);
     if (prochot_status != 0 && prochot_status != 0b00000001) {
       Serial.print("PROCHOT STATUS ERR ");
       Serial.println(prochot_status, HEX);
@@ -232,6 +267,36 @@ void power_manager_on_main_loop() {
     
     power_manager_i2c_next_recheck_config = now + POWER_MANAGER_CHARGER_I2C_RECHECK_CONFIG;
     power_manager_configure_charger();
+  }
+}
+
+void power_manager_batstatus_shutdown() {
+  power_manager_check_write_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG, POWER_MANAGER_BAT_STATUS_CONFIG_SHUTDOWN, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+}
+
+void power_manager_read_batstatus(uint16_t & voltage_mv, int16_t & current_ma) {
+  uint16_t current = power_manager_read_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CURRENT, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+
+  if (current > 0) {
+    if ((current & _BV(15)) > 0) {
+      // minus sign
+      current_ma = -1;
+      current = (current ^ 0xFFFF) + 1;
+    }
+
+    // from datasheet: value = 3999 => 39.99 mV, shunt == 0.01 ohm => value 3999 == (39.99/0.01 == 3999 mA) 3999mA
+
+    current_ma = current_ma*current; // save sign
+  } else {
+    current_ma = 0;
+  }
+
+  uint16_t bus = power_manager_read_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_VOLTAGE, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+  if (bus == 0 || (bus & _BV(0))) {
+    voltage_mv = 0; // err
+  } else {
+    bus = bus / 8; // skip last 3 bits
+    voltage_mv = bus * 4; // LSB -> mV
   }
 }
 

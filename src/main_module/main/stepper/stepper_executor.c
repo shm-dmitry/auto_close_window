@@ -218,6 +218,7 @@ void stepper_executor_on_alarm() {
 void stepper_executor_cancel_error() {
 	_ESP_LOGI(LOG_STEPPER_EXEC, "NOISE ALARM cancelled");
 	stepper_executor_is_in_error_now = false;
+	controller_on_status(CONTROLLER_STATUS_ERROR_CANCELLED);
 }
 
 bool stepper_executor_is_in_error() {

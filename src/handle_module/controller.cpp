@@ -104,14 +104,25 @@ void controller_check_data_received() {
   }
 
   uint16_t address = (buffer[0] << 8) + buffer[1];
+  if (address == FM_COMMAND_ADDRESS__HM_COMMAND || address == FM_COMMAND_ADDRESS__HM_CHARGE_ERROR || address == FM_COMMAND_ADDRESS__HM_CHARGE_STATUS) {
+    Serial.print("FM addr [self/skipped]: ");
+    Serial.println(address, HEX);
+    return;
+  } else {
     Serial.print("FM addr ");
     Serial.println(address, HEX);
+  }
 
   t_fm_command * command = decrypter_process_memory(address, buffer + 2, buffer_size - 2);
   if (command == NULL) {
+    Serial.println("Decrypt failed");
+
     free(buffer);
     return;
   }
+
+  Serial.print("Received command from host: ");
+  Serial.println(command->arg, HEX);
 
   if (command->address == FM_COMMAND_ADDRESS__MM_STEPPER_STATUS) {
     switch (command->arg) {
@@ -139,7 +150,12 @@ void controller_check_data_received() {
       case CONTROLLER_STATUS_FAIL_CALIBRATION:
         led_run_inform(LED_FAIL_CALIBRATE);
       break;
+      case CONTROLLER_STATUS_WINDOW_LOCK_OPENED:
+        led_run_inform(LED_FAIL_WINDOW_LOCK_OPENED);
+      break;
       default:
+      Serial.print("Host sended unknown command: ");
+      Serial.println(command->arg, HEX);
       break;
     }
   }

@@ -99,6 +99,8 @@ static void fm_receiver_task(void* arg) {
 			rx_data.received_symbols = NULL;
 
 			if (list != NULL) {
+				_ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz: Received commands count: %d", taskparams->freq, list->commands_size);
+
 				for (uint8_t i = 0; i<list->commands_size; i++) {
 					controller_process_command(&(list->commands[i]));
 				}

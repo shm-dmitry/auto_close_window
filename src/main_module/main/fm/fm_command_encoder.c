@@ -149,7 +149,7 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 
 			uint8_t size = data.encrypted ? decryptor_args_size_to_buff_size(data.args_size) : data.args_size;
 
-//			ESP_LOGI(LOG_FM_ENCODER, "Requesting %d bytes for address %04X", size, context->decoded_address);
+			ESP_LOGI(LOG_FM_ENCODER, "Requesting %d bytes for address %04X", size, decoder_context->decoded_address);
 
 			decoder_context->buffer = malloc(size);
 			decoder_context->buffer_size = size;

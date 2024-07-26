@@ -53,7 +53,7 @@ static void charger_auto_stop_on_timeout(void* arg) {
 			}
 		} else if (charger_auto_stop > 0) {
 			if (esp_timer_get_time() > charger_auto_stop) {
-				_ESP_LOGI(LOG_CHARGER, "Charger finished");
+				_ESP_LOGI(LOG_CHARGER, "Charger finished [autostop by timeout]");
 
 				gpio_set_level(CONFIG_PIN_CHARGER_ENABLE, 0);
 				charger_auto_stop = 0;

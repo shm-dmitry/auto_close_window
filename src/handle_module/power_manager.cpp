@@ -4,6 +4,7 @@
 #include "Wire.h"
 #include "led.h"
 #include "controller.h"
+#include <Adafruit_INA219.h>
 
 #define POWER_MANAGER_PIN_LOCK  5
 
@@ -28,10 +29,6 @@
 #define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_0       0x3C
 #define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_1       0x3D
 #define POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS  0x3A
-
-#define POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG        0x00
-#define POWER_MANAGER_BAT_STATUS_I2C_REG_CURRENT       0x01
-#define POWER_MANAGER_BAT_STATUS_I2C_REG_VOLTAGE       0x02
 
 // 3.6V*2 = 7.2V = 4096mV[12] + 2048mV[11] + 1024mV[10] + 32mV[5]
 #define POWER_MANAGER_VOLTAGE_VALUE (_BV(12) | _BV(11) | _BV(10) | _BV(5))
@@ -96,21 +93,6 @@
 // PROCHOT PROFILE = all except VSYS [6:0 = 1111011]
 #define POWER_MANAGER_PROCHOT_1 (_BV(15) | _BV(9) | _BV(8) | _BV(6) | _BV(5) | _BV(4) | _BV(3) | _BV(1) | _BV(0))
 
-// generates INA219 self-reset
-#define POWER_MANAGER_BAT_STATUS_CONFIG_RESET (_BV(15))
-
-// generates INA219 shutdown
-#define POWER_MANAGER_BAT_STATUS_CONFIG_SHUTDOWN (_BV(13) | _BV(8) | _BV(7) | _BV(4) | _BV(3))
-
-// INA219 configuration
-// BRNG 32V FSR [13 = 1]
-// PG: ±40 mV [12:11 = 00]
-// BADC: [10;7 = 0011] ? used default
-// SADC: [6:3 = 0011] ? used default
-// MODE: Shunt and bus, continuous [2:0 = 111]
-#define POWER_MANAGER_BAT_STATUS_CONFIG_STARTUP (_BV(13) | _BV(8) | _BV(7) | _BV(4) | _BV(3) | _BV(2) | _BV(1) | _BV(0))
-
-
 #define POWER_MANAGER_I2C_READ_8T_WITH_TIMEOUT(timeout, var, return_timeout_value) \
           while(!Wire.available()) { \
             if (millis() > timeout) { \
@@ -126,6 +108,8 @@
 unsigned long power_manager_noevent_timer = 0;
 #endif
 unsigned long power_manager_i2c_next_recheck_config = 0;
+
+Adafruit_INA219 ina219(POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);         // Создаем объект ina219
 
 void power_manager_batstatus_shutdown();
 void power_manager_configure_charger();
@@ -183,9 +167,7 @@ void power_manager_configure_charger() {
 }
 
 void  power_manager_configure_batstatus() {
-  power_manager_check_write_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG, POWER_MANAGER_BAT_STATUS_CONFIG_RESET, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
-  delay(10);
-  power_manager_check_write_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG, POWER_MANAGER_BAT_STATUS_CONFIG_STARTUP, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+  ina219.begin();
 }
 
 uint16_t power_manager_read_16t(uint8_t reg, uint8_t address) {
@@ -271,32 +253,11 @@ void power_manager_on_main_loop() {
 }
 
 void power_manager_batstatus_shutdown() {
-  power_manager_check_write_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CONFIG, POWER_MANAGER_BAT_STATUS_CONFIG_SHUTDOWN, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
+  ina219.powerSave(true);
 }
 
 void power_manager_read_batstatus(uint16_t & voltage_mv, int16_t & current_ma) {
-  uint16_t current = power_manager_read_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_CURRENT, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
-
-  if (current > 0) {
-    if ((current & _BV(15)) > 0) {
-      // minus sign
-      current_ma = -1;
-      current = (current ^ 0xFFFF) + 1;
-    }
-
-    // from datasheet: value = 3999 => 39.99 mV, shunt == 0.01 ohm => value 3999 == (39.99/0.01 == 3999 mA) 3999mA
-
-    current_ma = current_ma*current; // save sign
-  } else {
-    current_ma = 0;
-  }
-
-  uint16_t bus = power_manager_read_16t(POWER_MANAGER_BAT_STATUS_I2C_REG_VOLTAGE, POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);
-  if (bus == 0 || (bus & _BV(0))) {
-    voltage_mv = 0; // err
-  } else {
-    bus = bus / 8; // skip last 3 bits
-    voltage_mv = bus * 4; // LSB -> mV
-  }
+  current_ma = -(int16_t)(ina219.getCurrent_mA() * 10.0);
+  voltage_mv = (uint16_t)(ina219.getBusVoltage_V() * 1000.0);
 }
 

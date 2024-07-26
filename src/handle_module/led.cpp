@@ -52,6 +52,9 @@ void led_run_inform(uint8_t type) {
   led_running_type = type;
   memset(&led_red, 0, sizeof(t_one_led_context));
   memset(&led_green, 0, sizeof(t_one_led_context));
+
+  Serial.print("Led exec inform: ");
+  Serial.println(type, HEX);
 }
 
 void led_execute_one(const uint8_t * led_timing, t_one_led_context * context, uint8_t pin, unsigned long now) {

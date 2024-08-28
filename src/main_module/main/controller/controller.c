@@ -20,6 +20,8 @@
 #define CONTROLLER_PDU_ARG_MOVE_TO_1   0x62
 #define CONTROLLER_PDU_ARG_MOVE_TO_2   0x61
 
+#define CONTROLLER_BAT_STATUS_V_OFFSET 450
+
 void controller_process_pdu_command(uint8_t arg) {
 	_ESP_LOGI(LOG_CONTROLLER, "PDU command: arg=%02X", arg);
 
@@ -45,13 +47,18 @@ void controller_process_hm_command(uint8_t arg) {
 
 	switch (arg) {
 		case CONTROLLER_HM_FULL_OPEN:
-			stepper_move_to(100);
+			if (stepper_is_now_executing_move_to(100)) {
+				stepper_cancel();
+			} else {
+				stepper_move_to(100);
+			}
 			break;
 		case CONTROLLER_HM_FULL_CLOSE:
-			stepper_move_to(0);
-			break;
-		case CONTROLLER_HM_MOVE_TO_1:
-			stepper_move_to(10); // TODO: config
+			if (stepper_is_now_executing_move_to(0)) {
+				stepper_cancel();
+			} else {
+				stepper_move_to(0);
+			}
 			break;
 		case CONTROLLER_HM_CALIBRATE:
 			stepper_calibrate();
@@ -79,6 +86,15 @@ void controller_process_om_charge_status(bool charge_in_progress) {
 	} else {
 		charger_stop();
 	}
+}
+
+void controller_process_hmom_bat_status(bool hm, uint8_t _voltage, uint8_t _current) {
+	uint16_t v = ((uint16_t)_voltage + CONTROLLER_BAT_STATUS_V_OFFSET) * 10;
+	bool charge_in_progress = (_current & 0b1000000);
+	_current = _current & 0b0111111;
+	uint16_t i = (uint16_t) _current * (uint16_t) 10;
+
+	controller_mqtt_process_bat_status(hm, v, i, charge_in_progress);
 }
 
 void controller_process_command(const t_fm_command * command) {
@@ -119,6 +135,9 @@ void controller_process_command(const t_fm_command * command) {
 	case FM_COMMAND_ADDRESS__HM_CHARGE_STATUS:
 		controller_process_hm_charge_status(args[0]);
 		break;
+	case FM_COMMAND_ADDRESS__HM_BAT_STATUS:
+		controller_process_hmom_bat_status(true, args[0], args[1]);
+		break;
 	default:
 		ESP_LOGW(LOG_CONTROLLER, "Unknown address = %04X (arg0 == %02X)", command->address, args[0]);
 		break;
@@ -133,5 +152,14 @@ void controller_on_status(uint8_t status) {
 	cmd.args_size = 1;
 
 	fm_sender_send(&cmd);
+
+	if (status == CONTROLLER_STATUS_ERROR_RAISED) {
+		controller_mqtt_on_stepper_error(true);
+	} else if (status == CONTROLLER_STATUS_ERROR_CANCELLED) {
+		controller_mqtt_on_stepper_error(false);
+	}
 }
 
+void controller_on_stepper_position_updated(uint8_t percent) {
+	controller_mqtt_stepper_position_updated(percent);
+}

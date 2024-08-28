@@ -77,7 +77,13 @@ uint8_t decrypter_get_crc() {
 }
 
 void encrypter_process_memory(const t_fm_command * command, uint8_t ** out_buffer, uint8_t * out_buffer_size) {
-	*out_buffer_size = FM_COMMAND_MAX_ARGS_SIZE + 2 + 2 + 1;
+  if (command->argssize > FM_COMMAND_SEND_MAX_ARGS_SIZE || command->argssize == 0) {
+    *out_buffer = NULL;
+		*out_buffer_size = 0;
+		return;
+  }
+
+	*out_buffer_size = command->argssize + 2 + 2 + 1;
 	*out_buffer = (uint8_t*) malloc(*out_buffer_size);
 	if (*out_buffer == NULL) {
 		*out_buffer_size = 0;
@@ -93,9 +99,12 @@ void encrypter_process_memory(const t_fm_command * command, uint8_t ** out_buffe
 	(*out_buffer)[2] = encrypter_next(encrypter_next_random());
 	(*out_buffer)[3] = encrypter_next(encrypter_next_random());
 
-  (*out_buffer)[4] = encrypter_next(command->arg);
+  (*out_buffer)[4] = encrypter_next(command->arg1);
+  if (command->argssize == 2) {
+    (*out_buffer)[5] = encrypter_next(command->arg2);
+  }
 
-	(*out_buffer)[5] = encrypter_next_crc();
+	(*out_buffer)[command->argssize + 4] = encrypter_next_crc();
 }
 
 uint8_t decryptor_args_size_to_buff_size(uint8_t args_size) {
@@ -109,7 +118,7 @@ t_fm_command * decrypter_process_memory(uint16_t address, const uint8_t * buff, 
 		return NULL;
 	}
 
-	if (size - 3 > FM_COMMAND_MAX_ARGS_SIZE) {
+	if (size - 3 > FM_COMMAND_RECEIVE_MAX_ARGS_SIZE) {
 		return NULL;
 	}
 
@@ -136,7 +145,9 @@ t_fm_command * decrypter_process_memory(uint16_t address, const uint8_t * buff, 
 	memset(out_command, 0, sizeof(t_fm_command));
 
 	out_command->address = address;
-  out_command->arg = arg;
+  out_command->arg1 = arg;
+  out_command->arg2 = 0;
+  out_command->argssize = FM_COMMAND_RECEIVE_MAX_ARGS_SIZE; // receiver - one byte only
 
 	return out_command;
 }

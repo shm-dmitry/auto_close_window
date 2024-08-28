@@ -45,6 +45,21 @@ void controller_mqtt_process_om_air_data(int8_t temperature, uint8_t humidity, u
     cJSON_Delete(root);
 }
 
+void controller_mqtt_process_bat_status(bool hm, uint16_t v, uint16_t i, bool charge) {
+    _ESP_LOGI(LOG_CONTROLLER, "Bat %s status: V = %d mV; I = %d mA; charge: %s", (hm ? "HM" : "OM"), v, i, (charge ? "YES" : "NO"));
+
+    cJSON *root = cJSON_CreateObject();
+    cJSON_AddNumberToObject(root, "v", v);
+    cJSON_AddNumberToObject(root, "i", i);
+    cJSON_AddBoolToObject(root, "charge", charge);
+
+    char * json = cJSON_Print(root);
+    mqtt_publish(hm ? CONFIG_CONTROLLER_MQTT_HM_BAT_STATUS : CONFIG_CONTROLLER_MQTT_OM_BAT_STATUS, json);
+    cJSON_free(json);
+
+    cJSON_Delete(root);
+}
+
 void controller_mqtt_process_om_noise_alarm(bool alarm) {
     _ESP_LOGI(LOG_CONTROLLER, "OM NOISE alarm: %s", (alarm ? "ON" : "OFF"));
 
@@ -86,20 +101,20 @@ void controller_mqtt_process_om_noise_data(uint8_t freq1, uint8_t level1, uint8_
     cJSON_Delete(root);
 }
 
-void controller_mqtt_on_stepper_current_open(uint8_t percent) {
-    cJSON *root = cJSON_CreateObject();
-    if (percent <= 100) {
-    	cJSON_AddNumberToObject(root, "percent", percent);
-        cJSON_AddBoolToObject(root, "ok", true);
-    } else {
-        cJSON_AddBoolToObject(root, "ok", false);
-    }
+void controller_mqtt_on_stepper_error(bool error) {
+    mqtt_publish(CONFIG_CONTROLLER_MQTT_STEPPER_ERROR, error ? "on" : "off");
+}
 
-    char * json = cJSON_Print(root);
-    mqtt_publish(CONFIG_CONTROLLER_MQTT_NOISE_STATUS, json);
-    cJSON_free(json);
+void controller_mqtt_stepper_position_updated(uint8_t percent) {
+	cJSON *root = cJSON_CreateObject();
+	cJSON_AddNumberToObject(root, "value", (percent > 100 ? 0 : percent));
+	cJSON_AddBoolToObject(root, "ok", (percent <= 100));
 
-    cJSON_Delete(root);
+	char * json = cJSON_Print(root);
+	mqtt_publish(CONFIG_CONTROLLER_MQTT_STEPPER_POSITION, json);
+	cJSON_free(json);
+
+	cJSON_Delete(root);
 }
 
 void controller_mqtt_init() {

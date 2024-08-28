@@ -209,6 +209,14 @@ void stepper_cancel_error() {
 	stepper_executor_cancel_error();
 }
 
+bool stepper_is_now_executing_move_to(uint8_t percent) {
+	if (percent > 100) {
+		return false;
+	}
+
+	return stepper_executor_is_now_executing_move_to(percent);
+}
+
 void stepper_move_to(uint8_t percent) {
 	if (percent > 100) {
 		percent = 100;

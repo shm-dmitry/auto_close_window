@@ -12,10 +12,16 @@
 #include "fm_sender.h"
 #include "led.h"
 
-#define CONTROLLER_CHECK_CHARGING_DELAY_MS 5000
+#define CONTROLLER_CHECK_CHARGING_DELAY_MS 10000
+
+#define CONTROLLER_BAT_STATUS_FIRST_NOTIFY_DELAY 5000
+#define CONTROLLER_BAT_STATUS_NOTIFY_REPEAT      60000
+
+#define CONTROLLER_BAT_STATUS_V_OFFSET 450
 
 unsigned long controller_check_chargin_delay = 0;
 bool controller_charge_in_progress = false;
+unsigned long controller_next_bat_status_notify = CONTROLLER_BAT_STATUS_FIRST_NOTIFY_DELAY;
 
 void controller_check_charging();
 
@@ -24,6 +30,7 @@ void controller_on_close();
 void controller_on_prepare_calibrate();
 void controller_on_calibrate();
 void controller_check_data_received();
+void controller_on_notify_bat_status();
 
 void controller_on_main_loop() {
   controller_check_charging();
@@ -52,6 +59,12 @@ void controller_on_main_loop() {
   }
 
   controller_check_data_received();
+
+  if (millis() > controller_next_bat_status_notify) {
+    controller_next_bat_status_notify = millis() + CONTROLLER_BAT_STATUS_NOTIFY_REPEAT;
+
+    controller_on_notify_bat_status();
+  }
 }
 
 void controller_check_charging() {
@@ -62,22 +75,23 @@ void controller_check_charging() {
       controller_charge_in_progress = true;
       power_manager_on_event();
 
-      Serial.println("CHRG 1");
-
       t_fm_command cmd = {
         .address = FM_COMMAND_ADDRESS__HM_CHARGE_STATUS,
-        .arg = true
+        .arg1 = true,
+        .arg2 = 0,
+        .argssize = 1
       };
 
       fm_sender_send_command(&cmd);
+      led_run_inform(LED_CHARGE_IN_PROGRESS);
     } else if (controller_charge_in_progress) {
       controller_charge_in_progress = false;
 
-      Serial.println("CHRG 0");
-
       t_fm_command cmd = {
         .address = FM_COMMAND_ADDRESS__HM_CHARGE_STATUS,
-        .arg = false
+        .arg1 = false,
+        .arg2 = 0,
+        .argssize = 1
       };
 
       fm_sender_send_command(&cmd);
@@ -88,7 +102,9 @@ void controller_check_charging() {
 void controller_on_charger_error(uint8_t err) {
   t_fm_command cmd = {
     .address = FM_COMMAND_ADDRESS__HM_CHARGE_ERROR,
-    .arg = err
+    .arg1 = err,
+    .arg2 = 0,
+    .argssize = 1
   };
 
   fm_sender_send_command(&cmd);
@@ -122,10 +138,10 @@ void controller_check_data_received() {
   }
 
   Serial.print("Received command from host: ");
-  Serial.println(command->arg, HEX);
+  Serial.println(command->arg1, HEX);
 
   if (command->address == FM_COMMAND_ADDRESS__MM_STEPPER_STATUS) {
-    switch (command->arg) {
+    switch (command->arg1) {
       case CONTROLLER_STATUS_START_EXECUTE_OPEN:
         led_run_inform(LED_START_OPEN);
         break;
@@ -151,11 +167,12 @@ void controller_check_data_received() {
         led_run_inform(LED_FAIL_CALIBRATE);
       break;
       case CONTROLLER_STATUS_WINDOW_LOCK_OPENED:
+      case CONTROLLER_STATUS_ERROR_RAISED:
         led_run_inform(LED_FAIL_WINDOW_LOCK_OPENED);
       break;
       default:
       Serial.print("Host sended unknown command: ");
-      Serial.println(command->arg, HEX);
+      Serial.println(command->arg1, HEX);
       break;
     }
   }
@@ -167,7 +184,9 @@ void controller_check_data_received() {
 void controller_on_open() {
   t_fm_command cmd = {
     .address = FM_COMMAND_ADDRESS__HM_COMMAND,
-    .arg = CONTROLLER_HM_FULL_OPEN
+    .arg1 = CONTROLLER_HM_FULL_OPEN,
+    .arg2 = 0,
+    .argssize = 1
   };
 
   fm_sender_send_command(&cmd);
@@ -176,7 +195,9 @@ void controller_on_open() {
 void controller_on_close() {
   t_fm_command cmd = {
     .address = FM_COMMAND_ADDRESS__HM_COMMAND,
-    .arg = CONTROLLER_HM_FULL_CLOSE
+    .arg1 = CONTROLLER_HM_FULL_CLOSE,
+    .arg2 = 0,
+    .argssize = 1
   };
 
   fm_sender_send_command(&cmd);
@@ -189,8 +210,46 @@ void controller_on_prepare_calibrate() {
 void controller_on_calibrate() {
   t_fm_command cmd = {
     .address = FM_COMMAND_ADDRESS__HM_COMMAND,
-    .arg = CONTROLLER_HM_CALIBRATE
+    .arg1 = CONTROLLER_HM_CALIBRATE,
+    .arg2 = 0,
+    .argssize = 1
   };
 
   fm_sender_send_command(&cmd);
+}
+
+void controller_on_notify_bat_status() {
+    uint16_t voltage_mv = 0;
+    int16_t current_ma = 0;
+
+    power_manager_read_batstatus(voltage_mv, current_ma);
+
+    uint8_t v = (uint8_t) (voltage_mv - CONTROLLER_BAT_STATUS_V_OFFSET);
+    uint8_t i = 0;
+    if (current_ma > 0) {
+      uint8_t t = (uint8_t)(current_ma / 10);
+      if (t & 0b1000000) {
+        // overflow
+        i = 0b01111111;
+      } else {
+        i = t;
+      }
+    } else {
+      uint8_t t = (uint8_t)(-current_ma / 10);
+      if (t & 0b1000000) {
+        // overflow
+        i = 0b11111111;
+      } else {
+        i = t + 0b1000000;
+      }
+    }
+
+    t_fm_command cmd = {
+      .address = FM_COMMAND_ADDRESS__HM_BAT_STATUS,
+      .arg1 = v,
+      .arg2 = i,
+      .argssize = 2
+    };
+
+    fm_sender_send_command(&cmd);
 }

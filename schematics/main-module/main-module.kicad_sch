@@ -20342,7 +20342,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4f50956e-fa53-4b84-af70-4653e4ff8094")
 		(property "Reference" "C33"
 			(at 401.32 270.51 0)
@@ -27144,7 +27144,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "b2e15474-9ed0-4dd9-8d63-4a07d2267633")
 		(property "Reference" "R8"
 			(at 130.81 230.124 0)
@@ -27154,7 +27154,7 @@
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "75K"
 			(at 130.81 232.664 0)
 			(effects
 				(font

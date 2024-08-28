@@ -15,6 +15,7 @@
 #define LED_FAIL_CALIBRATE            LED_NO_COMMAND
 #define LED_START_FIND_POS            0x06
 #define LED_FAIL_WINDOW_LOCK_OPENED   0x07
+#define LED_CHARGE_IN_PROGRESS        0x08
 
 void led_init();
 void led_on_main_loop();

@@ -22,6 +22,7 @@ t_fm_command_size_by_address_data address_data[FM_COMMAND_ADDRESS_DATA_SIZE] =
 		{ .address = FM_COMMAND_ADDRESS__HM_COMMAND,        .data.encrypted = true,  .data.args_size = 1 },
 		{ .address = FM_COMMAND_ADDRESS__HM_CHARGE_STATUS,  .data.encrypted = true,  .data.args_size = 1 },
 		{ .address = FM_COMMAND_ADDRESS__HM_CHARGE_ERROR,   .data.encrypted = true,  .data.args_size = 1 },
+		{ .address = FM_COMMAND_ADDRESS__HM_BAT_STATUS,     .data.encrypted = true,  .data.args_size = 2 },
 };
 
 t_fm_command_address_data address_unknown = { .val = FM_VAL_BY_ADDRESS_UNKNOWN };

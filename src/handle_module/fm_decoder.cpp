@@ -10,6 +10,7 @@
 #define FM_DECODER_BIT_1_HIGH_DIV_LOW  2
 #define FM_DECODER_BIT_0_LOW_DIV_HIGH  2
 
+// receive buffer allows one argument only!
 #define FM_DECODER_BUFFER_SIZE (2 + 2 + 1 + 1)
 
 #define FM_DECODER_NO_FILLED_BUFFER 0xFF

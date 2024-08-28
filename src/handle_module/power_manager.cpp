@@ -34,7 +34,10 @@
 #define POWER_MANAGER_VOLTAGE_VALUE (_BV(12) | _BV(11) | _BV(10) | _BV(5))
 
 // 1A ~ 1024mA = bit10
-#define POWER_MANAGER_CURRENT_VALUE (_BV(10))
+//#define POWER_MANAGER_CURRENT_VALUE (_BV(10))
+// 0.3A ~ 384mA = bit7 + bit8
+#define POWER_MANAGER_CURRENT_VALUE (_BV(7) | _BV(8))
+
 
 // 1.5A = 1024mA[10] + 512mA[9]
 #define POWER_MANAGER_INPUT_CURRENT (_BV(10) | _BV(9)) 
@@ -102,7 +105,9 @@
           } \
           var = Wire.read();
 
-#define POWER_MANAGER_NOEVENT_TIMER_ENABLED  false
+#define POWER_MANAGER_NOEVENT_TIMER_ENABLED  true
+
+#define POWER_MANAGER_MIN_CHARGE_CURRENT_TO_STOP_CHARGER 10
 
 #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
 unsigned long power_manager_noevent_timer = 0;
@@ -210,7 +215,16 @@ bool power_manager_is_charging() {
     return false;
   }
 
-  return (value & _BV(11)) ? true : false;
+  if (!(value & _BV(11))) { // chech adapter present
+    return false;
+  }
+
+  uint16_t v = 0;
+  int16_t i = 0;
+
+  power_manager_read_batstatus(v, i);
+
+  return i > POWER_MANAGER_MIN_CHARGE_CURRENT_TO_STOP_CHARGER;
 }
 
 void power_manager_on_event() {
@@ -226,10 +240,8 @@ void power_manager_on_event() {
 }
 
 void power_manager_on_main_loop() {
-  unsigned long now = millis();
-
 #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
-  if (power_manager_noevent_timer > 0 && now > power_manager_noevent_timer) {
+  if (power_manager_noevent_timer > 0 && millis() > power_manager_noevent_timer) {
     power_manager_batstatus_shutdown();
 
     digitalWrite(POWER_MANAGER_PIN_LOCK, LOW);
@@ -237,7 +249,7 @@ void power_manager_on_main_loop() {
   }
 #endif
 
-  if (now > power_manager_i2c_next_recheck_config) {
+  if (millis() > power_manager_i2c_next_recheck_config) {
     // check prochot to print error
     uint16_t prochot_status = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__PROCHOT_STATUS, POWER_MANAGER_CHARGER_I2C_ADDRESS);
     if (prochot_status != 0 && prochot_status != 0b00000001) {
@@ -247,7 +259,7 @@ void power_manager_on_main_loop() {
       controller_on_charger_error(prochot_status);
     }
     
-    power_manager_i2c_next_recheck_config = now + POWER_MANAGER_CHARGER_I2C_RECHECK_CONFIG;
+    power_manager_i2c_next_recheck_config = millis() + POWER_MANAGER_CHARGER_I2C_RECHECK_CONFIG;
     power_manager_configure_charger();
   }
 }

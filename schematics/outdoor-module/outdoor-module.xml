@@ -2,8 +2,8 @@
 <export version="E">
   <design>
     <source>/opt/work-iot/auto_close_window/schematics/outdoor-module/outdoor-module.kicad_sch</source>
-    <date>Пн 27 ноя 2023 12:28:14</date>
-    <tool>Eeschema 7.0.9-7.0.9~ubuntu22.04.1</tool>
+    <date>2024-08-24T21:54:59+0300</date>
+    <tool>Eeschema 8.0.4-8.0.4-0~ubuntu22.04.1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title/>
@@ -27,770 +27,1060 @@
     <comp ref="C1">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>15690081-379d-4067-b39e-adb5c8a499dc</tstamps>
     </comp>
     <comp ref="C2">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>91679e89-4f43-48e4-a71d-5166ed0b88e1</tstamps>
     </comp>
     <comp ref="C3">
       <value>100 uF</value>
       <footprint>Capacitor_THT:CP_Radial_D6.3mm_P2.50mm</footprint>
+      <description>Polarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_THT:CP_Radial_D6.3mm_P2.50mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Polarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C_Polarized" description="Polarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Polarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="CP_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ae276bf5-9246-41ca-9d52-5807e18f120f</tstamps>
     </comp>
     <comp ref="C4">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>1ceddd89-9903-4354-8934-12fc7a79f02d</tstamps>
     </comp>
     <comp ref="C5">
       <value>15 pF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e0763f49-1094-4e98-ab21-222fe403c459</tstamps>
     </comp>
     <comp ref="C6">
       <value>15 pF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>2e3e5c6b-6379-476d-ab74-9cf6aa214377</tstamps>
     </comp>
     <comp ref="C7">
       <value>100 uF</value>
       <footprint>Capacitor_THT:CP_Radial_D6.3mm_P2.50mm</footprint>
+      <description>Polarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_THT:CP_Radial_D6.3mm_P2.50mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Polarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C_Polarized" description="Polarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Polarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="CP_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>9a124159-fbf0-473a-aff0-92d932db0ed6</tstamps>
     </comp>
     <comp ref="C8">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>18a8bdd4-b6f2-4d19-8ab3-cc4eb37b5bf8</tstamps>
     </comp>
     <comp ref="C9">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>a0a2d4f7-e1dc-4ecb-b789-067fc082673a</tstamps>
     </comp>
     <comp ref="C10">
       <value>1 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>970f71c9-3811-45a5-bae8-263bb473ef6f</tstamps>
     </comp>
     <comp ref="C11">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ce66cafe-8833-4c3b-903c-49eb7d4adf26</tstamps>
     </comp>
     <comp ref="C12">
       <value>2.2 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>95945fed-a889-4d38-97c0-6e3270827b0e</tstamps>
     </comp>
     <comp ref="C13">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>f08ec186-3e02-4b8f-b18b-45618d3ee13a</tstamps>
     </comp>
     <comp ref="C14">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>63a11d09-87a8-477c-967d-649fdc8ad6f4</tstamps>
     </comp>
     <comp ref="C15">
       <value>1 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ce1aeb04-30e5-4cef-be67-a40f5c7b6dcd</tstamps>
     </comp>
     <comp ref="C16">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>4e19aef4-f49b-4f44-a24c-29a92fc4eace</tstamps>
     </comp>
     <comp ref="C17">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>491f7f2c-b85c-4c71-a339-00b5604ab9e1</tstamps>
     </comp>
     <comp ref="C18">
       <value>1 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e89dc25a-5fdf-45d3-a452-0f43fb936eda</tstamps>
     </comp>
     <comp ref="C19">
       <value>1 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c8331595-c48c-4bdc-aad4-5f4cf3e38e76</tstamps>
     </comp>
     <comp ref="C20">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>d3a8d5c1-e35d-47fa-9bc7-7b5c7a165085</tstamps>
     </comp>
     <comp ref="C21">
       <value>1 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>84c817ae-b683-4b9f-90af-34f661dddb21</tstamps>
     </comp>
     <comp ref="C22">
       <value>47 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>b6bf216c-7ca5-49a8-bf16-c1581b08d86d</tstamps>
     </comp>
     <comp ref="C23">
       <value>200 pF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7e25dd35-e9f3-40d4-82ba-66ecd35b53d0</tstamps>
     </comp>
     <comp ref="C24">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>69245f25-979c-44ac-94b9-bbb6f6902694</tstamps>
     </comp>
     <comp ref="C25">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>4c9a5d32-2504-49fb-97f9-9a1ac7df9934</tstamps>
     </comp>
     <comp ref="C26">
       <value>2.2 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>035f4c7a-a6d5-497c-85db-c7b1343afae2</tstamps>
     </comp>
     <comp ref="C27">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>49c22b2a-d241-4843-ab71-80bf798c6820</tstamps>
     </comp>
     <comp ref="C28">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>f9c1c1bb-d773-4c9c-b60c-3701c0aa2570</tstamps>
     </comp>
     <comp ref="C29">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c048dffa-44c9-453c-a3ac-d35728aa5c84</tstamps>
     </comp>
     <comp ref="C30">
       <value>1 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>a305d36d-7d82-4f09-bbba-b1110e93fee5</tstamps>
     </comp>
     <comp ref="C31">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>2960948e-cc2f-48c9-94b6-ce2343648f0d</tstamps>
     </comp>
     <comp ref="C32">
       <value>47 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>630d252e-2673-4442-bb89-888cdd9490e4</tstamps>
     </comp>
     <comp ref="C33">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>5598a216-744e-411a-bf26-5b86506a3eaf</tstamps>
     </comp>
     <comp ref="C34">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>cd7a7cb8-1a5f-489d-a91f-cabbe0ba98ce</tstamps>
     </comp>
     <comp ref="C35">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>3f6b5f94-a13f-41ca-894d-19ae3ffb8f42</tstamps>
     </comp>
     <comp ref="C36">
-      <value>10 nF</value>
+      <value>4.7 uF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>8da32220-94f1-49db-bba5-821b0a744167</tstamps>
+      <tstamps>b9efe159-dfa3-4931-aa44-9e7a2d8ffbf3</tstamps>
     </comp>
     <comp ref="C37">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>fe3cc712-85fc-47a1-b5ff-035321b38e51</tstamps>
     </comp>
     <comp ref="C38">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>93f4bcff-1b19-49ac-acfa-087a5701cdbe</tstamps>
     </comp>
     <comp ref="C39">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>a5acfd00-4f57-4677-b60a-aaf516a3bfe1</tstamps>
     </comp>
     <comp ref="C40">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>22342f0a-782d-4b7e-ac4d-e7097b965e8f</tstamps>
     </comp>
     <comp ref="C41">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>78859952-c492-4323-8c0e-2f912375e199</tstamps>
     </comp>
     <comp ref="C42">
       <value>100 nF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>52789bf5-4551-4563-803d-a9d66fca126e</tstamps>
-    </comp>
-    <comp ref="C43">
-      <value>10 uF</value>
-      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
-      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
-      <property name="ki_keywords" value="cap capacitor"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>361a886f-2f57-429e-8a18-cd0a32d626c3</tstamps>
     </comp>
     <comp ref="C44">
       <value>22 uF</value>
       <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_1210_3225Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
       <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Unpolarized capacitor"/>
       <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>abb093ce-8322-4a2a-82f2-31870e4f6328</tstamps>
+    </comp>
+    <comp ref="C45">
+      <value>100 nF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <description>Unpolarized capacitor</description>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Unpolarized capacitor</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value="Корневой лист"/>
+      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7286ed5e-e407-4be5-a62e-121eded50531</tstamps>
     </comp>
     <comp ref="D1">
       <value>red/green, common cathode, F3</value>
       <footprint>LED_THT:LED_D5.0mm-3</footprint>
+      <description>Dual LED, common cathode on pin 2</description>
+      <fields>
+        <field name="Footprint">LED_THT:LED_D5.0mm-3</field>
+        <field name="Datasheet"/>
+        <field name="Description">Dual LED, common cathode on pin 2</field>
+      </fields>
       <libsource lib="Device" part="LED_Dual_AKA" description="Dual LED, common cathode on pin 2"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Dual LED, common cathode on pin 2"/>
       <property name="ki_keywords" value="LED diode bicolor dual"/>
+      <property name="ki_fp_filters" value="LED* LED_SMD:* LED_THT:*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>48564c5f-ef88-431e-b61e-2e7f8255f2cc</tstamps>
-    </comp>
-    <comp ref="D2">
-      <value>15MQ030NPBF</value>
-      <footprint>Diode_SMD:D_SMA</footprint>
-      <fields>
-        <field name="Sim.Device">D</field>
-        <field name="Sim.Pins">1=K 2=A</field>
-      </fields>
-      <libsource lib="Device" part="D" description="Diode"/>
-      <property name="Sim.Device" value="D"/>
-      <property name="Sim.Pins" value="1=K 2=A"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
-      <property name="ki_keywords" value="diode"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>becf5fd8-dcb6-4de4-8cbd-a5e3ed910b22</tstamps>
     </comp>
     <comp ref="D3">
       <value>15MQ030NPBF</value>
       <footprint>Diode_SMD:D_SMA</footprint>
+      <description>Diode</description>
       <fields>
         <field name="Sim.Device">D</field>
         <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet"/>
+        <field name="Description">Diode</field>
       </fields>
       <libsource lib="Device" part="D" description="Diode"/>
       <property name="Sim.Device" value="D"/>
       <property name="Sim.Pins" value="1=K 2=A"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
       <property name="ki_keywords" value="diode"/>
+      <property name="ki_fp_filters" value="TO-???* *_Diode_* *SingleDiode* D_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>29b3a358-0a3b-4fc0-a2ca-78b7c57b8efd</tstamps>
     </comp>
     <comp ref="D4">
       <value>BAV21WS</value>
       <footprint>Diode_SMD:D_SOD-323F</footprint>
+      <description>Diode</description>
       <fields>
         <field name="Sim.Device">D</field>
         <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Footprint">Diode_SMD:D_SOD-323F</field>
+        <field name="Datasheet"/>
+        <field name="Description">Diode</field>
       </fields>
       <libsource lib="Device" part="D" description="Diode"/>
       <property name="Sim.Device" value="D"/>
       <property name="Sim.Pins" value="1=K 2=A"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
       <property name="ki_keywords" value="diode"/>
+      <property name="ki_fp_filters" value="TO-???* *_Diode_* *SingleDiode* D_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>883dcd18-11bd-472e-8a29-e20ed4a801ad</tstamps>
     </comp>
     <comp ref="D5">
       <value>15MQ030NPBF</value>
       <footprint>Diode_SMD:D_SMA</footprint>
+      <description>Diode</description>
       <fields>
         <field name="Sim.Device">D</field>
         <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet"/>
+        <field name="Description">Diode</field>
       </fields>
       <libsource lib="Device" part="D" description="Diode"/>
       <property name="Sim.Device" value="D"/>
       <property name="Sim.Pins" value="1=K 2=A"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
       <property name="ki_keywords" value="diode"/>
+      <property name="ki_fp_filters" value="TO-???* *_Diode_* *SingleDiode* D_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e606cafb-4453-4642-940a-0f02da8e3024</tstamps>
     </comp>
     <comp ref="D6">
-      <value>ES2J</value>
-      <footprint>Diode_SMD:D_SMB</footprint>
+      <value>SMAJ26A</value>
+      <footprint>Diode_SMD:D_SMA</footprint>
+      <datasheet>https://www.littelfuse.com/media?resourcetype=datasheets&amp;itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&amp;filename=smaj-datasheet</datasheet>
+      <description>400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)</description>
       <fields>
-        <field name="Sim.Device">D</field>
-        <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet">https://www.littelfuse.com/media?resourcetype=datasheets&amp;itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&amp;filename=smaj-datasheet</field>
+        <field name="Description">400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)</field>
       </fields>
-      <libsource lib="Device" part="D" description="Diode"/>
-      <property name="Sim.Device" value="D"/>
-      <property name="Sim.Pins" value="1=K 2=A"/>
-      <property name="Sheetname" value=""/>
+      <libsource lib="Diode" part="SMAJ26A" description="400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)"/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
-      <property name="ki_keywords" value="diode"/>
+      <property name="ki_keywords" value="unidirectional diode TVS voltage suppressor"/>
+      <property name="ki_fp_filters" value="D*SMA*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>f838cdb4-9aef-4d87-baf5-ad2dd0787fd2</tstamps>
+      <tstamps>472bd4b0-6f30-4f51-a232-cce6396a7edd</tstamps>
     </comp>
     <comp ref="D7">
       <value>ES2J</value>
       <footprint>Diode_SMD:D_SMB</footprint>
+      <description>Diode</description>
       <fields>
         <field name="Sim.Device">D</field>
         <field name="Sim.Pins">1=K 2=A</field>
+        <field name="Footprint">Diode_SMD:D_SMB</field>
+        <field name="Datasheet"/>
+        <field name="Description">Diode</field>
       </fields>
       <libsource lib="Device" part="D" description="Diode"/>
       <property name="Sim.Device" value="D"/>
       <property name="Sim.Pins" value="1=K 2=A"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
       <property name="ki_keywords" value="diode"/>
+      <property name="ki_fp_filters" value="TO-???* *_Diode_* *SingleDiode* D_*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>1de26e21-8dd6-4043-a5f0-cb6940740fa8</tstamps>
+      <tstamps>bdf1de36-3d7c-451c-9fbf-a8619337b559</tstamps>
     </comp>
     <comp ref="F1">
       <value>3A</value>
       <footprint>Library:FuseHolder1808</footprint>
+      <description>Fuse</description>
+      <fields>
+        <field name="Footprint">Library:FuseHolder1808</field>
+        <field name="Datasheet"/>
+        <field name="Description">Fuse</field>
+      </fields>
       <libsource lib="Device" part="Fuse" description="Fuse"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Fuse"/>
       <property name="ki_keywords" value="fuse"/>
+      <property name="ki_fp_filters" value="*Fuse*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>3002eb38-9ea9-40c3-8c37-2f6c6e1519e8</tstamps>
     </comp>
     <comp ref="F2">
       <value>3A</value>
       <footprint>Library:FuseHolder1808</footprint>
+      <description>Fuse</description>
+      <fields>
+        <field name="Footprint">Library:FuseHolder1808</field>
+        <field name="Datasheet"/>
+        <field name="Description">Fuse</field>
+      </fields>
       <libsource lib="Device" part="Fuse" description="Fuse"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Fuse"/>
       <property name="ki_keywords" value="fuse"/>
+      <property name="ki_fp_filters" value="*Fuse*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>6465d367-e1e8-48d6-8ce9-174055df11a1</tstamps>
+      <tstamps>c01991c7-9973-4f88-8ab4-23fd0f6e8bb4</tstamps>
     </comp>
     <comp ref="H1">
       <value>MountingHole</value>
       <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Mounting Hole without connection</description>
+      <fields>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
       <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Mounting Hole without connection"/>
       <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>8cbb594e-909c-4865-bacc-49dbcc87024f</tstamps>
     </comp>
     <comp ref="H2">
       <value>MountingHole</value>
       <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Mounting Hole without connection</description>
+      <fields>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
       <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Mounting Hole without connection"/>
       <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>29c5c8b5-67a9-487a-9aea-2269234545ec</tstamps>
     </comp>
     <comp ref="H3">
       <value>MountingHole</value>
       <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Mounting Hole without connection</description>
+      <fields>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
       <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Mounting Hole without connection"/>
       <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>99c0c760-ba0e-46bf-9194-be81118285fb</tstamps>
     </comp>
     <comp ref="H4">
       <value>MountingHole</value>
       <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Mounting Hole without connection</description>
+      <fields>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
       <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Mounting Hole without connection"/>
       <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>49ccc8e1-7a2e-47ee-b808-41f63f37a73b</tstamps>
     </comp>
     <comp ref="H5">
       <value>MountingHole</value>
       <footprint>MountingHole:MountingHole_2.2mm_M2</footprint>
+      <description>Mounting Hole without connection</description>
+      <fields>
+        <field name="Footprint">MountingHole:MountingHole_2.2mm_M2</field>
+        <field name="Datasheet"/>
+        <field name="Description">Mounting Hole without connection</field>
+      </fields>
       <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Mounting Hole without connection"/>
       <property name="ki_keywords" value="mounting hole"/>
+      <property name="ki_fp_filters" value="MountingHole*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>0096ff83-c9c0-4799-90b4-7eaa898e567d</tstamps>
     </comp>
     <comp ref="J1">
       <value>2*LiFePo4@18650@1800mAh, 6,4V</value>
       <footprint>Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical</footprint>
+      <description>Generic connector, single row, 01x02, script generated</description>
+      <fields>
+        <field name="Footprint">Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, single row, 01x02, script generated</field>
+      </fields>
       <libsource lib="Connector" part="Conn_01x02_Socket" description="Generic connector, single row, 01x02, script generated"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Generic connector, single row, 01x02, script generated"/>
       <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>b78e716a-7b16-412c-a95c-8f75c8629ba4</tstamps>
     </comp>
     <comp ref="J2">
       <value>USBASP</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical</footprint>
+      <description>Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <fields>
         <field name="Sim.Device">SPICE</field>
         <field name="Sim.Params">type="J" model="USBASP" lib=""</field>
         <field name="Sim.Pins">1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</field>
       </fields>
       <libsource lib="Connector_Generic" part="Conn_02x05_Odd_Even" description="Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sim.Device" value="SPICE"/>
       <property name="Sim.Params" value="type=&quot;J&quot; model=&quot;USBASP&quot; lib=&quot;&quot;"/>
       <property name="Sim.Pins" value="1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_2x??_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>4356a7b4-470c-40e8-be6d-1690cac088fa</tstamps>
     </comp>
     <comp ref="J3">
-      <value>JST XH B3B</value>
-      <libsource lib="Connector" part="Conn_01x03_Pin" description="Generic connector, single row, 01x03, script generated"/>
-      <property name="Sheetname" value=""/>
+      <value>Charger</value>
+      <footprint>Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</footprint>
+      <description>Generic connector, single row, 01x02, script generated</description>
+      <fields>
+        <field name="Footprint">Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Generic connector, single row, 01x02, script generated</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_01x02_Socket" description="Generic connector, single row, 01x02, script generated"/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Generic connector, single row, 01x03, script generated"/>
       <property name="ki_keywords" value="connector"/>
+      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>377a2754-6a78-4002-8261-43bd8d050188</tstamps>
-    </comp>
-    <comp ref="J4">
-      <value>JST XH B3B</value>
-      <footprint>Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical</footprint>
-      <libsource lib="Connector" part="Conn_01x03_Socket" description="Generic connector, single row, 01x03, script generated"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Generic connector, single row, 01x03, script generated"/>
-      <property name="ki_keywords" value="connector"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>5e5d6569-50c8-46a4-baa7-b8007771ce7c</tstamps>
-    </comp>
-    <comp ref="JP1">
-      <value>AC Detect</value>
-      <footprint>Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm</footprint>
-      <libsource lib="Jumper" part="SolderJumper_2_Open" description="Solder Jumper, 2-pole, open"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Solder Jumper, 2-pole, open"/>
-      <property name="ki_keywords" value="solder jumper SPST"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>b3d27422-f3e4-4d64-8130-567284d44b0b</tstamps>
-    </comp>
-    <comp ref="L1">
-      <value>?</value>
-      <libsource lib="Device" part="L" description="Inductor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Inductor"/>
-      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>d5bd2e9f-bd61-4d6c-8dec-fbbc52bc6c35</tstamps>
-    </comp>
-    <comp ref="L2">
-      <value>?</value>
-      <libsource lib="Device" part="L" description="Inductor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="exclude_from_board"/>
-      <property name="ki_description" value="Inductor"/>
-      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>3b975757-e8e2-4b7c-8027-2da82f412c48</tstamps>
+      <tstamps>f3a50baf-89c9-4a73-93b6-4066f913a80c</tstamps>
     </comp>
     <comp ref="L3">
       <value>AMPLF0630, 8,2uH</value>
       <footprint>Inductor_SMD:L_Abracon_ASPI-0630LR</footprint>
+      <description>Inductor</description>
+      <fields>
+        <field name="Footprint">Inductor_SMD:L_Abracon_ASPI-0630LR</field>
+        <field name="Datasheet"/>
+        <field name="Description">Inductor</field>
+      </fields>
       <libsource lib="Device" part="L" description="Inductor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Inductor"/>
       <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <property name="ki_fp_filters" value="Choke_* *Coil* Inductor_* L_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>5cc786c1-60ab-482c-b668-e65e6b8886df</tstamps>
     </comp>
@@ -798,8 +1088,13 @@
       <value>VSM3729AT-GL9-A30</value>
       <footprint>Library:SMD03722C4</footprint>
       <datasheet>https://static.chipdip.ru/lib/927/DOC010927685.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Library:SMD03722C4</field>
+        <field name="Datasheet">https://static.chipdip.ru/lib/927/DOC010927685.pdf</field>
+        <field name="Description"/>
+      </fields>
       <libsource lib="My_Library" part="MEMS-4PIN" description=""/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e4e979f8-2d83-4cd0-aec3-cc0ce4485ac5</tstamps>
@@ -808,11 +1103,17 @@
       <value>IRLML5203</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d</datasheet>
+      <description>-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d</field>
+        <field name="Description">-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML5203" description="-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="P-Channel HEXFET MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>a09880f3-8dc3-4401-ba76-bbf1392e6c8e</tstamps>
     </comp>
@@ -820,11 +1121,17 @@
       <value>IRLML5203</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d</datasheet>
+      <description>-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d</field>
+        <field name="Description">-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML5203" description="-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="P-Channel HEXFET MOSFET"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7b8e147c-1d5e-4be6-8a55-4c8ad9139798</tstamps>
     </comp>
@@ -832,11 +1139,17 @@
       <value>IRLML0030</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</datasheet>
+      <description>5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</field>
+        <field name="Description">5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML0030" description="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="N-Channel HEXFET MOSFET Logic-Level"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c44b3388-4bd1-475b-816d-3e82fa4a0971</tstamps>
     </comp>
@@ -844,11 +1157,17 @@
       <value>IRLML0030</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</datasheet>
+      <description>5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</field>
+        <field name="Description">5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML0030" description="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="N-Channel HEXFET MOSFET Logic-Level"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>03bc87f0-7024-4d6c-88ec-71b13cef6fea</tstamps>
     </comp>
@@ -856,11 +1175,17 @@
       <value>IRLML0030</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</datasheet>
+      <description>5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</field>
+        <field name="Description">5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML0030" description="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="N-Channel HEXFET MOSFET Logic-Level"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>f3b958ac-8b1d-4ce2-9990-736d5b7e7fb5</tstamps>
     </comp>
@@ -868,11 +1193,17 @@
       <value>IRLML0030</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</datasheet>
+      <description>5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</field>
+        <field name="Description">5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML0030" description="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="N-Channel HEXFET MOSFET Logic-Level"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>b69ec9bc-38e9-417e-8eae-0cf98253313f</tstamps>
     </comp>
@@ -880,364 +1211,543 @@
       <value>IRLML0030</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</datasheet>
+      <description>5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</field>
+        <field name="Description">5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</field>
+      </fields>
       <libsource lib="Transistor_FET" part="IRLML0030" description="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"/>
       <property name="ki_keywords" value="N-Channel HEXFET MOSFET Logic-Level"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>bdbec654-d119-4737-833f-33b71473ade2</tstamps>
     </comp>
     <comp ref="R1">
       <value>10K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c03dad68-dabc-468c-b750-5c81d5e569b1</tstamps>
     </comp>
     <comp ref="R2">
       <value>10K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>35ffe228-22cd-49db-aa5e-32cf6af10155</tstamps>
     </comp>
     <comp ref="R3">
       <value>4K7</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>1c79cd38-aee1-4516-9585-b1674a2b8855</tstamps>
     </comp>
     <comp ref="R4">
       <value>1K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>69068276-1dc0-4e77-9122-bdd62389edb7</tstamps>
     </comp>
     <comp ref="R5">
       <value>4K7</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>da4149a7-4a75-4aea-8e5f-5b07d7d6e98a</tstamps>
     </comp>
     <comp ref="R6">
       <value>10K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>a06e7161-e57e-448b-8623-6fbf7d4b81f4</tstamps>
     </comp>
     <comp ref="R7">
       <value>2</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>183ca134-93d4-4b5e-8ca0-6a777c920a7e</tstamps>
     </comp>
     <comp ref="R8">
       <value>100K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>61fd47e0-4840-48e9-97bd-e7761aa85020</tstamps>
     </comp>
     <comp ref="R9">
       <value>45K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>610a1d48-c668-49d0-be64-ac5c594d9c9a</tstamps>
     </comp>
     <comp ref="R10">
       <value>4K7</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>1dd18f60-3e4d-40a7-acac-91d00d482137</tstamps>
     </comp>
     <comp ref="R11">
       <value>4K7</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>2afe15ea-dc6e-4699-be5e-3c60c365908a</tstamps>
     </comp>
     <comp ref="R12">
       <value>4R7</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7eca4141-1c4c-431c-ad12-82603efdc75d</tstamps>
     </comp>
     <comp ref="R13">
       <value>4K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>16c75de5-064e-4045-92ae-01a7cbf16a75</tstamps>
     </comp>
     <comp ref="R14">
       <value>4K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>fa881945-aba0-4d0b-bc8b-7c71f9628ea6</tstamps>
     </comp>
     <comp ref="R15">
       <value>200K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>b3cc3f6a-e4d9-4599-8a6d-0ef1c5546413</tstamps>
     </comp>
     <comp ref="R16">
       <value>0.01 R</value>
       <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_1206_3216Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c1e3b70e-93d8-4444-b151-62abcf97879b</tstamps>
     </comp>
     <comp ref="R17">
       <value>4K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>92f16c03-c7e3-4ab5-b371-bb3f6db378e4</tstamps>
     </comp>
     <comp ref="R18">
       <value>10</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>2153f730-a131-4540-aba5-76d48af36e04</tstamps>
     </comp>
     <comp ref="R19">
       <value>10K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>f29b5f29-3504-46da-8857-69fdeee95fb0</tstamps>
     </comp>
     <comp ref="R20">
-      <value>10K</value>
+      <value>2K2</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>55b89690-db2f-4002-a8c0-37e77254d7f7</tstamps>
+      <tstamps>d4ffde7f-301f-449d-bd58-072ee99ea87c</tstamps>
     </comp>
     <comp ref="R21">
       <value>10</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>f9cda16b-d483-45a0-8bad-dd0181ff7153</tstamps>
-    </comp>
-    <comp ref="R22">
-      <value>6R8</value>
-      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
-      <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
-      <property name="ki_keywords" value="R res resistor"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>4f69b8db-a0c8-4788-9890-d938ce3f7de5</tstamps>
     </comp>
     <comp ref="R23">
       <value>100K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>8ebf4ce7-d745-490d-b1ee-9b419b9ed758</tstamps>
     </comp>
     <comp ref="R24">
       <value>10</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>986c5d65-3e1d-4177-bcec-68a47d07a004</tstamps>
     </comp>
     <comp ref="R25">
       <value>100K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>3a056251-011c-4427-9a5b-6bdaea723d0b</tstamps>
     </comp>
     <comp ref="R26">
       <value>100K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ccf649f4-68d7-4398-a9fe-83d814066b74</tstamps>
     </comp>
     <comp ref="R27">
       <value>0.01 R</value>
       <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_1206_3216Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7e1ec2c0-a3cd-4e67-98ec-62e5ad88712b</tstamps>
     </comp>
     <comp ref="R28">
       <value>10</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7e12a4ce-7a3f-475a-897d-92af3027d80c</tstamps>
     </comp>
     <comp ref="R29">
-      <value>100K</value>
+      <value>10</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>6ad5fc3b-74fe-4eef-9e17-23fc80dbd167</tstamps>
+      <tstamps>2893a07e-e183-40a4-af23-e53458e64f36</tstamps>
     </comp>
     <comp ref="R30">
-      <value>4K7</value>
+      <value>10</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <description>Resistor</description>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description">Resistor</field>
+      </fields>
       <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Resistor"/>
       <property name="ki_keywords" value="R res resistor"/>
+      <property name="ki_fp_filters" value="R_*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>6455f642-edbd-46b0-91b9-9f4f805c8b8e</tstamps>
+      <tstamps>95015e80-1799-4467-b98e-f2f323955468</tstamps>
     </comp>
     <comp ref="RV1">
       <value>RM065, 100K</value>
       <footprint>Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical</footprint>
+      <description>Potentiometer</description>
+      <fields>
+        <field name="Footprint">Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Potentiometer</field>
+      </fields>
       <libsource lib="Device" part="R_Potentiometer" description="Potentiometer"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Potentiometer"/>
       <property name="ki_keywords" value="resistor variable"/>
+      <property name="ki_fp_filters" value="Potentiometer*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>5f1e734d-5908-4b18-8be0-8e4727ecd6a9</tstamps>
     </comp>
     <comp ref="RV2">
       <value>JVR-05N180M</value>
       <footprint>Varistor:RV_Disc_D7mm_W4.5mm_P5mm</footprint>
+      <description>Voltage dependent resistor</description>
       <fields>
-        <field name="Sim.Device">SUBCKT</field>
-        <field name="Sim.Library">${KICAD7_SYMBOL_DIR}/Simulation_SPICE.sp</field>
         <field name="Sim.Name">kicad_builtin_varistor</field>
-        <field name="Sim.Params">threshold=1k</field>
+        <field name="Sim.Device">SUBCKT</field>
         <field name="Sim.Pins">1=A 2=B</field>
+        <field name="Sim.Params">threshold=1k</field>
+        <field name="Sim.Library">${KICAD7_SYMBOL_DIR}/Simulation_SPICE.sp</field>
+        <field name="Footprint">Varistor:RV_Disc_D7mm_W4.5mm_P5mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">Voltage dependent resistor</field>
       </fields>
       <libsource lib="Device" part="Varistor" description="Voltage dependent resistor"/>
       <property name="Sim.Name" value="kicad_builtin_varistor"/>
@@ -1245,143 +1755,232 @@
       <property name="Sim.Pins" value="1=A 2=B"/>
       <property name="Sim.Params" value="threshold=1k"/>
       <property name="Sim.Library" value="${KICAD7_SYMBOL_DIR}/Simulation_SPICE.sp"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Voltage dependent resistor"/>
       <property name="ki_keywords" value="VDR resistance"/>
+      <property name="ki_fp_filters" value="RV_* Varistor*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>be166560-66be-40e2-b6b9-f73b63d4e663</tstamps>
+      <tstamps>611e60f3-4f57-49f8-b066-e6d9f836c729</tstamps>
     </comp>
     <comp ref="RV3">
       <value>RM065, 100K</value>
       <footprint>Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical</footprint>
+      <description>Potentiometer</description>
+      <fields>
+        <field name="Footprint">Potentiometer_THT:Potentiometer_Runtron_RM-065_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Potentiometer</field>
+      </fields>
       <libsource lib="Device" part="R_Potentiometer" description="Potentiometer"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Potentiometer"/>
       <property name="ki_keywords" value="resistor variable"/>
+      <property name="ki_fp_filters" value="Potentiometer*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>0a21e6a9-fcaf-404f-a3cd-2fe427cbd668</tstamps>
     </comp>
     <comp ref="TP1">
-      <value>VBAT</value>
+      <value>CHG SUPPLY</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>b56699ee-f4cd-4328-95dd-0c6664e47651</tstamps>
+      <tstamps>45aea6b5-69d5-4b53-8cc7-67eb7eb53a6c</tstamps>
     </comp>
     <comp ref="TP2">
       <value>GND</value>
-      <footprint>TestPoint:TestPoint_Plated_Hole_D2.0mm</footprint>
+      <footprint>Library:TestPoint_Plated_Hole_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">Library:TestPoint_Plated_Hole_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>1ff443d7-f9da-483b-8e3a-fafd9b534e8f</tstamps>
     </comp>
     <comp ref="TP3">
       <value>1V8</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>744c29ac-dc01-438c-bf01-c90ad5273175</tstamps>
     </comp>
     <comp ref="TP4">
       <value>+5V</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ecc9056b-b8c5-4870-aaf1-65e15631899c</tstamps>
     </comp>
     <comp ref="TP5">
       <value>3V3</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c82bd3e6-55ce-4dd6-bf5f-0889c31214f5</tstamps>
     </comp>
     <comp ref="TP6">
       <value>VSYS</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>a13fc339-6f55-4f01-98ce-0304b8cbad11</tstamps>
     </comp>
     <comp ref="TP7">
       <value>MK_OUT</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>7ec2d276-7b3f-4e5b-99f8-d26db34ee90e</tstamps>
     </comp>
-    <comp ref="TP8">
-      <value>CHG SUPPLY</value>
-      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
-      <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
-      <property name="ki_keywords" value="test point tp"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>22e9386c-a77c-4f27-aad6-17360d621ce3</tstamps>
-    </comp>
     <comp ref="TP9">
-      <value>ILIM</value>
+      <value>ACDET</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>8350c842-b814-4ad4-8d14-c54ddeb2ffce</tstamps>
+      <tstamps>25da70f3-0055-4f34-9639-9e62531a5479</tstamps>
     </comp>
     <comp ref="TP10">
       <value>NOISE</value>
       <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
       <libsource lib="Connector" part="TestPoint" description="test point"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="test point"/>
       <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>c70aefef-dfea-4d06-8e38-b8d809265f15</tstamps>
+    </comp>
+    <comp ref="TP11">
+      <value>ACDRV</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="Корневой лист"/>
+      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>36b2d5b9-ffed-47b2-9c78-2277ea86d31b</tstamps>
+    </comp>
+    <comp ref="TP12">
+      <value>ACOK</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <description>test point</description>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description">test point</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value="Корневой лист"/>
+      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <property name="ki_fp_filters" value="Pin* Test*"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1cb0d53d-8e0a-4146-8841-c2b0b8841527</tstamps>
     </comp>
     <comp ref="U1">
       <value>ATmega328-A</value>
       <footprint>Package_QFP:TQFP-32_7x7mm_P0.8mm</footprint>
       <datasheet>https://static.chipdip.ru/lib/549/DOC001549488.pdf</datasheet>
+      <description>20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, TQFP-32</description>
+      <fields>
+        <field name="Footprint">Package_QFP:TQFP-32_7x7mm_P0.8mm</field>
+        <field name="Datasheet">https://static.chipdip.ru/lib/549/DOC001549488.pdf</field>
+        <field name="Description">20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, TQFP-32</field>
+      </fields>
       <libsource lib="MCU_Microchip_ATmega" part="ATmega328-A" description="20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, TQFP-32"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, TQFP-32"/>
       <property name="ki_keywords" value="AVR 8bit Microcontroller MegaAVR"/>
+      <property name="ki_fp_filters" value="TQFP*7x7mm*P0.8mm*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>075825a8-2c59-4562-a880-8fc4a8a03f1b</tstamps>
     </comp>
@@ -1389,8 +1988,13 @@
       <value>STX882@315MHz</value>
       <footprint>Library:STX882_Vertical</footprint>
       <datasheet>https://www.laskakit.cz/user/related_files/stx882.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Library:STX882_Vertical</field>
+        <field name="Datasheet">https://www.laskakit.cz/user/related_files/stx882.pdf</field>
+        <field name="Description"/>
+      </fields>
       <libsource lib="My_Library" part="STX882" description=""/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>453a3d33-eb20-4a54-96aa-34f8db2acce3</tstamps>
@@ -1399,11 +2003,17 @@
       <value> MCP1703T-5002E</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>http://www.advanced-monolithic.com/pdf/ds1117.pdf</datasheet>
+      <description>1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://www.advanced-monolithic.com/pdf/ds1117.pdf</field>
+        <field name="Description">1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223</field>
+      </fields>
       <libsource lib="Regulator_Linear" part="AMS1117-3.3" description="1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"/>
       <property name="ki_keywords" value="linear regulator ldo fixed positive"/>
+      <property name="ki_fp_filters" value="SOT?223*TabPin2*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>573cdc48-b839-44a4-9b57-5332e67290cf</tstamps>
     </comp>
@@ -1411,11 +2021,17 @@
       <value> MCP1703T-3302E</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>http://www.advanced-monolithic.com/pdf/ds1117.pdf</datasheet>
+      <description>1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://www.advanced-monolithic.com/pdf/ds1117.pdf</field>
+        <field name="Description">1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223</field>
+      </fields>
       <libsource lib="Regulator_Linear" part="AMS1117-3.3" description="1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223"/>
       <property name="ki_keywords" value="linear regulator ldo fixed positive"/>
+      <property name="ki_fp_filters" value="SOT?223*TabPin2*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>595a48fe-18a6-49b1-8110-093d6b7c9704</tstamps>
     </comp>
@@ -1423,11 +2039,17 @@
       <value>MCP1703T-1802E</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf</datasheet>
+      <description>Low Quiescent Current LDO Regulator, 5.0V, 250mA, Vin&lt;=16V, SOT-23</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf</field>
+        <field name="Description">Low Quiescent Current LDO Regulator, 5.0V, 250mA, Vin&lt;=16V, SOT-23</field>
+      </fields>
       <libsource lib="Regulator_Linear" part="MCP1703Ax-500xxTT" description="Low Quiescent Current LDO Regulator, 5.0V, 250mA, Vin&lt;=16V, SOT-23"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Low Quiescent Current LDO Regulator, 5.0V, 250mA, Vin&lt;=16V, SOT-23"/>
       <property name="ki_keywords" value="REGULATOR LDO"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>8f807da7-6543-4d41-a8a1-c54797881009</tstamps>
     </comp>
@@ -1435,11 +2057,17 @@
       <value>PCA9306</value>
       <footprint>Package_SO:MSOP-8_3x3mm_P0.65mm</footprint>
       <datasheet>http://www.ti.com/lit/ds/symlink/pca9306.pdf</datasheet>
+      <description>Dual bidirectional I2C Bus and SMBus voltage level translator</description>
+      <fields>
+        <field name="Footprint">Package_SO:MSOP-8_3x3mm_P0.65mm</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/pca9306.pdf</field>
+        <field name="Description">Dual bidirectional I2C Bus and SMBus voltage level translator</field>
+      </fields>
       <libsource lib="Interface" part="PCA9306" description="Dual bidirectional I2C Bus and SMBus voltage level translator"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Dual bidirectional I2C Bus and SMBus voltage level translator"/>
       <property name="ki_keywords" value="Dual bidirectional I2C Bus and SMBus voltage level translator"/>
+      <property name="ki_fp_filters" value="SSOP*2.95x2.8mm*P0.65mm* VSSOP*2.3x2mm*P0.5mm* X2SON*1.4x1mm*P0.35mm*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>309bd337-08ee-47c8-a868-a0d5b5b99154</tstamps>
     </comp>
@@ -1447,11 +2075,17 @@
       <value>BME280</value>
       <footprint>Package_LGA:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinNumbering</footprint>
       <datasheet>https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf</datasheet>
+      <description>3-in-1 sensor, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</description>
+      <fields>
+        <field name="Footprint">Package_LGA:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinNumbering</field>
+        <field name="Datasheet">https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf</field>
+        <field name="Description">3-in-1 sensor, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</field>
+      </fields>
       <libsource lib="Sensor" part="BME280" description="3-in-1 sensor, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="3-in-1 sensor, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8"/>
       <property name="ki_keywords" value="Bosch pressure humidity temperature environment environmental measurement digital"/>
+      <property name="ki_fp_filters" value="*LGA*2.5x2.5mm*P0.65mm*Clockwise*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ab583694-c165-4edc-8884-fae1c4829be6</tstamps>
     </comp>
@@ -1459,8 +2093,13 @@
       <value>BQ24780S</value>
       <footprint>Package_DFN_QFN:QFN-28-1EP_4x4mm_P0.4mm_EP2.6x2.6mm_ThermalVias</footprint>
       <datasheet>https://4ip.info/files/attachments/BQ24780S.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Package_DFN_QFN:QFN-28-1EP_4x4mm_P0.4mm_EP2.6x2.6mm_ThermalVias</field>
+        <field name="Datasheet">https://4ip.info/files/attachments/BQ24780S.pdf</field>
+        <field name="Description"/>
+      </fields>
       <libsource lib="My_Library" part="BQ24780S" description=""/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>3384cc97-9d32-4316-ae5d-6dc410363b40</tstamps>
@@ -1469,11 +2108,17 @@
       <value>AD8541</value>
       <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
       <datasheet>https://www.analog.com/media/en/technical-documentation/data-sheets/AD8211.pdf</datasheet>
+      <description>65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
+        <field name="Datasheet">https://www.analog.com/media/en/technical-documentation/data-sheets/AD8211.pdf</field>
+        <field name="Description">65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5</field>
+      </fields>
       <libsource lib="Amplifier_Current" part="AD8211" description="65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5"/>
       <property name="ki_keywords" value="highside HS current sense amplifier linear buffered"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>203d2135-a64f-4fa5-9e1e-b2e0c105aefa</tstamps>
     </comp>
@@ -1481,22 +2126,49 @@
       <value>AD8541</value>
       <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
       <datasheet>https://www.analog.com/media/en/technical-documentation/data-sheets/AD8211.pdf</datasheet>
+      <description>65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5</description>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
+        <field name="Datasheet">https://www.analog.com/media/en/technical-documentation/data-sheets/AD8211.pdf</field>
+        <field name="Description">65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5</field>
+      </fields>
       <libsource lib="Amplifier_Current" part="AD8211" description="65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5"/>
       <property name="ki_keywords" value="highside HS current sense amplifier linear buffered"/>
+      <property name="ki_fp_filters" value="SOT?23*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>3303635b-43f3-4a73-9379-bec6847810ae</tstamps>
+    </comp>
+    <comp ref="U12">
+      <value>INA219</value>
+      <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
+      <datasheet>https://static.chipdip.ru/lib/766/DOC004766634.pdf</datasheet>
+      <fields>
+        <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
+        <field name="Datasheet">https://static.chipdip.ru/lib/766/DOC004766634.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="My_Library" part="INA219" description=""/>
+      <property name="Sheetname" value="Корневой лист"/>
+      <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>aa3787eb-5db1-4164-a4c7-f551d2f52b64</tstamps>
     </comp>
     <comp ref="X1">
       <value>HC-49U, 8MHz</value>
       <footprint>Crystal:Crystal_HC49-U_Vertical</footprint>
+      <description>Two pin crystal</description>
+      <fields>
+        <field name="Footprint">Crystal:Crystal_HC49-U_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description">Two pin crystal</field>
+      </fields>
       <libsource lib="Device" part="Crystal" description="Two pin crystal"/>
-      <property name="Sheetname" value=""/>
+      <property name="Sheetname" value="Корневой лист"/>
       <property name="Sheetfile" value="outdoor-module.kicad_sch"/>
-      <property name="ki_description" value="Two pin crystal"/>
       <property name="ki_keywords" value="quartz ceramic resonator oscillator"/>
+      <property name="ki_fp_filters" value="Crystal*"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>0d785fbd-9e58-49b6-b946-84023e8e92b2</tstamps>
     </comp>
@@ -1513,6 +2185,7 @@
         <field name="Value">AD8211</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
         <field name="Datasheet">https://www.analog.com/media/en/technical-documentation/data-sheets/AD8211.pdf</field>
+        <field name="Description">65V High Voltage, Current Shunt Monitor, 20V/V gain, bandwidth 500kHz, Vcc=5V, SOT-23-5</field>
       </fields>
       <pins>
         <pin num="1" name="OUT" type="output"/>
@@ -1531,45 +2204,13 @@
       <fields>
         <field name="Reference">J</field>
         <field name="Value">Conn_01x02_Socket</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Generic connector, single row, 01x02, script generated</field>
       </fields>
       <pins>
         <pin num="1" name="Pin_1" type="passive"/>
         <pin num="2" name="Pin_2" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Connector" part="Conn_01x03_Pin">
-      <description>Generic connector, single row, 01x03, script generated</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>Connector*:*_1x??_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">J</field>
-        <field name="Value">Conn_01x03_Pin</field>
-        <field name="Datasheet">~</field>
-      </fields>
-      <pins>
-        <pin num="1" name="Pin_1" type="passive"/>
-        <pin num="2" name="Pin_2" type="passive"/>
-        <pin num="3" name="Pin_3" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Connector" part="Conn_01x03_Socket">
-      <description>Generic connector, single row, 01x03, script generated</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>Connector*:*_1x??_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">J</field>
-        <field name="Value">Conn_01x03_Socket</field>
-        <field name="Datasheet">~</field>
-      </fields>
-      <pins>
-        <pin num="1" name="Pin_1" type="passive"/>
-        <pin num="2" name="Pin_2" type="passive"/>
-        <pin num="3" name="Pin_3" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Connector" part="TestPoint">
@@ -1582,7 +2223,9 @@
       <fields>
         <field name="Reference">TP</field>
         <field name="Value">TestPoint</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">test point</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -1597,7 +2240,9 @@
       <fields>
         <field name="Reference">J</field>
         <field name="Value">Conn_02x05_Odd_Even</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Generic connector, double row, 02x05, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</field>
       </fields>
       <pins>
         <pin num="1" name="Pin_1" type="passive"/>
@@ -1621,7 +2266,9 @@
       <fields>
         <field name="Reference">C</field>
         <field name="Value">C</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Unpolarized capacitor</field>
       </fields>
       <pins>
         <pin num="1" name="" type="passive"/>
@@ -1637,7 +2284,9 @@
       <fields>
         <field name="Reference">C</field>
         <field name="Value">C_Polarized</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Polarized capacitor</field>
       </fields>
       <pins>
         <pin num="1" name="" type="passive"/>
@@ -1653,7 +2302,9 @@
       <fields>
         <field name="Reference">Y</field>
         <field name="Value">Crystal</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Two pin crystal</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -1672,7 +2323,9 @@
       <fields>
         <field name="Reference">D</field>
         <field name="Value">D</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Diode</field>
         <field name="Sim.Device">D</field>
         <field name="Sim.Pins">1=K 2=A</field>
       </fields>
@@ -1690,7 +2343,9 @@
       <fields>
         <field name="Reference">F</field>
         <field name="Value">Fuse</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Fuse</field>
       </fields>
       <pins>
         <pin num="1" name="" type="passive"/>
@@ -1709,7 +2364,9 @@
       <fields>
         <field name="Reference">L</field>
         <field name="Value">L</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Inductor</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -1727,7 +2384,9 @@
       <fields>
         <field name="Reference">D</field>
         <field name="Value">LED_Dual_AKA</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Dual LED, common cathode on pin 2</field>
       </fields>
       <pins>
         <pin num="1" name="A1" type="input"/>
@@ -1744,7 +2403,9 @@
       <fields>
         <field name="Reference">NT</field>
         <field name="Value">NetTie_2</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Net tie, 2 pins</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -1760,7 +2421,9 @@
       <fields>
         <field name="Reference">R</field>
         <field name="Value">R</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Resistor</field>
       </fields>
       <pins>
         <pin num="1" name="" type="passive"/>
@@ -1776,7 +2439,9 @@
       <fields>
         <field name="Reference">RV</field>
         <field name="Value">R_Potentiometer</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Potentiometer</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -1794,7 +2459,9 @@
       <fields>
         <field name="Reference">RV</field>
         <field name="Value">Varistor</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Voltage dependent resistor</field>
         <field name="Sim.Name">kicad_builtin_varistor</field>
         <field name="Sim.Device">SUBCKT</field>
         <field name="Sim.Pins">1=A 2=B</field>
@@ -1804,6 +2471,24 @@
       <pins>
         <pin num="1" name="" type="passive"/>
         <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="SMAJ26A">
+      <description>400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)</description>
+      <docs>https://www.littelfuse.com/media?resourcetype=datasheets&amp;itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&amp;filename=smaj-datasheet</docs>
+      <footprints>
+        <fp>D*SMA*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">SMAJ26A</field>
+        <field name="Footprint">Diode_SMD:D_SMA</field>
+        <field name="Datasheet">https://www.littelfuse.com/media?resourcetype=datasheets&amp;itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&amp;filename=smaj-datasheet</field>
+        <field name="Description">400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="passive"/>
+        <pin num="2" name="A2" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Interface" part="PCA9306">
@@ -1817,7 +2502,9 @@
       <fields>
         <field name="Reference">U</field>
         <field name="Value">PCA9306</field>
+        <field name="Footprint"/>
         <field name="Datasheet">http://www.ti.com/lit/ds/symlink/pca9306.pdf</field>
+        <field name="Description">Dual bidirectional I2C Bus and SMBus voltage level translator</field>
       </fields>
       <pins>
         <pin num="1" name="GND" type="power_in"/>
@@ -1828,22 +2515,6 @@
         <pin num="6" name="SCL2" type="bidirectional"/>
         <pin num="7" name="VREF2" type="power_in"/>
         <pin num="8" name="EN" type="input"/>
-      </pins>
-    </libpart>
-    <libpart lib="Jumper" part="SolderJumper_2_Open">
-      <description>Solder Jumper, 2-pole, open</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>SolderJumper*Open*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">JP</field>
-        <field name="Value">SolderJumper_2_Open</field>
-        <field name="Datasheet">~</field>
-      </fields>
-      <pins>
-        <pin num="1" name="A" type="passive"/>
-        <pin num="2" name="B" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="MCU_Microchip_ATmega" part="ATmega328-A">
@@ -1857,6 +2528,7 @@
         <field name="Value">ATmega328-A</field>
         <field name="Footprint">Package_QFP:TQFP-32_7x7mm_P0.8mm</field>
         <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf</field>
+        <field name="Description">20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, TQFP-32</field>
       </fields>
       <pins>
         <pin num="1" name="PD3" type="bidirectional"/>
@@ -1902,14 +2574,19 @@
       <fields>
         <field name="Reference">H</field>
         <field name="Value">MountingHole</field>
+        <field name="Footprint"/>
         <field name="Datasheet">~</field>
+        <field name="Description">Mounting Hole without connection</field>
       </fields>
     </libpart>
     <libpart lib="My_Library" part="BQ24780S">
       <docs>https://4ip.info/files/attachments/BQ24780S.pdf</docs>
       <fields>
         <field name="Reference">U</field>
+        <field name="Value"/>
+        <field name="Footprint"/>
         <field name="Datasheet">https://4ip.info/files/attachments/BQ24780S.pdf</field>
+        <field name="Description"/>
       </fields>
       <pins>
         <pin num="1" name="ACN" type="input"/>
@@ -1943,9 +2620,33 @@
         <pin num="29" name="PGND" type="power_in"/>
       </pins>
     </libpart>
+    <libpart lib="My_Library" part="INA219">
+      <docs>https://static.chipdip.ru/lib/766/DOC004766634.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">INA219</field>
+        <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
+        <field name="Datasheet">https://static.chipdip.ru/lib/766/DOC004766634.pdf</field>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="bidirectional"/>
+        <pin num="2" name="A0" type="bidirectional"/>
+        <pin num="3" name="SDA" type="bidirectional"/>
+        <pin num="4" name="SCL" type="input"/>
+        <pin num="5" name="VCC" type="power_in"/>
+        <pin num="6" name="GND" type="power_in"/>
+        <pin num="7" name="VIN_-" type="input"/>
+        <pin num="8" name="VIN_+" type="input"/>
+      </pins>
+    </libpart>
     <libpart lib="My_Library" part="MEMS-4PIN">
       <fields>
         <field name="Reference">MK</field>
+        <field name="Value"/>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
       </fields>
       <pins>
         <pin num="1" name="VCC" type="power_in"/>
@@ -1961,6 +2662,7 @@
         <field name="Value">STX882</field>
         <field name="Footprint">Library:STX882_Vertical</field>
         <field name="Datasheet">https://www.laskakit.cz/user/related_files/stx882.pdf</field>
+        <field name="Description"/>
       </fields>
       <pins>
         <pin num="2" name="DATA" type="input"/>
@@ -1979,6 +2681,7 @@
         <field name="Value">AMS1117-3.3</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-223-3_TabPin2</field>
         <field name="Datasheet">http://www.advanced-monolithic.com/pdf/ds1117.pdf</field>
+        <field name="Description">1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223</field>
       </fields>
       <pins>
         <pin num="1" name="GND" type="power_in"/>
@@ -1997,6 +2700,7 @@
         <field name="Value">MCP1703Ax-500xxTT</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/20005122B.pdf</field>
+        <field name="Description">Low Quiescent Current LDO Regulator, 5.0V, 250mA, Vin&lt;=16V, SOT-23</field>
       </fields>
       <pins>
         <pin num="1" name="GND" type="power_in"/>
@@ -2015,6 +2719,7 @@
         <field name="Value">BME280</field>
         <field name="Footprint">Package_LGA:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinNumbering</field>
         <field name="Datasheet">https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf</field>
+        <field name="Description">3-in-1 sensor, humidity, pressure, temperature, I2C and SPI interface, 1.71-3.6V, LGA-8</field>
       </fields>
       <pins>
         <pin num="1" name="GND" type="power_in"/>
@@ -2038,6 +2743,7 @@
         <field name="Value">IRLML0030</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet">https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df</field>
+        <field name="Description">5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23</field>
       </fields>
       <pins>
         <pin num="1" name="G" type="input"/>
@@ -2056,6 +2762,7 @@
         <field name="Value">IRLML5203</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet">https://www.infineon.com/dgdl/irlml5203pbf.pdf?fileId=5546d462533600a40153566868da261d</field>
+        <field name="Description">-3.0A Id, -30V Vds, 98mOhm Rds, P-Channel HEXFET Power MOSFET, SOT-23</field>
       </fields>
       <pins>
         <pin num="1" name="G" type="input"/>
@@ -2077,11 +2784,11 @@
     <library logical="Device">
       <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
     </library>
+    <library logical="Diode">
+      <uri>/usr/share/kicad/symbols//Diode.kicad_sym</uri>
+    </library>
     <library logical="Interface">
       <uri>/usr/share/kicad/symbols//Interface.kicad_sym</uri>
-    </library>
-    <library logical="Jumper">
-      <uri>/usr/share/kicad/symbols//Jumper.kicad_sym</uri>
     </library>
     <library logical="MCU_Microchip_ATmega">
       <uri>/usr/share/kicad/symbols//MCU_Microchip_ATmega.kicad_sym</uri>
@@ -2090,7 +2797,7 @@
       <uri>/usr/share/kicad/symbols//Mechanical.kicad_sym</uri>
     </library>
     <library logical="My_Library">
-      <uri>/home/dshmyglev/.local/share/kicad/6.0/symbols/My_Library.kicad_sym</uri>
+      <uri>/home/dshmyglev/.local/share/kicad/8.0/symbols/My_Library.kicad_sym</uri>
     </library>
     <library logical="Regulator_Linear">
       <uri>/usr/share/kicad/symbols//Regulator_Linear.kicad_sym</uri>
@@ -2133,6 +2840,7 @@
       <node ref="C20" pin="1" pintype="passive"/>
       <node ref="C28" pin="1" pintype="passive"/>
       <node ref="C42" pin="1" pintype="passive"/>
+      <node ref="C45" pin="1" pintype="passive"/>
       <node ref="C9" pin="1" pintype="passive"/>
       <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
@@ -2141,8 +2849,6 @@
       <node ref="R15" pin="1" pintype="passive"/>
       <node ref="R19" pin="2" pintype="passive"/>
       <node ref="R2" pin="2" pintype="passive"/>
-      <node ref="R20" pin="2" pintype="passive"/>
-      <node ref="R29" pin="1" pintype="passive"/>
       <node ref="R3" pin="1" pintype="passive"/>
       <node ref="R5" pin="1" pintype="passive"/>
       <node ref="R6" pin="2" pintype="passive"/>
@@ -2153,6 +2859,7 @@
       <node ref="U1" pin="4" pinfunction="VCC" pintype="power_in"/>
       <node ref="U1" pin="6" pinfunction="VCC" pintype="passive"/>
       <node ref="U10" pin="5" pinfunction="V+" pintype="power_in"/>
+      <node ref="U12" pin="5" pinfunction="VCC" pintype="power_in"/>
       <node ref="U2" pin="3" pinfunction="VCC" pintype="power_in"/>
       <node ref="U3" pin="2" pinfunction="VO" pintype="power_out"/>
       <node ref="U4" pin="3" pinfunction="VI" pintype="power_in"/>
@@ -2169,152 +2876,133 @@
       <node ref="L3" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="Q7" pin="2" pinfunction="S" pintype="passive"/>
       <node ref="R18" pin="1" pintype="passive"/>
-      <node ref="R24" pin="2" pintype="passive"/>
       <node ref="R27" pin="1" pintype="passive"/>
     </net>
-    <net code="6" name="/CHARGER_BOOST">
-      <node ref="R22" pin="2" pintype="passive"/>
-      <node ref="U8" pin="25" pinfunction="BTST" pintype="bidirectional"/>
-    </net>
-    <net code="7" name="/CHARGER_DONE#">
+    <net code="6" name="/CHARGER_DONE#">
       <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R1" pin="1" pintype="passive"/>
       <node ref="U1" pin="2" pinfunction="PD4" pintype="bidirectional"/>
     </net>
-    <net code="8" name="/CHARGER_ILIM">
-      <node ref="R29" pin="2" pintype="passive"/>
-      <node ref="R30" pin="1" pintype="passive"/>
-      <node ref="TP9" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U8" pin="21" pinfunction="ILIM" pintype="input"/>
-    </net>
-    <net code="9" name="/CHARGER_IN_PROGRESS#">
+    <net code="7" name="/CHARGER_IN_PROGRESS#">
       <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R2" pin="1" pintype="passive"/>
       <node ref="U1" pin="1" pinfunction="PD3" pintype="bidirectional"/>
     </net>
-    <net code="10" name="/CHARGER_PHASE">
-      <node ref="C32" pin="2" pintype="passive"/>
-      <node ref="L3" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="Q5" pin="2" pinfunction="S" pintype="passive"/>
-      <node ref="Q6" pin="3" pinfunction="D" pintype="passive"/>
-      <node ref="U8" pin="27" pinfunction="PHASE" pintype="input"/>
+    <net code="8" name="/CHARGER_SRN">
+      <node ref="R28" pin="1" pintype="passive"/>
+      <node ref="R30" pin="1" pintype="passive"/>
     </net>
-    <net code="11" name="/CHARGER_SRN">
-      <node ref="R28" pin="2" pintype="passive"/>
-      <node ref="U8" pin="19" pinfunction="SRN" pintype="input"/>
-    </net>
-    <net code="12" name="/CHARGER_SRP">
+    <net code="9" name="/CHARGER_SRP">
       <node ref="R24" pin="1" pintype="passive"/>
-      <node ref="U8" pin="20" pinfunction="SRP" pintype="input"/>
+      <node ref="R29" pin="2" pintype="passive"/>
     </net>
-    <net code="13" name="/CHARGER_SUPPLY">
+    <net code="10" name="/CHARGER_SUPPLY">
       <node ref="C12" pin="1" pintype="passive"/>
       <node ref="C21" pin="1" pintype="passive"/>
-      <node ref="C43" pin="1" pintype="passive"/>
+      <node ref="C36" pin="1" pintype="passive"/>
       <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="F2" pin="2" pintype="passive"/>
       <node ref="Q3" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="R8" pin="1" pintype="passive"/>
       <node ref="RV2" pin="1" pintype="passive"/>
-      <node ref="TP8" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="14" name="/FM_OUT">
+    <net code="11" name="/FM_OUT">
       <node ref="U1" pin="9" pinfunction="PD5" pintype="bidirectional"/>
       <node ref="U2" pin="2" pinfunction="DATA" pintype="input"/>
     </net>
-    <net code="15" name="/MISO">
+    <net code="12" name="/MISO">
       <node ref="J2" pin="9" pinfunction="Pin_9" pintype="passive"/>
       <node ref="U1" pin="16" pinfunction="PB4" pintype="bidirectional"/>
     </net>
-    <net code="16" name="/MOSI">
+    <net code="13" name="/MOSI">
       <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U1" pin="15" pinfunction="PB3" pintype="bidirectional"/>
     </net>
-    <net code="17" name="/NOISE">
+    <net code="14" name="/NOISE">
       <node ref="RV3" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="TP10" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="25" pinfunction="PC2" pintype="bidirectional"/>
       <node ref="U10" pin="1" pinfunction="OUT" pintype="output"/>
       <node ref="U9" pin="3" pinfunction="Vin+" pintype="input"/>
     </net>
-    <net code="18" name="/NOISE_ALARM">
+    <net code="15" name="/NOISE_ALARM">
       <node ref="C31" pin="1" pintype="passive"/>
       <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="R23" pin="1" pintype="passive"/>
       <node ref="U1" pin="32" pinfunction="PD2" pintype="bidirectional"/>
     </net>
-    <net code="19" name="/RESET#">
+    <net code="16" name="/RESET#">
       <node ref="C4" pin="1" pintype="passive"/>
       <node ref="J2" pin="5" pinfunction="Pin_5" pintype="passive"/>
       <node ref="R6" pin="1" pintype="passive"/>
       <node ref="U1" pin="29" pinfunction="~{RESET}/PC6" pintype="bidirectional"/>
     </net>
-    <net code="20" name="/RXD">
+    <net code="17" name="/RXD">
       <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="U1" pin="30" pinfunction="PD0" pintype="bidirectional"/>
     </net>
-    <net code="21" name="/SCK">
+    <net code="18" name="/SCK">
       <node ref="J2" pin="7" pinfunction="Pin_7" pintype="passive"/>
       <node ref="U1" pin="17" pinfunction="PB5" pintype="bidirectional"/>
     </net>
-    <net code="22" name="/SCL">
+    <net code="19" name="/SCL">
       <node ref="R5" pin="2" pintype="passive"/>
       <node ref="U1" pin="28" pinfunction="PC5" pintype="bidirectional"/>
+      <node ref="U12" pin="4" pinfunction="SCL" pintype="input"/>
       <node ref="U6" pin="6" pinfunction="SCL2" pintype="bidirectional"/>
       <node ref="U8" pin="12" pinfunction="SCL" pintype="open_collector"/>
     </net>
-    <net code="23" name="/SCL_3V3">
+    <net code="20" name="/SCL_3V3">
       <node ref="R10" pin="2" pintype="passive"/>
       <node ref="U6" pin="3" pinfunction="SCL1" pintype="bidirectional"/>
       <node ref="U7" pin="4" pinfunction="SCK" pintype="input"/>
     </net>
-    <net code="24" name="/SDA">
+    <net code="21" name="/SDA">
       <node ref="R3" pin="2" pintype="passive"/>
       <node ref="U1" pin="27" pinfunction="PC4" pintype="bidirectional"/>
+      <node ref="U12" pin="1" pinfunction="A1" pintype="bidirectional"/>
+      <node ref="U12" pin="2" pinfunction="A0" pintype="bidirectional"/>
+      <node ref="U12" pin="3" pinfunction="SDA" pintype="bidirectional"/>
       <node ref="U6" pin="5" pinfunction="SDA2" pintype="bidirectional"/>
       <node ref="U8" pin="11" pinfunction="SDA" pintype="open_collector"/>
     </net>
-    <net code="25" name="/SDA_3V3">
+    <net code="22" name="/SDA_3V3">
       <node ref="R11" pin="2" pintype="passive"/>
       <node ref="U6" pin="4" pinfunction="SDA1" pintype="bidirectional"/>
       <node ref="U7" pin="3" pinfunction="SDI" pintype="bidirectional"/>
     </net>
-    <net code="26" name="/TXD">
+    <net code="23" name="/TXD">
       <node ref="J2" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="U1" pin="31" pinfunction="PD1" pintype="bidirectional"/>
     </net>
-    <net code="27" name="/VBAT">
-      <node ref="C39" pin="2" pintype="passive"/>
-      <node ref="C41" pin="1" pintype="passive"/>
-      <node ref="C44" pin="1" pintype="passive"/>
-      <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="F1" pin="2" pintype="passive"/>
-      <node ref="R27" pin="2" pintype="passive"/>
-      <node ref="R28" pin="1" pintype="passive"/>
-      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
-    </net>
-    <net code="28" name="/VBAT_BEFORE_FUSE">
+    <net code="24" name="/VBAT">
       <node ref="C10" pin="1" pintype="passive"/>
       <node ref="C11" pin="2" pintype="passive"/>
       <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C39" pin="2" pintype="passive"/>
+      <node ref="C41" pin="1" pintype="passive"/>
+      <node ref="C44" pin="1" pintype="passive"/>
       <node ref="C7" pin="1" pintype="passive"/>
       <node ref="C8" pin="1" pintype="passive"/>
-      <node ref="F1" pin="1" pintype="passive"/>
-      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="F1" pin="2" pintype="passive"/>
+      <node ref="R27" pin="2" pintype="passive"/>
     </net>
-    <net code="29" name="/VSYS">
+    <net code="25" name="/VSYS">
+      <node ref="C14" pin="1" pintype="passive"/>
       <node ref="C25" pin="2" pintype="passive"/>
       <node ref="C27" pin="1" pintype="passive"/>
       <node ref="C34" pin="1" pintype="passive"/>
       <node ref="C35" pin="1" pintype="passive"/>
-      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="Q5" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="Q7" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="R16" pin="2" pintype="passive"/>
       <node ref="TP6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="VI" pintype="power_in"/>
       <node ref="U8" pin="1" pinfunction="ACN" pintype="input"/>
     </net>
-    <net code="30" name="GNDA">
+    <net code="26" name="GNDA">
       <node ref="C1" pin="2" pintype="passive"/>
       <node ref="C10" pin="2" pintype="passive"/>
       <node ref="C11" pin="1" pintype="passive"/>
@@ -2340,6 +3028,7 @@
       <node ref="C40" pin="2" pintype="passive"/>
       <node ref="C41" pin="2" pintype="passive"/>
       <node ref="C42" pin="2" pintype="passive"/>
+      <node ref="C45" pin="2" pintype="passive"/>
       <node ref="C5" pin="2" pintype="passive"/>
       <node ref="C6" pin="2" pintype="passive"/>
       <node ref="C7" pin="2" pintype="passive"/>
@@ -2351,7 +3040,6 @@
       <node ref="MK1" pin="3" pinfunction="GND" pintype="power_in"/>
       <node ref="R23" pin="2" pintype="passive"/>
       <node ref="R26" pin="2" pintype="passive"/>
-      <node ref="R30" pin="2" pintype="passive"/>
       <node ref="R4" pin="2" pintype="passive"/>
       <node ref="R9" pin="2" pintype="passive"/>
       <node ref="RV1" pin="3" pinfunction="3" pintype="passive"/>
@@ -2361,6 +3049,7 @@
       <node ref="U1" pin="3" pinfunction="GND" pintype="power_in"/>
       <node ref="U1" pin="5" pinfunction="GND" pintype="passive"/>
       <node ref="U10" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U12" pin="6" pinfunction="GND" pintype="power_in"/>
       <node ref="U2" pin="4" pinfunction="GND" pintype="power_in"/>
       <node ref="U3" pin="1" pinfunction="GND" pintype="power_in"/>
       <node ref="U4" pin="1" pinfunction="GND" pintype="power_in"/>
@@ -2369,246 +3058,251 @@
       <node ref="U7" pin="1" pinfunction="GND" pintype="power_in"/>
       <node ref="U7" pin="5" pinfunction="SDO" pintype="bidirectional"/>
       <node ref="U7" pin="7" pinfunction="GND" pintype="power_in"/>
-      <node ref="U8" pin="13" pinfunction="CMPIN" pintype="input"/>
       <node ref="U8" pin="22" pinfunction="AGND" pintype="power_in"/>
       <node ref="U9" pin="2" pinfunction="GND" pintype="power_in"/>
     </net>
-    <net code="31" name="GNDPWR">
+    <net code="27" name="GNDPWR">
       <node ref="C26" pin="2" pintype="passive"/>
       <node ref="C3" pin="2" pintype="passive"/>
       <node ref="C34" pin="2" pintype="passive"/>
       <node ref="C35" pin="2" pintype="passive"/>
-      <node ref="C43" pin="2" pintype="passive"/>
+      <node ref="C36" pin="2" pintype="passive"/>
       <node ref="C44" pin="2" pintype="passive"/>
+      <node ref="D6" pin="2" pinfunction="A2" pintype="passive"/>
       <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="Q6" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R20" pin="2" pintype="passive"/>
       <node ref="R7" pin="2" pintype="passive"/>
       <node ref="RV2" pin="2" pintype="passive"/>
+      <node ref="U8" pin="13" pinfunction="CMPIN" pintype="input"/>
       <node ref="U8" pin="29" pinfunction="PGND" pintype="power_in"/>
     </net>
-    <net code="32" name="Net-(C12-Pad2)">
+    <net code="28" name="Net-(C12-Pad2)">
       <node ref="C12" pin="2" pintype="passive"/>
       <node ref="R7" pin="1" pintype="passive"/>
     </net>
-    <net code="33" name="Net-(C32-Pad1)">
-      <node ref="C32" pin="1" pintype="passive"/>
-      <node ref="R22" pin="1" pintype="passive"/>
-    </net>
-    <net code="34" name="Net-(D1-A1)">
+    <net code="29" name="Net-(D1-A1)">
       <node ref="D1" pin="1" pinfunction="A1" pintype="input"/>
       <node ref="Q2" pin="3" pinfunction="D" pintype="passive"/>
     </net>
-    <net code="35" name="Net-(D1-A2)">
+    <net code="30" name="Net-(D1-A2)">
       <node ref="D1" pin="3" pinfunction="A2" pintype="input"/>
       <node ref="Q1" pin="3" pinfunction="D" pintype="passive"/>
     </net>
-    <net code="36" name="Net-(D1-K)">
+    <net code="31" name="Net-(D1-K)">
       <node ref="D1" pin="2" pinfunction="K" pintype="input"/>
       <node ref="R4" pin="1" pintype="passive"/>
     </net>
-    <net code="37" name="Net-(D2-K)">
-      <node ref="C14" pin="1" pintype="passive"/>
-      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="U3" pin="3" pinfunction="VI" pintype="power_in"/>
-    </net>
-    <net code="38" name="Net-(D3-K)">
+    <net code="32" name="Net-(D3-K)">
       <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="R21" pin="2" pintype="passive"/>
     </net>
-    <net code="39" name="Net-(D4-A)">
+    <net code="33" name="Net-(D4-A)">
       <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="U9" pin="1" pinfunction="OUT" pintype="output"/>
     </net>
-    <net code="40" name="Net-(D6-A)">
-      <node ref="C36" pin="1" pintype="passive"/>
-      <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="J4" pin="3" pinfunction="Pin_3" pintype="passive"/>
+    <net code="34" name="Net-(D6-A1)">
+      <node ref="D6" pin="1" pinfunction="A1" pintype="passive"/>
+      <node ref="D7" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R20" pin="1" pintype="passive"/>
     </net>
-    <net code="41" name="Net-(D6-K)">
-      <node ref="D6" pin="1" pinfunction="K" pintype="passive"/>
+    <net code="35" name="Net-(D7-K)">
       <node ref="D7" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="F2" pin="1" pintype="passive"/>
     </net>
-    <net code="42" name="Net-(D7-A)">
-      <node ref="C36" pin="2" pintype="passive"/>
-      <node ref="D7" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    <net code="36" name="Net-(J1-Pin_2)">
+      <node ref="F1" pin="1" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
     </net>
-    <net code="43" name="Net-(J3-Pin_1)">
-      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="L2" pin="1" pinfunction="1" pintype="passive"/>
-    </net>
-    <net code="44" name="Net-(J3-Pin_2)">
-      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
-      <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="L2" pin="2" pinfunction="2" pintype="passive"/>
-    </net>
-    <net code="45" name="Net-(J3-Pin_3)">
-      <node ref="J3" pin="3" pinfunction="Pin_3" pintype="passive"/>
-      <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
-    </net>
-    <net code="46" name="Net-(JP1-A)">
-      <node ref="JP1" pin="1" pinfunction="A" pintype="passive"/>
-      <node ref="R8" pin="2" pintype="passive"/>
-      <node ref="R9" pin="1" pintype="passive"/>
-    </net>
-    <net code="47" name="Net-(JP1-B)">
-      <node ref="JP1" pin="2" pinfunction="B" pintype="passive"/>
-      <node ref="U8" pin="6" pinfunction="ACDET" pintype="input"/>
-    </net>
-    <net code="48" name="Net-(MK1-OUT)">
+    <net code="37" name="Net-(MK1-OUT)">
       <node ref="C37" pin="1" pintype="passive"/>
       <node ref="MK1" pin="4" pinfunction="OUT" pintype="output"/>
     </net>
-    <net code="49" name="Net-(Q3-G)">
+    <net code="38" name="Net-(Q3-G)">
       <node ref="Q3" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R12" pin="1" pintype="passive"/>
     </net>
-    <net code="50" name="Net-(Q3-S)">
+    <net code="39" name="Net-(Q3-S)">
       <node ref="C22" pin="1" pintype="passive"/>
       <node ref="Q3" pin="2" pinfunction="S" pintype="passive"/>
       <node ref="Q4" pin="2" pinfunction="S" pintype="passive"/>
       <node ref="R14" pin="1" pintype="passive"/>
     </net>
-    <net code="51" name="Net-(Q4-D)">
+    <net code="40" name="Net-(Q4-D)">
       <node ref="C24" pin="1" pintype="passive"/>
       <node ref="C25" pin="1" pintype="passive"/>
       <node ref="Q4" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="R16" pin="1" pintype="passive"/>
       <node ref="U8" pin="2" pinfunction="ACP" pintype="input"/>
     </net>
-    <net code="52" name="Net-(Q4-G)">
+    <net code="41" name="Net-(Q4-G)">
       <node ref="C21" pin="2" pintype="passive"/>
       <node ref="C22" pin="2" pintype="passive"/>
       <node ref="Q4" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R12" pin="2" pintype="passive"/>
       <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="TP11" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="53" name="Net-(Q5-G)">
+    <net code="42" name="Net-(Q5-G)">
       <node ref="Q5" pin="1" pinfunction="G" pintype="input"/>
       <node ref="U8" pin="26" pinfunction="HIDRV" pintype="output"/>
     </net>
-    <net code="54" name="Net-(Q6-G)">
+    <net code="43" name="Net-(Q5-S)">
+      <node ref="C32" pin="2" pintype="passive"/>
+      <node ref="L3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="Q5" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q6" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="U8" pin="27" pinfunction="PHASE" pintype="input"/>
+    </net>
+    <net code="44" name="Net-(Q6-G)">
       <node ref="Q6" pin="1" pinfunction="G" pintype="input"/>
       <node ref="U8" pin="23" pinfunction="LODRV" pintype="output"/>
     </net>
-    <net code="55" name="Net-(U1-XTAL1{slash}PB6)">
+    <net code="45" name="Net-(U1-XTAL1{slash}PB6)">
       <node ref="C5" pin="1" pintype="passive"/>
       <node ref="U1" pin="7" pinfunction="XTAL1/PB6" pintype="bidirectional"/>
       <node ref="X1" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="56" name="Net-(U1-XTAL2{slash}PB7)">
+    <net code="46" name="Net-(U1-XTAL2{slash}PB7)">
       <node ref="C6" pin="1" pintype="passive"/>
       <node ref="U1" pin="8" pinfunction="XTAL2/PB7" pintype="bidirectional"/>
       <node ref="X1" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="57" name="Net-(U6-EN)">
+    <net code="47" name="Net-(U6-EN)">
       <node ref="C23" pin="2" pintype="passive"/>
       <node ref="R15" pin="2" pintype="passive"/>
       <node ref="U6" pin="7" pinfunction="VREF2" pintype="power_in"/>
       <node ref="U6" pin="8" pinfunction="EN" pintype="input"/>
     </net>
-    <net code="58" name="Net-(U8-ACDRV)">
+    <net code="48" name="Net-(U8-ACDET)">
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="TP9" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U8" pin="6" pinfunction="ACDET" pintype="input"/>
+    </net>
+    <net code="49" name="Net-(U8-ACDRV)">
       <node ref="R13" pin="2" pintype="passive"/>
       <node ref="U8" pin="4" pinfunction="ACDRV" pintype="output"/>
     </net>
-    <net code="59" name="Net-(U8-ACOK)">
+    <net code="50" name="Net-(U8-ACOK)">
       <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="TP12" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U8" pin="5" pinfunction="ACOK" pintype="open_collector"/>
     </net>
-    <net code="60" name="Net-(U8-BATDRV)">
+    <net code="51" name="Net-(U8-BATDRV)">
       <node ref="R17" pin="2" pintype="passive"/>
       <node ref="U8" pin="18" pinfunction="BATDRV" pintype="output"/>
     </net>
-    <net code="61" name="Net-(U8-BATSRC)">
+    <net code="52" name="Net-(U8-BATSRC)">
       <node ref="R18" pin="2" pintype="passive"/>
       <node ref="U8" pin="17" pinfunction="BATSRC" pintype="input"/>
     </net>
-    <net code="62" name="Net-(U8-CMSRC)">
+    <net code="53" name="Net-(U8-BTST)">
+      <node ref="C32" pin="1" pintype="passive"/>
+      <node ref="U8" pin="25" pinfunction="BTST" pintype="bidirectional"/>
+    </net>
+    <net code="54" name="Net-(U8-CMSRC)">
       <node ref="R14" pin="2" pintype="passive"/>
       <node ref="U8" pin="3" pinfunction="CMSRC" pintype="input"/>
     </net>
-    <net code="63" name="Net-(U8-REGN)">
+    <net code="55" name="Net-(U8-ILIM)">
       <node ref="C26" pin="1" pintype="passive"/>
+      <node ref="U8" pin="21" pinfunction="ILIM" pintype="input"/>
       <node ref="U8" pin="24" pinfunction="REGN" pintype="power_out"/>
     </net>
-    <net code="64" name="Net-(U8-TB_STAT#)">
-      <node ref="R20" pin="1" pintype="passive"/>
-      <node ref="U8" pin="16" pinfunction="TB_STAT#" pintype="open_collector"/>
+    <net code="56" name="Net-(U8-SRN)">
+      <node ref="R28" pin="2" pintype="passive"/>
+      <node ref="U8" pin="19" pinfunction="SRN" pintype="input"/>
     </net>
-    <net code="65" name="Net-(U8-VCC)">
+    <net code="57" name="Net-(U8-SRP)">
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="U8" pin="20" pinfunction="SRP" pintype="input"/>
+    </net>
+    <net code="58" name="Net-(U8-VCC)">
       <node ref="C30" pin="1" pintype="passive"/>
       <node ref="R21" pin="1" pintype="passive"/>
       <node ref="U8" pin="28" pinfunction="VCC" pintype="power_in"/>
     </net>
-    <net code="66" name="Net-(U9-Vin-)">
+    <net code="59" name="Net-(U9-Vin-)">
       <node ref="C29" pin="1" pintype="passive"/>
       <node ref="RV1" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U9" pin="4" pinfunction="Vin-" pintype="input"/>
     </net>
-    <net code="67" name="Net-(U10-Vin+)">
+    <net code="60" name="Net-(U10-Vin+)">
       <node ref="C37" pin="2" pintype="passive"/>
       <node ref="R25" pin="2" pintype="passive"/>
       <node ref="R26" pin="1" pintype="passive"/>
       <node ref="TP7" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U10" pin="3" pinfunction="Vin+" pintype="input"/>
     </net>
-    <net code="68" name="Net-(U10-Vin-)">
+    <net code="61" name="Net-(U10-Vin-)">
       <node ref="RV3" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U10" pin="4" pinfunction="Vin-" pintype="input"/>
     </net>
-    <net code="69" name="unconnected-(J2-Pin_3-Pad3)">
+    <net code="62" name="Net-(U12-VIN_+)">
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="U12" pin="8" pinfunction="VIN_+" pintype="input"/>
+    </net>
+    <net code="63" name="Net-(U12-VIN_-)">
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="U12" pin="7" pinfunction="VIN_-" pintype="input"/>
+    </net>
+    <net code="64" name="unconnected-(J2-Pin_3-Pad3)">
       <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive+no_connect"/>
     </net>
-    <net code="70" name="unconnected-(U1-ADC6-Pad19)">
+    <net code="65" name="unconnected-(U1-ADC6-Pad19)">
       <node ref="U1" pin="19" pinfunction="ADC6" pintype="input+no_connect"/>
     </net>
-    <net code="71" name="unconnected-(U1-ADC7-Pad22)">
+    <net code="66" name="unconnected-(U1-ADC7-Pad22)">
       <node ref="U1" pin="22" pinfunction="ADC7" pintype="input+no_connect"/>
     </net>
-    <net code="72" name="unconnected-(U1-PB0-Pad12)">
+    <net code="67" name="unconnected-(U1-PB0-Pad12)">
       <node ref="U1" pin="12" pinfunction="PB0" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="73" name="unconnected-(U1-PB1-Pad13)">
+    <net code="68" name="unconnected-(U1-PB1-Pad13)">
       <node ref="U1" pin="13" pinfunction="PB1" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="74" name="unconnected-(U1-PB2-Pad14)">
+    <net code="69" name="unconnected-(U1-PB2-Pad14)">
       <node ref="U1" pin="14" pinfunction="PB2" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="75" name="unconnected-(U1-PC0-Pad23)">
+    <net code="70" name="unconnected-(U1-PC0-Pad23)">
       <node ref="U1" pin="23" pinfunction="PC0" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="76" name="unconnected-(U1-PC1-Pad24)">
+    <net code="71" name="unconnected-(U1-PC1-Pad24)">
       <node ref="U1" pin="24" pinfunction="PC1" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="77" name="unconnected-(U1-PC3-Pad26)">
+    <net code="72" name="unconnected-(U1-PC3-Pad26)">
       <node ref="U1" pin="26" pinfunction="PC3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="78" name="unconnected-(U1-PD6-Pad10)">
+    <net code="73" name="unconnected-(U1-PD6-Pad10)">
       <node ref="U1" pin="10" pinfunction="PD6" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="79" name="unconnected-(U1-PD7-Pad11)">
+    <net code="74" name="unconnected-(U1-PD7-Pad11)">
       <node ref="U1" pin="11" pinfunction="PD7" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="80" name="unconnected-(U8-BATPRES#-Pad15)">
+    <net code="75" name="unconnected-(U8-BATPRES#-Pad15)">
       <node ref="U8" pin="15" pinfunction="BATPRES#" pintype="output+no_connect"/>
     </net>
-    <net code="81" name="unconnected-(U8-CMPOUT-Pad14)">
+    <net code="76" name="unconnected-(U8-CMPOUT-Pad14)">
       <node ref="U8" pin="14" pinfunction="CMPOUT" pintype="output+no_connect"/>
     </net>
-    <net code="82" name="unconnected-(U8-IADP-Pad7)">
+    <net code="77" name="unconnected-(U8-IADP-Pad7)">
       <node ref="U8" pin="7" pinfunction="IADP" pintype="output+no_connect"/>
     </net>
-    <net code="83" name="unconnected-(U8-IDCHG-Pad8)">
+    <net code="78" name="unconnected-(U8-IDCHG-Pad8)">
       <node ref="U8" pin="8" pinfunction="IDCHG" pintype="output+no_connect"/>
     </net>
-    <net code="84" name="unconnected-(U8-PMON-Pad9)">
+    <net code="79" name="unconnected-(U8-PMON-Pad9)">
       <node ref="U8" pin="9" pinfunction="PMON" pintype="output+no_connect"/>
     </net>
-    <net code="85" name="unconnected-(U8-PROCHOT#-Pad10)">
+    <net code="80" name="unconnected-(U8-PROCHOT#-Pad10)">
       <node ref="U8" pin="10" pinfunction="PROCHOT#" pintype="open_collector+no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(U8-TB_STAT#-Pad16)">
+      <node ref="U8" pin="16" pinfunction="TB_STAT#" pintype="open_collector+no_connect"/>
     </net>
   </nets>
 </export>

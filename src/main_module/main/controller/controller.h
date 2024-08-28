@@ -6,5 +6,6 @@
 
 void controller_process_command(const t_fm_command * command);
 void controller_on_status(uint8_t status);
+void controller_on_stepper_position_updated(uint8_t percent);
 
 #endif /* MAIN_CONTROLLER_CONTROLLER_H_ */

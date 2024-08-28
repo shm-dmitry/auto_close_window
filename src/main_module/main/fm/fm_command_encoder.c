@@ -256,7 +256,7 @@ t_fm_commands_list * fm_command_decode(void ** decoder_context_ptr, const rmt_rx
 			continue;
 		}
 /*
-		ESP_LOGI(LOG_FM_ENCODER, "Duration0 = %d, Level0 = %d, Duration1 = %d, Level1 = %d",
+		_ESP_LOGI(LOG_FM_ENCODER, "Duration0 = %d, Level0 = %d, Duration1 = %d, Level1 = %d",
 				edata->received_symbols[i].duration0,
 				edata->received_symbols[i].level0,
 				edata->received_symbols[i].duration1,

@@ -138,23 +138,39 @@ menu "Auto-Close Window Settings"
    menu "Controller2MQTT"
    	  config CONTROLLER_MQTT_STEPPER_TOPIC
    	     string "MQTT topic to stepper listen commands"
-   	     default "/acw/controller/0/stepper/commands"
+   	     default "/controller/stepper/commands"
 
    	  config CONTROLLER_MQTT_STEPPER_STATUS_TOPIC
    	     string "MQTT topic to send stepper status"
-   	     default "/acw/controller/0/stepper/status"
+   	     default "/controller/stepper/status"
 
    	  config CONTROLLER_MQTT_AIR_STATUS
    	     string "MQTT topic to send outdoor air status"
-   	     default "/acw/controller/0/air/status"
+   	     default "/controller/air/status"
 
    	  config CONTROLLER_MQTT_NOISE_STATUS
    	     string "MQTT topic to send outdoor noise status"
-   	     default "/acw/controller/0/noise/status"
+   	     default "/controller/noise/status"
 
    	  config CONTROLLER_MQTT_NOISE_ALARM
    	     string "MQTT topic to send outdoor noise alarms"
-   	     default "/acw/controller/0/noise/alarm"
+   	     default "/controller/noise/alarm"
+
+   	  config CONTROLLER_MQTT_HM_BAT_STATUS
+   	     string "MQTT topic to send handle module bat status messages"
+   	     default "/controller/hm/batstatus"
+
+   	  config CONTROLLER_MQTT_OM_BAT_STATUS
+   	     string "MQTT topic to send outdoor module bat status messages"
+   	     default "/controller/om/batstatus"
+   	     
+   	  config CONTROLLER_MQTT_STEPPER_ERROR
+   	     string "MQTT topic to send stepper error status"
+   	     default "/controller/position/error"
+   	  
+   	  config CONTROLLER_MQTT_STEPPER_POSITION
+   	     string "MQTT topic to send stepper position value"
+   	     default "/controller/position"
    endmenu
  endmenu
  

@@ -57,7 +57,7 @@ static void fm_receiver_task(void* arg) {
 
     rmt_receive_config_t fm_receiveconfig = {
 		.signal_range_min_ns = 100,
-		.signal_range_max_ns = FM_COMMAND_ENCODER_MAX_IMPL_TIME * 1000,
+		.signal_range_max_ns = 31*600*1000,
 #if SOC_RMT_SUPPORT_RX_PINGPONG
 		.flags = {
 			.en_partial_rx = true
@@ -95,11 +95,13 @@ static void fm_receiver_task(void* arg) {
 
 			t_fm_commands_list * list = fm_command_decode(&decoder_context_data, &rx_data, taskparams->freq);
 
+			size_t num_symbols = rx_data.num_symbols;
+
 			free(rx_data.received_symbols);
 			rx_data.received_symbols = NULL;
 
 			if (list != NULL) {
-				_ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz: Received commands count: %d", taskparams->freq, list->commands_size);
+				_ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz: Received commands count: %d (num_symbols == %d)", taskparams->freq, list->commands_size, num_symbols);
 
 				for (uint8_t i = 0; i<list->commands_size; i++) {
 					controller_process_command(&(list->commands[i]));

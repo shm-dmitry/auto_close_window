@@ -24,6 +24,8 @@
 #define STEPPER_MOTOR_OFF_DELAY_MILLIS  (60 * 1000)
 #define STEPPER_EXEC_CURRENT_POSITION_UNKNOWN  0xFFFFFFFF
 
+#define STEPPER_EXEC_REPORT_POSITION_MILLIS (2 * 1000)
+
 #define STEPPER_EXEC_CORRECT_POSITION_TIMEOUT  1000
 
 #define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
@@ -34,6 +36,7 @@ volatile bool stepper_executor_is_in_error_now = false;
 
 t_endstops * endstops;
 t_delay_timer * stepper_exec_stop_timer = NULL;
+t_delay_timer * stepper_exec_report_position = NULL;
 uint32_t stepper_exec_current_position = STEPPER_EXEC_CURRENT_POSITION_UNKNOWN;
 uint32_t stepper_exec_max_position = STEPPER_EXEC_CURRENT_POSITION_UNKNOWN;
 
@@ -55,6 +58,8 @@ void stepper_executor_motor_on() {
 void stepper_executor_motor_off() {
 	gpio_set_level(CONFIG_PIN_STEPPER_ENABLE, 1);
 	gpio_set_level(CONFIG_PIN_STEPPER_POWER_ON, 0);
+
+	controller_on_stepper_position_updated(0xFF);
 }
 
 bool stepper_executor_is_motor_on() {
@@ -82,6 +87,7 @@ void stepper_executor_init(t_endstops * _endstops) {
 	stepper_one_step_init();
 
 	stepper_exec_stop_timer = delay_timer_allocate(STEPPER_MOTOR_OFF_DELAY_MILLIS);
+	stepper_exec_report_position = delay_timer_allocate(STEPPER_EXEC_REPORT_POSITION_MILLIS);
 
 	_ESP_LOGI(LOG_STEPPER_EXEC, "Reading NVS");
 
@@ -193,15 +199,29 @@ void stepper_executor_calibrate() {
 	stepper_exec_command = STEPPER_EXEC_CMD__CALIBRATE;
 }
 
+bool stepper_executor_is_now_executing_move_to(uint8_t percent) {
+	if (stepper_executor_is_in_error_now) {
+		return false;
+	}
+
+	return stepper_exec_command == percent;
+}
+
 void stepper_executor_moveto(uint8_t percent) {
 	if (!stepper_executor_is_in_error_now) {
 		stepper_exec_command = percent;
+	} else {
+		_ESP_LOGW(LOG_STEPPER_EXEC, "Command 'move to percent %d%%' skipped - we in error now.", percent);
+		controller_on_status(CONTROLLER_STATUS_ERROR_RAISED);
 	}
 }
 
 void stepper_executor_cancel() {
 	if (!stepper_executor_is_in_error_now) {
 		stepper_exec_command = STEPPER_EXEC_CMD__CANCEL;
+	} else {
+		_ESP_LOGW(LOG_STEPPER_EXEC, "Command 'cancel movement' skipped - we in error now.");
+		controller_on_status(CONTROLLER_STATUS_ERROR_RAISED);
 	}
 }
 
@@ -329,6 +349,10 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 			stepper_exec_current_position += diff;
 		}
 
+		if (delay_timer_start_or_check(stepper_exec_report_position)) {
+			controller_on_stepper_position_updated((stepper_exec_current_position * 100) / stepper_exec_max_position);
+		}
+
 		if (!endstops->is_stepper_allowed()) {
 			return;
 		}
@@ -361,6 +385,10 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 				break;
 			}
 
+			if (!endstops->is_stepper_allowed()) {
+				return;
+			}
+
 			if (stepper_exec_command != currentcommand) {
 				delay_timer_release(&timer);
 				return;
@@ -386,6 +414,10 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 				return;
 			}
 
+			if (!endstops->is_stepper_allowed()) {
+				return;
+			}
+
 			stepper_do_one_step();
 			stepper_exec_current_position++;
 		}
@@ -397,6 +429,8 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 			stepper_exec_max_position = stepper_exec_current_position;
 		}
 	}
+
+	controller_on_stepper_position_updated((stepper_exec_current_position * 100) / stepper_exec_max_position);
 
 	controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
 									CONTROLLER_STATUS_END_EXECUTE_CLOSE);

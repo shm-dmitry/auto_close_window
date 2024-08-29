@@ -19,6 +19,8 @@
 
 #define FM_RECEIVER_DATA_ONE_PART 192
 
+#define FM_RECEIVER_LOG_MESSAGES false
+
 typedef struct {
 	QueueHandle_t queue;
 	bool update_last_received;
@@ -101,7 +103,9 @@ static void fm_receiver_task(void* arg) {
 			rx_data.received_symbols = NULL;
 
 			if (list != NULL) {
+#if FM_RECEIVER_LOG_MESSAGES
 				_ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz: Received commands count: %d (num_symbols == %d)", taskparams->freq, list->commands_size, num_symbols);
+#endif
 
 				for (uint8_t i = 0; i<list->commands_size; i++) {
 					controller_process_command(&(list->commands[i]));

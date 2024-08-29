@@ -16,6 +16,7 @@ void app_main(void)
 	nvs_init();
 	wifi_init();
 
+	controller_init();
 	charger_init();
 	stepper_init();
 	fm_sender_init();

@@ -10207,6 +10207,25 @@
 		)
 		(uuid "fff034b8-a1cc-405b-9aa2-25b6f591b83e")
 	)
+	(text_box "change to 60K"
+		(exclude_from_sim no)
+		(at 283.21 205.74 0)
+		(size 21.59 3.81)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "7fa626eb-4cff-4fec-90a7-d8c6dc7f4b06")
+	)
 	(text_box "SS34BF"
 		(exclude_from_sim no)
 		(at 416.56 21.59 0)
@@ -13113,7 +13132,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "26bd84ee-f320-4d76-8a73-d052eddeb80e")
-		(property "Reference" "C18"
+		(property "Reference" "C50"
 			(at 165.1 46.99 0)
 			(effects
 				(font
@@ -15820,7 +15839,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5d215e6b-c58d-4cb4-9826-c1e3951ab3ae")
-		(property "Reference" "R54"
+		(property "Reference" "R55"
 			(at 59.69 367.03 0)
 			(effects
 				(font
@@ -15964,7 +15983,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "61145d60-c7e7-4efe-b078-9d8ea2c817aa")
-		(property "Reference" "C18"
+		(property "Reference" "C50"
 			(at 82.55 133.35 0)
 			(effects
 				(font
@@ -21370,7 +21389,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b971d835-dec4-401a-9bb5-e2b279989e9a")
-		(property "Reference" "C18"
+		(property "Reference" "C50"
 			(at 81.28 189.23 0)
 			(effects
 				(font
@@ -21456,7 +21475,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bba7c292-a584-4bb0-8a65-91037533a67a")
-		(property "Reference" "R54"
+		(property "Reference" "R55"
 			(at 60.96 337.82 0)
 			(effects
 				(font

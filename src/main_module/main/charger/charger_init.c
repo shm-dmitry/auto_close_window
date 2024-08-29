@@ -46,9 +46,8 @@ static void charger_auto_stop_on_timeout(void* arg) {
 			gpio_set_level(CONFIG_PIN_CHARGER_ENABLE, 1);
 			charger_auto_stop = esp_timer_get_time() + ((int64_t)CHARGER_AUTO_STOP_SEC * (int64_t)1000000);
 		} else if (command == CHARGER_COMMAND_CONFIRM_IN_PROGRESS) {
-			_ESP_LOGI(LOG_CHARGER, "Charger in progress event received");
-
 			if (charger_auto_stop != 0) {
+				_ESP_LOGI(LOG_CHARGER, "Charger in progress event received");
 				charger_auto_stop = esp_timer_get_time() + ((int64_t)CHARGER_AUTO_STOP_IN_PROGRESS_SEC * (int64_t)1000000);
 			}
 		} else if (charger_auto_stop > 0) {

@@ -42,6 +42,10 @@ adc_oneshot_unit_handle_t adc_handle;
 static void stepper_noise_alarm_task(void*);
 #endif
 
+#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+static void stepper_adc_print_value(void*);
+#endif
+
 bool stepper_is_close_position_reached() {
 #if STEPPER_ENABLE_LIMIT_SWITCH
 	int value = 0;
@@ -123,6 +127,31 @@ void stepper_init() {
     ESP_ERROR_CHECK(adc_oneshot_config_channel(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &config));
 
 #if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+	xTaskCreate(stepper_adc_print_value, "noise alarm task", STEPPER_COMMAND_TASK_STACK_SIZE, NULL, 10, NULL);
+#endif
+
+	_ESP_LOGI(LOG_STEPPER, "Initializing stepper executor controller");
+
+    t_endstops * endstops = (t_endstops *) malloc(sizeof(t_endstops));
+    memset(endstops, 0, sizeof(t_endstops));
+
+    endstops->is_close_fired = &stepper_is_close_position_reached;
+    endstops->is_open_fired = &stepper_is_open_position_reached;
+    endstops->is_stepper_allowed = &stepper_is_stepper_allowed;
+
+    stepper_executor_init(endstops);
+
+#if STEPPER_ENABLE_NOISE_ALARM
+	_ESP_LOGI(LOG_STEPPER, "Starting check noise alarm thread");
+
+	xTaskCreate(stepper_noise_alarm_task, "noise alarm task", STEPPER_COMMAND_TASK_STACK_SIZE, NULL, 10, NULL);
+#endif
+
+	_ESP_LOGI(LOG_STEPPER, "Stepper initialied");
+}
+
+#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+static void stepper_adc_print_value(void*) {
     while(true) {
     	int value = 0;
     	adc_oneshot_read(adc_handle, (adc_channel_t) CONFIG_ADC_STEPPER_LIMITSWITCH, &value);
@@ -145,27 +174,8 @@ void stepper_init() {
 
     	vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
-#endif
-
-	_ESP_LOGI(LOG_STEPPER, "Initializing stepper executor controller");
-
-    t_endstops * endstops = (t_endstops *) malloc(sizeof(t_endstops));
-    memset(endstops, 0, sizeof(t_endstops));
-
-    endstops->is_close_fired = &stepper_is_close_position_reached;
-    endstops->is_open_fired = &stepper_is_open_position_reached;
-    endstops->is_stepper_allowed = &stepper_is_stepper_allowed;
-
-    stepper_executor_init(endstops);
-
-#if STEPPER_ENABLE_NOISE_ALARM
-	_ESP_LOGI(LOG_STEPPER, "Starting check noise alarm thread");
-
-	xTaskCreate(stepper_noise_alarm_task, "noise alarm task", STEPPER_COMMAND_TASK_STACK_SIZE, NULL, 10, NULL);
-#endif
-
-	_ESP_LOGI(LOG_STEPPER, "Stepper initialied");
 }
+#endif
 
 #if STEPPER_ENABLE_NOISE_ALARM
 static void stepper_noise_alarm_task(void*) {

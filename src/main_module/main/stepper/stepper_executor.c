@@ -28,7 +28,7 @@
 
 #define STEPPER_EXEC_CORRECT_POSITION_TIMEOUT  1000
 
-#define STEPPER_NVS_FULL_OPEN_STEPS "stepper_full_open_steps"
+#define STEPPER_NVS_FULL_OPEN_STEPS "stp_full_open"
 #define STEPPER_DEFAULT_FULL_OPEN_STEPS 1000
 
 volatile uint8_t stepper_exec_command = STEPPER_EXEC_CMD__IDLE;
@@ -252,6 +252,9 @@ void stepper_executor_do_calibrate(uint8_t currentcommand) {
 	// 1. close
 	stepper_set_close();
 	while(!endstops->is_close_fired() && stepper_exec_command == currentcommand) {
+		if (!endstops->is_stepper_allowed()) {
+			return;
+		}
 		stepper_do_one_step();
 	}
 
@@ -264,6 +267,9 @@ void stepper_executor_do_calibrate(uint8_t currentcommand) {
 	// 2. open
 	stepper_set_open();
 	while(!endstops->is_open_fired() && stepper_exec_command == currentcommand) {
+		if (!endstops->is_stepper_allowed()) {
+			return;
+		}
 		stepper_do_one_step();
 		stepper_exec_current_position++;
 	}
@@ -288,6 +294,9 @@ void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_cl
 
 		stepper_set_close();
 		while(!endstops->is_close_fired() && stepper_exec_command == currentcommand) {
+			if (!endstops->is_stepper_allowed()) {
+				return;
+			}
 			stepper_do_one_step();
 		}
 
@@ -299,6 +308,9 @@ void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_cl
 
 		stepper_set_open();
 		while(!endstops->is_open_fired() && stepper_exec_command == currentcommand) {
+			if (!endstops->is_stepper_allowed()) {
+				return;
+			}
 			stepper_do_one_step();
 		}
 
@@ -323,7 +335,11 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 	}
 
 	if (newposition == stepper_exec_current_position) {
-		return;
+		if ((newposition == 0 && endstops->is_close_fired()) ||
+			(newposition == 100 && endstops->is_open_fired()) ||
+			(newposition > 0 && newposition < 100)) {
+			return;
+		}
 	}
 
 	int8_t diff = 0;
@@ -342,6 +358,10 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 			return;
 		}
 
+		if (!endstops->is_stepper_allowed()) {
+			return;
+		}
+
 		stepper_do_one_step();
 
 		if ((diff > 0 && stepper_exec_current_position < stepper_exec_max_position) ||
@@ -351,10 +371,6 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 
 		if (delay_timer_start_or_check(stepper_exec_report_position)) {
 			controller_on_stepper_position_updated((stepper_exec_current_position * 100) / stepper_exec_max_position);
-		}
-
-		if (!endstops->is_stepper_allowed()) {
-			return;
 		}
 
 		if (stepper_exec_current_position != stepper_exec_max_position &&

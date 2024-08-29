@@ -13,6 +13,8 @@
 #include "freertos/task.h"
 #include "freertos/queue.h"
 
+#define FM_COMMAND_ENCODER_LOG_MESSAGES false
+
 typedef struct {
     rmt_encoder_t base;
     rmt_encoder_t *copy_encoder;
@@ -75,7 +77,9 @@ uint8_t fm_command_decode_next_period(t_fm_encoder_context * decoder_context, ui
 	} else if (FM_DURATION_CHECK_BETWEEN((double)decoder_context->prev_duration / duration, 2, 10)) {
 		bit = 1;
 	} else {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 		_ESP_LOGW(LOG_FM_ENCODER, "Reset encoder, bad duration %d; prev %d", duration, decoder_context->prev_duration);
+#endif
 		decoder_context->found_preamble = false;
 		decoder_context->prev_duration = duration;
 		decoder_context->buffer_loaded_bits = 0;
@@ -118,7 +122,9 @@ void fm_command_restart_context(t_fm_encoder_context * decoder_context) {
 void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm_commands_list * list, uint8_t status) {
 	if (status == FM_COMMAND_DECODER_BUFFER_LOADED) {
 		if (decoder_context->buffer == NULL) {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 			_ESP_LOGW(LOG_FM_ENCODER, "Restart context - buffer == NULL");
+#endif
 			fm_command_restart_context(decoder_context);
 			return;
 		}
@@ -129,27 +135,34 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 			decoder_context->buffer = NULL;
 
 			if (decoder_context->decoded_address == 0) {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 				ESP_LOGW(LOG_FM_ENCODER, "Restart context - address = 0 not allowed");
+#endif
 				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			t_fm_command_address_data data = fm_command_metadata_by_address(decoder_context->decoded_address);
 			if (data.val == FM_VAL_BY_ADDRESS_UNKNOWN) {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 				_ESP_LOGW(LOG_FM_ENCODER, "Restart context - address %04X not allowed", decoder_context->decoded_address);
+#endif
 				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			if (data.args_size > FM_COMMAND_MAX_ARGS_SIZE) {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 				_ESP_LOGW(LOG_FM_ENCODER, "Restart context - Too many args for address %04X: %d, max %d", decoder_context->decoded_address, data.args_size, FM_COMMAND_MAX_ARGS_SIZE);
+#endif
 				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			uint8_t size = data.encrypted ? decryptor_args_size_to_buff_size(data.args_size) : data.args_size;
-
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 			ESP_LOGI(LOG_FM_ENCODER, "Requesting %d bytes for address %04X", size, decoder_context->decoded_address);
+#endif
 
 			decoder_context->buffer = malloc(size);
 			decoder_context->buffer_size = size;
@@ -162,14 +175,18 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 		if (decoder_context->decoded_address != 0) {
 			t_fm_command_address_data data = fm_command_metadata_by_address(decoder_context->decoded_address);
 			if (data.val == FM_VAL_BY_ADDRESS_UNKNOWN) {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 				_ESP_LOGW(LOG_FM_ENCODER, "[BAD STATE] Restart context - address %04X not allowed", decoder_context->decoded_address);
+#endif
 				fm_command_restart_context(decoder_context);
 				return;
 			}
 
 			if (data.args_size > FM_COMMAND_MAX_ARGS_SIZE) {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 				_ESP_LOGW(LOG_FM_ENCODER, "[BAD STATE] Restart context - Too many args for address %04X: %d, max %d",
 						decoder_context->decoded_address, data.args_size, FM_COMMAND_MAX_ARGS_SIZE);
+#endif
 				fm_command_restart_context(decoder_context);
 				return;
 			}
@@ -275,9 +292,13 @@ t_fm_commands_list * fm_command_decode(void ** decoder_context_ptr, const rmt_rx
 		}
 		free(decoder_context);
 		decoder_context = NULL;
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 		_ESP_LOGI(LOG_FM_ENCODER, "Context destroyed [freq = %dMHz]", freq);
+#endif
 	} else {
+#if FM_COMMAND_ENCODER_LOG_MESSAGES
 		_ESP_LOGI(LOG_FM_ENCODER, "Partical transfer - context saved");
+#endif
 	}
 
 	return list;

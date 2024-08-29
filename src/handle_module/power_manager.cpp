@@ -113,6 +113,7 @@
 unsigned long power_manager_noevent_timer = 0;
 #endif
 unsigned long power_manager_i2c_next_recheck_config = 0;
+bool power_manager_ina219_up = false;
 
 Adafruit_INA219 ina219(POWER_MANAGER_BAT_STATUS_I2C_ADDRESS);         // Создаем объект ina219
 
@@ -173,6 +174,7 @@ void power_manager_configure_charger() {
 
 void  power_manager_configure_batstatus() {
   ina219.begin();
+  power_manager_ina219_up = true;
 }
 
 uint16_t power_manager_read_16t(uint8_t reg, uint8_t address) {
@@ -209,16 +211,16 @@ void power_manager_check_write_16t(uint8_t reg, uint16_t val, uint8_t address)  
   }
 }
 
-bool power_manager_is_charging() {
+bool power_manager_is_acok() {
   uint16_t value = power_manager_read_16t(POWER_MANAGER_CHARGER_I2C_REG__OPTIONS_3, POWER_MANAGER_CHARGER_I2C_ADDRESS);
   if (value == 0xFFFF) {
     return false;
   }
 
-  if (!(value & _BV(11))) { // chech adapter present
-    return false;
-  }
+  return (value & _BV(11)); // adapter presents flag
+}
 
+bool power_manager_is_charging() {
   uint16_t v = 0;
   int16_t i = 0;
 
@@ -242,6 +244,8 @@ void power_manager_on_event() {
 void power_manager_on_main_loop() {
 #if POWER_MANAGER_NOEVENT_TIMER_ENABLED
   if (power_manager_noevent_timer > 0 && millis() > power_manager_noevent_timer) {
+    Serial.println("Power manager: self shutdown.");
+
     power_manager_batstatus_shutdown();
 
     digitalWrite(POWER_MANAGER_PIN_LOCK, LOW);
@@ -265,11 +269,17 @@ void power_manager_on_main_loop() {
 }
 
 void power_manager_batstatus_shutdown() {
+  power_manager_ina219_up = false;
   ina219.powerSave(true);
 }
 
 void power_manager_read_batstatus(uint16_t & voltage_mv, int16_t & current_ma) {
-  current_ma = -(int16_t)(ina219.getCurrent_mA() * 10.0);
-  voltage_mv = (uint16_t)(ina219.getBusVoltage_V() * 1000.0);
+  if (power_manager_ina219_up) {
+    current_ma = -(int16_t)(ina219.getCurrent_mA() * 10.0);
+    voltage_mv = (uint16_t)(ina219.getBusVoltage_V() * 1000.0);
+  } else {
+    voltage_mv = 0;
+    current_ma = 0;
+  }
 }
 

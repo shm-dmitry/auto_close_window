@@ -97,13 +97,13 @@ static void fm_receiver_task(void* arg) {
 
 			t_fm_commands_list * list = fm_command_decode(&decoder_context_data, &rx_data, taskparams->freq);
 
-			size_t num_symbols = rx_data.num_symbols;
-
 			free(rx_data.received_symbols);
 			rx_data.received_symbols = NULL;
 
 			if (list != NULL) {
 #if FM_RECEIVER_LOG_MESSAGES
+				size_t num_symbols = rx_data.num_symbols;
+
 				_ESP_LOGI(LOG_FM_RECEIVER, "FM Channel %dMHz: Received commands count: %d (num_symbols == %d)", taskparams->freq, list->commands_size, num_symbols);
 #endif
 

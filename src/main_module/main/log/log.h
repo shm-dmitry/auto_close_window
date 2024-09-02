@@ -20,6 +20,7 @@
 #define LOG_OTA          "ota"
 #define LOG_CHARGER      "charger"
 #define LOG_STEPPER      "stepper"
+#define LOG_STEPPER_ADC  "stepper_adc"
 #define LOG_STEPPER_EXEC "stepper_exec"
 #define LOG_STEPPER_STEP "stepper_step"
 #define LOG_NWS_RW       "nws_rw"

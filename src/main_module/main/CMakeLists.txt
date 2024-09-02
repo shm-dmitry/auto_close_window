@@ -1,6 +1,7 @@
 idf_component_register(SRCS "acw_main.c" 
                             "charger/charger_init.c" 
                             "stepper/stepper_init.c" 
+                            "stepper/stepper_adc.c" 
                             "stepper/stepper_executor.c" 
                             "stepper/stepper_one_step.c" 
                             "common/nvs_rw.c"

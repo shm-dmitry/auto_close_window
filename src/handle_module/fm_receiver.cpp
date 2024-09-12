@@ -61,7 +61,12 @@ void isr_fm_receiver_on_high(bool high) {
 }
 
 void fm_receiver_init() {
+  fm_receiver_high_start = 0;
+  fm_receiver_low_start  = 0;
+  fm_receiver_last_state_high = false;
+
   fm_decoder_init();
 
   pinMode(FM_RECEIVER_PIN, INPUT);
 }
+

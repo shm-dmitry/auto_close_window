@@ -18371,7 +18371,7 @@
 				)
 			)
 		)
-		(property "Value" "200K"
+		(property "Value" "1K"
 			(at 389.89 267.97 90)
 			(effects
 				(font
@@ -32763,7 +32763,7 @@
 				)
 			)
 		)
-		(property "Value" "SR540"
+		(property "Value" "SF22"
 			(at 374.65 203.2 0)
 			(effects
 				(font

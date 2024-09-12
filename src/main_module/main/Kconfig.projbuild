@@ -97,10 +97,6 @@ menu "Auto-Close Window Settings"
 	   	  	 int "Window clamp not locked value (percent)"
 	   	  	 default 0
 	   	  	 
-	   	  config ADC_STEPPER_CALIBRATION_MODE
-	   	  	 boolean "Measure and print to STDOUT ADC values. DEBUG ONLY!"
-	   	  	 default true
-	   	  	 
 	   	  config ADC_STEPPER_DELTA_PC
 	   	  	 int "Delta (int percent) from configured values"
 	   	  	 default 7

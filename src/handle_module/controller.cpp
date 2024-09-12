@@ -32,10 +32,22 @@ void controller_on_calibrate();
 void controller_check_data_received();
 void controller_on_notify_bat_status();
 
+void controller_init() {
+  controller_check_chargin_delay = 0;
+  controller_charge_in_progress = false;
+  controller_next_bat_status_notify = CONTROLLER_BAT_STATUS_FIRST_NOTIFY_DELAY;
+}
+
 void controller_on_main_loop() {
   controller_check_charging();
 
-  switch(user_input_get_event()) {
+  uint8_t input = user_input_get_event();
+  if (input != USER_INPUT__NOEVENT) {
+    Serial.print("User input: ");
+    Serial.println(input);
+  }
+  
+  switch(input) {
     case USER_INPUT__OPEN:
     controller_on_open();
     power_manager_on_event();

@@ -21,6 +21,9 @@ adc_continuous_handle_t stepper_adc_handle = NULL;
 static volatile uint8_t stepper_adc_limit_switch_value = 0xFF;
 static volatile uint8_t stepper_adc_noise_alarm_value = 0xFF;
 
+#define STEPPER_ADC_NOISE_DUMP false
+#define STEPPER_ADC_LSW_DUMP false
+
 #define STEPPER_ADC_OPENCLOSE_AWAIT_MS	20
 #define STEPPER_ADC_IS_CLOSED(x) ( \
 									(x) >= (CONFIG_ADC_STEPPER_CLOSE_VALUE - CONFIG_ADC_STEPPER_DELTA_PC) && \
@@ -32,7 +35,7 @@ static volatile uint8_t stepper_adc_noise_alarm_value = 0xFF;
 								 )
 #define STEPPER_ADC_IS_ALLOWED(x) ( \
 									(x) >= (CONFIG_ADC_STEPPER_STEPPER_NOT_ALLOWED_VALUE + CONFIG_ADC_STEPPER_DELTA_PC) && \
-									(x) <= (CONFIG_ADC_STEPPER_CONNECTED_VALUE - CONFIG_ADC_STEPPER_DELTA_PC) \
+									(x) <= (CONFIG_ADC_STEPPER_CONNECTED_VALUE) \
 								  )
 
 bool stepper_adc_is_close_position_reached();
@@ -141,24 +144,24 @@ static void stepper_adc_on_read_raw_value_task(void*) {
             }
 
             if (lsw_cnt > 0) {
-#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+#if STEPPER_ADC_LSW_DUMP
             	uint8_t prev = stepper_adc_limit_switch_value;
 #endif
             	stepper_adc_limit_switch_value = lsw_avg / lsw_cnt;
-#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+#if STEPPER_ADC_LSW_DUMP
             	if (prev != stepper_adc_limit_switch_value) {
-            		ESP_LOGI(LOG_STEPPER_ADC, "LSW Value: %d%%", stepper_adc_limit_switch_value);
+            		_ESP_LOGI(LOG_STEPPER_ADC, "LSW Value: %d%%", stepper_adc_limit_switch_value);
             	}
 #endif
             }
             if (noise_cnt > 0) {
-#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+#if STEPPER_ADC_NOISE_DUMP
             	uint8_t prev = stepper_adc_noise_alarm_value;
 #endif
             	stepper_adc_noise_alarm_value = noise_avg / noise_cnt;
-#if CONFIG_ADC_STEPPER_CALIBRATION_MODE
+#if STEPPER_ADC_NOISE_DUMP
             	if (prev != stepper_adc_noise_alarm_value) {
-            		ESP_LOGI(LOG_STEPPER_ADC, "Noise Value: %d%%", stepper_adc_noise_alarm_value);
+            		_ESP_LOGI(LOG_STEPPER_ADC, "Noise Value: %d%%", stepper_adc_noise_alarm_value);
             	}
 #endif
             }

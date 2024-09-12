@@ -17,9 +17,11 @@ uint8_t decrypter_crc = 0;
 uint8_t crypter_secret[ENCRYPTER_SECRET_KEY_SIZE] = ENCRYPTER_SECRET_KEY;
 
 void encrypter_reset();
+void decrypter_reset();
 
 void encrypter_init() {
 	encrypter_reset();
+  decrypter_reset();
   randomSeed(analogRead(0));
 }
 

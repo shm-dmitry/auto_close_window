@@ -18,6 +18,7 @@ void setup() {
 
   power_manager_init();
 
+  controller_init();
   user_input_init();
   fm_sender_init();
   fm_receiver_init();

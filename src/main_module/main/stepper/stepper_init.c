@@ -20,6 +20,8 @@
 #define STEPPER_NOISE_ALARM_DEGLICH   		2
 #define STEPPER_NOISE_AUTO_DEALARM_DEGLICH	(60*1000/10)
 
+static volatile bool stepper_noise_alarm_enabled = true;
+
 #if STEPPER_ENABLE_NOISE_ALARM
 static void stepper_noise_alarm_task(void*);
 #endif
@@ -71,7 +73,17 @@ static void stepper_noise_alarm_task(void*) {
 #endif
 		}
 
-    	vTaskDelay(10 / portTICK_PERIOD_MS);
+		if (!stepper_noise_alarm_enabled && stepper_executor_is_in_error()) {
+			stepper_executor_cancel_error();
+			deglichON = 0;
+#if STEPPER_ENABLE_NOISE_AUTO_DEALARM
+			deglichOFF = 0;
+#endif
+		}
+
+		do {
+			vTaskDelay(10 / portTICK_PERIOD_MS);
+		} while (!stepper_noise_alarm_enabled);
 	}
 }
 #endif
@@ -103,3 +115,8 @@ void stepper_move_to(uint8_t percent) {
 void stepper_cancel() {
 	stepper_executor_cancel();
 }
+
+void stepper_noise_alarm_enable(bool enable) {
+	stepper_noise_alarm_enabled = enable;
+}
+

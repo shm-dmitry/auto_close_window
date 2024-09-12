@@ -30,15 +30,17 @@
 #define FM_SENDER_GET_BUFFER(index)        (((index) == 0) ? fm_sending_buffer_1      : fm_sending_buffer_2);
 #define FM_SENDER_GET_BUFFER_SIZE(index)   (((index) == 0) ? fm_sending_buffer_1_size : fm_sending_buffer_2_size);
 
-uint8_t fm_sender_next_bit = FM_SENDING_BIT__PREPARE;
-uint8_t fm_sending_buffer_1_size = 0;
-uint8_t fm_sending_buffer_2_size = 0;
-uint8_t * fm_sending_buffer_1 = NULL;
-uint8_t * fm_sending_buffer_2 = NULL;
-uint8_t fm_sending_buffer_current = FM_SENDER_NO_BUFFER;
+#define FM_SENDER_PRINT_AIR_IN_USE true
 
-uint8_t fm_sender_high_counter = 0;
-uint8_t fm_sender_low_counter = 0;
+volatile uint8_t fm_sender_next_bit = FM_SENDING_BIT__PREPARE;
+volatile uint8_t fm_sending_buffer_1_size = 0;
+volatile uint8_t fm_sending_buffer_2_size = 0;
+volatile uint8_t * fm_sending_buffer_1 = NULL;
+volatile uint8_t * fm_sending_buffer_2 = NULL;
+volatile uint8_t fm_sending_buffer_current = FM_SENDER_NO_BUFFER;
+
+volatile uint8_t fm_sender_high_counter = 0;
+volatile uint8_t fm_sender_low_counter = 0;
 
 void isr_fm_sender_switch_sending_buffer();
 
@@ -128,13 +130,36 @@ void fm_sender_switch_sending_buffer() {
         fm_sending_buffer_current = 1;
       }
     }
+#if FM_SENDER_PRINT_AIR_IN_USE
+    else if (
+        (fm_sending_buffer_1 != NULL || fm_sending_buffer_2 != NULL) &&
+        (fm_sending_buffer_current == FM_SENDER_NO_BUFFER)
+    )
+    {
+      Serial.print("FM SENDER: await clean air. B1 = ");
+      Serial.print((fm_sending_buffer_1 != NULL ? "Y" : "N"));
+      Serial.print("; B2 = ");
+      Serial.println((fm_sending_buffer_2 != NULL ? "Y" : "N"));
+    }
+#endif
   }
 }
 
 void fm_sender_init() {
+  fm_sender_next_bit = FM_SENDING_BIT__PREPARE;
+  fm_sending_buffer_1_size = 0;
+  fm_sending_buffer_2_size = 0;
+  fm_sending_buffer_1 = NULL;
+  fm_sending_buffer_2 = NULL;
+  fm_sending_buffer_current = FM_SENDER_NO_BUFFER;
+
+  fm_sender_high_counter = 0;
+  fm_sender_low_counter = 0;
+
   pinMode(FM_SENDER_PIN, OUTPUT);
   digitalWrite(FM_SENDER_PIN, LOW);
 
+  TIMSK2 = 0;
   TCCR2A = 0;
   TCCR2B = 0;
 
@@ -155,8 +180,14 @@ void fm_sender_send_command(const t_fm_command * command) {
   encrypter_process_memory(command, &buffer, &size);
 
   if (buffer == NULL) {
+    Serial.print("FM SENDER: OOM: ADDR = ");
+    Serial.print(command->address);
+    Serial.print("; argsize = ");
+    Serial.println(command->argssize);
     return;
   }
+
+  uint8_t idx = 0;
 
   uint8_t oldSREG = SREG;
   cli();
@@ -165,15 +196,24 @@ void fm_sender_send_command(const t_fm_command * command) {
     fm_sending_buffer_1 = buffer;
     fm_sending_buffer_1_size = size;
     buffer = NULL;
+    idx = 0;
   } else if (fm_sending_buffer_2 == NULL) {
     fm_sending_buffer_2 = buffer;
     fm_sending_buffer_2_size = size;
     buffer = NULL;
+    idx = 1;
   }
   
   SREG = oldSREG;
 
   if (buffer != NULL) {
+    Serial.print("FM SENDER: OOB. Sending ");
+    Serial.println(fm_sending_buffer_current);
     free(buffer);
+  } else {
+    Serial.print("Sended FM: ");
+    Serial.print(command->address, HEX);
+    Serial.print(" via buffer ");
+    Serial.println(idx);
   }
 }

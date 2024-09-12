@@ -7,10 +7,11 @@ typedef struct {
 	t_fm_command_address_data data;
 } t_fm_command_size_by_address_data;
 
-#define FM_COMMAND_ADDRESS_DATA_SIZE 10
+#define FM_COMMAND_ADDRESS_DATA_SIZE 11
 t_fm_command_size_by_address_data address_data[FM_COMMAND_ADDRESS_DATA_SIZE] =
 {
-		{ .address = FM_COMMAND_ADDRESS__PDU,               .data.encrypted = false, .data.args_size = 1 },
+		{ .address = FM_COMMAND_ADDRESS__PDU1,               .data.encrypted = false, .data.args_size = 1 },
+		{ .address = FM_COMMAND_ADDRESS__PDU2,               .data.encrypted = false, .data.args_size = 1 },
 
 		{ .address = FM_COMMAND_ADDRESS__MM_STEPPER_STATUS, .data.encrypted = true,  .data.args_size = 1 },
 

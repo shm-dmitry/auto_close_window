@@ -48,6 +48,13 @@ ISR(PCINT2_vect) {
 }
 
 void user_input_init() {
+  user_input_buttons = 0;
+  user_input_buttons_in_progress = 0;
+
+  user_input_initcalibrate_step = 0;
+  user_input_initcalibrate_delay = 0;
+
+
   pinMode(USER_INPUT_PIN_OPEN,  INPUT);
   pinMode(USER_INPUT_PIN_CLOSE, INPUT);
 

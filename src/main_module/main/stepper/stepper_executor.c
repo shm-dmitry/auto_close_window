@@ -10,6 +10,7 @@
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "math.h"
 
 #define STEPPER_COMMAND_TASK_STACK_SIZE 2048
 
@@ -289,6 +290,10 @@ void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_cl
 
 	if (stepper_exec_max_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 		stepper_executor_do_calibrate(currentcommand);
+	} else if (endstops->is_close_fired()) {
+		stepper_exec_current_position = 0;
+	} else if (endstops->is_open_fired()) {
+		stepper_exec_current_position = stepper_exec_max_position;
 	} else if (move_to_close) {
 		controller_on_status(CONTROLLER_STATUS_START_FIND_POSITION);
 
@@ -321,7 +326,7 @@ void stepper_executor_do_locate_position(uint8_t currentcommand, bool move_to_cl
 }
 
 void stepper_executor_do_moveto(uint8_t currentcommand) {
-	_ESP_LOGI(LOG_STEPPER_EXEC, "Execute move-to-position: %d%%", currentcommand);
+	_ESP_LOGI(LOG_STEPPER_EXEC, "Execute move-to-position: %d%% [now %ld; max %ld]", currentcommand, stepper_exec_current_position, stepper_exec_max_position);
 
 	if (stepper_exec_max_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 		stepper_executor_do_calibrate(currentcommand);
@@ -380,10 +385,10 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 			// adjust full-open value
 			stepper_exec_max_position = stepper_exec_current_position;
 			break;
-		} else if (stepper_exec_max_position != 0 &&
+		} else if (stepper_exec_current_position != 0 &&
 					diff < 0 &&
 					endstops->is_close_fired()) {
-			_ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL CLOSED POSITION from %li to 0", stepper_exec_max_position);
+			_ESP_LOGW(LOG_STEPPER_EXEC, "Adjust FULL CLOSED POSITION from %li to 0", stepper_exec_current_position);
 			// adjust current position to 'closed'
 			stepper_exec_current_position = 0;
 			break;
@@ -446,7 +451,7 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 		}
 	}
 
-	controller_on_stepper_position_updated((stepper_exec_current_position * 100) / stepper_exec_max_position);
+	controller_on_stepper_position_updated(round((stepper_exec_current_position * 100.0) / stepper_exec_max_position));
 
 	controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
 									CONTROLLER_STATUS_END_EXECUTE_CLOSE);

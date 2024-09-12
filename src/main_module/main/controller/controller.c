@@ -18,10 +18,14 @@
 // This codes used by my remote control unit
 // Change them to your codes.
 // You can just press buttons and check log messages
-#define CONTROLLER_PDU_ARG_FULL_OPEN   0x68
-#define CONTROLLER_PDU_ARG_FULL_CLOSE  0x64
-#define CONTROLLER_PDU_ARG_MOVE_TO_1   0x62
-#define CONTROLLER_PDU_ARG_MOVE_TO_2   0x61
+#define CONTROLLER_PDU1_ARG_BUTTON1   0x68
+#define CONTROLLER_PDU1_ARG_BUTTON2   0x64
+#define CONTROLLER_PDU1_ARG_BUTTON3   0x62
+#define CONTROLLER_PDU1_ARG_BUTTON4   0x61
+#define CONTROLLER_PDU2_ARG_BUTTON1   0xA1
+#define CONTROLLER_PDU2_ARG_BUTTON2   0xA2
+#define CONTROLLER_PDU2_ARG_BUTTON3   0xA4
+#define CONTROLLER_PDU2_ARG_BUTTON4   0xA8
 
 #define CONTROLLER_BAT_STATUS_V_OFFSET 450
 
@@ -34,28 +38,45 @@ QueueHandle_t controller_mqtt_async_message_queue;
 
 static void controller_mqtt_async_message_task(void*);
 
-void controller_process_pdu_command(uint8_t arg) {
-	_ESP_LOGI(LOG_CONTROLLER, "PDU command: arg=%02X", arg);
+void controller_process_pdu1_command(uint16_t freq, uint8_t arg) {
+	_ESP_LOGI(LOG_CONTROLLER, "PDU1 command: arg=%02X on freq %d", arg, freq);
 
 	switch (arg) {
-		case CONTROLLER_PDU_ARG_FULL_OPEN:
+		case CONTROLLER_PDU1_ARG_BUTTON1:
 			stepper_move_to(100);
 			break;
-		case CONTROLLER_PDU_ARG_FULL_CLOSE:
+		case CONTROLLER_PDU1_ARG_BUTTON2:
 			stepper_move_to(0);
 			break;
-		case CONTROLLER_PDU_ARG_MOVE_TO_1:
+		case CONTROLLER_PDU1_ARG_BUTTON3:
 			stepper_cancel();
-//			stepper_move_to(10); // TODO: config
 			break;
-		case CONTROLLER_PDU_ARG_MOVE_TO_2:
-			stepper_move_to(50); // TODO: config
+		case CONTROLLER_PDU1_ARG_BUTTON4:
+			stepper_move_to(15); // TODO: config
 			break;
 	}
 }
 
-void controller_process_hm_command(uint8_t arg) {
-	_ESP_LOGI(LOG_CONTROLLER, "HM command: arg=%02X", arg);
+void controller_process_pdu2_command(uint16_t freq, uint8_t arg) {
+	_ESP_LOGI(LOG_CONTROLLER, "PDU2 command: arg=%02X on freq %d", arg, freq);
+
+	switch (arg) {
+		case CONTROLLER_PDU2_ARG_BUTTON1:
+			stepper_move_to(100);
+			break;
+		case CONTROLLER_PDU2_ARG_BUTTON2:
+			stepper_move_to(0);
+			break;
+		case CONTROLLER_PDU2_ARG_BUTTON3:
+			stepper_cancel();
+			break;
+		case CONTROLLER_PDU2_ARG_BUTTON4:
+			stepper_move_to(15); // TODO: config
+			break;
+	}
+}
+void controller_process_hm_command(uint16_t freq, uint8_t arg) {
+	_ESP_LOGI(LOG_CONTROLLER, "HM command: arg=%02X on freq %d", arg, freq);
 
 	switch (arg) {
 		case CONTROLLER_HM_FULL_OPEN:
@@ -109,16 +130,20 @@ void controller_process_hmom_bat_status(bool hm, uint8_t _voltage, uint8_t _curr
 	controller_mqtt_process_bat_status(hm, v, i, charge_in_progress);
 }
 
-void controller_process_command(const t_fm_command * command) {
+void controller_process_command(uint16_t freq, const t_fm_command * command) {
 	const uint8_t * args = command->args;
 
 	switch (command->address) {
-	case FM_COMMAND_ADDRESS__PDU:
-		controller_process_pdu_command(args[0]);
+	case FM_COMMAND_ADDRESS__PDU1:
+		controller_process_pdu1_command(freq, args[0]);
+		break;
+
+	case FM_COMMAND_ADDRESS__PDU2:
+		controller_process_pdu2_command(freq, args[0]);
 		break;
 
 	case FM_COMMAND_ADDRESS__MM_STEPPER_STATUS:
-		_ESP_LOGI(LOG_CONTROLLER, "Received self message with arg = %02X", args[0]);
+		_ESP_LOGI(LOG_CONTROLLER, "Received self message with arg = %02X on freq %d", args[0], freq);
 		// ignore this address - I receive myself commands
 		break;
 
@@ -142,7 +167,7 @@ void controller_process_command(const t_fm_command * command) {
 		break;
 
 	case FM_COMMAND_ADDRESS__HM_COMMAND:
-		controller_process_hm_command(args[0]);
+		controller_process_hm_command(freq, args[0]);
 		break;
 	case FM_COMMAND_ADDRESS__HM_CHARGE_STATUS:
 		controller_process_hm_charge_status(args[0]);

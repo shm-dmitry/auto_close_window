@@ -125,6 +125,13 @@ void power_manager_write_16t(uint8_t reg, uint16_t value, uint8_t address);
 void power_manager_check_write_16t(uint8_t reg, uint16_t value, uint8_t address);
 
 void power_manager_init() {
+#if POWER_MANAGER_NOEVENT_TIMER_ENABLED
+  power_manager_noevent_timer = 0;
+#endif
+  power_manager_i2c_next_recheck_config = 0;
+  power_manager_ina219_up = false;
+
+
   pinMode(POWER_MANAGER_PIN_LOCK, OUTPUT);
   digitalWrite(POWER_MANAGER_PIN_LOCK, HIGH);
 
@@ -235,6 +242,8 @@ void power_manager_on_event() {
     digitalWrite(POWER_MANAGER_PIN_LOCK, HIGH); // restore HIGH state - user interacted with us during shutdown-delay
 
     power_manager_configure_batstatus();
+
+    Serial.println("Power manager: wakeup-after-shutdown");
   }
 
   power_manager_noevent_timer = millis() + POWER_MANAGER_NOEVENT_POWEROFF_DELAY;

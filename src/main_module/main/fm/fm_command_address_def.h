@@ -5,7 +5,8 @@
 // Write here your address.
 // You can press any button on your remote control unit and check it in logs
 // you also need to correct defines CONTROLLER_PDU_ARG_*
-#define FM_COMMAND_ADDRESS__PDU 		        0xA5B2
+#define FM_COMMAND_ADDRESS__PDU1 		        0xA5B2
+#define FM_COMMAND_ADDRESS__PDU2				0x0B80
 
 #define FM_COMMAND_ADDRESS__MM_STEPPER_STATUS 	0x3726
 

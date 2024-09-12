@@ -108,7 +108,7 @@ static void fm_receiver_task(void* arg) {
 #endif
 
 				for (uint8_t i = 0; i<list->commands_size; i++) {
-					controller_process_command(&(list->commands[i]));
+					controller_process_command(taskparams->freq, &(list->commands[i]));
 				}
 
 				free(list->commands);

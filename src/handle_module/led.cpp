@@ -25,6 +25,8 @@ void led_init() {
   pinMode(LED_PIN_RED, OUTPUT);
 
   led_run_inform(LED_NO_COMMAND);
+
+  led_running_type = LED_NO_COMMAND;
 }
 
 void led_on_main_loop() {

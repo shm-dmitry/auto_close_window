@@ -25,6 +25,11 @@ void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 		stepper_calibrate();
 	} else if (strcmp(type, "cancel_error") == 0) {
 		stepper_cancel_error();
+	} else if (strcmp(type, "stepper_noise_alarm") == 0) {
+		uint8_t v = get_boolean_from_json(cJSON_GetObjectItem(root, "enable"), 1, 0, 0xFF);
+		if (v != 0xFF) {
+			stepper_noise_alarm_enable(v == 1);
+		}
 	}
 
 	cJSON_Delete(root);
@@ -49,7 +54,7 @@ void controller_mqtt_process_bat_status(bool hm, uint16_t v, uint16_t i, bool ch
     _ESP_LOGI(LOG_CONTROLLER, "Bat %s status: V = %d mV; I = %d mA; charge: %s", (hm ? "HM" : "OM"), v, i, (charge ? "YES" : "NO"));
 
     cJSON *root = cJSON_CreateObject();
-    cJSON_AddNumberToObject(root, "v", v);
+    cJSON_AddNumberToObject(root, "v", v / 1000.0);
     cJSON_AddNumberToObject(root, "i", i);
     cJSON_AddBoolToObject(root, "charge", charge);
 

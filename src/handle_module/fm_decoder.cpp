@@ -17,19 +17,31 @@
 
 #define FM_DECODER_GET_ACTIVE_BUFFER(index) ((index == 0) ? fm_decoder_buffer_1 : fm_decoder_buffer_2)
 
-bool fm_decoder_found_preamble = false;
-uint8_t fm_decoder_received_bits = 0;
-uint8_t fm_decoder_actual_buffer = 0;
-uint8_t fm_decoder_filled_buffer = FM_DECODER_NO_FILLED_BUFFER;
-uint8_t fm_decoder_buffer_1[FM_DECODER_BUFFER_SIZE];
-uint8_t fm_decoder_buffer_2[FM_DECODER_BUFFER_SIZE];
+volatile bool fm_decoder_found_preamble = false;
+volatile uint8_t fm_decoder_received_bits = 0;
+volatile uint8_t fm_decoder_actual_buffer = 0;
+volatile uint8_t fm_decoder_filled_buffer = FM_DECODER_NO_FILLED_BUFFER;
+volatile uint8_t fm_decoder_buffer_1[FM_DECODER_BUFFER_SIZE];
+volatile uint8_t fm_decoder_buffer_2[FM_DECODER_BUFFER_SIZE];
 
 unsigned long fm_decoder_millis = 0;
 unsigned long fm_decoder_last_activity = 0;
 
 void fm_decoder_init() {
+  fm_decoder_found_preamble = false;
+  fm_decoder_received_bits = 0;
+  fm_decoder_actual_buffer = 0;
+  fm_decoder_filled_buffer = FM_DECODER_NO_FILLED_BUFFER;
   memset(fm_decoder_buffer_1, 0, FM_DECODER_BUFFER_SIZE);
   memset(fm_decoder_buffer_2, 0, FM_DECODER_BUFFER_SIZE);
+
+  fm_decoder_millis = 0;
+  fm_decoder_last_activity = 0;
+}
+
+void isr_fm_decoder_reset() {
+  fm_decoder_found_preamble = false;
+  fm_decoder_received_bits = 0;
 }
 
 void isr_fm_decoder_on_symbol(uint16_t high, uint16_t low) {
@@ -93,8 +105,33 @@ void fm_decoder_get_data(uint8_t ** buffer, uint8_t * buffer_size) {
   SREG = oldSREG;
 }
 
+uint8_t fm_decoder_filled_buffer_ = 0;
+uint8_t fm_decoder_actual_buffer_ = 0;
+uint8_t fm_decoder_received_bits_ = 0;
+bool fm_decoder_found_preamble_ = false;
+
 void fm_decoder_on_main_loop() {
   fm_decoder_millis = millis();
+
+  if (fm_decoder_filled_buffer != fm_decoder_filled_buffer_ || 
+      fm_decoder_actual_buffer != fm_decoder_actual_buffer_ || 
+      fm_decoder_received_bits != fm_decoder_received_bits_ || 
+      fm_decoder_found_preamble != fm_decoder_found_preamble_)
+      {
+        Serial.print("FB: ");
+        Serial.print(fm_decoder_filled_buffer);
+        Serial.print("; AB: ");
+        Serial.print(fm_decoder_actual_buffer);
+        Serial.print("; Rb: ");
+        Serial.print(fm_decoder_received_bits);
+        Serial.print("; Fp: ");
+        Serial.println(fm_decoder_found_preamble);
+
+        fm_decoder_filled_buffer_ = fm_decoder_filled_buffer;
+        fm_decoder_actual_buffer_ = fm_decoder_actual_buffer;
+        fm_decoder_received_bits_ = fm_decoder_received_bits;
+        fm_decoder_found_preamble_ = fm_decoder_found_preamble;
+      }
 }
 
 bool fm_decoder_is_air_clean() {

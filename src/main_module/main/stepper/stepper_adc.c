@@ -21,7 +21,7 @@ adc_continuous_handle_t stepper_adc_handle = NULL;
 static volatile uint8_t stepper_adc_limit_switch_value = 0xFF;
 static volatile uint8_t stepper_adc_noise_alarm_value = 0xFF;
 
-#define STEPPER_ADC_NOISE_DUMP false
+#define STEPPER_ADC_NOISE_DUMP true
 #define STEPPER_ADC_LSW_DUMP false
 
 #define STEPPER_ADC_OPENCLOSE_AWAIT_MS	20

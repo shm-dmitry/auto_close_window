@@ -18,7 +18,7 @@
 #define STEPPER_ENABLE_NOISE_AUTO_DEALARM	true
 
 #define STEPPER_NOISE_ALARM_DEGLICH   		2
-#define STEPPER_NOISE_AUTO_DEALARM_DEGLICH	(60*1000/10)
+#define STEPPER_NOISE_AUTO_DEALARM_DEGLICH	(10*1000/10)
 
 static volatile bool stepper_noise_alarm_enabled = true;
 

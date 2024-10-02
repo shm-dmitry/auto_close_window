@@ -237,6 +237,7 @@ bool stepper_adc_is_noise_alarm_fired() {
 }
 
 void stepper_adc_lsw_enable(bool enabled) {
+	_ESP_LOGI(LOG_STEPPER_ADC, "LSW enable: %s", (enabled ? "YES" : "NO"));
 	stepper_adc_limit_switch_enabled = enabled;
 
 	controller_mqtt_limit_switch_enabled(enabled);

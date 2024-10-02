@@ -125,6 +125,10 @@ void controller_mqtt_limit_switch_enabled(bool enabled) {
     mqtt_publish(CONFIG_CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS, enabled ? "on" : "off");
 }
 
+void controller_mqtt_noise_alarm_enabled(bool enabled) {
+    mqtt_publish(CONFIG_CONTROLLER_MQTT_STEPPER_NOISE_ALARM_STATUS, enabled ? "on" : "off");
+}
+
 void controller_mqtt_stepper_position_updated(uint8_t percent) {
 	cJSON *root = cJSON_CreateObject();
 	cJSON_AddNumberToObject(root, "value", (percent > 100 ? 0 : percent));

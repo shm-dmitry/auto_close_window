@@ -3,6 +3,7 @@
 #include "stepper_adc.h"
 
 #include "stepper_executor.h"
+#include "../controller/controller_mqtt.h"
 
 #include "esp_attr.h"
 #include "../log/log.h"
@@ -119,6 +120,7 @@ void stepper_cancel() {
 
 void stepper_noise_alarm_enable(bool enable) {
 	stepper_noise_alarm_enabled = enable;
+	controller_mqtt_noise_alarm_enabled(enable);
 }
 
 void stepper_limit_switch_enable(bool enable) {

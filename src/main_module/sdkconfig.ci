@@ -34,12 +34,13 @@ PIN_CHARGER_START_BUTTON=27
 PIN_CHARGER_ENABLE=32
 
 CONTROLLER_MQTT_COMMANDS_TOPIC="/controller/commands"
-CONTROLLER_MQTT_STEPPER_STATUS_TOPIC="/controller/stepper/status"
+CONTROLLER_MQTT_STEPPER_STATUS_TOPIC="/controller/status/stepper"
 CONTROLLER_MQTT_AIR_STATUS="/controller/air/status"
 CONTROLLER_MQTT_NOISE_STATUS="/controller/noise/status"
 CONTROLLER_MQTT_NOISE_ALARM="/controller/noise/alarm"
 CONTROLLER_MQTT_HM_BAT_STATUS="/controller/hm/batstatus"
 CONTROLLER_MQTT_OM_BAT_STATUS="/controller/om/batstatus"
-CONTROLLER_MQTT_STEPPER_ERROR="/controller/position/error"
-CONTROLLER_MQTT_STEPPER_POSITION="/controller/position"
-CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS="/controller/lsw/status"
+CONTROLLER_MQTT_STEPPER_ERROR="/controller/status/positionerror"
+CONTROLLER_MQTT_STEPPER_POSITION="/controller/status/position"
+CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS="/controller/status/lsw"
+CONTROLLER_MQTT_STEPPER_NOISE_ALARM_STATUS="/controller/status/steppernoisealarm"

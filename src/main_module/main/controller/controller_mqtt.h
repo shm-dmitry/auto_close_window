@@ -13,5 +13,6 @@ void controller_mqtt_process_bat_status(bool hm, uint16_t v, uint16_t i, bool ch
 
 void controller_mqtt_on_stepper_error(bool error);
 void controller_mqtt_stepper_position_updated(uint8_t percent);
+void controller_mqtt_limit_switch_enabled(bool enabled);
 
 #endif /* MAIN_CONTROLLER_CONTROLLER_MQTT_H_ */

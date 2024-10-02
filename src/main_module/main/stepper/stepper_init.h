@@ -12,5 +12,6 @@ bool stepper_is_now_executing_move_to(uint8_t percent);
 void stepper_cancel();
 void stepper_cancel_error();
 void stepper_noise_alarm_enable(bool enable);
+void stepper_limit_switch_enable(bool enable);
 
 #endif /* MAIN_STEPPER_STEPPER_INIT_H_ */

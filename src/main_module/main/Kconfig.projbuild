@@ -132,9 +132,9 @@ menu "Auto-Close Window Settings"
    endmenu
   
    menu "Controller2MQTT"
-   	  config CONTROLLER_MQTT_STEPPER_TOPIC
+   	  config CONTROLLER_MQTT_COMMANDS_TOPIC
    	     string "MQTT topic to stepper listen commands"
-   	     default "/controller/stepper/commands"
+   	     default "/controller/commands"
 
    	  config CONTROLLER_MQTT_STEPPER_STATUS_TOPIC
    	     string "MQTT topic to send stepper status"
@@ -163,6 +163,10 @@ menu "Auto-Close Window Settings"
    	  config CONTROLLER_MQTT_STEPPER_ERROR
    	     string "MQTT topic to send stepper error status"
    	     default "/controller/position/error"
+   	     
+   	  config CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS
+   	     string "MQTT topic to send stepper error status"
+   	     default "/controller/lsw/status"
    	  
    	  config CONTROLLER_MQTT_STEPPER_POSITION
    	     string "MQTT topic to send stepper position value"

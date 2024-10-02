@@ -5,6 +5,7 @@
 #include "sdkconfig.h"
 #include "../stepper/stepper_init.h"
 #include "../log/log.h"
+#include "controller.h"
 
 #include "string.h"
 
@@ -29,6 +30,16 @@ void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 		uint8_t v = get_boolean_from_json(cJSON_GetObjectItem(root, "enable"), 1, 0, 0xFF);
 		if (v != 0xFF) {
 			stepper_noise_alarm_enable(v == 1);
+		}
+	} else if (strcmp(type, "stepper_lsw_enabled") == 0) {
+		uint8_t v = get_boolean_from_json(cJSON_GetObjectItem(root, "enable"), 1, 0, 0xFF);
+		if (v != 0xFF) {
+			stepper_limit_switch_enable(v == 1);
+		}
+	} else if (strcmp(type, "stepper_light_open_percent") == 0) {
+		uint8_t v = get_number8_from_json(cJSON_GetObjectItem(root, "value"), 0xFF);
+		if (v != 0xFF) {
+			controller_set_light_open_percent(v);
 		}
 	}
 
@@ -110,6 +121,10 @@ void controller_mqtt_on_stepper_error(bool error) {
     mqtt_publish(CONFIG_CONTROLLER_MQTT_STEPPER_ERROR, error ? "on" : "off");
 }
 
+void controller_mqtt_limit_switch_enabled(bool enabled) {
+    mqtt_publish(CONFIG_CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS, enabled ? "on" : "off");
+}
+
 void controller_mqtt_stepper_position_updated(uint8_t percent) {
 	cJSON *root = cJSON_CreateObject();
 	cJSON_AddNumberToObject(root, "value", (percent > 100 ? 0 : percent));
@@ -123,5 +138,5 @@ void controller_mqtt_stepper_position_updated(uint8_t percent) {
 }
 
 void controller_mqtt_init() {
-	mqtt_subscribe(CONFIG_CONTROLLER_MQTT_STEPPER_TOPIC, controller_mqtt_stepper_callback);
+	mqtt_subscribe(CONFIG_CONTROLLER_MQTT_COMMANDS_TOPIC, controller_mqtt_stepper_callback);
 }

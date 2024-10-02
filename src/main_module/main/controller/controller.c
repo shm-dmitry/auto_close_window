@@ -7,6 +7,7 @@
 #include "../log/log.h"
 #include "../stepper/stepper_init.h"
 #include "../charger/charger_init.h"
+#include "../common/nvs_rw.h"
 #include "stdbool.h"
 #include <string.h>
 
@@ -34,6 +35,11 @@
 
 #define CONTROLLER_ASYNC_MQTT_TASK_STACK_SIZE 4096
 
+#define CONTROLLER_LIGHT_OPEN_PERCENT 10
+#define CONTROLLER_LIGHT_OPEN_PERCENT_CONFIG "cntrl_lopc"
+
+static volatile uint8_t controller_light_open_percent = CONTROLLER_LIGHT_OPEN_PERCENT;
+
 QueueHandle_t controller_mqtt_async_message_queue;
 
 static void controller_mqtt_async_message_task(void*);
@@ -52,7 +58,7 @@ void controller_process_pdu1_command(uint16_t freq, uint8_t arg) {
 			stepper_cancel();
 			break;
 		case CONTROLLER_PDU1_ARG_BUTTON4:
-			stepper_move_to(15); // TODO: config
+			stepper_move_to(controller_light_open_percent);
 			break;
 	}
 }
@@ -71,7 +77,7 @@ void controller_process_pdu2_command(uint16_t freq, uint8_t arg) {
 			stepper_cancel();
 			break;
 		case CONTROLLER_PDU2_ARG_BUTTON4:
-			stepper_move_to(15); // TODO: config
+			stepper_move_to(controller_light_open_percent);
 			break;
 	}
 }
@@ -232,4 +238,30 @@ static void controller_mqtt_async_message_task(void*) {
 void controller_init() {
 	controller_mqtt_async_message_queue = xQueueCreate(5, sizeof(uint16_t));
 	xTaskCreate(controller_mqtt_async_message_task, "controller async mqtt", CONTROLLER_ASYNC_MQTT_TASK_STACK_SIZE, NULL, 10, NULL);
+
+	uint8_t * buf = malloc(1);
+	if (buf) {
+		*buf = 0;
+		size_t size = 0;
+		nvs_read_buffer(CONTROLLER_LIGHT_OPEN_PERCENT_CONFIG, &buf, &size);
+
+		if ((size == 1) &&
+			((*buf) < 100) &&
+			((*buf) > 0)) {
+			controller_light_open_percent = *buf;
+		} else {
+			controller_light_open_percent = CONTROLLER_LIGHT_OPEN_PERCENT;
+		}
+
+		free(buf);
+	}
+}
+
+void controller_set_light_open_percent(uint8_t value) {
+	if (value > 0 && value < 100) {
+		controller_light_open_percent = value;
+
+		uint8_t temp = controller_light_open_percent;
+		nvs_write_buffer(CONTROLLER_LIGHT_OPEN_PERCENT_CONFIG, &temp, 1);
+	}
 }

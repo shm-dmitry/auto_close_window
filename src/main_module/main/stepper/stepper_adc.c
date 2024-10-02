@@ -9,6 +9,7 @@
 #include "freertos/semphr.h"
 #include "esp_adc/adc_continuous.h"
 #include "../common/delay_timer.h"
+#include "../controller/controller_mqtt.h"
 
 #define STEPPER_ADC_TASK_STACK_SIZE 2048
 #define STEPPER_ADC_FRAME_SIZE (5*2*2)
@@ -20,6 +21,7 @@ adc_continuous_handle_t stepper_adc_handle = NULL;
 
 static volatile uint8_t stepper_adc_limit_switch_value = 0xFF;
 static volatile uint8_t stepper_adc_noise_alarm_value = 0xFF;
+static volatile bool stepper_adc_limit_switch_enabled = true;
 
 #define STEPPER_ADC_NOISE_DUMP true
 #define STEPPER_ADC_LSW_DUMP false
@@ -96,6 +98,8 @@ t_endstops * stepper_adc_init() {
     	return NULL;
     }
 
+    stepper_adc_limit_switch_enabled = true;
+
     memset(endstops, 0, sizeof(t_endstops));
 
     endstops->is_close_fired = &stepper_adc_is_close_position_reached;
@@ -171,6 +175,10 @@ static void stepper_adc_on_read_raw_value_task(void*) {
 
 
 bool stepper_adc_is_close_position_reached() {
+	if (!stepper_adc_limit_switch_enabled) {
+		return false;
+	}
+
 	uint8_t x = stepper_adc_limit_switch_value;
 	if (STEPPER_ADC_IS_CLOSED(x)) {
 		t_delay_timer * timer = delay_timer_allocate(STEPPER_ADC_OPENCLOSE_AWAIT_MS);
@@ -191,6 +199,10 @@ bool stepper_adc_is_close_position_reached() {
 }
 
 bool stepper_adc_is_open_position_reached() {
+	if (!stepper_adc_limit_switch_enabled) {
+		return false;
+	}
+
 	uint8_t x = stepper_adc_limit_switch_value;
 	if (STEPPER_ADC_IS_OPENED(x)) {
 		t_delay_timer * timer = delay_timer_allocate(STEPPER_ADC_OPENCLOSE_AWAIT_MS);
@@ -211,6 +223,10 @@ bool stepper_adc_is_open_position_reached() {
 }
 
 bool stepper_adc_is_stepper_allowed() {
+	if (!stepper_adc_limit_switch_enabled) {
+		return true;
+	}
+
 	uint8_t x = stepper_adc_limit_switch_value;
 	return  STEPPER_ADC_IS_ALLOWED(x);
 }
@@ -218,4 +234,10 @@ bool stepper_adc_is_stepper_allowed() {
 bool stepper_adc_is_noise_alarm_fired() {
 	uint8_t x = stepper_adc_noise_alarm_value;
 	return x >= CONFIG_ADC_STEPPER_NOISE_ALARM_VALUE;
+}
+
+void stepper_adc_lsw_enable(bool enabled) {
+	stepper_adc_limit_switch_enabled = enabled;
+
+	controller_mqtt_limit_switch_enabled(enabled);
 }

@@ -89,6 +89,7 @@ static void stepper_noise_alarm_task(void*) {
 #endif
 
 void stepper_calibrate() {
+	stepper_adc_lsw_enable(true);
 	stepper_executor_calibrate();
 }
 
@@ -120,3 +121,6 @@ void stepper_noise_alarm_enable(bool enable) {
 	stepper_noise_alarm_enabled = enable;
 }
 
+void stepper_limit_switch_enable(bool enable) {
+	stepper_adc_lsw_enable(enable);
+}

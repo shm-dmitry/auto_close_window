@@ -39,6 +39,7 @@
 #define CONTROLLER_LIGHT_OPEN_PERCENT_CONFIG "cntrl_lopc"
 
 static volatile uint8_t controller_light_open_percent = CONTROLLER_LIGHT_OPEN_PERCENT;
+static volatile uint8_t controller_fm_pdu_enabled = true;
 
 QueueHandle_t controller_mqtt_async_message_queue;
 
@@ -46,6 +47,11 @@ static void controller_mqtt_async_message_task(void*);
 
 void controller_process_pdu1_command(uint16_t freq, uint8_t arg) {
 	_ESP_LOGI(LOG_CONTROLLER, "PDU1 command: arg=%02X on freq %d", arg, freq);
+
+	if (!controller_fm_pdu_enabled) {
+		_ESP_LOGW(LOG_CONTROLLER, "PDU commands disabled.");
+		return;
+	}
 
 	switch (arg) {
 		case CONTROLLER_PDU1_ARG_BUTTON1:
@@ -65,6 +71,11 @@ void controller_process_pdu1_command(uint16_t freq, uint8_t arg) {
 
 void controller_process_pdu2_command(uint16_t freq, uint8_t arg) {
 	_ESP_LOGI(LOG_CONTROLLER, "PDU2 command: arg=%02X on freq %d", arg, freq);
+
+	if (!controller_fm_pdu_enabled) {
+		_ESP_LOGW(LOG_CONTROLLER, "PDU commands disabled.");
+		return;
+	}
 
 	switch (arg) {
 		case CONTROLLER_PDU2_ARG_BUTTON1:
@@ -255,6 +266,13 @@ void controller_init() {
 
 		free(buf);
 	}
+
+	controller_fm_pdu_enabled = true;
+}
+
+void controller_set_fm_pdu_enabled(bool value) {
+	controller_fm_pdu_enabled = value;
+	controller_mqtt_fm_pdu_enabled(value);
 }
 
 void controller_set_light_open_percent(uint8_t value) {

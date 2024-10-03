@@ -1,6 +1,7 @@
 #ifndef MAIN_CONTROLLER_CONTROLLER_H_
 #define MAIN_CONTROLLER_CONTROLLER_H_
 
+#include "stdbool.h"
 #include "../fm/fm_command_defs.h"
 #include "controller_status_def.h"
 
@@ -9,5 +10,6 @@ void controller_on_status(uint8_t status);
 void controller_on_stepper_position_updated(uint8_t percent);
 void controller_init();
 void controller_set_light_open_percent(uint8_t value);
+void controller_set_fm_pdu_enabled(bool value);
 
 #endif /* MAIN_CONTROLLER_CONTROLLER_H_ */

@@ -175,6 +175,10 @@ menu "Auto-Close Window Settings"
    	  config CONTROLLER_MQTT_STEPPER_NOISE_ALARM_STATUS
    	     string "MQTT topic to send stepper noise alarm status"
    	     default "/controller/status/steppernoisealarm"
+   	     
+   	  config CONTROLLER_MQTT_FM_PDU_ENABLE_STATUS
+   	     string "MQTT topic to send fm pdu enabled status"
+   	     default "/controller/status/fmpduenabled"
    endmenu
  endmenu
  

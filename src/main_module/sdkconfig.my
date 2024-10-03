@@ -478,6 +478,7 @@ CONFIG_CONTROLLER_MQTT_STEPPER_ERROR="/controller/status/positionerror"
 CONFIG_CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS="/controller/status/lsw"
 CONFIG_CONTROLLER_MQTT_STEPPER_POSITION="/controller/status/position"
 CONFIG_CONTROLLER_MQTT_STEPPER_NOISE_ALARM_STATUS="/controller/status/steppernoisealarm"
+CONFIG_CONTROLLER_MQTT_FM_PDU_ENABLE_STATUS="/controller/status/fmpduenabled"
 # end of Controller2MQTT
 # end of Auto-Close Window Settings
 

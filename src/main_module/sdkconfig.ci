@@ -44,3 +44,5 @@ CONTROLLER_MQTT_STEPPER_ERROR="/controller/status/positionerror"
 CONTROLLER_MQTT_STEPPER_POSITION="/controller/status/position"
 CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS="/controller/status/lsw"
 CONTROLLER_MQTT_STEPPER_NOISE_ALARM_STATUS="/controller/status/steppernoisealarm"
+CONTROLLER_MQTT_FM_PDU_ENABLE_STATUS="/controller/status/fmpduenabled"
+

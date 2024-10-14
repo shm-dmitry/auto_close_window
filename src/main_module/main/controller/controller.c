@@ -193,7 +193,7 @@ void controller_process_command(uint16_t freq, const t_fm_command * command) {
 		controller_process_hmom_bat_status(true, args[0], args[1]);
 		break;
 	default:
-		ESP_LOGW(LOG_CONTROLLER, "Unknown address = %04X (arg0 == %02X)", command->address, args[0]);
+		_ESP_LOGW(LOG_CONTROLLER, "Unknown address = %04X (arg0 == %02X)", command->address, args[0]);
 		break;
 	}
 }
@@ -282,4 +282,10 @@ void controller_set_light_open_percent(uint8_t value) {
 		uint8_t temp = controller_light_open_percent;
 		nvs_write_buffer(CONTROLLER_LIGHT_OPEN_PERCENT_CONFIG, &temp, 1);
 	}
+}
+
+void controller_publish_status() {
+	controller_set_fm_pdu_enabled(controller_fm_pdu_enabled);
+
+	stepper_publish_status();
 }

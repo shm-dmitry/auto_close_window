@@ -11,5 +11,6 @@ void controller_on_stepper_position_updated(uint8_t percent);
 void controller_init();
 void controller_set_light_open_percent(uint8_t value);
 void controller_set_fm_pdu_enabled(bool value);
+void controller_publish_status();
 
 #endif /* MAIN_CONTROLLER_CONTROLLER_H_ */

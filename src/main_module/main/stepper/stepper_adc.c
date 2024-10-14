@@ -23,7 +23,7 @@ static volatile uint8_t stepper_adc_limit_switch_value = 0xFF;
 static volatile uint8_t stepper_adc_noise_alarm_value = 0xFF;
 static volatile bool stepper_adc_limit_switch_enabled = true;
 
-#define STEPPER_ADC_NOISE_DUMP true
+#define STEPPER_ADC_NOISE_DUMP false
 #define STEPPER_ADC_LSW_DUMP false
 
 #define STEPPER_ADC_OPENCLOSE_AWAIT_MS	20
@@ -237,8 +237,15 @@ bool stepper_adc_is_noise_alarm_fired() {
 }
 
 void stepper_adc_lsw_enable(bool enabled) {
-	_ESP_LOGI(LOG_STEPPER_ADC, "LSW enable: %s", (enabled ? "YES" : "NO"));
-	stepper_adc_limit_switch_enabled = enabled;
+	if (stepper_adc_limit_switch_enabled != enabled) {
+		_ESP_LOGI(LOG_STEPPER_ADC, "LSW enable: %s", (enabled ? "YES" : "NO"));
+	}
 
+	stepper_adc_limit_switch_enabled = enabled;
 	controller_mqtt_limit_switch_enabled(enabled);
 }
+
+void stepper_adc_publish_status() {
+	stepper_adc_lsw_enable(stepper_adc_limit_switch_enabled);
+}
+

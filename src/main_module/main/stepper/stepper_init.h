@@ -13,5 +13,6 @@ void stepper_cancel();
 void stepper_cancel_error();
 void stepper_noise_alarm_enable(bool enable);
 void stepper_limit_switch_enable(bool enable);
+void stepper_publish_status();
 
 #endif /* MAIN_STEPPER_STEPPER_INIT_H_ */

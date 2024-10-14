@@ -25,7 +25,7 @@
 #define STEPPER_MOTOR_OFF_DELAY_MILLIS  (60 * 1000)
 #define STEPPER_EXEC_CURRENT_POSITION_UNKNOWN  0xFFFFFFFF
 
-#define STEPPER_EXEC_REPORT_POSITION_MILLIS (2 * 1000)
+#define STEPPER_EXEC_REPORT_POSITION_MILLIS (1000)
 
 #define STEPPER_EXEC_CORRECT_POSITION_TIMEOUT  1000
 
@@ -455,5 +455,20 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 
 	controller_on_status(diff > 0 ? CONTROLLER_STATUS_END_EXECUTE_OPEN :
 									CONTROLLER_STATUS_END_EXECUTE_CLOSE);
+}
+
+void stepper_executor_publish_status() {
+	controller_on_status(
+			stepper_executor_is_in_error_now ?
+					CONTROLLER_STATUS_ERROR_RAISED :
+					CONTROLLER_STATUS_ERROR_CANCELLED);
+	if (stepper_exec_current_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN ||
+			stepper_exec_max_position == STEPPER_EXEC_CURRENT_POSITION_UNKNOWN ||
+			stepper_exec_max_position == 0
+			) {
+		controller_on_stepper_position_updated(0xFF);
+	} else {
+		controller_on_stepper_position_updated(round((stepper_exec_current_position * 100.0) / stepper_exec_max_position));
+	}
 }
 

@@ -58,7 +58,7 @@ uint8_t fm_command_decode_next_period(t_fm_encoder_context * decoder_context, ui
 		if (level == 0) {
 			if (duration / decoder_context->prev_duration > 25) {
 				decoder_context->found_preamble = true;
-	//			ESP_LOGI(LOG_FM_ENCODER, "Found preamble %d; prev %d", duration, context->prev_duration);
+	//			_ESP_LOGI(LOG_FM_ENCODER, "Found preamble %d; prev %d", duration, context->prev_duration);
 			}
 		}
 
@@ -86,7 +86,7 @@ uint8_t fm_command_decode_next_period(t_fm_encoder_context * decoder_context, ui
 		return FM_COMMAND_DECODER_RESTART;
 	}
 
-//	ESP_LOGI(LOG_FM_ENCODER, "Bit#%d = %d", context->buffer_loaded_bits, bit);
+//	_ESP_LOGI(LOG_FM_ENCODER, "Bit#%d = %d", context->buffer_loaded_bits, bit);
 
 	if (decoder_context->buffer_loaded_bits < decoder_context->buffer_size * 8) {
 		if (decoder_context->buffer != NULL) {
@@ -136,7 +136,7 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 
 			if (decoder_context->decoded_address == 0) {
 #if FM_COMMAND_ENCODER_LOG_MESSAGES
-				ESP_LOGW(LOG_FM_ENCODER, "Restart context - address = 0 not allowed");
+				_ESP_LOGW(LOG_FM_ENCODER, "Restart context - address = 0 not allowed");
 #endif
 				fm_command_restart_context(decoder_context);
 				return;
@@ -161,7 +161,7 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 
 			uint8_t size = data.encrypted ? decryptor_args_size_to_buff_size(data.args_size) : data.args_size;
 #if FM_COMMAND_ENCODER_LOG_MESSAGES
-			ESP_LOGI(LOG_FM_ENCODER, "Requesting %d bytes for address %04X", size, decoder_context->decoded_address);
+			_ESP_LOGI(LOG_FM_ENCODER, "Requesting %d bytes for address %04X", size, decoder_context->decoded_address);
 #endif
 
 			decoder_context->buffer = malloc(size);
@@ -191,7 +191,7 @@ void fm_command_decode_on_next_byte(t_fm_encoder_context * decoder_context, t_fm
 				return;
 			}
 /*
-			ESP_LOGI(LOG_FM_ENCODER, "Processing %s command address %04X; buffer size = %d",
+			_ESP_LOGI(LOG_FM_ENCODER, "Processing %s command address %04X; buffer size = %d",
 					(data.encrypted ? "encrypted" : "plain"),
 					context->decoded_address,
 					context->buffer_size);

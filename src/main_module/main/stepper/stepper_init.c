@@ -55,7 +55,9 @@ static void stepper_noise_alarm_task(void*) {
 	while(true) {
 		if (stepper_adc_is_noise_alarm_fired()) {
 			if (deglichON >= STEPPER_NOISE_ALARM_DEGLICH) {
-				stepper_executor_on_alarm();
+				if (stepper_noise_alarm_enabled) {
+					stepper_executor_on_alarm();
+				}
 			} else {
 				deglichON++;
 			}
@@ -84,7 +86,7 @@ static void stepper_noise_alarm_task(void*) {
 
 		do {
 			vTaskDelay(10 / portTICK_PERIOD_MS);
-		} while (!stepper_noise_alarm_enabled);
+		} while (!stepper_noise_alarm_enabled && !stepper_executor_is_in_error());
 	}
 }
 #endif
@@ -119,6 +121,10 @@ void stepper_cancel() {
 }
 
 void stepper_noise_alarm_enable(bool enable) {
+	if (stepper_noise_alarm_enabled != enable) {
+		_ESP_LOGI(LOG_STEPPER, "Noise alarm : %s", (enable ? "ENABLED" : "DISABLED"));
+	}
+
 	stepper_noise_alarm_enabled = enable;
 	controller_mqtt_noise_alarm_enabled(enable);
 }
@@ -126,3 +132,10 @@ void stepper_noise_alarm_enable(bool enable) {
 void stepper_limit_switch_enable(bool enable) {
 	stepper_adc_lsw_enable(enable);
 }
+
+void stepper_publish_status() {
+	stepper_noise_alarm_enable(stepper_noise_alarm_enabled);
+	stepper_adc_publish_status();
+	stepper_executor_publish_status();
+}
+

@@ -15,5 +15,6 @@ void stepper_executor_cancel();
 void stepper_executor_on_alarm();
 void stepper_executor_cancel_error();
 bool stepper_executor_is_in_error();
+void stepper_executor_publish_status();
 
 #endif /* MAIN_STEPPER_STEPPER_EXECUTOR_H_ */

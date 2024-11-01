@@ -55,16 +55,16 @@ void controller_process_pdu1_command(uint16_t freq, uint8_t arg) {
 
 	switch (arg) {
 		case CONTROLLER_PDU1_ARG_BUTTON1:
-			stepper_move_to(100);
-			break;
-		case CONTROLLER_PDU1_ARG_BUTTON2:
 			stepper_move_to(0);
 			break;
+		case CONTROLLER_PDU1_ARG_BUTTON2:
+			stepper_move_to(controller_light_open_percent);
+			break;
 		case CONTROLLER_PDU1_ARG_BUTTON3:
-			stepper_cancel();
+			stepper_move_to(100);
 			break;
 		case CONTROLLER_PDU1_ARG_BUTTON4:
-			stepper_move_to(controller_light_open_percent);
+			stepper_cancel();
 			break;
 	}
 }
@@ -79,16 +79,16 @@ void controller_process_pdu2_command(uint16_t freq, uint8_t arg) {
 
 	switch (arg) {
 		case CONTROLLER_PDU2_ARG_BUTTON1:
-			stepper_move_to(100);
-			break;
-		case CONTROLLER_PDU2_ARG_BUTTON2:
 			stepper_move_to(0);
 			break;
+		case CONTROLLER_PDU2_ARG_BUTTON2:
+			stepper_move_to(controller_light_open_percent);
+			break;
 		case CONTROLLER_PDU2_ARG_BUTTON3:
-			stepper_cancel();
+			stepper_move_to(100);
 			break;
 		case CONTROLLER_PDU2_ARG_BUTTON4:
-			stepper_move_to(controller_light_open_percent);
+			stepper_cancel();
 			break;
 	}
 }

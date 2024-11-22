@@ -46,6 +46,11 @@ void controller_mqtt_stepper_callback(const char * topic, const char * data) {
 		if (v != 0xFF) {
 			controller_set_fm_pdu_enabled(v == 1);
 		}
+	} else if (strcmp(type, "controller_allow_unlock_on_endpos") == 0) {
+		uint8_t v = get_boolean_from_json(cJSON_GetObjectItem(root, "enable"), 1, 0, 0xFF);
+		if (v != 0xFF) {
+			stepper_allow_unlock_on_endpos(v == 1);
+		}
 	}
 
 	cJSON_Delete(root);
@@ -136,6 +141,10 @@ void controller_mqtt_noise_alarm_enabled(bool enabled) {
 
 void controller_mqtt_fm_pdu_enabled(bool enabled) {
     mqtt_publish(CONFIG_CONTROLLER_MQTT_FM_PDU_ENABLE_STATUS, enabled ? "on" : "off");
+}
+
+void controller_mqtt_on_stepper_disable_at_endpos(bool allowed) {
+    mqtt_publish(CONFIG_CONTROLLER_MQTT_STEPPER_UNLOCK_ON_ENDPOS_STATUS, allowed ? "on" : "off");
 }
 
 void controller_mqtt_stepper_position_updated(uint8_t percent) {

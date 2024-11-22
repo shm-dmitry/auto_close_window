@@ -30,8 +30,9 @@
 
 #define CONTROLLER_BAT_STATUS_V_OFFSET 450
 
-#define CONTROLLER_MQTT_ASYNC_MESSAGE__ERROR    1
-#define CONTROLLER_MQTT_ASYNC_MESSAGE__POSITION 2
+#define CONTROLLER_MQTT_ASYNC_MESSAGE__ERROR     1
+#define CONTROLLER_MQTT_ASYNC_MESSAGE__POSITION  2
+#define CONTROLLER_MQTT_ASYNC_MESSAGE__UNLOCK_EN 3
 
 #define CONTROLLER_ASYNC_MQTT_TASK_STACK_SIZE 4096
 
@@ -218,6 +219,11 @@ void controller_on_stepper_position_updated(uint8_t percent) {
 	xQueueSend(controller_mqtt_async_message_queue, &x, 0);
 }
 
+void controller_on_executor_allow_unlock(bool allowed) {
+	uint16_t x = (allowed << 8) + CONTROLLER_MQTT_ASYNC_MESSAGE__UNLOCK_EN;
+	xQueueSend(controller_mqtt_async_message_queue, &x, 0);
+}
+
 static void controller_mqtt_async_message_task(void*) {
 	while(true) {
 		uint16_t data = 0;
@@ -238,6 +244,10 @@ static void controller_mqtt_async_message_task(void*) {
 		break;
 		case CONTROLLER_MQTT_ASYNC_MESSAGE__POSITION: {
 			controller_mqtt_stepper_position_updated(data >> 8);
+		}
+		break;
+		case CONTROLLER_MQTT_ASYNC_MESSAGE__UNLOCK_EN: {
+			controller_mqtt_on_stepper_disable_at_endpos(data >> 8);
 		}
 		break;
 		default:

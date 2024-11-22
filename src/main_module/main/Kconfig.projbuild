@@ -179,6 +179,10 @@ menu "Auto-Close Window Settings"
    	  config CONTROLLER_MQTT_FM_PDU_ENABLE_STATUS
    	     string "MQTT topic to send fm pdu enabled status"
    	     default "/controller/status/fmpduenabled"
+   	     
+   	  config CONTROLLER_MQTT_STEPPER_UNLOCK_ON_ENDPOS_STATUS
+   	     string "MQTT topic to send status message - is stepper unlock on endpos allowed"
+   	     default "/controller/status/unlockonendpos"
    endmenu
  endmenu
  

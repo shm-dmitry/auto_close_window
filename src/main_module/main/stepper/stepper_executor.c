@@ -40,6 +40,7 @@ t_delay_timer * stepper_exec_stop_timer = NULL;
 t_delay_timer * stepper_exec_report_position = NULL;
 uint32_t stepper_exec_current_position = STEPPER_EXEC_CURRENT_POSITION_UNKNOWN;
 uint32_t stepper_exec_max_position = STEPPER_EXEC_CURRENT_POSITION_UNKNOWN;
+bool stepper_exec_unlock_on_endpos = true;
 
 static void stepper_executor_on_execute_command_task(void*);
 
@@ -123,8 +124,9 @@ static void stepper_executor_on_execute_command_task(void*) {
 		if (stepper_exec_command == STEPPER_EXEC_CMD__IDLE) {
 			if (stepper_exec_current_position != STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
 				if (stepper_exec_max_position != STEPPER_EXEC_CURRENT_POSITION_UNKNOWN) {
-					if (stepper_exec_current_position == stepper_exec_max_position ||
-						stepper_exec_current_position == 0) {
+					if (stepper_exec_unlock_on_endpos &&
+						   (stepper_exec_current_position == stepper_exec_max_position ||
+							stepper_exec_current_position == 0)) {
 						if (delay_timer_start_or_check(stepper_exec_stop_timer)) {
 							stepper_exec_current_position = STEPPER_EXEC_CURRENT_POSITION_UNKNOWN;
 							stepper_executor_motor_off();
@@ -457,6 +459,11 @@ void stepper_executor_do_moveto(uint8_t currentcommand) {
 									CONTROLLER_STATUS_END_EXECUTE_CLOSE);
 }
 
+void stepper_executor_allow_unlock_on_endpos(bool value) {
+	stepper_exec_unlock_on_endpos = value;
+	controller_on_executor_allow_unlock(value);
+}
+
 void stepper_executor_publish_status() {
 	controller_on_status(
 			stepper_executor_is_in_error_now ?
@@ -470,5 +477,6 @@ void stepper_executor_publish_status() {
 	} else {
 		controller_on_stepper_position_updated(round((stepper_exec_current_position * 100.0) / stepper_exec_max_position));
 	}
+	controller_on_executor_allow_unlock(stepper_exec_unlock_on_endpos);
 }
 

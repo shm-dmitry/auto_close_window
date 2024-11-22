@@ -45,4 +45,4 @@ CONTROLLER_MQTT_STEPPER_POSITION="/controller/status/position"
 CONTROLLER_MQTT_LIMIT_SWITCH_ENABLE_STATUS="/controller/status/lsw"
 CONTROLLER_MQTT_STEPPER_NOISE_ALARM_STATUS="/controller/status/steppernoisealarm"
 CONTROLLER_MQTT_FM_PDU_ENABLE_STATUS="/controller/status/fmpduenabled"
-
+CONTROLLER_MQTT_STEPPER_UNLOCK_ON_ENDPOS_STATUS="/controller/status/unlockonendpos"

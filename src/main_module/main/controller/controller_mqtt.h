@@ -16,5 +16,6 @@ void controller_mqtt_stepper_position_updated(uint8_t percent);
 void controller_mqtt_limit_switch_enabled(bool enabled);
 void controller_mqtt_noise_alarm_enabled(bool enabled);
 void controller_mqtt_fm_pdu_enabled(bool enabled);
+void controller_mqtt_on_stepper_disable_at_endpos(bool allowed);
 
 #endif /* MAIN_CONTROLLER_CONTROLLER_MQTT_H_ */

@@ -133,6 +133,10 @@ void stepper_limit_switch_enable(bool enable) {
 	stepper_adc_lsw_enable(enable);
 }
 
+void stepper_allow_unlock_on_endpos(bool value) {
+	stepper_executor_allow_unlock_on_endpos(value);
+}
+
 void stepper_publish_status() {
 	stepper_noise_alarm_enable(stepper_noise_alarm_enabled);
 	stepper_adc_publish_status();
